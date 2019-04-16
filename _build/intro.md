@@ -4,17 +4,23 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /https://github.com/jupyter/jupyter-book
-  title: 'GitHub repository'
+  url: /https://github.com/ds-modules/
+  title: 'DSEP Modules Repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-# Books with Jupyter and Jekyll
+# DSEP Data Science Modules
 
 <img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left">
 
-Jupyter Books lets you build an online book using a collection of Jupyter Notebooks
-and Markdown files. Its output is similar to the excellent [Bookdown](https://bookdown.org/yihui/bookdown/) tool,
-and adds extra functionality for people running a Jupyter stack.
+## Data Science for the Social Sciences
+
+It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education Program (DSEP) at UC Berkeley, we believe in providing opportunities to students to be exposed to this paradigm shift.
+
+Feel free to take a look at the wealth of curriculum resources on the left of the screen.
+
+## Jupyter Books
+
+This website was created using [Jupyter Books](https://jupyter.org/jupyter-book/intro.html). Jupyter Books lets you build an online book using a collection of Jupyter Notebooks and Markdown files. Its output is similar to the excellent [Bookdown](https://bookdown.org/yihui/bookdown/) tool, and adds extra functionality for people running a Jupyter stack.
 
 For an example of a book built with Jupyter Books, see the [textbook for Data 100](https://www.textbook.ds100.org/) at UC Berkeley.
 
@@ -27,37 +33,12 @@ Here are a few features of Jupyter Books
 * There are lots of nifty HTML features under-the-hood, such as Turbolinks fast-navigation and
   click-to-copy in code cells.
 
-## Getting started
-
-To get started, you may be interested in the following links.
-Here are a few links of interest:
-
-* **[Quickstart](features/features)** is a quick demo and overview of Jupyter Books.
-
-* **[The Jupyter Book Guide](guide/01_overview)**
-  will step you through the process of configuring and building your own Jupyter Book.
-
-* **[The Jupyter Book template repo](https://github.com/jupyter/jupyter-book)** is the template
-  repository you'll use as a start for your Jupyter Book.
-
-* **A demo of the Jupyter Book** can be browsed via the sidebar to the left.
-
-## Installation
-
-Here's a brief rundown of how to create your own Jupyter Book using this site. For a more
-complete guide, see [the Jupyter Book guide](guide/01_overview).
-
-* Fork the Jupyter Book template repo
-* Replace the demo notebooks in `content/` with your own notebooks and markdown files.
-* Create a Table of Contents yaml file by editing `_data/toc.yaml`.
-* Generate the Jekyll markdown for your notebooks by running `scripts/generate_book.py`
-* Push your changes to GitHub (or wherever you host your site)!
-
 ## Acknowledgements
 
-Jupyter Books was originally created by [Sam Lau][sam] and [Chris Holdgraf][chris]
-with support of the **UC Berkeley Data Science Education Program and the Berkeley
-Institute for Data Science**.
+This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex] and [Shalini Kunapuli][shalini]. Contributors to certain chapters are recognized on each page of this textbook.
 
-[sam]: http://www.samlau.me/
-[chris]: https://predictablynoisy.com
+## License
+TBD.
+
+[alex]: https://www.linkedin.com/in/alexnakagawa/
+[shalini]: https://www.linkedin.com/in/shalinikunapuli/
