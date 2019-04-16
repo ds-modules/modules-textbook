@@ -48,8 +48,8 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: In
-    url: /features/markdown
+  - title: Intro to Python and Jupyter
+    url: /introduction/intro-module-final
     not_numbered: true
   - title: Jupyter notebooks
     url: /features/notebooks
