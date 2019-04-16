@@ -16,14 +16,14 @@
 
 #######################################################################################
 # Jekyll site settings
-title: YOUR BOOK NAME
-author: YOUR AUTHOR NAME
-email: YOUR EMAIL
+title: UC Berkeley Data Science Modules
+author: Alex Nakagawa
+email: alex.nakagawa@berkeley.edu
 description: >-
-  This is an example book built with Jupyter Books.
+  This book is a compilation of a couple modules created at UC Berkeley.
 
 baseurl: /               # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: YOUR URL              # the base hostname & protocol for your site, e.g. http://example.com
+url: http://alexnakagawa.github.io              # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
