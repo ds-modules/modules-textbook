@@ -54,3 +54,11 @@
   - title: Jupyter notebooks
     url: /features/notebooks
     not_numbered: true
+
+- title: Legal Studies
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Intro to Python
+    url: /legal_studies/1-18
+    not_numbered: true
