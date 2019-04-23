@@ -56,6 +56,7 @@
     not_numbered: true
 
 - title: Legal Studies
+  url: /legal_studies/intro-legal-studies
   not_numbered: true
   expand_sections: true
   sections:
