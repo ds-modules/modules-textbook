@@ -32,6 +32,11 @@
   external: true
   not_numbered: true
 
+- title: Data Science Curriculum Guide
+  url: https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme
+  external: true
+  not_numbered: true
+
 # Adds a searchbar link
 - title: Search
   search: true
