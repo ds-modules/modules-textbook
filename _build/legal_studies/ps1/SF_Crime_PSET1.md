@@ -3,7 +3,7 @@ redirect_from:
   - "/legal-studies/ps1/sf-crime-pset1"
 interact_link: content/legal_studies/ps1/SF_Crime_PSET1.ipynb
 kernel_name: python3
-title: 'Problem Set \#1'
+title: 'Problem Set 1'
 prev_page:
   url: /legal_studies/1-18
   title: 'Intro to Python'
@@ -60,73 +60,18 @@ Write code that pulls the data into your environment with an API call. Here is t
 
 {:.input_area}
 ```python
-sf_police = os.path.join('po_department_incidents.csv')
+os.path.
+```
+
+
+
+
+{:.input_area}
+```python
+sf_police = os.path.join('Police_Department_Sample_Incidents.csv')
 df = pd.read_csv(sf_police)
 ```
 
-
-{:.output .output_traceback_line}
-```
-
-    ---------------------------------------------------------------------------
-
-    FileNotFoundError                         Traceback (most recent call last)
-
-    <ipython-input-2-5f9bf2a754f6> in <module>()
-          1 sf_police = os.path.join('po_department_incidents.csv')
-    ----> 2 df = pd.read_csv(sf_police)
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in parser_f(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, skipfooter, skip_footer, doublequote, delim_whitespace, as_recarray, compact_ints, use_unsigned, low_memory, buffer_lines, memory_map, float_precision)
-        707                     skip_blank_lines=skip_blank_lines)
-        708 
-    --> 709         return _read(filepath_or_buffer, kwds)
-        710 
-        711     parser_f.__name__ = name
-
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in _read(filepath_or_buffer, kwds)
-        447 
-        448     # Create the parser.
-    --> 449     parser = TextFileReader(filepath_or_buffer, **kwds)
-        450 
-        451     if chunksize or iterator:
-
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in __init__(self, f, engine, **kwds)
-        816             self.options['has_index_names'] = kwds['has_index_names']
-        817 
-    --> 818         self._make_engine(self.engine)
-        819 
-        820     def close(self):
-
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in _make_engine(self, engine)
-       1047     def _make_engine(self, engine='c'):
-       1048         if engine == 'c':
-    -> 1049             self._engine = CParserWrapper(self.f, **self.options)
-       1050         else:
-       1051             if engine == 'python':
-
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in __init__(self, src, **kwds)
-       1693         kwds['allow_leading_cols'] = self.index_col is not False
-       1694 
-    -> 1695         self._reader = parsers.TextReader(src, **kwds)
-       1696 
-       1697         # XXX
-
-
-    pandas\_libs\parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
-
-
-    pandas\_libs\parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
-
-
-    FileNotFoundError: File b'po_department_incidents.csv' does not exist
-
-
-```
 
 
 
@@ -212,7 +157,7 @@ data['x'] = data['x'].astype('float')
 ```
 
 
-<font color='blue'><b>QUESTION: What are the advantages to downloading data this way, instead of with a point-and-click action?</b></font color>
+**QUESTION: What are the advantages to downloading data this way, instead of with a point-and-click action?**
 
 ## 3. Descriptive Statistics <a id='stats'></a>
 
