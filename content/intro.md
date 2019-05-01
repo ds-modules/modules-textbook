@@ -25,11 +25,11 @@ Here are a few features of Jupyter Books
 
 ## Acknowledgements
 
-This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex], [Shalini Kunapuli][shalini], and [Christopher Pyles](chris). Contributors to certain chapters are recognized on each page of this textbook.
+This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex], [Shalini Kunapuli][shalini], and [Christopher Pyles][chris]. Contributors to certain chapters are recognized on each page of this textbook.
 
 ## License
 TBD.
 
 [alex]: https://www.linkedin.com/in/alexnakagawa/
 [shalini]: https://www.linkedin.com/in/shalinikunapuli/
-[chris]: https://linkedin.com/in/christopherapyles
+[chris]: https://linkedin.com/in/christopherapyles/
