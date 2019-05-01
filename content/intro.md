@@ -32,4 +32,4 @@ TBD.
 
 [alex]: https://www.linkedin.com/in/alexnakagawa/
 [shalini]: https://www.linkedin.com/in/shalinikunapuli/
-[chris]: https://linkedin.com/in/christopherapyles/
+[chris]: https://cpyles.com
