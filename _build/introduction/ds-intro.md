@@ -1,8 +1,8 @@
 ---
 title: 'Data Science in Python and Jupyter'
 prev_page:
-  url: /https://github.com/ds-modules/
-  title: 'DSEP Modules Repository'
+  url: /https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme
+  title: 'Data Science Curriculum Guide'
 next_page:
   url: /introduction/intro-module-final
   title: 'Intro to Python and Jupyter'

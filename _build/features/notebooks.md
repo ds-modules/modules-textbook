@@ -3,11 +3,11 @@ interact_link: content/features/notebooks.ipynb
 kernel_name: python3
 title: 'Jupyter notebooks'
 prev_page:
-  url: /features/markdown
-  title: 'Markdown files'
+  url: /introduction/intro-module-final
+  title: 'Intro to Python and Jupyter'
 next_page:
-  url: 
-  title: ''
+  url: /legal_studies/intro-legal-studies
+  title: 'Legal Studies'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -85,7 +85,7 @@ ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
 
 
 {:.output .output_png}
-![png](/Users/alexnakagawa%201/coding/modules-textbook/_build/images/features/notebooks_2_0.png)
+![png](../images/features/notebooks_2_0.png)
 
 
 
@@ -107,7 +107,7 @@ which you can [see in the original notebook](https://github.com/jupyter/jupyter-
 
 
 {:.output .output_png}
-![png](/Users/alexnakagawa%201/coding/modules-textbook/_build/images/features/notebooks_6_0.png)
+![png](../images/features/notebooks_6_0.png)
 
 
 
