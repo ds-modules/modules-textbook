@@ -7,15 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Search the site</title>
+  <title>Creating book content</title>
   <meta name="description" content="This book is a compilation of a couple modules created at UC Berkeley.">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/search">
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/content/features/markdown.html">
   <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/search" />
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/content/features/markdown.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Search the site" />
+<meta property="og:title"       content="Creating book content" />
 <meta property="og:description" content="This book is a compilation of a couple modules created at UC Berkeley." />
 <meta property="og:image"       content="" />
 
@@ -25,9 +25,9 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/search",
+    "http://0.0.0.0:4000/modules-textbook/content/features/markdown.html",
   "headline":
-    "Search the site",
+    "Creating book content",
   "datePublished":
     "2019-05-01T23:07:08-05:00",
   "dateModified":
@@ -720,6 +720,33 @@ initFunction(initQuery);
 </nav>
 
       
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#sidebars-with-jekyll">Sidebars with Jekyll</a>
+    <ul>
+      <li><a href="#heres-a-third-level-header">Here’s a third-level header</a></li>
+    </ul>
+  </li>
+  <li><a href="#embedding-media">Embedding media</a>
+    <ul>
+      <li><a href="#adding-images">Adding images</a></li>
+      <li><a href="#adding-movies">Adding movies</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
       <main class="c-textbook__page" tabindex="-1">
           <div class="o-wrapper">
             <div class="c-sidebar-toggle">
@@ -738,87 +765,53 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <div class="search-content__inner-wrap">
-    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
-    <div id="results" class="results"></div>
-</div>
+              <h1 id="creating-book-content">Creating book content</h1>
 
-<script>
-    // Add the lunr store since we will now search it
-    var store = [{
-        "title": "Features and customization",
-        
-        "excerpt":
-            "Features This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll. The markdown files for this page (and others in the textbook) is generated from the notebooks with the scripts/generate_textbook.py script, which is called when you run make book. The...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/features.html",
-        "teaser":null},{
-        "title": "Markdown files",
-        
-        "excerpt":
-            "Creating book content The two kinds of files that contain course content are: Jupyter Notebooks Markdown files Each are contained in the content/ folder and referenced from _data/toc.yml. If the file is markdown, it will be copied over with front-matter YAML added so that Jekyll can parse it Sidebars with...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/markdown.html",
-        "teaser":null},{
-        "title": "Jupyter notebooks",
-        
-        "excerpt":
-            "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/notebooks.html",
-        "teaser":null},{
-        "title": "Home",
-        
-        "excerpt":
-            "DSEP Data Science Modules Data Science for the Social Sciences It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/intro.html",
-        "teaser":null},{
-        "title": "Data Science in Python and Jupyter",
-        
-        "excerpt":
-            "Data Science Introduction Modules Welcome to the introduction for data science! If this is your first exposure ever to the data science realm, this is the place for you. Take a look at the sidebar to view the topics of this first chapter. Not only will you be exposed to...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/ds-intro.html",
-        "teaser":null},{
-        "title": "Intro to Python and Jupyter",
-        
-        "excerpt":
-            "Introduction to Data Science Welcome to Data Science! In this notebook, you will learn how to use Jupyter Notebooks and the basics of programming in Python. Estimated Time: 30 minutes Topics Covered: Learn how to work with Jupyter notebooks. Learn about variables in Python, including variable types, variable assignment, and...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html",
-        "teaser":null},{
-        "title": "Intro to Python",
-        
-        "excerpt":
-            "Legal Studies 190 - Data, Prediction, and Law Welcome to our class! This introductory notebook will reviews concepts that you may already be familiar with from Data 8 or similar courses. The basic strategies and tools for data analysis covered in this notebook will be the foundations of this class....",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/1-18.html",
-        "teaser":null},{
-        "title": "Legal Studies",
-        
-        "excerpt":
-            "Introduction to the Legal Studies Modules LEGALST 190: Data, Prediction, and Law Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course also introduces...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/intro-legal-studies.html",
-        "teaser":null},{
-        "title": "Problem Set 1",
-        
-        "excerpt":
-            "SF Crime PSET 1 Introduction Getting the Data Descriptive Statistics Geographic Information Systems Discussion Questions # imports import requests from datascience import * import matplotlib.pyplot as plt import datetime import folium from folium import GeoJson import time import json import os from branca.colormap import linear import branca.colormap import pandas as...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
-        "teaser":null},]
-</script>
+<p>The two kinds of files that contain course content are:</p>
+
+<ul>
+  <li>Jupyter Notebooks</li>
+  <li>Markdown files</li>
+</ul>
+
+<p>Each are contained in the <code class="highlighter-rouge">content/</code> folder and referenced from <code class="highlighter-rouge">_data/toc.yml</code>.</p>
+
+<p>If the file is markdown, it will be copied over with front-matter YAML added so
+that Jekyll can parse it</p>
+
+<h2 id="sidebars-with-jekyll">Sidebars with Jekyll</h2>
+
+<p>You may notice that there’s a sidebar to the right (if your screen is wide enough).
+These are automatically generated from the headers that are present in your page.
+The sidebar will automatically capture all 2nd and 3rd level section headers.
+The best way to designate these headers is with <code class="highlighter-rouge">#</code> characters at the beginning
+of a line.</p>
+
+<h3 id="heres-a-third-level-header">Here’s a third-level header</h3>
+
+<p>This section is here purely to demonstrate the third-level header of the
+rendered page!</p>
+
+<h2 id="embedding-media">Embedding media</h2>
+
+<h3 id="adding-images">Adding images</h3>
+
+<p>You can reference external media like images from your markdown file. If you use
+relative paths, then they will continue to work when the markdown files are copied over,
+so long as they point to a file that’s inside of the repository.</p>
+
+<p>Here’s an image relative to the site root</p>
+
+<p><img src="/modules-textbook/content/images/C-3PO_droid.png" alt="" /></p>
+
+<h3 id="adding-movies">Adding movies</h3>
+
+<p>You can even embed references to movies on the web! For example, here’s a little gif for you!</p>
+
+<p><img src="https://media.giphy.com/media/yoJC2A59OCZHs1LXvW/giphy.gif" alt="" /></p>
+
+<p>This will be included in your website when it is built.</p>
+
               <nav class="c-page__nav">
   
 

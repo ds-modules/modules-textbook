@@ -7,15 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Search the site</title>
+  <title>Data Science Introduction Modules</title>
   <meta name="description" content="This book is a compilation of a couple modules created at UC Berkeley.">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/search">
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/content/introduction/ds-intro.html">
   <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/search" />
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/content/introduction/ds-intro.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Search the site" />
+<meta property="og:title"       content="Data Science Introduction Modules" />
 <meta property="og:description" content="This book is a compilation of a couple modules created at UC Berkeley." />
 <meta property="og:image"       content="" />
 
@@ -25,9 +25,9 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/search",
+    "http://0.0.0.0:4000/modules-textbook/content/introduction/ds-intro.html",
   "headline":
-    "Search the site",
+    "Data Science Introduction Modules",
   "datePublished":
     "2019-05-01T23:07:08-05:00",
   "dateModified":
@@ -511,7 +511,7 @@ initFunction(initQuery);
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
+        <a class="c-sidebar__entry c-sidebar__entry--active"
           href="/modules-textbook/intro.html"
         >
           
@@ -586,7 +586,7 @@ initFunction(initQuery);
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
+        <a class="c-sidebar__entry c-sidebar__entry--active"
           href="/modules-textbook/introduction/ds-intro.html"
         >
           
@@ -720,6 +720,14 @@ initFunction(initQuery);
 </nav>
 
       
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+
+      
       <main class="c-textbook__page" tabindex="-1">
           <div class="o-wrapper">
             <div class="c-sidebar-toggle">
@@ -738,87 +746,14 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <div class="search-content__inner-wrap">
-    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
-    <div id="results" class="results"></div>
-</div>
+              <h1 id="data-science-introduction-modules">Data Science Introduction Modules</h1>
 
-<script>
-    // Add the lunr store since we will now search it
-    var store = [{
-        "title": "Features and customization",
-        
-        "excerpt":
-            "Features This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll. The markdown files for this page (and others in the textbook) is generated from the notebooks with the scripts/generate_textbook.py script, which is called when you run make book. The...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/features.html",
-        "teaser":null},{
-        "title": "Markdown files",
-        
-        "excerpt":
-            "Creating book content The two kinds of files that contain course content are: Jupyter Notebooks Markdown files Each are contained in the content/ folder and referenced from _data/toc.yml. If the file is markdown, it will be copied over with front-matter YAML added so that Jekyll can parse it Sidebars with...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/markdown.html",
-        "teaser":null},{
-        "title": "Jupyter notebooks",
-        
-        "excerpt":
-            "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/notebooks.html",
-        "teaser":null},{
-        "title": "Home",
-        
-        "excerpt":
-            "DSEP Data Science Modules Data Science for the Social Sciences It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/intro.html",
-        "teaser":null},{
-        "title": "Data Science in Python and Jupyter",
-        
-        "excerpt":
-            "Data Science Introduction Modules Welcome to the introduction for data science! If this is your first exposure ever to the data science realm, this is the place for you. Take a look at the sidebar to view the topics of this first chapter. Not only will you be exposed to...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/ds-intro.html",
-        "teaser":null},{
-        "title": "Intro to Python and Jupyter",
-        
-        "excerpt":
-            "Introduction to Data Science Welcome to Data Science! In this notebook, you will learn how to use Jupyter Notebooks and the basics of programming in Python. Estimated Time: 30 minutes Topics Covered: Learn how to work with Jupyter notebooks. Learn about variables in Python, including variable types, variable assignment, and...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html",
-        "teaser":null},{
-        "title": "Intro to Python",
-        
-        "excerpt":
-            "Legal Studies 190 - Data, Prediction, and Law Welcome to our class! This introductory notebook will reviews concepts that you may already be familiar with from Data 8 or similar courses. The basic strategies and tools for data analysis covered in this notebook will be the foundations of this class....",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/1-18.html",
-        "teaser":null},{
-        "title": "Legal Studies",
-        
-        "excerpt":
-            "Introduction to the Legal Studies Modules LEGALST 190: Data, Prediction, and Law Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course also introduces...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/intro-legal-studies.html",
-        "teaser":null},{
-        "title": "Problem Set 1",
-        
-        "excerpt":
-            "SF Crime PSET 1 Introduction Getting the Data Descriptive Statistics Geographic Information Systems Discussion Questions # imports import requests from datascience import * import matplotlib.pyplot as plt import datetime import folium from folium import GeoJson import time import json import os from branca.colormap import linear import branca.colormap import pandas as...",
-        "categories": [],
-        "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
-        "teaser":null},]
-</script>
+<p>Welcome to the introduction for data science! If this is your first exposure ever to the data science realm, this is the place for you. Take a look at the sidebar to view the topics of this first chapter. Not only will you be exposed to the fundamentals of inferential thinking, but you will also get an in-depth introduction to the Python programming language as well, which is a widely-used tool in data analysis.</p>
+
+<p>If you are comfortable with all the material that is presented, then go ahead and move on towards exploring the vast wealth of modules that the Data Science Education Program offers at UC Berkeley.</p>
+
+<p>To learn more about the new initiatives at the Division of Data Sciences, please visit the website <a href="https://data.berkeley.edu/">here</a>.</p>
+
               <nav class="c-page__nav">
   
 

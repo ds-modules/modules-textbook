@@ -1,13 +1,3 @@
----
-title: 'Home'
-prev_page:
-  url: 
-  title: ''
-next_page:
-  url: /https://github.com/ds-modules/
-  title: 'DSEP Modules Repository'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # DSEP Data Science Modules
 
 <img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left">

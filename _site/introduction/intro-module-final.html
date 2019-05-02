@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Intro to Python and Jupyter</title>
+  <meta name="description" content="Introduction to Data Science">
+
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Intro to Python and Jupyter" />
+<meta property="og:description" content="Introduction to Data Science" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html",
+  "headline":
+    "Intro to Python and Jupyter",
+  "datePublished":
+    "2019-05-01T23:07:08-05:00",
+  "dateModified":
+    "2019-05-01T23:07:08-05:00",
+  "description":
+    "Introduction to Data Science",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Nakagawa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://0.0.0.0:4000/modules-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://0.0.0.0:4000/modules-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/modules-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'conda-root-py',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyter.org/jupyter-book/"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry c-sidebar__entry--active"
+          href="/modules-textbook/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/ds-modules/"
+        >
+          
+          DSEP Modules Repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+        >
+          
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/modules-textbook/introduction/intro-module-final.html"
+                >
+                  
+                  Intro to Python and Jupyter
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/features/notebooks.html"
+                >
+                  
+                  Jupyter notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Modules</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legal_studies/intro-legal-studies.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legal_studies/1-18.html"
+                >
+                  
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#jupyter-notebooks">Jupyter Notebooks</a>
+    <ul>
+      <li><a href="#exercise">Exercise</a></li>
+    </ul>
+  </li>
+  <li><a href="#programming-in-python">Programming in Python</a>
+    <ul>
+      <li><a href="#what-is-programming">What is Programming?</a></li>
+    </ul>
+  </li>
+  <li><a href="#variables">Variables</a>
+    <ul>
+      <li><a href="#variable-types">Variable Types</a></li>
+      <li><a href="#arithmetic">Arithmetic</a></li>
+    </ul>
+  </li>
+  <li><a href="#functions">Functions</a>
+    <ul>
+      <li><a href="#defining">Defining</a></li>
+      <li><a href="#calling">Calling</a></li>
+    </ul>
+  </li>
+  <li><a href="#scope">Scope</a>
+    <ul>
+      <li><a href="#activity">Activity</a></li>
+    </ul>
+  </li>
+  <li><a href="#control">Control</a>
+    <ul>
+      <li><a href="#conditionals">Conditionals</a></li>
+      <li><a href="#if-statements">If Statements</a></li>
+      <li><a href="#for-loops">For Loops</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#bibliography">Bibliography</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/modules-textbook/content/introduction/intro-module-final.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <h1 id="introduction-to-data-science">Introduction to Data Science</h1>
+<hr />
+
+<p>Welcome to Data Science! In this notebook, you will learn how to use Jupyter Notebooks and the basics of programming in Python.</p>
+
+<p><em>Estimated Time: 30 minutes</em></p>
+
+<hr />
+
+<p><strong>Topics Covered:</strong></p>
+<ul>
+  <li>Learn how to work with Jupyter notebooks.</li>
+  <li>Learn about variables in Python, including variable types, variable assignment, and arithmetic.</li>
+  <li>Learn about functions in Python, including defining and calling functions, as well as scope.</li>
+</ul>
+
+<p><strong>Parts:</strong></p>
+<ul>
+  <li>Jupyter Notebooks</li>
+  <li>Programming in Python</li>
+  <li>Variables</li>
+  <li>Functions</li>
+  <li>Scope</li>
+</ul>
+
+<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
+<hr />
+<p>In this section, we will learn the basics of how to work with Jupyter notebooks.</p>
+
+<p>This Jupyter notebook is composed of 2 kinds of cells: markdown and code. A <strong>markdown cell</strong>, such as this one, contains text. A <strong>code cell</strong> contains code in Python, a programming language that we will be using for the remainder of this module.</p>
+
+<p>To run a code cell, press Shift-Enter or click Cell &gt; Run Cells in the menu at the top of the screen. To edit a code cell, simply click in the cell and make your changes.</p>
+
+<h3 id="exercise">Exercise</h3>
+
+<p>Try running the code below. What happens?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CODE</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello World!
+
+</code></pre></div></div>
+
+<p>Now, let’s try editing the code. In the cell below, replace “friend” with your name for a more personalized message.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Welcome to Jupyter notebooks, friend."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome to Jupyter notebooks, friend.
+
+</code></pre></div></div>
+
+<h2 id="programming-in-python">Programming in Python</h2>
+<hr />
+<p>Now that you are comfortable with using Jupyter notebooks, we can learn more about programming in this notebook.</p>
+
+<h3 id="what-is-programming">What is Programming?</h3>
+<p><strong>Programming</strong> is giving the computer a set of step-by-step instructions to follow in order to execute a task. It’s a lot like writing your own recipe book! For example, let’s say you wanted to teach someone how to make a PB&amp;J sandwich:</p>
+<ol>
+  <li>Gather bread, peanut butter, jelly, and a spreading knife.</li>
+  <li>Take out two slices of bread.</li>
+  <li>Use the knife to spread peanut butter on one slice of bread.</li>
+  <li>Use the knife to spread jelly on the other slice of bread.</li>
+  <li>Put the two slices of bread together to make a sandwich.</li>
+</ol>
+
+<p>Just like that, programming is breaking up a complex task into smaller commands for the computer to understand and execute.</p>
+
+<p>In order to communicate with computers, however, we must talk to them in a way that they can understand us: via a <strong>programming language</strong>.</p>
+
+<p>There are many different kinds of programming languages, but we will be using <strong>Python</strong> because it is concise, simple to read, and applicable in a variety of projects - from web development to mobile apps to data analysis.</p>
+
+<h2 id="variables">Variables</h2>
+<hr />
+
+<p>In programming, we often compute many values that we want to save so that we can use the result in a later step. For example, let’s say that we want to find the number of seconds in a day. We can easily calculate this with the following:</p>
+
+<p style="text-align: center">$60 * 60 * 24 = 86400$ seconds</p>
+
+<p>However, let’s say that your friend Alexander asked you how many seconds there are in three days. We could, of course, perform the calculation in a similar manner:</p>
+
+<p style="text-align: center">$(60 * 60 * 24) * 3 = 259200$ seconds</p>
+
+<p>But we see that we repeated the calculation in parentheses above. Instead of doing this calculation again, we could have saved the result from our first step (calculating the number of seconds in a day) as a variable.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is Python code that assigns variables.</span>
+<span class="c"># The name to the left of the equals sign is the variable name.</span>
+<span class="c"># The value to the right of the equals sign is the value of the variable.</span>
+<span class="c"># Press Shift-Enter to run the code and see the value of our variable!</span>
+
+<span class="n">seconds_in_day</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="c"># This is equal to 86400.</span>
+<span class="n">seconds_in_day</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>86400
+</code></pre></div></div>
+
+<p>Then, we can simply multiply this variable by three to get the number of seconds in <em>three</em> days:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The code below takes the number of seconds in a day (which we calculated in the previous code cell)</span>
+<span class="c"># and multiplies it by 3 to find the number of seconds in 3 days.</span>
+
+<span class="n">seconds_in_three_days</span> <span class="o">=</span> <span class="n">seconds_in_day</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c"># This is equal to 259200.</span>
+<span class="n">seconds_in_three_days</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>259200
+</code></pre></div></div>
+
+<p>As you can see, variables can be used to simplify calculations, make code more readable, and allow for repetition and reusability of code.</p>
+
+<h3 id="variable-types">Variable Types</h3>
+
+<p>Next, we’ll talk about a few types of variables that you’ll be using. As we saw in the example above, one common type of variable is the <em>integer</em> (positive and negative whole numbers). You’ll also be using decimal numbers in Python, which are called <em>doubles</em> (positive and negative decimal numbers).</p>
+
+<p>A third type of variable used frequently in Python is the <em>string</em>; strings are essentially sequences of characters, and you can think of them as words or sentences. We denote strings by surrounding the desired value with quotes. For example, “Data Science” and “2017” are strings, while <code class="highlighter-rouge">bears</code> and <code class="highlighter-rouge">2020</code> (both without quotes) are not strings.</p>
+
+<p>Finally, the last variable type we’ll go over is the <em>boolean</em>. They can take on one of two values: <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>. Booleans are often used to check conditions; for example, we might have a list of dogs, and we want to sort them into small dogs and large dogs. One way we could accomplish this is to say either <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code> for each dog after seeing if the dog weighs more than 15 pounds.</p>
+
+<p>Here is a table that summarizes the information in this section:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable Type</th>
+      <th>Definition</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Integer</td>
+      <td>Positive and negative whole numbers</td>
+      <td><code class="highlighter-rouge">42</code>, <code class="highlighter-rouge">-10</code>, <code class="highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>Double</td>
+      <td>Positive and negative decimal numbers</td>
+      <td><code class="highlighter-rouge">73.9</code>, <code class="highlighter-rouge">2.4</code>, <code class="highlighter-rouge">0.0</code></td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td>Sequence of characters</td>
+      <td><code class="highlighter-rouge">"Go Bears!"</code>, <code class="highlighter-rouge">"variables"</code></td>
+    </tr>
+    <tr>
+      <td>Boolean</td>
+      <td>True or false value</td>
+      <td><code class="highlighter-rouge">True</code>, <code class="highlighter-rouge">False</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="arithmetic">Arithmetic</h3>
+<p>Now that we’ve discussed what types of variables we can use, let’s talk about how we can combine them together. As we saw at the beginning of this section, we can do basic math in Python. Here is a table that shows how to write such operations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Operator</th>
+      <th>Example</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Addition</td>
+      <td>+</td>
+      <td><code class="highlighter-rouge">2 + 3</code></td>
+      <td><code class="highlighter-rouge">5</code></td>
+    </tr>
+    <tr>
+      <td>Subtraction</td>
+      <td>-</td>
+      <td><code class="highlighter-rouge">2 - 3</code></td>
+      <td><code class="highlighter-rouge">-1</code></td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td>*</td>
+      <td><code class="highlighter-rouge">2 * 3</code></td>
+      <td><code class="highlighter-rouge">6</code></td>
+    </tr>
+    <tr>
+      <td>Division</td>
+      <td>/</td>
+      <td><code class="highlighter-rouge">7 / 3</code></td>
+      <td><code class="highlighter-rouge">2.66667</code></td>
+    </tr>
+    <tr>
+      <td>Remainder</td>
+      <td>%</td>
+      <td><code class="highlighter-rouge">7 % 3</code></td>
+      <td><code class="highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>Exponentiation</td>
+      <td>**</td>
+      <td><code class="highlighter-rouge">2 ** 0.5</code></td>
+      <td><code class="highlighter-rouge">1.41421</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In addition, you can use parentheses to denote priority, just like in math.</p>
+
+<p>As an exercise, try to predict what each of these lines below will print out. Then, run the cell and check your answers.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_1</span><span class="p">)</span> <span class="c"># What prints here?</span>
+
+<span class="n">q_2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_2</span><span class="p">)</span> <span class="c"># What prints here?</span>
+
+<span class="n">some_variable</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">q_3</span> <span class="o">=</span> <span class="n">some_variable</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_3</span><span class="p">)</span> <span class="c"># What prints here?</span>
+
+<span class="n">q_4</span> <span class="o">=</span> <span class="n">some_variable</span> <span class="o">%</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_4</span><span class="p">)</span> <span class="c"># What prints here?</span>
+
+<span class="n">step_1</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">-</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">step_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">7</span>
+<span class="n">q_5</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">step_1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">step_2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_5</span><span class="p">)</span> <span class="c"># What prints here?</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
+5.0
+60
+0
+2017.0
+
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+
+<p>So far, you’ve learnt how to carry out basic operations on your inputs and assign variables to certain values.
+Now, let’s try to be more efficient.</p>
+
+<p>Let’s say we want to perform a certain operation on many different inputs that will produce distinct outputs. What do we do? We write a <em><strong>function</strong></em>.</p>
+
+<p>A function is a block of code which works a lot like a machine: it takes an input, does something to it, and produces an output.</p>
+
+<p>The input is put between brackets and can also be called the <em>argument</em> or <em>parameter</em>. Functions can have multiple arguments.</p>
+
+<p>Try running the cell below after changing the variable <em>name</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Edit this cell to your own name!</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">"John Doe"</span>
+
+<span class="c"># Our function</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">"Hello "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"!"</span>
+
+<span class="n">hello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Interesting, right? Now, you don’t need to write 10 different lines with 10 different names to print a special greeting for each person. All you need to is write one function that does all the work for you!</p>
+
+<p>Functions are very useful in programming because they help you write shorter and more modular code. A good example to think of is the <em>print</em> function, which we’ve used quite a lot in this module. It takes many different inputs and performs the specified task, printing its input, in a simple manner.</p>
+
+<p>Now, let’s write our own function. Let’s look at the following rules:</p>
+
+<h3 id="defining">Defining</h3>
+<ul>
+  <li>All functions must start with the “def” keyword.</li>
+  <li>All functions must have a name, followed by parentheses, followed by a colon. Eg. def hello( ):</li>
+  <li>The brackets may have a variable that stores its arguments (inputs)</li>
+  <li>All functions must have a “return” statement which will return the output. Think of a function like a machine. When you put something inside, you want it to return something. Hence, this is very important.</li>
+</ul>
+
+<h3 id="calling">Calling</h3>
+<p>After you define a function, it’s time to use it. This is known as <em>calling</em> a function.</p>
+
+<p>To call a function, simply write the name of the function with your input variable in brackets (argument).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Complete this function</span>
+<span class="k">def</span> <span class="err">#</span><span class="nf">name</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="k">return</span> <span class="c"># function must return a value</span>
+
+<span class="c"># Calling our function below...</span>
+<span class="n">my_first_function</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Great! Now let’s do some math. Let’s write a function that returns the square of the input.</p>
+
+<p>Try writing it from scratch!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># square function </span>
+
+
+<span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Neat stuff! Try different inputs and check if you get the correct answer each time.</p>
+
+<p>You’ve successfully written your first function from scratch! Let’s take this up one notch.</p>
+
+<h4 id="the-power-function">The power function</h4>
+
+<p><em>pow</em> is a function that takes in two numbers: x, which is the “base” and y, the “power”. So when you write pow(3,2) the function returns 3 raised to the power 2, which is 3^2 = 9.</p>
+
+<p>Task: Write a function called <em>mulpowply</em> which takes in three inputs (x, y, z) and returns the value of x multiplied by y to power z. Symbolically, it should return (xy)^z.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mulpowply function</span>
+
+
+</code></pre></div></div>
+
+<h2 id="scope">Scope</h2>
+<hr />
+<p>Programming is great, but it can also be quite peculiar sometimes. For example, each variable defined outside of any functions by default, is <strong>global</strong>.</p>
+
+<p>Try executing the code below:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Global Variable - name</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">"Harry Potter"</span>
+
+<span class="c"># our function</span>
+<span class="k">def</span> <span class="nf">salutation</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">", nice to meet you!"</span>
+
+<span class="c"># calling our function</span>
+<span class="n">salutation</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c"># un-comment the line below</span>
+<span class="c">#salutation("Roonald Wazlib")</span>
+</code></pre></div></div>
+
+<p>Even though your argument was called <em>name</em>, it didnt output Harry Potter, which was the <strong>global</strong> value of the variable called name. Instead, it gave preference to the <strong>local</strong> value which was given to the function as an argument, Roonald Wazlib.</p>
+
+<p>Think of it as filling your coffeemaker (function) up with coffee (variable). If you have a variable with <strong>global</strong> access called <em>name</em> which is filled with coffee called Harry Potter, you can choose to either:</p>
+
+<p>1) Not input another value in your function. (Use the same name of the <strong>global</strong> variable as your argument)</p>
+
+<p>In this case, the <strong>global</strong> type of coffee will still be used.</p>
+
+<p>2) Choose to fill another value. In this case, your function will assign the value you pass as the argument to the “variable” which <strong>is</strong> the argument.</p>
+
+<p>Think of it as overriding your <strong>global</strong> coffee and putting a new type of coffee into your coffeemaker.</p>
+
+<h3 id="activity">Activity</h3>
+
+<p>Using the rules of scope you’ve learned so far, complete the function <em>puzzle</em> to output the value <strong>35</strong>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Scope Puzzle!</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="k">def</span> <span class="nf">puzzle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="c"># fill in this function call</span>
+<span class="n">puzzle</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h2 id="control">Control</h2>
+<hr />
+<p>Sometimes, we want to manipulate the flow of our code. For example, we might want our code to make decisions on its own or repeat itself a certain amount of times. By implementing control structures, we can avoid redundant code and make processes more efficient.</p>
+
+<h3 id="conditionals">Conditionals</h3>
+<p>We use <strong>conditionals</strong> to run certain pieces of code <em>if</em> something is true. For example, we should only go to the grocery store <em>if</em> we are out of peanut butter!</p>
+
+<p>We use <strong>comparators</strong> to determine whether an expression is <em>true</em> or <em>false</em>. There are six comparators to be aware of:</p>
+<ol>
+  <li>Equal to: ==</li>
+  <li>Not equal to: !=</li>
+  <li>Greater than: &gt;</li>
+  <li>Greater than or equal to: &gt;=</li>
+  <li>Less than: &lt;</li>
+  <li>Less than or equal to: &lt;=</li>
+</ol>
+
+<p>Let’s try it out!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># EXERCISE 1</span>
+<span class="c"># Determine whether the following will print true or false</span>
+<span class="c"># Run the code to check your answers!</span>
+
+<span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="mi">2016</span> <span class="o">&lt;</span> <span class="mi">2017</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span> <span class="o">!=</span> <span class="s">"bar"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span> <span class="o">&lt;=</span>  <span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># EXERCISE 2</span>
+
+<span class="c"># Write an expression that evaluates to True</span>
+<span class="n">expression1</span> <span class="o">=</span> <span class="c"># YOUR CODE HERE</span>
+
+<span class="c"># Write an expression that evaluates to False</span>
+<span class="n">expression2</span> <span class="o">=</span> <span class="c"># YOUR CODE HERE</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">expression1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">expression2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now that we know how to compare values, we can tell our computer to make decisions using the <strong>if statement</strong>.</p>
+
+<h3 id="if-statements">If Statements</h3>
+<p>An <strong>if statement</strong> takes the following form:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Please do not run this code, as it will error. It is provided as a skeleton.</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">condition1</span><span class="p">):</span>
+    <span class="c"># code to be executed if condition1 is true</span>
+<span class="k">elif</span> <span class="p">(</span><span class="n">condition2</span><span class="p">):</span>
+    <span class="c"># code to be executed if condition2 is true</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c"># code to be executed otherwise</span>
+</code></pre></div></div>
+
+<p>With if statements, we can control which code is executed. Check out how handy this can be in the activity below!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We want to make a PB&amp;J sandwich, but things keep going wrong!</span>
+
+<span class="c"># Modify the variables below so that you go grocery shopping </span>
+<span class="c"># with no mishaps and successfully purchase some peanut butter.</span>
+
+<span class="c"># Run the code when you're done to see the results.</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Let's make a PB&amp;J sandwich!"</span><span class="p">)</span>
+<span class="n">peanut_butter</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">jelly</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">gas</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">flat_tire</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">peanut_butter</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Uh oh! We need more peanut butter. Must go grocery shopping..."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">gas</span> <span class="o">&lt;</span> <span class="mi">75</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Oops! Your car is out of gas :("</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">flat_tire</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Oh no! You have a flat tire :'("</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"You made it to the grocery store and succesfully got peanut butter!"</span><span class="p">)</span>
+        <span class="n">peanut_butter</span> <span class="o">=</span> <span class="c"># reset the value of peanut_butter so it is 100% full again</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"We have all the ingredients we need! Yummy yummy yay!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="for-loops">For Loops</h3>
+<p>We can also regulate the flow of our code by repeating some action over and over. Say that we wanted to greet ten people. Instead of copying and pasting the same call to <em>print</em> over and over again, it would be better to use a <strong>for loop</strong>.</p>
+
+<p>A basic <strong>for loop</strong> is written in the following order:</p>
+<ul>
+  <li>The word “for”</li>
+  <li>A name we want to give each item in a sequence</li>
+  <li>The word “in”</li>
+  <li>A sequence (i.e. “range(100)” to go through numbers 0-99</li>
+</ul>
+
+<p>For example, to greet someone ten times, we could write:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run me to see "hello!" printed ten times!</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"hello!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In this way, for loops help us avoid redundant code and have useful capabilities.</p>
+
+<p><strong>Exercise:</strong> Write a function that returns the sum of the first <em>n</em> numbers, where <em>n</em> is the input to the function. Use a for loop!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum_first_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c"># YOUR CODE HERE</span>
+
+<span class="n">sum_first_n</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c"># should return 1+2+3+4+5 = 15</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+<hr />
+<p>Congratulations! You’ve successfully learnt the basics of programming: creating your own variables, writing your own functions, and controlling the flow of your code! You will apply the concepts learnt throughout this notebook in class. After delving into this notebook, you are only just getting started!</p>
+
+<hr />
+
+<h2 id="bibliography">Bibliography</h2>
+
+<p>Some examples adapted from the UC Berkeley Data 8 textbook, <a href="https://www.inferentialthinking.com"><em>Inferential Thinking</em></a>.</p>
+
+<p>Authors:</p>
+<ul>
+  <li>Shriya Vohra</li>
+  <li>Scott Lee</li>
+  <li>Pancham Yadav</li>
+</ul>
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/introduction/ds-intro">
+      〈 <span class="u-margin-right-tiny"></span> Data Science in Python and Jupyter
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/features/notebooks">
+      Jupyter notebooks <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
