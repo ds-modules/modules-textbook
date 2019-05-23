@@ -6,8 +6,8 @@ prev_page:
   url: /econ/ps3/flex_price
   title: 'Flex Price Economy (PS3)'
 next_page:
-  url: 
-  title: ''
+  url: /english/english-intro
+  title: 'English'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

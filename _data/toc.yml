@@ -98,3 +98,13 @@
     - title: Macroeconomic Policy (PS5)
       url: /econ/ps5/macroeconomic-policy
       not_numbered: true
+
+# English Chapter
+- title: English
+  url: /english/english-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Chinatowns
+      url: /english/01-Chinatowns
+      not_numbered: true
