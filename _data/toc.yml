@@ -108,3 +108,19 @@
     - title: Chinatowns
       url: /english/01-Chinatowns
       not_numbered: true
+
+# Psych Chapter
+- title: Psychology
+  url: /psych/psych-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Introduction
+      url: /psych/01-intro
+      not_numbered: true
+    - title: Correlation, Regression, & Prediction
+      url: /psych/02-correlation-regression
+      not_numbered: true
+    - title: My Project
+      url: /psych/03-my-project
+      not_numbered: true

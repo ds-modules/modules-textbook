@@ -8,8 +8,8 @@ prev_page:
   url: /english/english-intro
   title: 'English'
 next_page:
-  url: 
-  title: ''
+  url: /psych/psych-intro
+  title: 'Psychology'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
