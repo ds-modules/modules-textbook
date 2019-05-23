@@ -308,9 +308,9 @@ This map reflects the pervasive bias against the Chinese in California and in tu
 
 The substance and tone of the Report is best illustrated by a few excerpts: "The general aspect of the streets and habitations was filthy in the extreme, . . . a slumbering pest, likely at any time to generate and spread disease, . . . a constant source of danger . . . , the filthiest spot inhabited by men, women and children on the American continent." (Report 4-5). "The Chinese brought here with them and have successfully maintained and perpetuated the grossest habits of bestiality practiced by the human race." (Ibid. 38).
 
-The map highlights the Committee's points, particularly the pervasiveness of gambling, prostitution and opium use. It shows the occupancy of the street floor of every building in Chinatown, color coded to show: General Chinese Occupancy|Chinese Gambling Houses|Chinese Prostitution|Chinese Opium Resorts|Chinese Joss Houses|and White Prostitution.
+The map highlights the Committee's points, particularly the pervasiveness of gambling, prostitution and opium use. It shows the occupancy of the street floor of every building in Chinatown, color coded to show: General Chinese Occupancy, Chinese Gambling Houses, Chinese Prostitution, Chinese Opium Resorts, Chinese Joss Houses, and White Prostitution.
 
-The Report concludes with a recommendation that the Chinese be driven out of the City by stern enforcement of the law: "compulsory obedience to our laws [is] necessarily obnoxious and revolting to the Chinese|and the more rigidly this enforcement is insisted upon and carried out the less endurable will existence be to them here, the less attractive will life be to them in California. Fewer will come and fewer will remain. . . . Scatter them by such a policy as this to other States . . . ." (Ibid. 67-68)
+The Report concludes with a recommendation that the Chinese be driven out of the City by stern enforcement of the law: "compulsory obedience to our laws [is] necessarily obnoxious and revolting to the Chinese and the more rigidly this enforcement is insisted upon and carried out the less endurable will existence be to them here, the less attractive will life be to them in California. Fewer will come and fewer will remain. . . . Scatter them by such a policy as this to other States . . . ." (Ibid. 67-68)
 
 # 2. Analyzing Demographics
 In this section, we will examine some of the factors that influence population growth and how they are changing the landscape of Chinatowns across the U.S.
@@ -565,7 +565,9 @@ FIPS code 06075011800 is census tract [118](https://censusreporter.org/profiles/
 <div class="alert alert-info">
 Question: Write one sentence describing the Asian population in Chinatown.
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 ---
 
 ### Tables Essentials!
@@ -946,12 +948,14 @@ Try making one more choropleth below with only `Asian_percentage`:
 <div class="alert alert-info">
 Question: Where is the largest concentration of Asian residents?
 </div>
-# Replace this text with your response
+_Replace this text with your response_
 ## Challenge
 <div class="alert alert-info">
 Create a choropleth for 2010 with the same `Asian_percentage` column. Do you see any differences from 2010 to 2015?
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 ---
 
 ## 2.4 1940-2010
@@ -963,7 +967,9 @@ First, let's load in all our of decennial San Francisco Chinatown census data ac
 <div class="alert alert-info">
 Question: Can you explain how you would derive the Asian population from the given census data?
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 
 
 {:.input_area}
@@ -1255,7 +1261,9 @@ historical.to_df().groupby('Year')['Other'].mean().plot()
 <div class="alert alert-info">
 Question: Describe the population trends you observed from the above graphs. How would you compare the changes in Asian vs Black vs White populations?
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 ## 2.5 Manhattan
 One of the goals of this module is to compare different Chinatowns from across the US. We will now compare the SF Chinatown data to the census data from Manhattan's Chinatown.  Let's load the Manhattan data.
 
@@ -2219,7 +2227,9 @@ plt.show()
 <div class="alert alert-info">
 Question: What are the most common words you notice? Judging from these words, what do you think these poems are about?
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 Oops, it seems we've forgotten just how many poems we have in our set. Luckily we have a quick way of finding out! Each "\n" in the display of the poem text indicates a line break. It turns out that each poem is separated by an empty line, a.k.a. two line breaks or "\n"'s.
 
 
@@ -3225,7 +3235,9 @@ I thoroughly hate the barbarians because they do not respect justice. They conti
 <div class="alert alert-info">
 Question: Do you think the sentiment analyzer did a good job assigning the sentiment to these poems? What might that mean for the trends we see in our average sentiment across the poems?
 </div>
-# Replace this text with your response
+
+_Replace this text with your response_
+
 <!-- 
 
 ---
