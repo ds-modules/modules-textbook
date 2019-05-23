@@ -8,8 +8,8 @@ prev_page:
   url: /legal_studies/1-18
   title: 'Intro to Python'
 next_page:
-  url: 
-  title: ''
+  url: /econ/econ-intro
+  title: 'Economics'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
