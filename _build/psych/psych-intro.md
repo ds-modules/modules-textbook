@@ -1,8 +1,8 @@
 ---
 title: 'Psychology'
 prev_page:
-  url: /english/01-Chinatowns
-  title: 'Chinatowns'
+  url: /legal_studies/ps1/SF_Crime_PSET1
+  title: 'Problem Set 1'
 next_page:
   url: /psych/01-intro
   title: 'Introduction'

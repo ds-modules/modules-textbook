@@ -3,8 +3,8 @@ redirect_from:
   - "/legal-studies/intro-legal-studies"
 title: 'Legal Studies'
 prev_page:
-  url: /features/notebooks
-  title: 'Jupyter notebooks'
+  url: /english/01-Chinatowns
+  title: 'Chinatowns'
 next_page:
   url: /legal_studies/1-18
   title: 'Intro to Python'

@@ -8,8 +8,8 @@ prev_page:
   url: /english/english-intro
   title: 'English'
 next_page:
-  url: /psych/psych-intro
-  title: 'Psychology'
+  url: /legal_studies/intro-legal-studies
+  title: 'Legal Studies'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

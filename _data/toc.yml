@@ -61,20 +61,36 @@
 
 - header: Modules
 
-# Legal Studies Chapter
-- title: Legal Studies
-  url: /legal_studies/intro-legal-studies
+# Cuneiform Chapter
+- title: Cuneiform
+  url: /cuneiform/cuneiform-intro
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Intro to Python
-    url: /legal_studies/1-18
-    not_numbered: true
-  - title: Problem Set 1
-    url: /legal_studies/ps1/SF_Crime_PSET1
-    not_numbered: true
+    - title: Introduction and Text Analysis
+      url: /cuneiform/nb-pt1-intro-text-analysis
+      not_numbered: true
 
-  # Econ Chapter
+    # Section below removed for the following error (see complete explanation below
+    # in Rhetoric chapter)
+
+    # Configuration file: /srv/jekyll/_config.yml
+    #             Source: /srv/jekyll
+    #        Destination: /srv/jekyll/_site
+    #  Incremental build: enabled
+    #       Generating... 
+    #        Jekyll Feed: Generating feed for posts
+    #   Liquid Exception: Liquid syntax error (line 2498): Variable '{{ x.observe(notebookContainer \
+    # , {childList: true}' was not properly terminated with regexp: /\}\}/ in /srv/jekyll/_build/cuneiform \
+    # /nb-pt2-visualization.md
+    # jekyll 3.7.4 | Error:  Liquid syntax error (line 2498): Variable '{{
+    #     x.observe(notebookContainer, {childList: true}' was not properly terminated with regexp: /\}\}/
+
+    # - title: Visualization
+    #   url: /cuneiform/nb-pt2-visualization
+    #   not_numbered: true
+
+# Econ Chapter
 - title: Economics
   url: /econ/econ-intro
   not_numbered: true
@@ -109,6 +125,19 @@
       url: /english/01-Chinatowns
       not_numbered: true
 
+# Legal Studies Chapter
+- title: Legal Studies
+  url: /legal_studies/intro-legal-studies
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Intro to Python
+    url: /legal_studies/1-18
+    not_numbered: true
+  - title: Problem Set 1
+    url: /legal_studies/ps1/SF_Crime_PSET1
+    not_numbered: true
+
 # Psych Chapter
 - title: Psychology
   url: /psych/psych-intro
@@ -124,3 +153,35 @@
     - title: My Project
       url: /psych/03-my-project
       not_numbered: true
+
+# Rhetoric Chapter
+- title: Rhetoric
+  url: /rhetoric/rhetoric-intro
+  expand_sections: true
+  not_numbered: true
+  sections:
+    - title: Introduction
+      url: /rhetoric/01-intro/01-intro
+      not_numbered: true
+    - title: Moral Foundations Analysis
+      url: /rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis
+      not_numbered: true
+
+    # section below is commented out due to jekyll error. When running jekyll server
+    # through docker, the following error was thrown (" \" indicates line escape):
+
+    # Configuration file: /srv/jekyll/_config.yml
+    #             Source: /srv/jekyll
+    #        Destination: /srv/jekyll/_site
+    #  Incremental build: enabled
+    #       Generating... 
+    #        Jekyll Feed: Generating feed for posts
+    #   Liquid Exception: Liquid syntax error (line 288): Variable '{{ x.observe(notebookContainer, \
+    # {childList: true}' was not properly terminated with regexp: /\}\}/ in /srv/jekyll/_build/rhetoric \
+    # /03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018.md
+    # jekyll 3.7.4 | Error:  Liquid syntax error (line 288): Variable '{{
+    #     x.observe(notebookContainer, {childList: true}' was not properly terminated with regexp: /\}\}/
+
+    # - title: Rhetoric of Data
+    #   url: /rhetoric/03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018
+    #   not_numbered: true

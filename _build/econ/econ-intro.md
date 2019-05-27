@@ -1,8 +1,8 @@
 ---
 title: 'Economics'
 prev_page:
-  url: /legal_studies/ps1/SF_Crime_PSET1
-  title: 'Problem Set 1'
+  url: /cuneiform/nb-pt1-intro-text-analysis
+  title: 'Introduction and Text Analysis'
 next_page:
   url: /econ/convergence-to-balanced-growth-path
   title: 'Convergence to Balanced Growth Path'

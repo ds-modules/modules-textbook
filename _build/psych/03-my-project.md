@@ -6,8 +6,8 @@ prev_page:
   url: /psych/02-correlation-regression
   title: 'Correlation, Regression, & Prediction'
 next_page:
-  url: 
-  title: ''
+  url: /rhetoric/rhetoric-intro
+  title: 'Rhetoric'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
