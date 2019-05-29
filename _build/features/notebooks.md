@@ -6,8 +6,8 @@ prev_page:
   url: /introduction/intro-module-final
   title: 'Intro to Python and Jupyter'
 next_page:
-  url: /legal_studies/intro-legal-studies
-  title: 'Legal Studies'
+  url: /cp-101/cp-101-intro
+  title: 'City Planning'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -61,127 +61,34 @@
 
 - header: Modules
 
-# # Cuneiform Chapter
-# - title: Cuneiform
-#   url: /cuneiform/cuneiform-intro
-#   not_numbered: true
-#   expand_sections: true
-#   sections:
-#     - title: Introduction and Text Analysis
-#       url: /cuneiform/nb-pt1-intro-text-analysis
-#       not_numbered: true
-
-#     # Section below removed for the following error (see complete explanation below
-#     # in Rhetoric chapter)
-
-#     # Configuration file: /srv/jekyll/_config.yml
-#     #             Source: /srv/jekyll
-#     #        Destination: /srv/jekyll/_site
-#     #  Incremental build: enabled
-#     #       Generating... 
-#     #        Jekyll Feed: Generating feed for posts
-#     #   Liquid Exception: Liquid syntax error (line 2498): Variable '{{ x.observe(notebookContainer \
-#     # , {childList: true}' was not properly terminated with regexp: /\}\}/ in /srv/jekyll/_build/cuneiform \
-#     # /nb-pt2-visualization.md
-#     # jekyll 3.7.4 | Error:  Liquid syntax error (line 2498): Variable '{{
-#     #     x.observe(notebookContainer, {childList: true}' was not properly terminated with regexp: /\}\}/
-
-#     # - title: Visualization
-#     #   url: /cuneiform/nb-pt2-visualization
-#     #   not_numbered: true
-
-# # Econ Chapter
-# - title: Economics
-#   url: /econ/econ-intro
-#   not_numbered: true
-#   expand_sections: true
-#   sections:
-#     # - title: Topics & Assignments
-#     #   url: /econ/sp18-topics-assignments
-#     #   not_numbered: true
-#     - title: Convergence to Balanced Growth Path
-#       url: /econ/convergence-to-balanced-growth-path
-#       not_numbered: true
-#     - title: Problem Sets Overview
-#       url: /econ/problem-sets
-#       not_numbered: true
-#     - title: Problem Set 1
-#       url: /econ/ps1/PS1
-#       not_numbered: true
-#     - title: Flex Price Economy (PS3)
-#       url: /econ/ps3/flex_price
-#       not_numbered: true
-#     - title: Macroeconomic Policy (PS5)
-#       url: /econ/ps5/macroeconomic-policy
-#       not_numbered: true
-
-# # English Chapter
-# - title: English
-#   url: /english/english-intro
-#   not_numbered: true
-#   expand_sections: true
-#   sections:
-#     - title: Chinatowns
-#       url: /english/01-Chinatowns
-#       not_numbered: true
+# City Planning Chapter
+- title: City Planning
+  url: /cp-101/cp-101-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Lab 7
+      url: /cp-101/lab07/lab07
+      not_numbered: true
+    - title: Lab 8
+      url: /cp-101/lab08/lab08
+      not_numbered: true
+    - title: Lab 9
+      url: /cp-101/lab09/lab09
+      not_numbered: true
+    - title: Lab 10
+      url: /cp-101/lab10/lab10
+      not_numbered: true
 
 # Legal Studies Chapter
 - title: Legal Studies
-  url: /legal_studies/intro-legal-studies
+  url: /legalst-190/legalst-190-intro
   not_numbered: true
   expand_sections: true
   sections:
   - title: Intro to Python
-    url: /legal_studies/1-18
+    url: /legalst-190/1-18
     not_numbered: true
   - title: Problem Set 1
-    url: /legal_studies/ps1/SF_Crime_PSET1
+    url: /legalst-190/ps1/SF_Crime_PSET1
     not_numbered: true
-
-# # Psych Chapter
-# - title: Psychology
-#   url: /psych/psych-intro
-#   not_numbered: true
-#   expand_sections: true
-#   sections:
-#     - title: Introduction
-#       url: /psych/01-intro
-#       not_numbered: true
-#     - title: Correlation, Regression, & Prediction
-#       url: /psych/02-correlation-regression
-#       not_numbered: true
-#     - title: My Project
-#       url: /psych/03-my-project
-#       not_numbered: true
-
-# # Rhetoric Chapter
-# - title: Rhetoric
-#   url: /rhetoric/rhetoric-intro
-#   expand_sections: true
-#   not_numbered: true
-#   sections:
-#     - title: Introduction
-#       url: /rhetoric/01-intro/01-intro
-#       not_numbered: true
-#     - title: Moral Foundations Analysis
-#       url: /rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis
-#       not_numbered: true
-
-#     # section below is commented out due to jekyll error. When running jekyll server
-#     # through docker, the following error was thrown (" \" indicates line escape):
-
-#     # Configuration file: /srv/jekyll/_config.yml
-#     #             Source: /srv/jekyll
-#     #        Destination: /srv/jekyll/_site
-#     #  Incremental build: enabled
-#     #       Generating... 
-#     #        Jekyll Feed: Generating feed for posts
-#     #   Liquid Exception: Liquid syntax error (line 288): Variable '{{ x.observe(notebookContainer, \
-#     # {childList: true}' was not properly terminated with regexp: /\}\}/ in /srv/jekyll/_build/rhetoric \
-#     # /03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018.md
-#     # jekyll 3.7.4 | Error:  Liquid syntax error (line 288): Variable '{{
-#     #     x.observe(notebookContainer, {childList: true}' was not properly terminated with regexp: /\}\}/
-
-#     # - title: Rhetoric of Data
-#     #   url: /rhetoric/03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018
-#     #   not_numbered: true
