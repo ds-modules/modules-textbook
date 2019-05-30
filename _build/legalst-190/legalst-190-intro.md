@@ -1,8 +1,8 @@
 ---
 title: 'Legal Studies'
 prev_page:
-  url: /cp-101/lab10/lab10
-  title: 'Lab 10'
+  url: /xenglish-r1a/01-Chinatowns
+  title: 'Chinatows'
 next_page:
   url: /legalst-190/1-18
   title: 'Intro to Python'

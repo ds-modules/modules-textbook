@@ -6,8 +6,8 @@ prev_page:
   url: /cp-101/lab09/lab09
   title: 'Lab 9'
 next_page:
-  url: /legalst-190/legalst-190-intro
-  title: 'Legal Studies'
+  url: /xenglish-r1a/xenglish-r1a-intro
+  title: 'English'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

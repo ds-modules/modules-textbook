@@ -80,6 +80,16 @@
       url: /cp-101/lab10/lab10
       not_numbered: true
 
+# English Chapter
+- title: English
+  url: /xenglish-r1a/xenglish-r1a-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Chinatows
+      url: /xenglish-r1a/01-Chinatowns
+      not_numbered: true
+
 # Legal Studies Chapter
 - title: Legal Studies
   url: /legalst-190/legalst-190-intro
@@ -92,3 +102,19 @@
   - title: Problem Set 1
     url: /legalst-190/ps1/SF_Crime_PSET1
     not_numbered: true
+
+# Psych Chapter
+- title: Psychology
+  url: /psych-167ac/psych-167ac-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Introduction
+      url: /psych-167ac/01-intro
+      not_numbered: true
+    - title: Correlation & Regression
+      url: /psych-167ac/02-correlation-regression
+      not_numbered: true
+    - title: My Project
+      url: /psych-167ac/03-my-project
+      not_numbered: true
