@@ -29,9 +29,9 @@
   "headline":
     "Legal Studies",
   "datePublished":
-    "2019-05-28T23:44:04-05:00",
+    "2019-05-29T21:09:46-05:00",
   "dateModified":
-    "2019-05-28T23:44:04-05:00",
+    "2019-05-29T21:09:46-05:00",
   "description":
     "Introduction to the Legal Studies Modules",
   "author": {
@@ -143,6 +143,99 @@ initFunction(function () {
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/modules-textbook',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
 
 
   <!-- Google analytics -->
@@ -907,7 +1000,10 @@ initFunction(initQuery);
               <h1 id="introduction-to-the-legal-studies-modules">Introduction to the Legal Studies Modules</h1>
 
 <h2 id="legalst-190-data-prediction-and-law">LEGALST 190: Data, Prediction, and Law</h2>
-<p>Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course also introduces critiques of predictive techniques in law. Students apply the statistical and Python programming skills from Foundations of Data Science (Data 8) to examine a traditional social science dataset, “big data” related to law, and legal text data.</p>
+
+<p><strong>Course Description:</strong> Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course also introduces critiques of predictive techniques in law. Students apply the statistical and Python programming skills from Foundations of Data Science (Data 8) to examine a traditional social science dataset, “big data” related to law, and legal text data.</p>
+
+<p><strong>Module Description:</strong> This module introduces exploratory data analysis as a lab within a semester-long data-enabled course. Using data from 2016 US presidential campaign speeches, module students mine features from speech text, create visualizations for data exploration, and apply principal component analysis to their extracted features. The module concludes with an example of a 3-dimensional feature plot. The course is designed for students with Data-8 or equivalent experience.</p>
 
               <nav class="c-page__nav">
   

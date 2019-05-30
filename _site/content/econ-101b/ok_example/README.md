@@ -1,1 +1,0 @@
-This directory is being used to test okpy.

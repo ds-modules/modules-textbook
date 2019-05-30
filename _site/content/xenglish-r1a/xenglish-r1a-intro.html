@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>English Introduction Modules</title>
+  <title>Introduction to the English Modules</title>
   <meta name="description" content="This book is a compilation of a couple modules created at UC Berkeley.">
 
   <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/content/xenglish-r1a/xenglish-r1a-intro.html">
@@ -15,7 +15,7 @@
 
   <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/content/xenglish-r1a/xenglish-r1a-intro.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="English Introduction Modules" />
+<meta property="og:title"       content="Introduction to the English Modules" />
 <meta property="og:description" content="This book is a compilation of a couple modules created at UC Berkeley." />
 <meta property="og:image"       content="" />
 
@@ -27,11 +27,11 @@
   "mainEntityOfPage":
     "http://0.0.0.0:4000/modules-textbook/content/xenglish-r1a/xenglish-r1a-intro.html",
   "headline":
-    "English Introduction Modules",
+    "Introduction to the English Modules",
   "datePublished":
-    "2019-05-28T23:44:04-05:00",
+    "2019-05-29T21:09:46-05:00",
   "dateModified":
-    "2019-05-28T23:44:04-05:00",
+    "2019-05-29T21:09:46-05:00",
   "description":
     "This book is a compilation of a couple modules created at UC Berkeley.",
   "author": {
@@ -143,6 +143,99 @@ initFunction(function () {
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/modules-textbook',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
 
 
   <!-- Google analytics -->
@@ -904,13 +997,11 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <h1 id="english-introduction-modules">English Introduction Modules</h1>
-
-<p>Welcome to the English modules! The English Department has a few courses for which modules were created, some of which are listed below.</p>
+              <h1 id="introduction-to-the-english-modules">Introduction to the English Modules</h1>
 
 <h3 id="xenglish-r1a-chinatown-and-the-culture-of-exclusion">XENGLISH R1A: Chinatown and the Culture of Exclusion</h3>
 
-<p>Using demographic data from the 20th-21st century, this module has students analyzing how a specific Chinatown, such as SF Chinatown, has changed over time. Students will also use some simple computational text analysis methods to explore and compare the structures of poems written on Angel Island and in Chinatown publications from the early 20th century.</p>
+<p><strong>Module Description:</strong> Using demographic data from the 20th-21st century, this module has students analyzing how a specific Chinatown, such as SF Chinatown, has changed over time. Students will also use some simple computational text analysis methods to explore and compare the structures of poems written on Angel Island and in Chinatown publications from the early 20th century.</p>
 
               <nav class="c-page__nav">
   
