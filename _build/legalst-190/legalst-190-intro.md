@@ -2,7 +2,7 @@
 title: 'Legal Studies'
 prev_page:
   url: /xenglish-r1a/01-Chinatowns
-  title: 'Chinatows'
+  title: 'Chinatowns'
 next_page:
   url: /legalst-190/1-18
   title: 'Intro to Python'

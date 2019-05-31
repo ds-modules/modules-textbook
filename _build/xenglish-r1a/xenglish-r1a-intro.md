@@ -5,7 +5,7 @@ prev_page:
   title: 'Lab 10'
 next_page:
   url: /xenglish-r1a/01-Chinatowns
-  title: 'Chinatows'
+  title: 'Chinatowns'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Introduction to the English Modules

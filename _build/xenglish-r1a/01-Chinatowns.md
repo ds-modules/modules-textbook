@@ -3,7 +3,7 @@ redirect_from:
   - "/xenglish-r1a/01-chinatowns"
 interact_link: content/xenglish-r1a/01-Chinatowns.ipynb
 kernel_name: python3
-title: 'Chinatows'
+title: 'Chinatowns'
 prev_page:
   url: /xenglish-r1a/xenglish-r1a-intro
   title: 'English'
