@@ -13,7 +13,6 @@ sklearn
 scipy
 seaborn
 plotly
-mpl_toolkits
 statsmodels
 spacy
 wordcloud
