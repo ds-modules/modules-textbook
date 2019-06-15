@@ -30,7 +30,7 @@ jupyter-book build . --overwrite
 
 ```bash
 docker run --rm --security-opt label:disable  \
-   -v /full/path/to/your/book:/srv/jekyll \
+   -v /full/path/to/modules-textbook:/srv/jekyll \
    -p 4000:4000 \
    -it -u 1000:1000 \
    emdupre/jupyter-book bundle exec jekyll serve --host 0.0.0.0
