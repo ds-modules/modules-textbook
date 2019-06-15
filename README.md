@@ -6,6 +6,8 @@ Authors: Alex Nakagawa, Chris Pyles
 
 ## Documentation
 
+Detailed build instructions can be found in [`build.md`](build.md)
+
 The basic file structure for this repository is as follows:
 
 ```
