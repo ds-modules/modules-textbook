@@ -79,14 +79,14 @@ An example of a chapter added to the YAML file is below.
   expand_sections: true
   sections:
   - title: Problem Set 1
-  	url: /econ-101b/ps1
-  	not_numbered: true
+    url: /econ-101b/ps1
+    not_numbered: true
   - title: Problem Set 2
-  	url: /econ-101b/ps2
-  	not_numbered: true
+    url: /econ-101b/ps2
+    not_numbered: true
   - title: Problem Set 3
-  	url: /econ-101b/ps3
-  	not_numbered: true
+    url: /econ-101b/ps3
+    not_numbered: true
 ```
 
 <div id="docker"></div>
