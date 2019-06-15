@@ -6,7 +6,7 @@ This file contains instructions for adding modules to this site. It is built on 
 
 This section details instructions on how to add a featured module.
 
-1. Clone the module repo and locally. 
+1. Clone the module repo locally. 
 2. Copy the files from the module repo into the `content` directory of this repo. _Make a new folder for this module._ The folder name should be the name of the class. For example, if I were adding the ECON 101B module, I would add the files as below.
 
 ```
