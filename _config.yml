@@ -139,6 +139,8 @@ exclude:
 - vendor/cache/
 - vendor/gems/
 - vendor/ruby/
+- README.md
+- build.md
 
 plugins:
 - jekyll-redirect-from
