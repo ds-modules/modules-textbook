@@ -11,10 +11,10 @@ This section details instructions on how to add a featured module.
 
 ```
 | modules-textbook
-	| content
-		| econ-101b
-			| - nb1.ipynb
-			| - nb2.ipynb
+  | content
+    | econ-101b
+      | - nb1.ipynb
+      | - nb2.ipynb
 ```
 
 3. Make any edits necessary to the notebooks.
