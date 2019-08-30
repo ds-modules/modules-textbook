@@ -7,3 +7,4 @@ folium
 matplotlib
 requests
 branca
+sodapy
