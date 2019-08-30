@@ -10,10 +10,10 @@
   <title>Jupyter notebooks</title>
   <meta name="description" content="Content with notebooks">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/features/notebooks.html">
-  <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/features/notebooks.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/features/notebooks.html" />
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/features/notebooks.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Jupyter notebooks" />
 <meta property="og:description" content="Content with notebooks" />
@@ -25,39 +25,39 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/features/notebooks.html",
+    "http://0.0.0.0:4000/modules-textbook/features/notebooks.html",
   "headline":
     "Jupyter notebooks",
   "datePublished":
-    "2019-03-07T14:34:44-08:00",
+    "2019-05-31T17:05:06-05:00",
   "dateModified":
-    "2019-03-07T14:34:44-08:00",
+    "2019-05-31T17:05:06-05:00",
   "description":
     "Content with notebooks",
   "author": {
     "@type": "Person",
-    "name": "The Jupyter Book Community"
+    "name": "Alex Nakagawa"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://jupyter.org/jupyter-book",
+      "url": "http://0.0.0.0:4000/modules-textbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://jupyter.org/jupyter-book",
+    "url": "http://0.0.0.0:4000/modules-textbook",
     "height": 60,
     "width": 60
   }
 }
 
   </script>
-  <link rel="stylesheet" href="/jupyter-book/assets/css/styles.css">
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -76,7 +76,7 @@
   <meta name="theme-color" content="#233947">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/jupyter-book/images/logo/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
@@ -120,11 +120,11 @@ initFunction = function(myfunc) {
 
   <!-- Define some javascript variables that will be useful in other javascript -->
   <script>
-    const site_basename = '/jupyter-book';
+    const site_basename = '/modules-textbook';
   </script>
 
   <!-- Add AnchorJS to let headers be linked -->
-  <script src="/jupyter-book/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
   <script>
 
 initFunction(function () {
@@ -135,48 +135,11 @@ initFunction(function () {
 
   <!-- Include Turbolinks to make page loads fast -->
   <!-- https://github.com/turbolinks/turbolinks -->
-  <script src="/jupyter-book/assets/js/turbolinks.js" async></script>
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
-  
-<!-- Include nbinteract for interactive widgets -->
-<script src="https://unpkg.com/nbinteract-core" async></script>
-
-<script>
-let interact
-
-const initializeNbinteract = () => {
-  // If NbInteract hasn't loaded, wait one second and try again
-  if (window.NbInteract === undefined) {
-    setTimeout(initializeNbinteract, 1000)
-    return
-  }
-
-  if (interact === undefined) {
-    console.log('Initializing nbinteract...')
-    interact = new window.NbInteract({
-      baseUrl: 'https://mybinder.org',
-      spec: 'jupyter/jupyter-book/master',
-      provider: 'gh',
-    })
-    window.interact = interact
-  } else {
-    console.log("nbinteract already initialized...")
-  }
-
-  interact.prepare()
-}
-
-// const setupInteractButton = () => {
-//     const interactButton = document.getElementById("interact-button-nbinteract");
-//     interactButton.addEventListener('click', initializeNbinteract)
-// }
-
-// Initialize nbinteract
-initFunction(initializeNbinteract);
-</script>
-
+  <script src="https://unpkg.com/nbinteract-core" async></script>
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
@@ -185,7 +148,7 @@ initFunction(initializeNbinteract);
     {
       requestKernel: true,
       binderOptions: {
-        repo: 'jupyter/jupyter-book',
+        repo: 'ds-modules/featured-modules',
         ref: 'master',
       },
       kernelOptions: {
@@ -276,7 +239,7 @@ initFunction(initializeNbinteract);
 
 
   <!-- Google analytics -->
-  <script src="/jupyter-book/assets/js/ga.js" async></script>
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
 
   <!-- Clipboard copy button -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
@@ -290,7 +253,7 @@ const codeCellId = index => `codecell${index}`
 
 const clipboardButton = id =>
   `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
   </a>`
 
 // Clears selected text since ClipboardJS will select the text when copying
@@ -429,11 +392,11 @@ initFunction(initHiddenCells);
 
 
   <!-- Load custom website scripts -->
-  <script src="/jupyter-book/assets/js/scripts.js" async></script>
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
 
   <!-- Load custom user CSS and JS  -->
-  <script src="/jupyter-book/assets/custom/custom.js" async></script>
-  <link rel="stylesheet" href="/jupyter-book/assets/custom/custom.css">
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
@@ -497,7 +460,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://jupyter.org") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -557,7 +520,7 @@ function updateInteractLink() {
       } else {
         // If interact button isn't binderhub, assume it's jupyterhub
         // If JupyterHub links, we only need to replace the hub url
-        href = href.replace("", hubUrl);
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
         if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
           // Assume we're working from a local Jupyter server and remove `/hub`
           href = href.replace("/hub/user-redirect", "");
@@ -580,7 +543,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
   <!-- Lunr search code - will only be executed on the /search page -->
-  <script src="/jupyter-book/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
   <script>var initQuery = function() {
   // See if we have a search box
   var searchInput = document.querySelector('input#lunr_search');
@@ -676,8 +639,8 @@ initFunction(initQuery);
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/intro.html"><img src="/jupyter-book/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
-  <h2 class="c-sidebar__title">Jupyter Book</h2>
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
   <ul class="c-sidebar__chapters">
     
       
@@ -690,7 +653,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/jupyter-book/intro.html"
+          href="/modules-textbook/intro.html"
         >
           
           Home
@@ -703,10 +666,6 @@ initFunction(initQuery);
     
       
       
-        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/jupyter-book/search.html">Search</a></li>
-        
-      
-      
 
       
       
@@ -715,92 +674,12 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/jupyter-book/guide/01_overview.html"
+          href="https://github.com/ds-modules/"
         >
           
-          Getting started
+          DSEP Modules Repository
         </a>
 
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_create.html"
-                >
-                  
-                  Create your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_build.html"
-                >
-                  
-                  Build and publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_faq.html"
-                >
-                  
-                  FAQ
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_advanced.html"
-                >
-                  
-                  How-to and advanced topics
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
         
       </li>
 
@@ -816,10 +695,43 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/jupyter-book/features/features.html"
+          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
         >
           
-          Features and customization
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
         </a>
 
         
@@ -838,10 +750,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/markdown.html"
+                  href="/modules-textbook/introduction/intro-module-final.html"
                 >
                   
-                  Markdown files
+                  Intro to Python and Jupyter
                 </a>
 
                 
@@ -855,7 +767,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/features/notebooks.html"
+                  href="/modules-textbook/features/notebooks.html"
                 >
                   
                   Jupyter notebooks
@@ -867,15 +779,52 @@ initFunction(initQuery);
               </li>
               
             
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Modules</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/hiding.html"
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
                 >
                   
-                  Hiding code blocks or entire cells
+                  Lab 7
                 </a>
 
                 
@@ -889,10 +838,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/interact.html"
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
                 >
                   
-                  Connecting content with JupyterHub and Binder
+                  Lab 8
                 </a>
 
                 
@@ -906,10 +855,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/citations.html"
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
                 >
                   
-                  Citations and bibliographies
+                  Lab 9
                 </a>
 
                 
@@ -923,10 +872,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/search.html"
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
                 >
                   
-                  Searching your book
+                  Lab 10
                 </a>
 
                 
@@ -951,25 +900,46 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://github.com/jupyter/jupyter-book"
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
         >
           
-          GitHub repository
+          English
         </a>
 
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
         
       </li>
 
       
     
-      
-      
-        <li class="c-sidebar__divider"></li>
-        
-      
-      
-        <li><h2 class="c-sidebar__title">Demo textbook</li>
-        
       
       
 
@@ -980,12 +950,10 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/jupyter-book/01/what-is-data-science.html"
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
         >
           
-            1.
-          
-          Data Science
+          Legal Studies
         </a>
 
         
@@ -997,17 +965,82 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections u-hidden-visually">
+          <ul class="c-sidebar__sections ">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/1/intro.html"
+                  href="/modules-textbook/legalst-190/1-18.html"
                 >
                   
-                    1.1
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
                   
                   Introduction
                 </a>
@@ -1023,12 +1056,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/2/why-data-science.html"
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
                 >
                   
-                    1.2
-                  
-                  Why Data Science?
+                  Correlation & Regression
                 </a>
 
                 
@@ -1042,373 +1073,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/3/Plotting_the_Classics.html"
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
                 >
                   
-                    1.3
-                  
-                  Plotting the Classics
-                </a>
-
-                
-                
-                  
-                  
-
-                  <li class="c-sidebar__subsection">
-                    <a class="c-sidebar__entry "
-                      href="/jupyter-book/01/3/subsection/subsections.html"
-                    >
-                      
-                        1.3.1
-                        
-                      
-                      Subsection Demo 1
-                    </a>
-                
-                  
-                  
-
-                  <li class="c-sidebar__subsection">
-                    <a class="c-sidebar__entry "
-                      href="/jupyter-book/01/3/subsection/subsectiontwo.html"
-                    >
-                      
-                        1.3.2
-                        
-                      
-                      Subsection Demo 2
-                    </a>
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/02/causality-and-experiments.html"
-        >
-          
-            2.
-          
-          Causality and Experiments
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html"
-                >
-                  
-                    2.1
-                  
-                  John Snow and the Broad Street Pump
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/2/snow-s-grand-experiment.html"
-                >
-                  
-                    2.2
-                  
-                  Snow’s “Grand Experiment”
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/3/establishing-causality.html"
-                >
-                  
-                    2.3
-                  
-                  Establishing Causality
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/4/randomization.html"
-                >
-                  
-                    2.4
-                  
-                  Randomization
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/5/endnote.html"
-                >
-                  
-                    2.5
-                  
-                  Endnote
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/03/programming-in-python.html"
-        >
-          
-            3.
-          
-          Programming in Python
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/1/Expressions.html"
-                >
-                  
-                    3.1
-                  
-                  Expressions
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/2/Names.html"
-                >
-                  
-                    3.2
-                  
-                  Names
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/3/Calls.html"
-                >
-                  
-                    3.3
-                  
-                  Call Expressions
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/4/Introduction_to_Tables.html"
-                >
-                  
-                    3.4
-                  
-                  Introduction to Tables
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/04/Types.html"
-        >
-          
-            4.
-          
-          Data Types
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/1/Numbers.html"
-                >
-                  
-                    4.1
-                  
-                  Numbers
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/2/Strings.html"
-                >
-                  
-                    4.2
-                  
-                  Strings
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/3/Comparison.html"
-                >
-                  
-                    4.3
-                  
-                  Comparisons
+                  My Project
                 </a>
 
                 
@@ -1442,7 +1110,6 @@ initFunction(initQuery);
   <li><a href="#code-blocks-and-image-outputs">Code blocks and image outputs</a></li>
   <li><a href="#removing-content-before-publishing">Removing content before publishing</a></li>
   <li><a href="#interactive-outputs">Interactive outputs</a></li>
-  <li><a href="#rich-outputs-from-notebook-cells">Rich outputs from notebook cells</a></li>
 </ul>
     </nav>
   </aside>
@@ -1466,13 +1133,12 @@ initFunction(initQuery);
 
             
 <div class="buttons">
-<a href="/jupyter-book/content/features/notebooks.ipynb" download>
+<a href="/modules-textbook/content/features/notebooks.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
 </a>
 
 <button id="interact-button-thebelab" class="interact-button">Thebelab</button>
 
-<button id="interact-button-nbinteract" class="interact-button .js-nbinteract-widget">nbinteract</button>
 
 
 
@@ -1480,8 +1146,15 @@ initFunction(initQuery);
 
 
 
+<a href="https://mybinder.org/v2/gh/ds-modules/featured-modules/master?filepath=content%2Ffeatures%2Fnotebooks.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_binder.svg" alt="Interact" />Binder</button></a>
 
-<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/master?filepath=content%2Ffeatures%2Fnotebooks.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+
+
+
+
+
+<a href="https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https://github.com//ds-modules/featured-modules&amp;branch=master&amp;subPath=content%2Ffeatures%2Fnotebooks.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_jupyterhub.svg" alt="Interact" />DataHub</button></a>
+
 
 
 </div>
@@ -1656,89 +1329,19 @@ depend on an underlying Python kernel to work.</p>
 <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;base64,CiAgICAgICAgPCFET0NUWVBFIGh0bWw+CiAgICAgICAgPGhlYWQ+CiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgICAgICA8bWV0YSBodHRwLWVxdWl2PSJjb250ZW50LXR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1VVEYtOCIgLz4KICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9sZWFmbGV0LzAuNy4zL2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vYWpheC5nb29nbGVhcGlzLmNvbS9hamF4L2xpYnMvanF1ZXJ5LzEuMTEuMS9qcXVlcnkubWluLmpzIj48L3NjcmlwdD4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5taW4uanMiPjwvc2NyaXB0PgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL2xlYWZsZXQubWFya2VyY2x1c3Rlci8wLjQuMC9sZWFmbGV0Lm1hcmtlcmNsdXN0ZXItc3JjLmpzIj48L3NjcmlwdD4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9sZWFmbGV0Lm1hcmtlcmNsdXN0ZXIvMC40LjAvbGVhZmxldC5tYXJrZXJjbHVzdGVyLmpzIj48L3NjcmlwdD4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC8wLjcuMy9sZWFmbGV0LmNzcyIgLz4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC5taW4uY3NzIiAvPgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiIC8+CiAgICAgICAgCiAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgICAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuMS4wL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIgLz4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuY3NzIiAvPgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9sZWFmbGV0Lm1hcmtlcmNsdXN0ZXIvMC40LjAvTWFya2VyQ2x1c3Rlci5EZWZhdWx0LmNzcyIgLz4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC5tYXJrZXJjbHVzdGVyLzAuNC4wL01hcmtlckNsdXN0ZXIuY3NzIiAvPgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIiAvPgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAgICAgPHN0eWxlPgoKICAgICAgICAgICAgaHRtbCwgYm9keSB7CiAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTsKICAgICAgICAgICAgICAgIGhlaWdodDogMTAwJTsKICAgICAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAjbWFwIHsKICAgICAgICAgICAgICAgIHBvc2l0aW9uOmFic29sdXRlOwogICAgICAgICAgICAgICAgdG9wOjA7CiAgICAgICAgICAgICAgICBib3R0b206MDsKICAgICAgICAgICAgICAgIHJpZ2h0OjA7CiAgICAgICAgICAgICAgICBsZWZ0OjA7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAgICAgPHN0eWxlPiAjbWFwXzBmYmQ5NTMyN2Q1YzQ2MDlhNDQ3YTRkYzEzNGVkNjgyIHsKICAgICAgICAgICAgICAgIHBvc2l0aW9uIDogcmVsYXRpdmU7CiAgICAgICAgICAgICAgICB3aWR0aCA6IDEwMC4wJTsKICAgICAgICAgICAgICAgIGhlaWdodDogMTAwLjAlOwogICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgIHRvcDogMC4wJTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgPC9zdHlsZT4KICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICA8L2hlYWQ+CiAgICAgICAgPGJvZHk+CiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9saXVtLW1hcCIgaWQ9Im1hcF8wZmJkOTUzMjdkNWM0NjA5YTQ0N2E0ZGMxMzRlZDY4MiIgPjwvZGl2PgogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgIDwvYm9keT4KICAgICAgICA8c2NyaXB0PgogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCgogICAgICAgICAgICB2YXIgc291dGhXZXN0ID0gTC5sYXRMbmcoLTkwLCAtMTgwKTsKICAgICAgICAgICAgdmFyIG5vcnRoRWFzdCA9IEwubGF0TG5nKDkwLCAxODApOwogICAgICAgICAgICB2YXIgYm91bmRzID0gTC5sYXRMbmdCb3VuZHMoc291dGhXZXN0LCBub3J0aEVhc3QpOwoKICAgICAgICAgICAgdmFyIG1hcF8wZmJkOTUzMjdkNWM0NjA5YTQ0N2E0ZGMxMzRlZDY4MiA9IEwubWFwKCdtYXBfMGZiZDk1MzI3ZDVjNDYwOWE0NDdhNGRjMTM0ZWQ2ODInLCB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjZW50ZXI6WzQ1LjM3MiwtMTIxLjY5NzJdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgem9vbTogMTIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXhCb3VuZHM6IGJvdW5kcywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxheWVyczogW10sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjcnM6IEwuQ1JTLkVQU0czODU3CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfYWI5ZmZlOTk4YjkyNDM1OGJhOTRjMmJjMjU4OTYyNTIgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICdodHRwczovL3N0YW1lbi10aWxlcy17c30uYS5zc2wuZmFzdGx5Lm5ldC90ZXJyYWluL3t6fS97eH0ve3l9LmpwZycsCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgbWF4Wm9vbTogMTgsCiAgICAgICAgICAgICAgICAgICAgbWluWm9vbTogMSwKICAgICAgICAgICAgICAgICAgICBhdHRyaWJ1dGlvbjogJ01hcCB0aWxlcyBieSA8YSBocmVmPSJodHRwOi8vc3RhbWVuLmNvbSI+U3RhbWVuIERlc2lnbjwvYT4sIHVuZGVyIDxhIGhyZWY9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMuMCI+Q0MgQlkgMy4wPC9hPi4gRGF0YSBieSA8YSBocmVmPSJodHRwOi8vb3BlbnN0cmVldG1hcC5vcmciPk9wZW5TdHJlZXRNYXA8L2E+LCB1bmRlciA8YSBocmVmPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS1zYS8zLjAiPkNDIEJZIFNBPC9hPi4nLAogICAgICAgICAgICAgICAgICAgIGRldGVjdFJldGluYTogZmFsc2UKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICApLmFkZFRvKG1hcF8wZmJkOTUzMjdkNWM0NjA5YTQ0N2E0ZGMxMzRlZDY4Mik7CgogICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKCiAgICAgICAgICAgIHZhciBtYXJrZXJfZTdkNjUxM2QyZWJkNGQwM2EzYmQ3YmM1ODRlNjgzYzMgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0NS4zMjg4LC0xMjEuNjYyNV0sCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgaWNvbjogbmV3IEwuSWNvbi5EZWZhdWx0KCkKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAuYWRkVG8obWFwXzBmYmQ5NTMyN2Q1YzQ2MDlhNDQ3YTRkYzEzNGVkNjgyKTsKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIAoKICAgICAgICAgICAgICAgIHZhciBpY29uX2Y5Yzg4ZDczNzhkZTQ3ZWJhODJjYTFjNzEwYWQ0YThmID0gTC5Bd2Vzb21lTWFya2Vycy5pY29uKHsKICAgICAgICAgICAgICAgICAgICBpY29uOiAnY2xvdWQnLAogICAgICAgICAgICAgICAgICAgIGljb25Db2xvcjogJ3doaXRlJywKICAgICAgICAgICAgICAgICAgICBtYXJrZXJDb2xvcjogJ2JsdWUnLAogICAgICAgICAgICAgICAgICAgIHByZWZpeDogJ2dseXBoaWNvbicsCiAgICAgICAgICAgICAgICAgICAgZXh0cmFDbGFzc2VzOiAnZmEtcm90YXRlLTAnCiAgICAgICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgICAgICBtYXJrZXJfZTdkNjUxM2QyZWJkNGQwM2EzYmQ3YmM1ODRlNjgzYzMuc2V0SWNvbihpY29uX2Y5Yzg4ZDczNzhkZTQ3ZWJhODJjYTFjNzEwYWQ0YThmKTsKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIAogICAgICAgICAgICB2YXIgcG9wdXBfNjVjN2RlOWQyYzQ1NDZlMmEyNzdhNjc3MmE1OWM3NjkgPSBMLnBvcHVwKHttYXhXaWR0aDogJzMwMCd9KTsKCiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdmFyIGh0bWxfYTg2MDZjODYxOWRmNDJjM2EzNDc5MDg1Y2MxOTk3YzggPSAkKCcgICAgICAgICA8ZGl2IGlkPSJodG1sX2E4NjA2Yzg2MTlkZjQyYzNhMzQ3OTA4NWNjMTk5N2M4IiAgICAgICAgICAgICAgICAgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+ICAgICAgICAgICAgICAgICBNdC4gSG9vZCBNZWFkb3dzPC9kaXY+ICAgICAgICAgICAgICAgICAnKVswXTsKICAgICAgICAgICAgICAgIHBvcHVwXzY1YzdkZTlkMmM0NTQ2ZTJhMjc3YTY3NzJhNTljNzY5LnNldENvbnRlbnQoaHRtbF9hODYwNmM4NjE5ZGY0MmMzYTM0NzkwODVjYzE5OTdjOCk7CiAgICAgICAgICAgIAoKICAgICAgICAgICAgbWFya2VyX2U3ZDY1MTNkMmViZDRkMDNhM2JkN2JjNTg0ZTY4M2MzLmJpbmRQb3B1cChwb3B1cF82NWM3ZGU5ZDJjNDU0NmUyYTI3N2E2NzcyYTU5Yzc2OSk7CgogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCgogICAgICAgICAgICB2YXIgbWFya2VyXzAwMDE1M2YxNTA2YTRlZDhhZWUyMjhhNWM3OGFmYWIxID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbNDUuMzMxMSwtMTIxLjcxMTNdLAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIGljb246IG5ldyBMLkljb24uRGVmYXVsdCgpCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgLmFkZFRvKG1hcF8wZmJkOTUzMjdkNWM0NjA5YTQ0N2E0ZGMxMzRlZDY4Mik7CiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgICAgICAKCiAgICAgICAgICAgICAgICB2YXIgaWNvbl8xYTk3ZGUxYjU5NTY0ZDE0OWFjMzYwNDJmMmJlOTI3ZiA9IEwuQXdlc29tZU1hcmtlcnMuaWNvbih7CiAgICAgICAgICAgICAgICAgICAgaWNvbjogJ2luZm8tc2lnbicsCiAgICAgICAgICAgICAgICAgICAgaWNvbkNvbG9yOiAnd2hpdGUnLAogICAgICAgICAgICAgICAgICAgIG1hcmtlckNvbG9yOiAnZ3JlZW4nLAogICAgICAgICAgICAgICAgICAgIHByZWZpeDogJ2dseXBoaWNvbicsCiAgICAgICAgICAgICAgICAgICAgZXh0cmFDbGFzc2VzOiAnZmEtcm90YXRlLTAnCiAgICAgICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgICAgICBtYXJrZXJfMDAwMTUzZjE1MDZhNGVkOGFlZTIyOGE1Yzc4YWZhYjEuc2V0SWNvbihpY29uXzFhOTdkZTFiNTk1NjRkMTQ5YWMzNjA0MmYyYmU5MjdmKTsKICAgICAgICAgICAgCiAgICAgICAgCiAgICAgICAgICAgIAogICAgICAgICAgICB2YXIgcG9wdXBfZmQ2YzRjOTFkMWE4NDI4Nzk1ZGZhMGZhMzQ4YjU4MGQgPSBMLnBvcHVwKHttYXhXaWR0aDogJzMwMCd9KTsKCiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdmFyIGh0bWxfYjQyZjdjOTYzM2FjNGU1OTlkMDk1Mzg0NTRhNDU4NTMgPSAkKCcgICAgICAgICA8ZGl2IGlkPSJodG1sX2I0MmY3Yzk2MzNhYzRlNTk5ZDA5NTM4NDU0YTQ1ODUzIiAgICAgICAgICAgICAgICAgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+ICAgICAgICAgICAgICAgICBUaW1iZXJsaW5lIExvZGdlPC9kaXY+ICAgICAgICAgICAgICAgICAnKVswXTsKICAgICAgICAgICAgICAgIHBvcHVwX2ZkNmM0YzkxZDFhODQyODc5NWRmYTBmYTM0OGI1ODBkLnNldENvbnRlbnQoaHRtbF9iNDJmN2M5NjMzYWM0ZTU5OWQwOTUzODQ1NGE0NTg1Myk7CiAgICAgICAgICAgIAoKICAgICAgICAgICAgbWFya2VyXzAwMDE1M2YxNTA2YTRlZDhhZWUyMjhhNWM3OGFmYWIxLmJpbmRQb3B1cChwb3B1cF9mZDZjNGM5MWQxYTg0Mjg3OTVkZmEwZmEzNDhiNTgwZCk7CgogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCgogICAgICAgICAgICB2YXIgbWFya2VyX2MzYzYyZmUwN2ZlNDQ2NWJhMjYxZDc2MGJjYTc2ZWZmID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbNDUuMzMsLTEyMS42ODIzXSwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBpY29uOiBuZXcgTC5JY29uLkRlZmF1bHQoKQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIC5hZGRUbyhtYXBfMGZiZDk1MzI3ZDVjNDYwOWE0NDdhNGRjMTM0ZWQ2ODIpOwogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCgogICAgICAgICAgICAgICAgdmFyIGljb25fYjZiNDJkZTgxOGQ0NGJhY2E3MmNlZTc4YmM5MjZjZGQgPSBMLkF3ZXNvbWVNYXJrZXJzLmljb24oewogICAgICAgICAgICAgICAgICAgIGljb246ICdpbmZvLXNpZ24nLAogICAgICAgICAgICAgICAgICAgIGljb25Db2xvcjogJ3doaXRlJywKICAgICAgICAgICAgICAgICAgICBtYXJrZXJDb2xvcjogJ3JlZCcsCiAgICAgICAgICAgICAgICAgICAgcHJlZml4OiAnZ2x5cGhpY29uJywKICAgICAgICAgICAgICAgICAgICBleHRyYUNsYXNzZXM6ICdmYS1yb3RhdGUtMCcKICAgICAgICAgICAgICAgICAgICB9KTsKICAgICAgICAgICAgICAgIG1hcmtlcl9jM2M2MmZlMDdmZTQ0NjViYTI2MWQ3NjBiY2E3NmVmZi5zZXRJY29uKGljb25fYjZiNDJkZTgxOGQ0NGJhY2E3MmNlZTc4YmM5MjZjZGQpOwogICAgICAgICAgICAKICAgICAgICAKICAgICAgICAgICAgCiAgICAgICAgICAgIHZhciBwb3B1cF8zNWJlNjdkOWRlMGY0OGYwOTU2NTM5MmI5ODFhMWNkMCA9IEwucG9wdXAoe21heFdpZHRoOiAnMzAwJ30pOwoKICAgICAgICAgICAgCiAgICAgICAgICAgICAgICB2YXIgaHRtbF8zNDdhMmRkNzFkMDE0ZWEwYTFiNmM5YzcwNTFiNjIwNyA9ICQoJyAgICAgICAgIDxkaXYgaWQ9Imh0bWxfMzQ3YTJkZDcxZDAxNGVhMGExYjZjOWM3MDUxYjYyMDciICAgICAgICAgICAgICAgICBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij4gICAgICAgICAgICAgICAgIFNvbWUgT3RoZXIgTG9jYXRpb248L2Rpdj4gICAgICAgICAgICAgICAgICcpWzBdOwogICAgICAgICAgICAgICAgcG9wdXBfMzViZTY3ZDlkZTBmNDhmMDk1NjUzOTJiOTgxYTFjZDAuc2V0Q29udGVudChodG1sXzM0N2EyZGQ3MWQwMTRlYTBhMWI2YzljNzA1MWI2MjA3KTsKICAgICAgICAgICAgCgogICAgICAgICAgICBtYXJrZXJfYzNjNjJmZTA3ZmU0NDY1YmEyNjFkNzYwYmNhNzZlZmYuYmluZFBvcHVwKHBvcHVwXzM1YmU2N2Q5ZGUwZjQ4ZjA5NTY1MzkyYjk4MWExY2QwKTsKCiAgICAgICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgIAogICAgICAgIDwvc2NyaXB0PgogICAgICAgIA==" style="position:absolute;width:100%;height:100%;left:0;top:0;"></iframe></div></div>
 </div>
 
-<h2 id="rich-outputs-from-notebook-cells">Rich outputs from notebook cells</h2>
-
-<p>Because notebooks have rich text outputs, you can store these in
-your Jupyter Book as well!</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="o">-</span><span class="n">h</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: jupyter-book [-h] [--out-folder OUT_FOLDER] [--license LICENSE]
-                    [--content-folder CONTENT_FOLDER] [--toc TOC]
-                    [--config CONFIG] [--custom-css CUSTOM_CSS]
-                    [--custom-js CUSTOM_JS]
-                    [--extra-files EXTRA_FILES [EXTRA_FILES ...]]
-                    [--overwrite] [--demo] [--verbose VERBOSE]
-                    name
-
-Create a new Jupyter Book
-
-positional arguments:
-  name                  The name of your Jupyter Book (your book template will
-                        be placed in a folder of this name)
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --out-folder OUT_FOLDER
-                        The location where your book will be placed
-  --license LICENSE     A path to a LICENSE.md file if you have already
-                        created one
-  --content-folder CONTENT_FOLDER
-                        A path to a folder that holds your book content
-  --toc TOC             A path to a yaml file that contains a Table of
-                        Contents for your Jupyter Book. This will overwrite
-                        parts of the book template's default toc.yml
-                        configuration
-  --config CONFIG       A path to a configuration YAML file that contains
-                        configuration for your Jupyter Book. This will
-                        overwrite parts of the book template's default
-                        _config.yml configuration
-  --custom-css CUSTOM_CSS
-                        A path to a CSS file that defines some custom CSS
-                        rules for your book
-  --custom-js CUSTOM_JS
-                        A path to a JS file that defines some custom CSS rules
-                        for your book
-  --extra-files EXTRA_FILES [EXTRA_FILES ...]
-                        A list of extra files / folders to copy into your
-                        book's directory
-  --overwrite           Whether to overwrite a pre-existing book if it exists
-  --demo                Whether to build the book with demo content instead of
-                        your own content
-  --verbose VERBOSE     Whether to display output information. [yes/no]
-
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">this_will_error</span>
-</code></pre></div></div>
-
-<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    &lt;ipython-input-1-09f61459889d&gt; in &lt;module&gt;()
-    ----&gt; 1 this_will_error
-    
-
-    NameError: name 'this_will_error' is not defined
-
-
-</code></pre></div></div>
 
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/features/markdown">
-      〈 <span class="u-margin-right-tiny"></span> Markdown files
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/introduction/intro-module-final">
+      〈 <span class="u-margin-right-tiny"></span> Intro to Python and Jupyter
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/hiding">
-      Hiding code blocks or entire cells <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/cp-101/cp-101-intro">
+      City Planning <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

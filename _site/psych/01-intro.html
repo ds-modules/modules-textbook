@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Introduction</title>
+  <meta name="description" content="Introduction to Importing Data, Using Tables and Creating Graphs">
+
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/psych/01-intro.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/psych/01-intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introduction" />
+<meta property="og:description" content="Introduction to Importing Data, Using Tables and Creating Graphs" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://0.0.0.0:4000/modules-textbook/psych/01-intro.html",
+  "headline":
+    "Introduction",
+  "datePublished":
+    "2019-05-26T21:24:49-05:00",
+  "dateModified":
+    "2019-05-26T21:24:49-05:00",
+  "description":
+    "Introduction to Importing Data, Using Tables and Creating Graphs",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Nakagawa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://0.0.0.0:4000/modules-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://0.0.0.0:4000/modules-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/modules-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+  <!-- Google analytics -->
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyter.org/jupyter-book/"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/ds-modules/"
+        >
+          
+          DSEP Modules Repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+        >
+          
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/introduction/intro-module-final.html"
+                >
+                  
+                  Intro to Python and Jupyter
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/features/notebooks.html"
+                >
+                  
+                  Jupyter notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Modules</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cuneiform/cuneiform-intro.html"
+        >
+          
+          Cuneiform
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cuneiform/nb-pt1-intro-text-analysis.html"
+                >
+                  
+                  Introduction and Text Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/econ/econ-intro.html"
+        >
+          
+          Economics
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/econ/convergence-to-balanced-growth-path.html"
+                >
+                  
+                  Convergence to Balanced Growth Path
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/econ/problem-sets.html"
+                >
+                  
+                  Problem Sets Overview
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/econ/ps1/PS1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/econ/ps3/flex_price.html"
+                >
+                  
+                  Flex Price Economy (PS3)
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/econ/ps5/macroeconomic-policy.html"
+                >
+                  
+                  Macroeconomic Policy (PS5)
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/english/english-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/english/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legal_studies/intro-legal-studies.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legal_studies/1-18.html"
+                >
+                  
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych/psych-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/modules-textbook/psych/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych/02-correlation-regression.html"
+                >
+                  
+                  Correlation, Regression, & Prediction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/rhetoric/rhetoric-intro.html"
+        >
+          
+          Rhetoric
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/rhetoric/01-intro/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis.html"
+                >
+                  
+                  Moral Foundations Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#the-jupyter-notebook">The Jupyter Notebook</a>
+    <ul>
+      <li><a href="#executing-cells">Executing cells</a></li>
+      <li><a href="#importing">Importing</a></li>
+    </ul>
+  </li>
+  <li><a href="#using-tables">Using Tables</a>
+    <ul>
+      <li><a href="#tables-essentials">Tables Essentials!</a></li>
+    </ul>
+  </li>
+  <li><a href="#visualizations">Visualizations</a></li>
+  <li><a href="#merging-tables">Merging Tables</a>
+    <ul>
+      <li><a href="#adding-rows">Adding rows</a></li>
+      <li><a href="#adding-columns">Adding columns</a></li>
+      <li><a href="#joining-on-columns">Joining on columns</a></li>
+    </ul>
+  </li>
+  <li><a href="#summary">SUMMARY</a>
+    <ul>
+      <li><a href="#youve-learned-a-lot-in-this-module-lets-look-back-on-the-key-parts">You’ve learned a lot in this module! Let’s look back on the key parts.</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/modules-textbook/content/psych/01-intro.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/ds-modules/modules-textbook/master?filepath=content%2Fpsych%2F01-intro.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_binder.svg" alt="Interact" />Binder</button></a>
+
+
+
+
+
+
+<a href="https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https://github.com//ds-modules/modules-textbook&amp;branch=master&amp;subPath=content%2Fpsych%2F01-intro.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_jupyterhub.svg" alt="Interact" />DataHub</button></a>
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <h1 id="introduction-to-importing-data-using-tables-and-creating-graphs">Introduction to Importing Data, Using Tables and Creating Graphs</h1>
+
+<h2 id="the-jupyter-notebook">The Jupyter Notebook</h2>
+
+<p><em>If you run into errors, check the <a href="https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing">common errors</a> Google doc first.</em></p>
+
+<p>First of all, note that this page is divided into what are called “cells”. For example, the following cell is a “code cell” where you will write your code. You’ll see a <code class="highlighter-rouge">In [ ]:</code> next to each cell for code, which is a counter for the cells you have run. You can navigate cells by clicking on them or by using the up and down arrows. Cells will be highlighted as you navigate them.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># this is a code cell</span>
+</code></pre></div></div>
+
+<h3 id="executing-cells">Executing cells</h3>
+
+<p></p>
+
+<div class="alert alert-info">
+You can execute cells with <b><code>Ctrl-Enter</code></b> (which will run the cell and keep the same cell selected), or <b><code>Shift-Enter</code></b> (which will run the cell and then select the next cell).
+</div>
+
+<p>Try running the following cell and see what it prints out:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello world!
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.0
+</code></pre></div></div>
+
+<p>Now run this cell to <code class="highlighter-rouge">import</code> some code we’ll use today, nothing will <code class="highlighter-rouge">print</code> out, don’t worry!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">"fivethirtyeight"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="importing">Importing</h3>
+
+<p>In data analytics, there is almost always a file holding your data that already exists. There are thousands of databases online that contain information on topics from all domains. In general, to import data from a file, we write:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"file_name"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Most often, these file names end in <code class="highlighter-rouge">.csv</code> to show the data format. <code class="highlighter-rouge">.csv</code> format is popular for spreadsheets and can be imported/exported from programs such as Microsoft Excel, OpenOffice Calc, or Google spreadsheets.</p>
+
+<p>An example is shown below using <a href="http://www2.census.gov/programs-surveys/popest/datasets/2010-2015/national/asrh/nc-est2015-agesex-res.csv">U.S. Census data</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pwd</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/chrispyles/GitHub/modules-textbook/content/psych
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"data/nc-est2015-agesex-res.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>CENSUS2010POP</th> <th>ESTIMATESBASE2010</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2011</th> <th>POPESTIMATE2012</th> <th>POPESTIMATE2013</th> <th>POPESTIMATE2014</th> <th>POPESTIMATE2015</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944153      </td> <td>3944160          </td> <td>3951330        </td> <td>3963087        </td> <td>3926540        </td> <td>3931141        </td> <td>3949775        </td> <td>3978038        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978070      </td> <td>3978090          </td> <td>3957888        </td> <td>3966551        </td> <td>3977939        </td> <td>3942872        </td> <td>3949776        </td> <td>3968564        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096929      </td> <td>4096939          </td> <td>4090862        </td> <td>3971565        </td> <td>3980095        </td> <td>3992720        </td> <td>3959664        </td> <td>3966583        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119040      </td> <td>4119051          </td> <td>4111920        </td> <td>4102470        </td> <td>3983157        </td> <td>3992734        </td> <td>4007079        </td> <td>3974061        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063170      </td> <td>4063186          </td> <td>4077551        </td> <td>4122294        </td> <td>4112849        </td> <td>3994449        </td> <td>4005716        </td> <td>4020035        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056858      </td> <td>4056872          </td> <td>4064653        </td> <td>4087709        </td> <td>4132242        </td> <td>4123626        </td> <td>4006900        </td> <td>4018158        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066381      </td> <td>4066412          </td> <td>4073013        </td> <td>4074993        </td> <td>4097605        </td> <td>4142916        </td> <td>4135930        </td> <td>4019207        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030579      </td> <td>4030594          </td> <td>4043046        </td> <td>4083225        </td> <td>4084913        </td> <td>4108349        </td> <td>4155326        </td> <td>4148360        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046486      </td> <td>4046497          </td> <td>4025604        </td> <td>4053203        </td> <td>4093177        </td> <td>4095711        </td> <td>4120903        </td> <td>4167887        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148353      </td> <td>4148369          </td> <td>4125415        </td> <td>4035710        </td> <td>4063152        </td> <td>4104072        </td> <td>4108349        </td> <td>4133564        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p>
+</div>
+
+<p>That’s a lot of information. As you can see from the labels on top, this table shows Biological Sex (0=total, 1=male, 2=female), Age,  2010 Census Information, and predictions for U.S. population for the next five years.</p>
+
+<h2 id="using-tables">Using Tables</h2>
+
+<p>We can make criteria to cut down tables. Accessing only the rows, columns, or values specfic to our purpose makes information easier understood. Analysis and conclusions can be made when data is more digestible.</p>
+
+<p>We need to access the census table above and name it for further use. We assign the table to a variable so that we can reference it later!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">census_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"data/nc-est2015-agesex-res.csv"</span><span class="p">)</span>
+<span class="n">census_data</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>CENSUS2010POP</th> <th>ESTIMATESBASE2010</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2011</th> <th>POPESTIMATE2012</th> <th>POPESTIMATE2013</th> <th>POPESTIMATE2014</th> <th>POPESTIMATE2015</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944153      </td> <td>3944160          </td> <td>3951330        </td> <td>3963087        </td> <td>3926540        </td> <td>3931141        </td> <td>3949775        </td> <td>3978038        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978070      </td> <td>3978090          </td> <td>3957888        </td> <td>3966551        </td> <td>3977939        </td> <td>3942872        </td> <td>3949776        </td> <td>3968564        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096929      </td> <td>4096939          </td> <td>4090862        </td> <td>3971565        </td> <td>3980095        </td> <td>3992720        </td> <td>3959664        </td> <td>3966583        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119040      </td> <td>4119051          </td> <td>4111920        </td> <td>4102470        </td> <td>3983157        </td> <td>3992734        </td> <td>4007079        </td> <td>3974061        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063170      </td> <td>4063186          </td> <td>4077551        </td> <td>4122294        </td> <td>4112849        </td> <td>3994449        </td> <td>4005716        </td> <td>4020035        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056858      </td> <td>4056872          </td> <td>4064653        </td> <td>4087709        </td> <td>4132242        </td> <td>4123626        </td> <td>4006900        </td> <td>4018158        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066381      </td> <td>4066412          </td> <td>4073013        </td> <td>4074993        </td> <td>4097605        </td> <td>4142916        </td> <td>4135930        </td> <td>4019207        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030579      </td> <td>4030594          </td> <td>4043046        </td> <td>4083225        </td> <td>4084913        </td> <td>4108349        </td> <td>4155326        </td> <td>4148360        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046486      </td> <td>4046497          </td> <td>4025604        </td> <td>4053203        </td> <td>4093177        </td> <td>4095711        </td> <td>4120903        </td> <td>4167887        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148353      </td> <td>4148369          </td> <td>4125415        </td> <td>4035710        </td> <td>4063152        </td> <td>4104072        </td> <td>4108349        </td> <td>4133564        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p>
+</div>
+
+<p>This notebook can calculate how large this table is with two functions: num_rows and num_columns. The general form for these functions are table.num_rows and table.num_columns.</p>
+
+<p>Let’s use these on the table above.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">census_data</span><span class="o">.</span><span class="n">num_rows</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>306
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">census_data</span><span class="o">.</span><span class="n">num_columns</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<p>That’s a 306 x 10 table! We can first start to cut down this table using only some columns. Let’s only include biological sex, age and the estimated base for 2010 census data.</p>
+
+<p>There are two methods to make a table with select columns included. We could either use the ‘select’ function or the ‘drop’ function.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">select</code> can create a new table with only the columns indicated in the parameters</li>
+  <li><code class="highlighter-rouge">drop</code> can create a new table with columns NOT indicated in the parameters</li>
+</ul>
+
+<p>Here’s an example of two equal codes: (keep in mind that we assign each new table to a new variable, to make organization easier).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">select_census_data</span> <span class="o">=</span> <span class="n">census_data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"SEX"</span><span class="p">,</span> <span class="s">"AGE"</span><span class="p">,</span> <span class="s">"ESTIMATESBASE2010"</span><span class="p">)</span>
+<span class="n">select_census_data</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">drop_census_data</span> <span class="o">=</span> <span class="n">census_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">"CENSUS2010POP"</span><span class="p">,</span><span class="s">"POPESTIMATE2010"</span><span class="p">,</span><span class="s">"POPESTIMATE2011"</span><span class="p">,</span><span class="s">"POPESTIMATE2012"</span><span class="p">,</span><span class="s">"POPESTIMATE2013"</span><span class="p">,</span><span class="s">"POPESTIMATE2014"</span><span class="p">,</span><span class="s">"POPESTIMATE2015"</span><span class="p">)</span>
+<span class="n">drop_census_data</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p>
+</div>
+
+<p>As you can see underneath the table, there are still 296 rows omitted! Our next step is to only include non-gendered data AKA data where SEX=0, neither male or female specific.</p>
+
+<p>To do this, we need to use a new function <code class="highlighter-rouge">where</code>. The general form of this function is:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table_name</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span> <span class="n">predicate</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>To cut our table down to only include <code class="highlighter-rouge">sex=0</code>, we may use the predicate <code class="highlighter-rouge">are.equal_to()</code>. Note that we are assigning the new table to a new variable. We are referencing the table stored in an older variable (<code class="highlighter-rouge">select_census_data</code>), and modifying it. That modification is what is stored in the new variable.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_census_data</span> <span class="o">=</span> <span class="n">select_census_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s">"SEX"</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">new_census_data</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (92 rows omitted)</p>
+</div>
+
+<p>There are still 92 rows omitted! Let’s take every 10th entry to cut this table down a little more.</p>
+
+<p>To do this we need to use the <code class="highlighter-rouge">take</code> function. The <code class="highlighter-rouge">take</code> function creates a new table with rows from the original table whose indices(row number) are given. In Python, indices start at 0!</p>
+
+<p>Here’s taking every 10th entry. Inside of the take parentheses is a Python list of numbers from 0 to 90, increasing by 10s. This indicates exactly which rows we want to keep (every 10th row).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">census_10_year</span> <span class="o">=</span> <span class="n">new_census_data</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">90</span><span class="p">])</span>
+<span class="n">census_10_year</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>10  </td> <td>4172559          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>20  </td> <td>4519556          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>30  </td> <td>4285877          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>40  </td> <td>4383450          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>50  </td> <td>4660457          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>60  </td> <td>3621214          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>70  </td> <td>2043178          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>80  </td> <td>1308608          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>90  </td> <td>435695           </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>Now that sex is all the same, we can drop that column.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_census_table</span> <span class="o">=</span> <span class="n">census_10_year</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">"SEX"</span><span class="p">)</span>
+<span class="n">final_census_table</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>10  </td> <td>4172559          </td>
+        </tr>
+        <tr>
+            <td>20  </td> <td>4519556          </td>
+        </tr>
+        <tr>
+            <td>30  </td> <td>4285877          </td>
+        </tr>
+        <tr>
+            <td>40  </td> <td>4383450          </td>
+        </tr>
+        <tr>
+            <td>50  </td> <td>4660457          </td>
+        </tr>
+        <tr>
+            <td>60  </td> <td>3621214          </td>
+        </tr>
+        <tr>
+            <td>70  </td> <td>2043178          </td>
+        </tr>
+        <tr>
+            <td>80  </td> <td>1308608          </td>
+        </tr>
+        <tr>
+            <td>90  </td> <td>435695           </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="tables-essentials">Tables Essentials!</h3>
+
+<p>For your reference, here’s a table of useful <code class="highlighter-rouge">Table</code> functions:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Example</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">Table</code></td>
+      <td><code class="highlighter-rouge">Table()</code></td>
+      <td>Create an empty table, usually to extend with data</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Table.read_table</code></td>
+      <td><code class="highlighter-rouge">Table.read_table("my_data.csv")</code></td>
+      <td>Create a table from a data file</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">with_columns</code></td>
+      <td><code class="highlighter-rouge">tbl = Table().with_columns("N", np.arange(5), "2*N", np.arange(0, 10, 2))</code></td>
+      <td>Create a copy of a table with more columns</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">column</code></td>
+      <td><code class="highlighter-rouge">tbl.column("N")</code></td>
+      <td>Create an array containing the elements of a column</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">sort</code></td>
+      <td><code class="highlighter-rouge">tbl.sort("N")</code></td>
+      <td>Create a copy of a table sorted by the values in a column</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">where</code></td>
+      <td><code class="highlighter-rouge">tbl.where("N", are.above(2))</code></td>
+      <td>Create a copy of a table with only the rows that match some <em>predicate</em></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">num_rows</code></td>
+      <td><code class="highlighter-rouge">tbl.num_rows</code></td>
+      <td>Compute the number of rows in a table</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">num_columns</code></td>
+      <td><code class="highlighter-rouge">tbl.num_columns</code></td>
+      <td>Compute the number of columns in a table</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">select</code></td>
+      <td><code class="highlighter-rouge">tbl.select("N")</code></td>
+      <td>Create a copy of a table with only some of the columns</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">drop</code></td>
+      <td><code class="highlighter-rouge">tbl.drop("2*N")</code></td>
+      <td>Create a copy of a table without some of the columns</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">take</code></td>
+      <td><code class="highlighter-rouge">tbl.take(np.arange(0, 6, 2))</code></td>
+      <td>Create a copy of the table with only the rows whose indices are in the given array</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">join</code></td>
+      <td><code class="highlighter-rouge">tbl1.join("shared_column_name", tbl2)</code></td>
+      <td>Join together two tables with a common column name</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">are.equal_to()</code></td>
+      <td><code class="highlighter-rouge">tbl.where("SEX", are.equal_to(0))</code></td>
+      <td>find values equal to that indicated</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">are.not_equal_to()</code></td>
+      <td><code class="highlighter-rouge">tbl.where("SEX", are.not_equal_to(0))</code></td>
+      <td>find values not including the one indicated</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">are.above()</code></td>
+      <td><code class="highlighter-rouge">tbl.where("AGE", are.above(30))</code></td>
+      <td>find values greater to that indicated</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">are.below()</code></td>
+      <td><code class="highlighter-rouge">tbl.where("AGE", are.below(40))</code></td>
+      <td>find values less than that indicated</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">are.between()</code></td>
+      <td><code class="highlighter-rouge">tbl.where("SEX", are.between(18, 60))</code></td>
+      <td>find values between the two indicated</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="visualizations">Visualizations</h2>
+
+<p>Now that we have a manageable table we can start making visualizations! Due to the numerical nature of the census table above, let’s first try a scatter plot.</p>
+
+<p>To create a scatter plot, we need to use the <code class="highlighter-rouge">scatter()</code> function. The general form is:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">"column for x axis"</span><span class="p">,</span> <span class="s">"column for y axis"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>An example is shown below:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_census_table</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">"AGE"</span><span class="p">,</span> <span class="s">"ESTIMATESBASE2010"</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/psych/01-intro_29_0.png" alt="png" /></p>
+
+<p>With this data, we can also make a line plot. To do this, we need to use the <code class="highlighter-rouge">plot()</code> function. This works a lot like <code class="highlighter-rouge">scatter()</code> where the general form is:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">"x column"</span><span class="p">,</span> <span class="s">"y column"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_census_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">"AGE"</span><span class="p">,</span> <span class="s">"ESTIMATESBASE2010"</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/psych/01-intro_31_0.png" alt="png" /></p>
+
+<p>Though a bar may be better. Bar graphs follow the same formula as scatter plots and line graphs above, with the general form:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s">"x axis"</span><span class="p">,</span> <span class="s">"y axis"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_census_table</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s">"AGE"</span><span class="p">,</span> <span class="s">"ESTIMATESBASE2010"</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/psych/01-intro_33_0.png" alt="png" /></p>
+
+<p>You can also use the functino <code class="highlighter-rouge">barh()</code> instead of <code class="highlighter-rouge">bar()</code> in order to flip the bar graph horizontally. Sometimes, this makes for a cleaner visualization.</p>
+
+<hr />
+
+<h2 id="merging-tables">Merging Tables</h2>
+
+<p>We are going to cover one more topic briefly that you will need to use in your project. We are going to look into how to merge two tables that have common information. This technique will be very valuable when the time comes for you to do your own analysis with your own data sets.</p>
+
+<p>We are going to read in a table with information about psychologists. We will call this new table <code class="highlighter-rouge">psych1</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych1</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"example-data/psych1.csv"</span><span class="p">)</span>
+<span class="n">psych1</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<h3 id="adding-rows">Adding rows</h3>
+
+<p>You may have another <code class="highlighter-rouge">table</code> that has the exact same columns and you just want to add the rows to what you already have. Let’s read in another short <code class="highlighter-rouge">table</code> with a couple more psychologists:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych2</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"example-data/psych2.csv"</span><span class="p">)</span>
+<span class="n">psych2</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>Great! We see that this second table has the same columns as the first one. Merging these two tables would allow us to consolidate our information. We are going to use the “append” method to append the second table onto the first!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych_merged</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">psych1</span><span class="p">)</span>  <span class="c"># copying over the new_psych table to a new variable for the merged table</span>
+<span class="n">psych_merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psych2</span><span class="p">)</span>
+<span class="n">psych_merged</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>As you can see, we have succesfully merged these two tables together! Now, let us try merging an additional column onto the original <code class="highlighter-rouge">new_psych</code> table.</p>
+
+<h3 id="adding-columns">Adding columns</h3>
+
+<p>Let’s pretend that we suddenly have access to the favorite foods of each psychologist. Wow! We definitely want to include that information in our table. This means that we need to merge in a new column to the initial table. Let us print the table first, and then we’ll get the other column.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych_merged</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>Now we are going to create to read in our new information.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych_foods</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">'example-data/favorite_food.csv'</span><span class="p">)</span>
+<span class="n">psych_foods</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Favorite Food</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Pizza        </td>
+        </tr>
+        <tr>
+            <td>Snickers     </td>
+        </tr>
+        <tr>
+            <td>Grapes       </td>
+        </tr>
+        <tr>
+            <td>Escargot     </td>
+        </tr>
+        <tr>
+            <td>Ice Cream    </td>
+        </tr>
+        <tr>
+            <td>Apples       </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>Luckily, we are going to assume that each row is in the right order in the column. We are going to use a similar process as before to merge this column! The method we now use is <code class="highlighter-rouge">append_column</code>. Otherwise, the format stays the same!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych_merged_with_food</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">psych_merged</span><span class="p">)</span>  <span class="c"># copying over the new_psych table to a new variable </span>
+<span class="n">psych_merged_with_food</span><span class="o">.</span><span class="n">append_column</span><span class="p">(</span><span class="s">"Favorite Food"</span><span class="p">,</span> <span class="n">psych_foods</span><span class="p">[</span><span class="s">'Favorite Food'</span><span class="p">])</span>
+<span class="n">psych_merged_with_food</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th> <th>Favorite Food</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td> <td>Pizza        </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td> <td>Snickers     </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td> <td>Grapes       </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td> <td>Escargot     </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td> <td>Ice Cream    </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td> <td>Apples       </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>As you can see, we’ve successfully merged a column to our table too!</p>
+
+<h3 id="joining-on-columns">Joining on columns</h3>
+
+<p>Suppose now that you have more information on the these psycologists (another column), but the rows aren’t in the right order so you can’t just <code class="highlighter-rouge">append_column</code>. Luckily, you have their names.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">psych_birthplaces</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">"example-data/birthplaces.csv"</span><span class="p">)</span>
+<span class="n">psych_birthplaces</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Maslow      </td> <td>New York      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>Germany       </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>Pennsylvania  </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Freud       </td> <td>Czech Republic</td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>Switzerland   </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>Awesome! We love more data, but how can I merge this back into our existing information? We can’t just add a column because the order is different.</p>
+
+<p><strong><em>Solution</em></strong>: We can use the <code class="highlighter-rouge">join</code> method and tell it which column the two tables have in common, and it will match the data to the correct row:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_table</span> <span class="o">=</span> <span class="n">psych_merged_with_food</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">"Psychologist"</span><span class="p">,</span> <span class="n">psych_birthplaces</span><span class="p">)</span>
+<span class="n">final_table</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th> <th>Favorite Food</th> <th>Birth Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Erikson     </td> <td>190       </td> <td>Apples       </td> <td>Germany       </td>
+        </tr>
+        <tr>
+            <td>Freud       </td> <td>1856      </td> <td>Pizza        </td> <td>Czech Republic</td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td> <td>Ice Cream    </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td> <td>Escargot     </td> <td>New York      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td> <td>Grapes       </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td> <td>Snickers     </td> <td>Pennsylvania  </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p>That’s super cool!</p>
+
+<hr />
+
+<h2 id="summary">SUMMARY</h2>
+
+<h3 id="youve-learned-a-lot-in-this-module-lets-look-back-on-the-key-parts">You’ve learned a lot in this module! Let’s look back on the key parts.</h3>
+
+<ul>
+  <li>
+    <p>To import data from a .csv/.txt file, we write <code class="highlighter-rouge">Table.read_table("file_name")</code>.</p>
+  </li>
+  <li>
+    <p>To create our own table, we write <code class="highlighter-rouge">Table( ).with_columns("Column Name", array_name, . . .)</code> .</p>
+  </li>
+  <li>
+    <p>To count number of rows, we use <code class="highlighter-rouge">table_name.num_rows</code>.</p>
+  </li>
+  <li>
+    <p>To count number of columns, we use <code class="highlighter-rouge">table_name.num_columns</code>.</p>
+  </li>
+  <li>
+    <p>To create a new table with only the columns indicated in the parameters, we use <code class="highlighter-rouge">table_name.select("COLUMN NAME", ...)</code>.</p>
+  </li>
+  <li>
+    <p>To create a new table without the columns indicated in the parameters, we use <code class="highlighter-rouge">table_name.drop("COLUMN NAME", ...)</code>.</p>
+  </li>
+  <li>
+    <p>To create a table with only certain values, we can use <code class="highlighter-rouge">table_name.where(column_name, predicate)</code>.</p>
+  </li>
+  <li>
+    <p>To create a new table with indicated rows from the original table, we use <code class="highlighter-rouge">table_name.take([index 1, index 2, . . . ])</code>. Remember in Python indices start at 0!</p>
+  </li>
+  <li>
+    <p>To create a scatter plot, we use <code class="highlighter-rouge">table.scatter(column for x axis, column for y axis)</code>.</p>
+  </li>
+  <li>
+    <p>To create a line plot, we use <code class="highlighter-rouge">table.plot(x column, y column)</code>.</p>
+  </li>
+  <li>
+    <p>To make a bar graphs, we can use either <code class="highlighter-rouge">table.bar(x column, y column)</code> or <code class="highlighter-rouge">table.barh(x column, y column)</code>.</p>
+  </li>
+  <li>
+    <p>To make a histogram, we use <code class="highlighter-rouge">table.hist(x axis, bins(optional), unit(optional))</code>.</p>
+  </li>
+  <li>
+    <p>To merge tables, we use either <code class="highlighter-rouge">append</code> or <code class="highlighter-rouge">append_column</code>.</p>
+  </li>
+  <li>
+    <p>To merge two tables with a common column name we use the <code class="highlighter-rouge">join</code> method.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>With just some simple code, we were able to do an incredible amount of data analysis! Play around with the examples until you feel comfortable with the content of this notebook. We will be using notebooks to analyze your own data sets in the future! Please ask if you have questions!</p>
+
+<p>If you need help, please consult the <a href="https://data.berkeley.edu/education/data-science-community">Data Peers</a>!</p>
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/psych/psych-intro">
+      〈 <span class="u-margin-right-tiny"></span> Psychology
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/psych/02-correlation-regression">
+      Correlation, Regression, & Prediction <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

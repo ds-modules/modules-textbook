@@ -61,15 +61,60 @@
 
 - header: Modules
 
+# City Planning Chapter
+- title: City Planning
+  url: /cp-101/cp-101-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Lab 7
+      url: /cp-101/lab07/lab07
+      not_numbered: true
+    - title: Lab 8
+      url: /cp-101/lab08/lab08
+      not_numbered: true
+    - title: Lab 9
+      url: /cp-101/lab09/lab09
+      not_numbered: true
+    - title: Lab 10
+      url: /cp-101/lab10/lab10
+      not_numbered: true
+
+# English Chapter
+- title: English
+  url: /xenglish-r1a/xenglish-r1a-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Chinatowns
+      url: /xenglish-r1a/01-Chinatowns
+      not_numbered: true
+
 # Legal Studies Chapter
 - title: Legal Studies
-  url: /legal_studies/intro-legal-studies
+  url: /legalst-190/legalst-190-intro
   not_numbered: true
   expand_sections: false
   sections:
   - title: Intro to Python
-    url: /legal_studies/1-18
+    url: /legalst-190/1-18
     not_numbered: true
   - title: Problem Set 1
-    url: /legal_studies/ps1/SF_Crime_PSET1
+    url: /legalst-190/ps1/SF_Crime_PSET1
     not_numbered: true
+
+# Psych Chapter
+- title: Psychology
+  url: /psych-167ac/psych-167ac-intro
+  not_numbered: true
+  expand_sections: true
+  sections:
+    - title: Introduction
+      url: /psych-167ac/01-intro
+      not_numbered: true
+    - title: Correlation & Regression
+      url: /psych-167ac/02-correlation-regression
+      not_numbered: true
+    - title: My Project
+      url: /psych-167ac/03-my-project
+      not_numbered: true

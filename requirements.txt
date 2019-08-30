@@ -7,4 +7,19 @@ folium
 matplotlib
 requests
 branca
+<<<<<<< HEAD
 sodapy
+=======
+geopandas
+shapely
+sklearn
+scipy
+seaborn
+plotly
+statsmodels
+spacy
+wordcloud
+textblob
+geojson
+nltk
+>>>>>>> 84c92e31d2a6e02b9556a1628ed4438e3b15f199

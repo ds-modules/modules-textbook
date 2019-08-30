@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lab 7</title>
+  <meta name="description" content="Intro to Python">
+
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/cp-101/lab07/lab07.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/cp-101/lab07/lab07.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lab 7" />
+<meta property="og:description" content="Intro to Python" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://0.0.0.0:4000/modules-textbook/cp-101/lab07/lab07.html",
+  "headline":
+    "Lab 7",
+  "datePublished":
+    "2019-05-31T17:05:06-05:00",
+  "dateModified":
+    "2019-05-31T17:05:06-05:00",
+  "description":
+    "Intro to Python",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Nakagawa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://0.0.0.0:4000/modules-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://0.0.0.0:4000/modules-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/modules-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/featured-modules',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/ds-modules/"
+        >
+          
+          DSEP Modules Repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+        >
+          
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/introduction/intro-module-final.html"
+                >
+                  
+                  Intro to Python and Jupyter
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/features/notebooks.html"
+                >
+                  
+                  Jupyter notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Modules</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
+                >
+                  
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/1-18.html"
+                >
+                  
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
+                >
+                  
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#intro-to-python">Intro to Python</a>
+    <ul>
+      <li><a href="#1-pythons-data-types">1. Python’s Data Types</a></li>
+      <li><a href="#2-built-in-functions">2. Built-in Functions</a></li>
+      <li><a href="#3-conditionals-and-for-loops">3. Conditionals and For-loops</a></li>
+      <li><a href="#4-working-with-libraries">4. Working with Libraries</a></li>
+      <li><a href="#5-data-frames-and-tables">5. Data Frames and Tables</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/modules-textbook/content/cp-101/lab07/lab07.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/ds-modules/featured-modules/master?filepath=content%2Fcp-101%2Flab07%2Flab07.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_binder.svg" alt="Interact" />Binder</button></a>
+
+
+
+
+
+
+<a href="https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https://github.com//ds-modules/featured-modules&amp;branch=master&amp;subPath=content%2Fcp-101%2Flab07%2Flab07.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_jupyterhub.svg" alt="Interact" />DataHub</button></a>
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <h2 id="intro-to-python">Intro to Python</h2>
+
+<p>In this lab you will be familiarizing yourself with the programming language called Python. Python is a so-called high level programming language. Which means it is very abstracted from machine languages and are easily readable by humans.</p>
+
+<p>Python is one of the most popular programming languages nowadays, and is used in various spheres from research and Data Science to Machine Learning and Artificial Intelligence.</p>
+
+<p>In this lab you will also learn some of the most popular Python libraries such as Pandas, Numpy, and Matplotlib. Libraries are used to make Python more efficient. By itself (solely with built-in functions and methods), Python is not a very useful language, hence people keep building libraries (sets of functions and methods) that can be used together with Python in order to make it more useful.</p>
+
+<h3 id="1-pythons-data-types">1. Python’s Data Types</h3>
+
+<h4 id="11-numerals">1.1 Numerals</h4>
+
+<p>One of the data types that is commonly used in Python are numerals (aka numbers). 
+With numerals, Python can be used as a calculator. Run the cells below to see it for yourself.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span><span class="o">+</span><span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">140</span><span class="o">-</span><span class="mi">20</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>120
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">40</span><span class="o">/</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20.0
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span><span class="o">*</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>Python follows the same arithmetic rules as we do. So guess what the output of the next cell will be:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span><span class="o">*</span><span class="mi">5</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+</code></pre></div></div>
+
+<p>What about this cell:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>Guess what a double star notation does? Run the cell below to see if you had the right intuition about it.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span><span class="o">**</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<p>There are a few types of them: integers and floats. 
+They are not compatible, so it is important to remember which one you are using in order to avoid bugs. Floats use decimal points, so it will be easy for you to spot them. See how the output changes when we print the same number as an integer and as a float.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">int</span><span class="p">(</span><span class="mi">1776</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1776
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">float</span><span class="p">(</span><span class="mi">1776</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1776.0
+</code></pre></div></div>
+
+<h4 id="12-variables">1.2 Variables</h4>
+
+<p>To store the values in Python (and in many other programming languages) we need to use variables. Variables can store all kinds of information. This is useful if you plan to use the same values later on in your project. It will save you time and make your code more readable. To see how we store values in variables run the cell below.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">burr</span> <span class="o">=</span> <span class="s">"Wait for it!"</span>
+<span class="n">burr</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Wait for it!'
+</code></pre></div></div>
+
+<p>If you don’t assign any value to the variable and call it later, it will give you an error. We can see it in the cell below. (It will give you an error, but it was planned that way)</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">burr</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Wait for it!'
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-25-33c5b6ca9af3&gt; in &lt;module&gt;()
+      1 y = 8
+----&gt; 2 z = x+y
+
+NameError: name 'x' is not defined
+</code></pre></div></div>
+
+<p>Here, we did not assign x to anything, and since x was not defined, we cannot add its value to y, so this produces an error.</p>
+
+<h4 id="13-strings">1.3 Strings</h4>
+
+<p>The phrases and words in Python are always stored inbetween double or single quotation marks. They are formally called strings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"History has its eyes on you"</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'History has its eyes on you'
+</code></pre></div></div>
+
+<p>Also, you can use both single and double quotes for the strings, but sometimes you need to use single quotes inside of the string and that might cause a problem (it will “exit it out”).</p>
+
+<p>You can just always use the double quotation marks on the outside to avoid such problem. Or, you can use a backslash before the single quotation mark. It will tell Python to ignore it and not to exit it out. You can see an example of it below:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"What'd I miss"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'You</span><span class="se">\'</span><span class="s">ll be back'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What'd I miss
+You'll be back
+
+</code></pre></div></div>
+
+<p>The strings can also be “added” onto one another. Run the cell below to see how it works.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"York"</span><span class="o">+</span><span class="s">"town"</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Yorktown'
+</code></pre></div></div>
+
+<p>When we are using Jupyter Notebooks, the last line is printed out automatically (unless it is performing some other operation, eg. getting assigned to a specific value). But if you would like to print more than just the last line, you can use the print( ) method. If you just run the next cell, it will not give you any output.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">aaron</span> <span class="o">=</span> <span class="s">"Ev’ryone give it up for America’s favorite fighting Frenchman"</span>
+<span class="n">everyone</span> <span class="o">=</span> <span class="s">"Lafayette!"</span>
+<span class="n">mdl</span> <span class="o">=</span> <span class="s">"I’m takin this horse by the reins"</span>
+</code></pre></div></div>
+
+<p>Try using print( ) in the cell below to output all the three lines of lyrics of “Guns and Ships”.</p>
+
+<p><strong>Hint:</strong> you’ll need to use it three times.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this cell in</span>
+
+
+
+</code></pre></div></div>
+
+<p>A string is a sequence of characters. If you want to see how many characters your string has, use the len() method. Do you think spaces are considered characters in Python? Check if your intuition was correct by running the cell below.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">burr</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>Now create a variable name in which you will save your full name. Note that you need to call the variable once again in order to get an output.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this in</span>
+<span class="n">name</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">name</span>
+</code></pre></div></div>
+
+<p>Sometimes you need to switch the values in two variables. 
+In the cell below we have the last names mixed up. The variable theodosia should have an output “burr” and philip should return “hamilton”.
+How would you approach this problem without manually retyping the outputs?</p>
+
+<p><strong>Hint</strong> Use a temporary variable in which you can temporarily save the value of one of the other variables.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">theodosia</span> <span class="o">=</span> <span class="s">"hamilton"</span>
+<span class="n">philip</span> <span class="o">=</span> <span class="s">"burr"</span>
+
+<span class="c">##fill these in, Version 1:</span>
+<span class="n">theodosia</span><span class="p">,</span> <span class="n">philip</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c"># Version 2</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">theodosia</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">philip</span> <span class="o">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<h4 id="14-lists">1.4 Lists</h4>
+
+<p>You have learnt about the strings and numerals, it’s time to take it up a notch. Another useful and very popular data type is a Python list.
+Lists can take various data types (both numerals, strings, arrays, other lists, etc).</p>
+
+<p>To create an empty list just make your variable equal to “[ ]”, like so:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">washington</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">washington</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>To add the values into your list you can either use lst.append( ), lst.insert( ), or lst.extend( ).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">washington</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s">"Right Hand Man"</span><span class="p">])</span>
+<span class="n">washington</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Right Hand Man']
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">washington</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">"I need my"</span><span class="p">)</span>
+<span class="n">washington</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['I need my', 'Right Hand Man']
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">washington</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"Back"</span><span class="p">)</span>
+<span class="n">washington</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['I need my', 'Right Hand Man', 'Back']
+</code></pre></div></div>
+
+<p>Notice, that the insert method takes two positional values. You need to specify the index in the list at which it will be inserted, whilst append just adds the value to the end of the list. 
+extend takes another list as its input. If you try to use a string or a number by itself, it will give you an error.</p>
+
+<p>When you need to access an element at a specific index, that is the code you can use The code below returns the second element of the list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">washington</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Right Hand Man'
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Python starts counting at 0, not 1.</p>
+
+<p>Sometimes you just need to use part of the list. In this case you can use “:” to modify your list. Let’s make a new list:</p>
+
+<p>Sometimes you just need to use part of the list or copy the whole list into a new variable. In this
+case you can use “:” to modify your list.
+The notation is:</p>
+
+<p><strong>a = b[start:stop:step]</strong></p>
+
+<p><strong><em>start</em></strong>: the index you want to start with. (the default is 0)</p>
+
+<p><strong><em>stop</em></strong>: the index you want to end with. (the default is the last number)</p>
+
+<p><strong><em>step</em></strong>: use it, if you wish to skip some indeces (eg. use only every other value). For example, if you start with index 1 and step is 2, you will iterate through the 1st index, then 3rd, then 5th, etc. until you get to the stopping index. (the default is 1)</p>
+
+<p>Note that python will stop iterating at the value before the last index. See the following example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<p>Note: if you wish to start iterating from the end of a list backwards, we use a negative step:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lst</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 4, 3, 2, 1]
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ham_songs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Alexander Hamilton"</span><span class="p">,</span> <span class="s">"Aaron Burr, Sir"</span><span class="p">,</span> <span class="s">"My Shot"</span><span class="p">,</span> \
+             <span class="s">"The Story of Tonight"</span><span class="p">,</span> <span class="s">"The Schuyler Sisters"</span><span class="p">,</span> <span class="s">"Farmer Refuted"</span><span class="p">,</span>
+             <span class="s">"You'll be Back"</span><span class="p">,</span> <span class="s">"Right Hand Man"</span><span class="p">,</span> <span class="s">"A Winter's Ball"</span><span class="p">,</span> \
+             <span class="s">"Helpless"</span><span class="p">,</span> <span class="s">"Satisfied"</span><span class="p">]</span>
+
+<span class="n">every_other</span> <span class="o">=</span> <span class="n">ham_songs</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> 
+<span class="n">every_other</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Alexander Hamilton',
+ 'My Shot',
+ 'The Schuyler Sisters',
+ "You'll be Back",
+ "A Winter's Ball",
+ 'Satisfied']
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lyrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">"I"</span><span class="p">,</span> <span class="s">"am"</span><span class="p">,</span> <span class="s">"not"</span><span class="p">,</span> <span class="s">"throwing"</span><span class="p">,</span> <span class="s">"away"</span><span class="p">,</span> <span class="s">"my"</span><span class="p">,</span> <span class="s">"shot"</span><span class="p">]</span>
+<span class="n">lyrics</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['I', 'am', 'not', 'throwing', 'away', 'my', 'shot']
+</code></pre></div></div>
+
+<p>Let’s say you want to save only the two last words from your old list into your new list. That’s what you will need to do then:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alex</span> <span class="o">=</span> <span class="n">lyrics</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+<span class="n">alex</span>
+
+<span class="c"># alternatively you can use lyrics[5:]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['my', 'shot']
+</code></pre></div></div>
+
+<p>Notice also that if you want to learn the length of your list, you can use the same method “len( )”, but it will not count all the characters anymore. Instead, it will count all the elements in it. Like so:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">washington</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>Exercise: Create a list with the values 1, 2, 3, 4, and 5 and only get the values 2 and 4</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this cell in</span>
+
+
+</code></pre></div></div>
+
+<h3 id="2-built-in-functions">2. Built-in Functions</h3>
+
+<p>Although Python doesn’t have a lot of functions and methods by itself, it is not like it doesn’t have any. Let’s go over some of the most valuable built-in funsctions in Python.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">max</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>70
+</code></pre></div></div>
+
+<p>You can also use these functions with strings. Can you guess what the output will be?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">max</span><span class="p">(</span><span class="s">"Hamilton"</span><span class="p">,</span> <span class="s">"Washington"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Washington'
+</code></pre></div></div>
+
+<p>So does Python know that George Washington was older than Alexander Hamilton? Of course not, when comparing strings, Python goes of off the letters of alphabet. Since “W” goes after “H” in the alphabet, “Washington” is a value that is “bigger” than “Hamilton”.</p>
+
+<p>We have created two lists with different integers. Let’s now find the biggest number among the two smallest numbers in two lists. In other words, let’s find the max( ) of the two min( ). You can achieve it with either 3 or 1 lines of code.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dob</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1757</span><span class="p">,</span> <span class="mi">1756</span><span class="p">,</span> <span class="mi">1732</span><span class="p">,</span> <span class="mi">1737</span><span class="p">,</span> <span class="mi">1754</span><span class="p">]</span>
+<span class="n">dod</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1804</span><span class="p">,</span> <span class="mi">1836</span><span class="p">,</span> <span class="mi">1799</span><span class="p">,</span> <span class="mi">1793</span><span class="p">,</span> <span class="mi">1782</span><span class="p">]</span> 
+
+<span class="c">##fill in</span>
+<span class="n">min_dob</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">min_dod</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">max_of_mins</span> <span class="o">=</span> <span class="o">...</span>
+
+
+<span class="c"># you can do it in one line</span>
+
+<span class="n">max_mins</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(),</span> <span class="nb">min</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>Another valuable function you can use with your numerals is “round”. It will round your floats to the nearest integer. Like so:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">8.7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<p>Another useful function we can use with numbers is “abs”. It outputs an absolute value of a number:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
+</code></pre></div></div>
+
+<h3 id="3-conditionals-and-for-loops">3. Conditionals and For-loops</h3>
+
+<h4 id="31-conditionals">3.1 Conditionals</h4>
+
+<p>Conditionals are also known as <strong>booleans</strong>. With conditional statements we can let the computer know when (aka under which condition) we want a specific operation to be executed. Under the hood the computer evaluates if the condition is True and performs a specific operation (like print( ), return( ), etc). Some of the most popular conditional statements are:</p>
+
+<p><strong>A == B: True if A equals B</strong></p>
+
+<p><strong>A != B: True if A is not equal to B</strong></p>
+
+<p><strong>A &gt; B: True if A is greater than B. Same syntax for “&lt;”</strong></p>
+
+<p><strong>A &gt;= B: True if A is greater than or equal to B. Same syntax for “&lt;=”</strong></p>
+
+<p>We have three types of statements in the Python conditionals: if, elif, and else. We always start with “if”, we always end with “else”. The “elif” statement is optional. It literally means “else if”. While both “if” and “else” can only be used once, “elif” can be used multiple times, and let you add many more conditions to your statement.</p>
+
+<p>If the condition in the if case is False, then we move to the elif case. If the elif case is false, then we will move to the else case and perform whatever is inside the else condition. We move into the condition that has a True conditional value first and evaluate that.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">playwright</span> <span class="o">=</span> <span class="s">"Lin-Manuel Miranda"</span>
+
+<span class="k">if</span> <span class="n">playwright</span> <span class="o">==</span> <span class="s">"Lin-Manuel Miranda"</span><span class="p">:</span>
+    <span class="k">print</span> <span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+
+</code></pre></div></div>
+
+<p><strong>Note:</strong> “=” and “==” are not the same operations in Python. A single equals sign (=) assignes the value to the right of it to the variable name to the left of it. While the double equals sign (==) compares if the value on the right is equal to the value to the left of it.</p>
+
+<p>In the next line, let’s ask Python to print the name of the school two of the Founding Fathers went based on their name. Feel free to change the string our “name” variable is assigned to.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name</span> <span class="o">=</span> <span class="s">"Hamilton"</span>
+
+<span class="c"># Feel free to change the value of the variable "name"</span>
+
+<span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Hamilton"</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Columbia"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Burr"</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Princeton"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I don't know"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Columbia
+
+</code></pre></div></div>
+
+<p>In the cell below guess what the output will be, before you run it. Feel free to change the numeral under the variable “year”.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">year</span> <span class="o">=</span> <span class="mi">1789</span>
+
+<span class="c"># Who's the president</span>
+
+<span class="k">if</span> <span class="n">year</span><span class="o">&gt;=</span><span class="mi">1789</span> <span class="ow">and</span> <span class="n">year</span><span class="o">&lt;</span><span class="mi">1797</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"George Washington"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span><span class="o">&gt;=</span><span class="mi">1797</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"John Adams"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"King George"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>George Washington
+
+</code></pre></div></div>
+
+<p>We can also search through lists of values in our conditional statements to see if a word is in our list using the keyword ‘in’:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">founding_fathers</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Jefferson"</span><span class="p">,</span> <span class="s">"Hancock"</span><span class="p">,</span> <span class="s">"Hamilton"</span><span class="p">,</span> <span class="s">"Adams"</span><span class="p">,</span> <span class="s">"Washington"</span><span class="p">,</span> <span class="s">"Burr"</span><span class="p">,</span> <span class="s">"Madison"</span><span class="p">]</span>
+
+<span class="c"># change the name in "any_name"</span>
+<span class="k">if</span> <span class="s">"any_name"</span> <span class="ow">in</span> <span class="n">founding_fathers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"You are not throwing away your shot!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"You've got to be in the room where it happens!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You've got to be in the room where it happens!
+
+</code></pre></div></div>
+
+<h4 id="32-loops">3.2 Loops</h4>
+
+<p>Loops (aka for-loops) allow for some code to be executed repeatedly. For example, if you wish to print the numbers from 0 to 10, you can do that with the for-loop.</p>
+
+<p>A for-loop iterates through a sequence of elements (list, string, array, etc.) and reassigns an element (which can have any name, most common are “x”, “i”, “elem”, the name in itself doesn’t matter) to each element of the sequence sequentially.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]:</span>   
+    <span class="k">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+
+<span class="n">elem</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a
+b
+c
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'c'
+</code></pre></div></div>
+
+<p>That is why in the previous code cell we can see that when an “elem” is called at the end of the loop, it is equal to “c” which is the last element of the sequence.</p>
+
+<p>In the cell below we will be using the built-in function called range( ). It enumerates the numbers from 0 up to a number you put in (exclusive of that last number).</p>
+
+<p><strong>Note:</strong> remember that Python starts to count from 0, hence the last number you specify is not going to be included.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+</code></pre></div></div>
+
+<p>Exercise: Let’s combine what you know so far about lists, conditionals, and for loops. Create a list with values 1, 2, 3, 4, 5. Iterate through the list with a for loop, and print only the values that are greater than 2. Otherwise, print the statement “This value is not greater than 2.”</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this cell in</span>
+
+
+</code></pre></div></div>
+
+<h3 id="4-working-with-libraries">4. Working with Libraries</h3>
+
+<p>It is time for us to introduce a concept of Python libraries. As we mentioned before, Python is not a very powerful programming language by itself. What makes it powerful are the libraries people wrote for it. Libraries are the sets of different functions that you can import and use. The two most popular libraries are numpy and pandas.</p>
+
+<p>Since we are using anaconda, a lot of libraries have been preloaded for you. You just need to “call” them. Just run the cell below. It will make our notebook know that we will be using these preinstalled libraries from that point on.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>With the help of numpy we can introduce a new data type - arrays. Arrays are commonly used with Data Frames (basically, tables of values). There are a lot of functions and methods that can be used with arrays when one is analysing their data. The main difference between the lists and arrays is that an array can take only one type of data (eg. only numerals, or strings, but never both).</p>
+
+<p>To create an array with values, just make your variable equal to np.array(“your value”)</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">arr</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(10)
+</code></pre></div></div>
+
+<p>A very useful method that can be used with an array of numbers is np.arange( ). It takes at least 2, sometimes 3 positional arguments. The first number will be the starting point of your array, the last one will identify up to which number your array will go (not inclusive). The third positional argument is optional, it shows how many steps an array should skip through. (This is very similar to lists)</p>
+
+<p>For example, if you need an array with numbers from 0 to 20, but you only want for it to include every other number, you will need add a third positional argument.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">every_other</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">every_other</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20])
+</code></pre></div></div>
+
+<p>You can also convert a list of numbers in Python into an array:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">num_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">num_lst</span><span class="p">)</span>
+<span class="n">num_arr</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3, 4, 5])
+</code></pre></div></div>
+
+<p>You can do some arithmetic with arrays. Guess what will be the output of this line of code before you run it:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_arr</span><span class="o">*</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 2,  4,  6,  8, 10])
+</code></pre></div></div>
+
+<p>As you can see, all the values in our array got mutliplied by 2.</p>
+
+<p>Try performing the same operation with the initial list of numbers instead. What do you think the output will be in the cell below?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_lst</span><span class="o">*</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<p>As you can see, lists and arrays not only can be used differently, but they lso give different outputs when we are using the same operations on them.</p>
+
+<h3 id="5-data-frames-and-tables">5. Data Frames and Tables</h3>
+
+<p>Now that you are familiar with all the basics of Python coding, it is time for you to learn how to work with Tables and Pandas Data Frames. First let’s upload the dataset we have selected to work on.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"broadway.csv"</span><span class="p">)</span>
+<span class="n">broadway</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Attendance</th>
+      <th>Capacity</th>
+      <th>Day</th>
+      <th>Full</th>
+      <th>Gross</th>
+      <th>Gross Potential</th>
+      <th>Month</th>
+      <th>Name</th>
+      <th>Performances</th>
+      <th>Theatre</th>
+      <th>Type</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5500</td>
+      <td>88</td>
+      <td>26</td>
+      <td>08/26/1990</td>
+      <td>134456</td>
+      <td>0</td>
+      <td>8</td>
+      <td>Tru</td>
+      <td>8</td>
+      <td>Booth</td>
+      <td>Play</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1737</td>
+      <td>100</td>
+      <td>24</td>
+      <td>03/24/1991</td>
+      <td>100647</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Miss Saigon</td>
+      <td>0</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12160</td>
+      <td>100</td>
+      <td>31</td>
+      <td>03/31/1991</td>
+      <td>634424</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Miss Saigon</td>
+      <td>0</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13921</td>
+      <td>100</td>
+      <td>7</td>
+      <td>04/07/1991</td>
+      <td>713353</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Miss Saigon</td>
+      <td>0</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10973</td>
+      <td>90</td>
+      <td>14</td>
+      <td>04/14/1991</td>
+      <td>573981</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Miss Saigon</td>
+      <td>4</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14076</td>
+      <td>101</td>
+      <td>21</td>
+      <td>04/21/1991</td>
+      <td>706793</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Miss Saigon</td>
+      <td>8</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>14065</td>
+      <td>101</td>
+      <td>28</td>
+      <td>04/28/1991</td>
+      <td>714968</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Miss Saigon</td>
+      <td>8</td>
+      <td>Broadway</td>
+      <td>Musical</td>
+      <td>1991</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We can call a column in our dataset by typing:</p>
+
+<p><strong>Note:</strong> it will return an array of values</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                                                      Tru
+1                                              Miss Saigon
+2                                              Miss Saigon
+3                                              Miss Saigon
+4                                              Miss Saigon
+5                                              Miss Saigon
+6                                              Miss Saigon
+7                                              Miss Saigon
+8                                              Miss Saigon
+9                                              Miss Saigon
+10                                             Miss Saigon
+11                                             Miss Saigon
+12                                             Miss Saigon
+13                                             Miss Saigon
+14                                             Miss Saigon
+15                                             Miss Saigon
+16                                             Miss Saigon
+17                                             Miss Saigon
+18                                             Miss Saigon
+19                                             Miss Saigon
+20                                             Miss Saigon
+21                                             Miss Saigon
+22                                             Miss Saigon
+23                                             Miss Saigon
+24                                             Miss Saigon
+25                                             Miss Saigon
+26                                             Miss Saigon
+27                                             Miss Saigon
+28                                             Miss Saigon
+29                                             Miss Saigon
+                               ...                        
+31266                                        The Lion King
+31267                             The Phantom Of The Opera
+31268                                             Waitress
+31269                                               Wicked
+31270                                              Aladdin
+31271                                   An Act Of God 2016
+31272                                 An American In Paris
+31273                                            Beautiful
+31274                                            Cats 2016
+31275                                              Chicago
+31276                             Fiddler On The Roof 2015
+31277                                    Finding Neverland
+31278                                             Fun Home
+31279                                             Hamilton
+31280                                          Jersey Boys
+31281                                          Kinky Boots
+31282                                    Les Misrables '14
+31283                                              Matilda
+31284                                        On Your Feet!
+31285                                             Paramour
+31286                                       School Of Rock
+31287                                    Something Rotten!
+31288                                   The Book Of Mormon
+31289                                The Color Purple 2015
+31290    The Curious Incident Of The Dog In The Night-Time
+31291                                           The Humans
+31292                                        The Lion King
+31293                             The Phantom Of The Opera
+31294                                             Waitress
+31295                                               Wicked
+Name: Name, Length: 31296, dtype: object
+</code></pre></div></div>
+
+<p>Let’s find the most and the least profitable shows of all time. We want for our code to return the whole row for the highest value in the “Gross” column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span><span class="p">[</span><span class="n">broadway</span><span class="p">[</span><span class="s">'Gross'</span><span class="p">]</span> <span class="o">==</span> <span class="n">broadway</span><span class="p">[</span><span class="s">'Gross'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Attendance</th>
+      <th>Capacity</th>
+      <th>Day</th>
+      <th>Full</th>
+      <th>Gross</th>
+      <th>Gross Potential</th>
+      <th>Month</th>
+      <th>Name</th>
+      <th>Performances</th>
+      <th>Theatre</th>
+      <th>Type</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>26997</th>
+      <td>17352</td>
+      <td>100</td>
+      <td>29</td>
+      <td>12/29/2013</td>
+      <td>3201333</td>
+      <td>121</td>
+      <td>12</td>
+      <td>Wicked</td>
+      <td>9</td>
+      <td>Gershwin</td>
+      <td>Musical</td>
+      <td>2013</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span><span class="p">[</span><span class="s">'Gross'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3201333
+</code></pre></div></div>
+
+<p>Let’s go over the code in the previous line. We are asking Python to show as a row from a dataset where the value in column “Gross” equals the largest value in that column.</p>
+
+<p>Now do the same for the smallest value in the “Gross” column.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this cell in</span>
+
+
+</code></pre></div></div>
+
+<p>Let’s now search for a show with the highest amount of people who attended it in a single day. Then, let’s find out what type of perfomance this one was.</p>
+
+<p><strong>Note:</strong> There are three types of shows listed in this dataset: Musical, Play, and Special.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span><span class="p">[</span><span class="n">broadway</span><span class="p">[</span><span class="s">'Attendance'</span><span class="p">]</span> <span class="o">==</span> <span class="n">broadway</span><span class="p">[</span><span class="s">'Attendance'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()][</span><span class="s">"Type"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1711    Special
+Name: Type, dtype: object
+</code></pre></div></div>
+
+<p>In the code above we used the same things we used previously, but added the last element <strong>[“Type”]</strong> to it. What our code does is:</p>
+
+<p>1) it searches through the column “Attendance”</p>
+
+<p>2) finds the largest value there</p>
+
+<p>3) finds a row in our dataset where it has found that value</p>
+
+<p>4) returns only the value in the column “Type” for that row</p>
+
+<p>To ensure your understanding, find the name of the show with the highest value in the “Gross” column.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##fill this cell in</span>
+
+
+</code></pre></div></div>
+
+<p>Let’s see which 5 shows on Broadway have the largest amount of rows to their name (aka has been on Broadway the longest).</p>
+
+<p>For that to work we’ll need to use method .groupby( ) which will combine all the rows for the shows with same name. Then we’ll use .size( ), which will count the total of every column. Then we’ll use .nlargest(n) that will return the n-largest values.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadway</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Name'</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name
+The Phantom Of The Opera    1053
+Chicago                     1032
+The Lion King                980
+Mamma Mia!                   725
+Beauty And The Beast         690
+dtype: int64
+</code></pre></div></div>
+
+<p>To do visualizations, we will need to import yet another library.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<p>Sometimes it is easier to see a certain trend in our data by simply plotting the values from a few columns together. Like so:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">broadway</span><span class="p">[</span><span class="s">'Year'</span><span class="p">],</span> <span class="n">broadway</span><span class="p">[</span><span class="s">'Gross'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab07/lab07_136_0.png" alt="png" /></p>
+
+<p>So we can see that the Gross amount for the shows were growing in the course of years. Which makes perfect sense. What if we wanted to see the same trend for a specific show? How about we see the changes in gross amount by week for all the years “The Phantom of the Opera” was on stage?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phantom</span> <span class="o">=</span> <span class="n">broadway</span><span class="p">[</span><span class="n">broadway</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span> <span class="o">==</span> <span class="s">"The Phantom Of The Opera"</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phantom</span><span class="p">[</span><span class="s">'Year'</span><span class="p">],</span> <span class="n">phantom</span><span class="p">[</span><span class="s">'Gross'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab07/lab07_138_0.png" alt="png" /></p>
+
+<p>Feel free to use the same code for any other show you are interested in.</p>
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/cp-101/cp-101-intro">
+      〈 <span class="u-margin-right-tiny"></span> City Planning
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/cp-101/lab08/lab08">
+      Lab 8 <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

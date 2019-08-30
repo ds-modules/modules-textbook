@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lab 9</title>
+  <meta name="description" content="Introduction to geopandasToday we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in geopandas...">
+
+  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/cp-101/lab09/lab09.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+
+  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/cp-101/lab09/lab09.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lab 9" />
+<meta property="og:description" content="Introduction to geopandasToday we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in geopandas..." />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://0.0.0.0:4000/modules-textbook/cp-101/lab09/lab09.html",
+  "headline":
+    "Lab 9",
+  "datePublished":
+    "2019-05-31T17:05:06-05:00",
+  "dateModified":
+    "2019-05-31T17:05:06-05:00",
+  "description":
+    "Introduction to geopandasToday we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in geopandas...",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Nakagawa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://0.0.0.0:4000/modules-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://0.0.0.0:4000/modules-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/modules-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/featured-modules',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/ds-modules/"
+        >
+          
+          DSEP Modules Repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+        >
+          
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/introduction/intro-module-final.html"
+                >
+                  
+                  Intro to Python and Jupyter
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/features/notebooks.html"
+                >
+                  
+                  Jupyter notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Modules</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
+                >
+                  
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/1-18.html"
+                >
+                  
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
+                >
+                  
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#examining-the-data">Examining the data</a>
+    <ul>
+      <li><a href="#accessing-the-data">Accessing the data</a></li>
+      <li><a href="#basic-maps">Basic maps</a></li>
+      <li><a href="#choropleth-maps">Choropleth maps</a></li>
+      <li><a href="#creating-a-new-shapefile">Creating a new shapefile</a></li>
+      <li><a href="#combining-multiple-geodataframes">Combining multiple GeoDataFrames</a></li>
+    </ul>
+  </li>
+  <li><a href="#examining-the-data-1">Examining the data</a></li>
+  <li><a href="#creating-the-map">Creating the map</a>
+    <ul>
+      <li><a href="#authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</a></li>
+      <li><a href="#references">References:</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/modules-textbook/content/cp-101/lab09/lab09.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/ds-modules/featured-modules/master?filepath=content%2Fcp-101%2Flab09%2Flab09.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_binder.svg" alt="Interact" />Binder</button></a>
+
+
+
+
+
+
+<a href="https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https://github.com//ds-modules/featured-modules&amp;branch=master&amp;subPath=content%2Fcp-101%2Flab09%2Flab09.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_jupyterhub.svg" alt="Interact" />DataHub</button></a>
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <h1 id="introduction-to-geopandas">Introduction to <code class="highlighter-rouge">geopandas</code></h1>
+<hr />
+<p>Today we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in <code class="highlighter-rouge">geopandas</code>. <code class="highlighter-rouge">geopandas</code> is built on top of the <code class="highlighter-rouge">pandas</code> package you saw in the previous lab. Many of the methods you will see in this lab are shared between the two packages.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RUN THIS CELL FIRST or the notebook won't work</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="n">gpd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c"># These help the maps display nicely in the notebook</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="c"># This line tells iPython to not display warnings.</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s">'ignore'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>First, let’s load our data and see what kind of data we are working with.  The <code class="highlighter-rouge">read_file</code> method requires that we pass the <em>filepath</em> from our current directory (the location of this notebook) to the data. The <code class="highlighter-rouge">pwd()</code> function shows you the your current location in the file system. Another way you can say this is that it __p__rints your __w__orking __d__irectory.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pwd</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'/Users/chrispyles/GitHub/modules-textbook/content/cp-101/lab09'
+</code></pre></div></div>
+
+<p>To get to the data, we would first enter the <code class="highlighter-rouge">shapefiles</code> folder from the working directory, then the <code class="highlighter-rouge">alameda</code> folder. The way we communicate this to the function is by passing <code class="highlighter-rouge">'shapefiles/alameda/'</code> as an argument. This folder contains demographic information organized by census tract in Alameda County.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">'shapefiles/alameda/'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s take a look at what our data looks like in Jupyter. We can use the <code class="highlighter-rouge">.head()</code> method to show the first 5 rows of our data. Similarly, you can use the <code class="highlighter-rouge">.tail()</code> method to show the last 5 rows of the data.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AFFGEOID</th>
+      <th>ALAND</th>
+      <th>ALAND_1</th>
+      <th>AWATER</th>
+      <th>AWATER_1</th>
+      <th>COUNTYFP</th>
+      <th>COUNTYFP_1</th>
+      <th>FID_1</th>
+      <th>FUNCSTAT</th>
+      <th>GEOID</th>
+      <th>...</th>
+      <th>female</th>
+      <th>male</th>
+      <th>medianage</th>
+      <th>mergeid</th>
+      <th>pct_20to64</th>
+      <th>pct_over64</th>
+      <th>pct_pov</th>
+      <th>pct_und_20</th>
+      <th>total_pop</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1400000US06001400600</td>
+      <td>297856.0</td>
+      <td>297856.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>275.0</td>
+      <td>S</td>
+      <td>06001400600</td>
+      <td>...</td>
+      <td>1020.0</td>
+      <td>730.0</td>
+      <td>34.4</td>
+      <td>06001400600</td>
+      <td>78.2</td>
+      <td>9.8</td>
+      <td>8.3</td>
+      <td>12.0</td>
+      <td>1750.0</td>
+      <td>POLYGON ((-122.26807 37.844136, -122.26514 37....</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1400000US06001400900</td>
+      <td>420877.0</td>
+      <td>420877.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>297.0</td>
+      <td>S</td>
+      <td>06001400900</td>
+      <td>...</td>
+      <td>1106.0</td>
+      <td>925.0</td>
+      <td>38.9</td>
+      <td>06001400900</td>
+      <td>71.0</td>
+      <td>7.7</td>
+      <td>12.0</td>
+      <td>21.0</td>
+      <td>2031.0</td>
+      <td>POLYGON ((-122.285576 37.839778, -122.283186 3...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1400000US06001401400</td>
+      <td>758241.0</td>
+      <td>758241.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>239.0</td>
+      <td>S</td>
+      <td>06001401400</td>
+      <td>...</td>
+      <td>2170.0</td>
+      <td>2127.0</td>
+      <td>31.3</td>
+      <td>06001401400</td>
+      <td>64.7</td>
+      <td>8.2</td>
+      <td>41.7</td>
+      <td>27.1</td>
+      <td>4297.0</td>
+      <td>POLYGON ((-122.278611 37.826878, -122.268563 3...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1400000US06001403000</td>
+      <td>352394.0</td>
+      <td>352394.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>258.0</td>
+      <td>S</td>
+      <td>06001403000</td>
+      <td>...</td>
+      <td>1445.0</td>
+      <td>1026.0</td>
+      <td>58.3</td>
+      <td>06001403000</td>
+      <td>47.9</td>
+      <td>43.8</td>
+      <td>30.2</td>
+      <td>8.3</td>
+      <td>2471.0</td>
+      <td>POLYGON ((-122.274757 37.79883299999999, -122....</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1400000US06001405902</td>
+      <td>487280.0</td>
+      <td>487280.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>746.0</td>
+      <td>S</td>
+      <td>06001405902</td>
+      <td>...</td>
+      <td>1713.0</td>
+      <td>1808.0</td>
+      <td>31.5</td>
+      <td>06001405902</td>
+      <td>58.6</td>
+      <td>10.0</td>
+      <td>31.0</td>
+      <td>31.5</td>
+      <td>3521.0</td>
+      <td>POLYGON ((-122.247175 37.789913, -122.243512 3...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div>
+</div>
+
+<p>The first few columns of the table contain information relating to the itentity of each census tract, but we can’t interpret these without looking at the metadata for this dataset. If you scroll the table all the way to the right, you can see some columns with names that are more easily interpretable. However, because the table we are reading in has more columns than the page can accomodate, the display omits the middle columns to make the table narrower. To see a list of all of the columns in our <code class="highlighter-rouge">GeoDataFrame</code>, we access use the <code class="highlighter-rouge">.column</code> attribute like so.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['AFFGEOID', 'ALAND', 'ALAND_1', 'AWATER', 'AWATER_1', 'COUNTYFP',
+       'COUNTYFP_1', 'FID_1', 'FUNCSTAT', 'GEOID', 'GEOID_1', 'Geography',
+       'INTPTLAT', 'INTPTLON', 'Id', 'Id2', 'LSAD', 'MTFCC', 'NAME',
+       'NAMELSAD', 'NAME_1', 'STATEFP', 'STATEFP_1', 'TRACTCE', 'TRACTCE_1',
+       'female', 'male', 'medianage', 'mergeid', 'pct_20to64', 'pct_over64',
+       'pct_pov', 'pct_und_20', 'total_pop', 'geometry'],
+      dtype='object')
+</code></pre></div></div>
+
+<h2 id="examining-the-data">Examining the data</h2>
+
+<h3 id="accessing-the-data">Accessing the data</h3>
+
+<p>The <code class="highlighter-rouge">.loc[]</code> and <code class="highlighter-rouge">.iloc[]</code> methods allow us to view cells in a <code class="highlighter-rouge">DataFrame</code> or <code class="highlighter-rouge">GeoDataFrame</code> based on their name or location. The <strong>i</strong> in <code class="highlighter-rouge">.iloc[]</code> stands for the <strong>integer</strong> position of a cell, and accesses cells by location in index coordinates. The <code class="highlighter-rouge">.loc[]</code> method allows you to access cells by the index of the rows and the names of the columns. For both <code class="highlighter-rouge">.loc[]</code> and <code class="highlighter-rouge">.iloc[]</code>, the first argument refers to the row, and the second argument refers to the column.</p>
+
+<p>Typically the row index will be the same as its integer position, but that is not always the case. Let’s set up a <code class="highlighter-rouge">DataFrame</code> to see this in action.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                         <span class="s">'b'</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                         <span class="s">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                         <span class="s">'d'</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]},</span>
+                 <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">])</span>
+<span class="n">df</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.1</th>
+      <td>1</td>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>2</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>3</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>If we want to access the number 8 from <code class="highlighter-rouge">df</code>, we would need to tell <code class="highlighter-rouge">.iloc[]</code> to look in <code class="highlighter-rouge">df</code> at row <code class="highlighter-rouge">1</code>, column <code class="highlighter-rouge">2</code> (remember that python starts counting from zero!).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<p>Using <code class="highlighter-rouge">.loc[]</code>, we would need to tell the method that we want row index <code class="highlighter-rouge">1.2</code>, column name <code class="highlighter-rouge">'c'</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<p>You can also specify a range of indices to both of these methods if you want to access multiple adjacent cells. For <code class="highlighter-rouge">iloc[]</code>, this range will always refer to integer coordinates of the cells.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This code tells .iloc that we want rows 0 and 2, then all columns with index</span>
+<span class="c"># greater than or equal to 1.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.1</th>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We can also refer to a range named columns and rows using <code class="highlighter-rouge">.loc[]</code></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This code tells .loc that we want row 1.2, columns 'b' through 'd' inclusive.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s">'b'</span><span class="p">:</span><span class="s">'d'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.2</th>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="basic-maps">Basic maps</h3>
+
+<p>The <code class="highlighter-rouge">geometry</code> column contains a new data type called a polygon, which is how <code class="highlighter-rouge">geopandas</code> is able to store geographic information. Let’s look at one of these polygons using <code class="highlighter-rouge">.loc[]</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s">'geometry'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><img src="../../images/cp-101/lab09/lab09_24_0.svg" alt="svg" /></p>
+
+<p>To view all of the polygons in the <code class="highlighter-rouge">GeoDataFrame</code>, we can just use the <code class="highlighter-rouge">.plot()</code> method. The documentation for this function can be found <a href="http://geopandas.org/mapping.html">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124dea7f0&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_26_1.png" alt="png" /></p>
+
+<p>You can improve the appearance of this graph by removing the axis labels surrounding the map and adding a title. You may also see a line that says something like <code class="highlighter-rouge">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1120b5710&gt;</code> above the map. You can prevent Jupyter from displaying this line by adding a <code class="highlighter-rouge">;</code> to the last line of code creating the map.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c"># Adding the fontsize argument allows you to manipulate the font size.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Alameda County Census Tracts'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c"># This turns the plot axes off.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_28_0.png" alt="png" /></p>
+
+<h3 id="choropleth-maps">Choropleth maps</h3>
+
+<p>If we want to make this map more informative, we can incorporate some of the other columns from the data into the map. For example, the <code class="highlighter-rouge">'pct_pov'</code> column in the table contains the percentage of people living in poverty in each census tract.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="p">[</span><span class="s">'pct_pov'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0       8.3
+1      12.0
+2      41.7
+3      30.2
+4      31.0
+5      20.3
+6      34.2
+7       2.8
+8      43.9
+9      24.7
+10      4.3
+11      8.5
+12     11.2
+13     28.6
+14     10.1
+15     16.1
+16      2.4
+17      3.4
+18      6.5
+19      2.7
+20      2.8
+21      3.7
+22      6.6
+23      1.8
+24     34.9
+25     25.3
+26     26.5
+27     10.3
+28     10.8
+29     11.4
+       ... 
+331     4.1
+332    42.6
+333    22.4
+334     3.7
+335     6.4
+336    11.3
+337    16.2
+338     1.6
+339     8.9
+340    14.5
+341     6.5
+342     1.6
+343     4.9
+344    34.4
+345    11.1
+346     4.5
+347     5.5
+348    17.7
+349     5.5
+350    31.8
+351    41.3
+352    27.0
+353     5.5
+354    37.2
+355    12.6
+356     4.2
+357    17.3
+358     8.1
+359     5.0
+360     2.6
+Name: pct_pov, Length: 361, dtype: float64
+</code></pre></div></div>
+
+<p>We can pass the column name as an optional argument to the <code class="highlighter-rouge">.plot()</code> method to create a map with a color gradient based on the values in this column. Setting <code class="highlighter-rouge">legend</code> equal to <code class="highlighter-rouge">True</code> in the function call will also tell the method that we want our final plot to have a legend so that we can interpret the colors on the map.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">'pct_pov'</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="c">#Bounds supplies information on the maximum and minimum values of the x-axis and y-axis of our plot.</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s">''' 
+        minx   -122.268070
+        miny     37.837482
+        maxx   -122.261296
+        maxy     37.845027
+        Name: 0, dtype: float64 
+'''</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"minx"</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"miny"</span><span class="p">]</span>
+<span class="c"># We use that information to place the text label for our legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s">'Percentage of People Living in Poverty'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s">'anchor'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Alameda County Poverty Rates by Census Tract'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_33_0.png" alt="png" /></p>
+
+<p>If you want to change the color scheme of the map, you can choose the “color map” of the plot by adding in the optional <code class="highlighter-rouge">cmap</code> argument to <code class="highlighter-rouge">plot()</code>. You can choose from the variety of color maps available in the <code class="highlighter-rouge">matplotlib</code> package, which is what our plotting software is built off of. Above, we saw the default colormap, which is called viridis. If you want to view all the available colormaps, you can reference the documentation <a href="https://matplotlib.org/users/colormaps.html">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">'pct_pov'</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s">'magma'</span><span class="p">)</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"minx"</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"miny"</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s">'Percentage of People Living in Poverty'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s">'anchor'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Alameda County Poverty Rates by Census Tract'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_35_0.png" alt="png" /></p>
+
+<p>Now it’s your turn! In the following cell, try creating your own choropleth map using a different column from <code class="highlighter-rouge">alameda</code>. If you want to see all of the columns in our data, you can scroll up to where we displayed all of the column names.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># YOUR CODE HERE</span>
+</code></pre></div></div>
+
+<p>What are some conclusions that you can draw from the map you created?</p>
+
+<p>YOUR ANSWER HERE</p>
+
+<h3 id="creating-a-new-shapefile">Creating a new shapefile</h3>
+
+<p>Let’s isolate the census tracts belonging to Berkeley. Below are the identification numbers for Berkeley’s census tracts.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">berkeley_census_tracts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4211</span><span class="p">,</span> <span class="mi">4212</span><span class="p">,</span> <span class="mi">4213</span><span class="p">,</span> <span class="mi">4214</span><span class="p">,</span> <span class="mi">4215</span><span class="p">,</span> <span class="mi">4216</span><span class="p">,</span> <span class="mi">4217</span><span class="p">,</span> <span class="mi">4218</span><span class="p">,</span> <span class="mi">4219</span><span class="p">,</span> <span class="mi">4220</span><span class="p">,</span> <span class="mi">4221</span><span class="p">,</span> <span class="mi">4222</span><span class="p">,</span> <span class="mi">4223</span><span class="p">,</span> <span class="mi">4224</span><span class="p">,</span> <span class="mi">4225</span><span class="p">,</span>
+                          <span class="mi">4226</span><span class="p">,</span> <span class="mi">4227</span><span class="p">,</span> <span class="mi">4228</span><span class="p">,</span> <span class="mi">4229</span><span class="p">,</span> <span class="mi">4230</span><span class="p">,</span> <span class="mi">4231</span><span class="p">,</span> <span class="mi">4232</span><span class="p">,</span> <span class="mi">4233</span><span class="p">,</span> <span class="mi">4234</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">4236</span><span class="p">,</span> <span class="mf">4236.01</span><span class="p">,</span> <span class="mf">4236.02</span><span class="p">,</span>
+                          <span class="mi">4237</span><span class="p">,</span> <span class="mi">4238</span><span class="p">,</span> <span class="mf">4239.01</span><span class="p">,</span> <span class="mf">4239.02</span><span class="p">,</span> <span class="mf">4240.01</span><span class="p">,</span> <span class="mf">4240.02</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The data in our <code class="highlighter-rouge">GeoDataFrame</code> are all strings, so we need to convert these numbers into strings before python can compare them to our data. We are going to use a technique called a list comprehension to do this. A list comprehension is basically a for loop condensed into a single line.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">berkeley_census_tracts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">berkeley_census_tracts</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>If we were going to write this list comprehension as a for loop, we would have to create a new list to save our converted data into. It would look a little something like this:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>berkeley_census_tracts_str = []
+for id in berkley_census_tracts:
+    berkeley_census_tracts_str.append(str(id))
+</code></pre></div></div>
+<p>List comprehensions are so much more efficient!</p>
+
+<p>Next, we are going to use a for loop to look at all of the rows in <code class="highlighter-rouge">alameda</code> and add the rows belonging to Berkeley census tracts to a new <code class="highlighter-rouge">GeoDataFrame</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a new GeoDataFrame</span>
+<span class="n">berkeley</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alameda</span><span class="p">)):</span>
+    <span class="c"># If the NAME of a census tract is in our list of Berkeley census tracts, we want to</span>
+    <span class="c"># add it to our berkeley GeoDataFrame.</span>
+    <span class="k">if</span> <span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="s">'NAME'</span><span class="p">]</span> <span class="ow">in</span> <span class="n">berkeley_census_tracts</span><span class="p">:</span>
+        <span class="n">berkeley</span> <span class="o">=</span> <span class="n">berkeley</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">berkeley</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AFFGEOID</th>
+      <th>ALAND</th>
+      <th>ALAND_1</th>
+      <th>AWATER</th>
+      <th>AWATER_1</th>
+      <th>COUNTYFP</th>
+      <th>COUNTYFP_1</th>
+      <th>FID_1</th>
+      <th>FUNCSTAT</th>
+      <th>GEOID</th>
+      <th>...</th>
+      <th>female</th>
+      <th>geometry</th>
+      <th>male</th>
+      <th>medianage</th>
+      <th>mergeid</th>
+      <th>pct_20to64</th>
+      <th>pct_over64</th>
+      <th>pct_pov</th>
+      <th>pct_und_20</th>
+      <th>total_pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>1400000US06001421400</td>
+      <td>474780.0</td>
+      <td>474780.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>686.0</td>
+      <td>S</td>
+      <td>06001421400</td>
+      <td>...</td>
+      <td>974.0</td>
+      <td>POLYGON ((-122.276027 37.88887, -122.272507 37...</td>
+      <td>747.0</td>
+      <td>51.3</td>
+      <td>06001421400</td>
+      <td>53.7</td>
+      <td>26.3</td>
+      <td>2.8</td>
+      <td>20.2</td>
+      <td>1721.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1400000US06001422900</td>
+      <td>544282.0</td>
+      <td>544282.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>157.0</td>
+      <td>S</td>
+      <td>06001422900</td>
+      <td>...</td>
+      <td>2260.0</td>
+      <td>POLYGON ((-122.273067 37.871512, -122.268403 3...</td>
+      <td>2177.0</td>
+      <td>23.1</td>
+      <td>06001422900</td>
+      <td>72.5</td>
+      <td>2.5</td>
+      <td>43.9</td>
+      <td>25.1</td>
+      <td>4437.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1400000US06001424001</td>
+      <td>507529.0</td>
+      <td>507529.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>131.0</td>
+      <td>S</td>
+      <td>06001424001</td>
+      <td>...</td>
+      <td>2045.0</td>
+      <td>POLYGON ((-122.279121 37.853287, -122.271161 3...</td>
+      <td>1954.0</td>
+      <td>30.4</td>
+      <td>06001424001</td>
+      <td>72.2</td>
+      <td>6.8</td>
+      <td>24.7</td>
+      <td>21.1</td>
+      <td>3999.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1400000US06001421500</td>
+      <td>1590680.0</td>
+      <td>1590680.0</td>
+      <td>3635.0</td>
+      <td>3635.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>314.0</td>
+      <td>S</td>
+      <td>06001421500</td>
+      <td>...</td>
+      <td>1984.0</td>
+      <td>POLYGON ((-122.267737 37.893131, -122.262683 3...</td>
+      <td>1809.0</td>
+      <td>49.9</td>
+      <td>06001421500</td>
+      <td>56.0</td>
+      <td>24.9</td>
+      <td>4.5</td>
+      <td>19.2</td>
+      <td>3793.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1400000US06001422100</td>
+      <td>551943.0</td>
+      <td>551943.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>488.0</td>
+      <td>S</td>
+      <td>06001422100</td>
+      <td>...</td>
+      <td>1183.0</td>
+      <td>POLYGON ((-122.300853 37.877571, -122.295353 3...</td>
+      <td>1101.0</td>
+      <td>39.7</td>
+      <td>06001422100</td>
+      <td>71.7</td>
+      <td>11.9</td>
+      <td>7.7</td>
+      <td>16.7</td>
+      <td>2284.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div>
+</div>
+
+<p>Next, we can save our new <code class="highlighter-rouge">GeoDataFrame</code>. The following code saves <code class="highlighter-rouge">berkeley</code> as a file type called a “shapefile,” which happens to be the same file type as the data we read in earlier. <code class="highlighter-rouge">geopandas</code> can also read and write many other geospatial file types, but we are just going to be using the same file type as before for now.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">berkeley</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="s">'ESRI Shapefile'</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s">'shapefiles/berkeley'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now we can make a map with our new data.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">berkeley</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">'medianage'</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">berkeley</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"minx"</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s">"miny"</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mf">0.0625</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.015</span><span class="p">,</span> <span class="s">'Median Age in Years'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s">'anchor'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Berkeley Median Age by Census Tract'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_51_0.png" alt="png" /></p>
+
+<p>Can you tell which census tracts are around the UC Berkeley campus from this map? Explain.</p>
+
+<p>YOUR ANSWER HERE</p>
+
+<h3 id="combining-multiple-geodataframes">Combining multiple <code class="highlighter-rouge">GeoDataFrame</code>s</h3>
+
+<p>When working with multiple sets of geospatial data, we may need to plot multiple <code class="highlighter-rouge">GeoDataFrames</code> together on the same map. There are a few different ways we can do this.</p>
+
+<p>If one of our <code class="highlighter-rouge">GeoDataFrames</code> covers a smaller area than the other, we can use the <code class="highlighter-rouge">GeoDataFrame</code> with the larger area as a base on top of which we plot the smaller <code class="highlighter-rouge">GeoDataFrame</code>. To do this, we use the optional <code class="highlighter-rouge">ax</code> argument when plotting the smaller <code class="highlighter-rouge">GeoDataFrame</code> to tell the plotting sofware that we want to continue using a previously plotted map.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We can also define explicitly the colors of the lines and open spaces on our map.</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">'white'</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s">'black'</span><span class="p">)</span>
+<span class="n">berkeley</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">base</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'blue'</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s">'red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_57_0.png" alt="png" /></p>
+
+<p>We may also have separate <code class="highlighter-rouge">GeoDataFrames</code> that do not overlap, and we may want to combine them into a single table. Let’s load in some more data so we can see this in action.</p>
+
+<p>First, we need to read in our data. Let’s use the <code class="highlighter-rouge">read_file</code> method from before to load in shapefiles in the <code class="highlighter-rouge">contra_costa</code> and <code class="highlighter-rouge">san_francisco</code> folders inside the <code class="highlighter-rouge">shapefiles</code> folder.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contra_costa</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">'shapefiles/contra_costa'</span><span class="p">)</span>
+<span class="n">san_francisco</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">'shapefiles/san_francisco'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now that you have loaded the data in, let’s take a look at the columns it contains.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contra_costa</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['AFFGEOID', 'ALAND', 'ALAND_1', 'AWATER', 'AWATER_1', 'COUNTYFP',
+       'COUNTYFP_1', 'FID_1', 'FUNCSTAT', 'GEOID', 'GEOID_1', 'Geography',
+       'INTPTLAT', 'INTPTLON', 'Id', 'Id2', 'LSAD', 'MTFCC', 'NAME',
+       'NAMELSAD', 'NAME_1', 'STATEFP', 'STATEFP_1', 'TRACTCE', 'TRACTCE_1',
+       'female', 'male', 'medianage', 'mergeid', 'pct_20to64', 'pct_over64',
+       'pct_pov', 'pct_und_20', 'total_pop', 'geometry'],
+      dtype='object')
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">san_francisco</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['AFFGEOID', 'ALAND', 'ALAND_1', 'AWATER', 'AWATER_1', 'COUNTYFP',
+       'COUNTYFP_1', 'FID_1', 'FUNCSTAT', 'GEOID', 'GEOID_1', 'Geography',
+       'INTPTLAT', 'INTPTLON', 'Id', 'Id2', 'LSAD', 'MTFCC', 'NAME',
+       'NAMELSAD', 'NAME_1', 'STATEFP', 'STATEFP_1', 'TRACTCE', 'TRACTCE_1',
+       'female', 'male', 'medianage', 'mergeid', 'pct_20to64', 'pct_over64',
+       'pct_pov', 'pct_und_20', 'total_pop', 'geometry'],
+      dtype='object')
+</code></pre></div></div>
+
+<p>Since <code class="highlighter-rouge">contra_costa</code> and <code class="highlighter-rouge">san_francisco</code> both have the same columns as <code class="highlighter-rouge">alameda</code>, we can use the <code class="highlighter-rouge">.append()</code> method to combine them without introducing any missing values, or spaces in our data table that do not have any information. Different packages can often have different ways of dealing with missing values, such completely ignoring any rows containing missing values to interpreting missing values as some default value. Since we do not have any missing values here, we don’t have to worry about this.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># These three lines create a new column called 'county' in each of the GeoDataFrames,</span>
+<span class="c"># then assigns the name of the county to all rows within the GeoDataFrame.</span>
+<span class="n">alameda</span><span class="p">[</span><span class="s">'county'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'alameda'</span>
+<span class="n">contra_costa</span><span class="p">[</span><span class="s">'county'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'contra costa'</span>
+<span class="n">san_francisco</span><span class="p">[</span><span class="s">'county'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'san francisco'</span>
+
+<span class="c"># This creates a new, empty GeoDataFrame, then appends of our GeoDataFrames to it.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alameda</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contra_costa</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">san_francisco</span><span class="p">)</span>
+
+<span class="c"># This plots our new aggregated GeoDataFrame using the 'county' column we created</span>
+<span class="c"># above.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">'county'</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s">'Set3'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/cp-101/lab09/lab09_65_0.png" alt="png" /></p>
+
+<p>Note that the code for this map has essentially the same form as the choropleth maps we created earlier. Since the column we are using to distinguish the census transects from each other is text rather than continuous numerical values, the plotting software uses distinct colors rather than a smooth spectrum.</p>
+
+<h1 id="more-geospatial-data-types-in-geopandas">More geospatial data types in <code class="highlighter-rouge">geopandas</code></h1>
+
+<p>So far, we have only been creating maps using polygons, but <code class="highlighter-rouge">geopandas</code> has a few more data types we can work with. First, we need some new data to work with. In the <code class="highlighter-rouge">shapefiles</code> folder, we have folders named <code class="highlighter-rouge">bart_stations</code> and <code class="highlighter-rouge">bart_routes</code> containing geospatial data about the BART system. Load in the data as we did with <code class="highlighter-rouge">alameda</code> file from the beginning of the lab.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bart_stations</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bart_routes</span> <span class="o">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<h2 id="examining-the-data-1">Examining the data</h2>
+
+<p>To get an idea of what the data we are working with looks like, let’s call the <code class="highlighter-rouge">.head()</code> method on the data we have just read.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bart_stations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bart_routes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Looking at the <code class="highlighter-rouge">geometry</code> columns of our two GeoDataFrames, we can see that we have some new types of data. Where we had polygons before, our new data have points and linestrings. Points are are exactly what they sound like, 1-dimensional coordinates in space. Linestrings are line segments that do not necessarily have to be a straight line.</p>
+
+<p>Use the following cell to draw a linestring the same way we did the first time we looked at a polygon.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># YOUR CODE HERE</span>
+</code></pre></div></div>
+
+<h2 id="creating-the-map">Creating the map</h2>
+
+<p>In the next few cells, you will create a map that overlays the bart stations and routes over a map of all the counties. (Alameda, Contra Costa, and San Francisco)</p>
+
+<p>First, we need the base map of all the counties. We can use the aggregated <code class="highlighter-rouge">GeoDataFrame</code> we created earlier in this notebook. Try setting the <code class="highlighter-rouge">color</code> and <code class="highlighter-rouge">edgecolor</code> arguments so the map looks more uniform.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">base</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Next, overlay the routes and stations and plot the graph by using this as the base for the map. The Jupyter notebook will not remember the map you drew in the previous cell even if you assigned it a name, so make sure to plot the base map again in the following cell.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">base</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bart_routes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">bart_stations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Congratulations! You’re done with this lab! If you are interested in learning more about what you can do with <code class="highlighter-rouge">geopandas</code>, you can find the documentation for the package <a href="http://geopandas.org/reference.html">here</a>.</p>
+
+<hr />
+
+<h3 id="authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</h3>
+<h3 id="references">References:</h3>
+<ul>
+  <li>http://geopandas.org/mapping.html</li>
+  <li>https://matplotlib.org/users/colormaps.html</li>
+  <li>http://www.bayareacensus.ca.gov/small/small.htm</li>
+  <li>https://www.bart.gov/schedules/developers/geo</li>
+</ul>
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/cp-101/lab08/lab08">
+      〈 <span class="u-margin-right-tiny"></span> Lab 8
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/cp-101/lab10/lab10">
+      Lab 10 <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
