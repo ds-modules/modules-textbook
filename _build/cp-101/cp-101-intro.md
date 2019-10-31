@@ -1,10 +1,10 @@
 ---
 title: 'City Planning'
 prev_page:
-  url: /features/notebooks
+  url: /features/notebooks.html
   title: 'Jupyter notebooks'
 next_page:
-  url: /cp-101/lab07/lab07
+  url: /cp-101/lab07/lab07.html
   title: 'Lab 7'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

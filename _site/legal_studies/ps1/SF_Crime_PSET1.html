@@ -10,10 +10,10 @@
   <title>Problem Set 1</title>
   <meta name="description" content="SF Crime PSET 1">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html">
-  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+  <link rel="canonical" href="http://ds-modules.github.io/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://ds-modules.github.io/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html" />
+  <meta property="og:url"         content="http://ds-modules.github.io/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Problem Set 1" />
 <meta property="og:description" content="SF Crime PSET 1" />
@@ -25,13 +25,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
+    "http://ds-modules.github.io/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
   "headline":
     "Problem Set 1",
   "datePublished":
-    "2019-05-26T22:28:14-05:00",
+    "2019-10-31T10:01:27-07:00",
   "dateModified":
-    "2019-05-26T22:28:14-05:00",
+    "2019-10-31T10:01:27-07:00",
   "description":
     "SF Crime PSET 1",
   "author": {
@@ -43,14 +43,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://0.0.0.0:4000/modules-textbook",
+      "url": "http://ds-modules.github.io/modules-textbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "http://0.0.0.0:4000/modules-textbook",
+    "url": "http://ds-modules.github.io/modules-textbook",
     "height": 60,
     "width": 60
   }
@@ -143,6 +143,99 @@ initFunction(function () {
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/modules-textbook',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
 
 
   <!-- Google analytics -->
@@ -367,7 +460,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://ds-modules.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -602,7 +695,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+          href="https://ds-modules.github.io/curriculum-guide/intro"
         >
           
           Data Science Curriculum Guide
@@ -669,15 +762,69 @@ initFunction(initQuery);
               </li>
               
             
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Social Sciences</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/features/notebooks.html"
+                  href="/modules-textbook/legalst-190/1-18.html"
                 >
                   
-                  Jupyter notebooks
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
                 </a>
 
                 
@@ -694,10 +841,6 @@ initFunction(initQuery);
     
       
       
-        <li><h2 class="c-sidebar__title">Modules</li>
-        
-      
-      
 
       
       
@@ -706,10 +849,10 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/modules-textbook/legal_studies/intro-legal-studies.html"
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
         >
           
-          Legal Studies
+          Psychology
         </a>
 
         
@@ -721,17 +864,17 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections ">
+          <ul class="c-sidebar__sections u-hidden-visually">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/legal_studies/1-18.html"
+                  href="/modules-textbook/psych-167ac/01-intro.html"
                 >
                   
-                  Intro to Python
+                  Introduction
                 </a>
 
                 
@@ -744,11 +887,187 @@ initFunction(initQuery);
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html"
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
                 >
                   
-                  Problem Set 1
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Arts and Humanities</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Professional</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
+                >
+                  
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
                 </a>
 
                 
@@ -808,6 +1127,7 @@ initFunction(initQuery);
 <button id="interact-button-download" class="interact-button">Download</button>
 </a>
 
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
 
 
 
@@ -847,7 +1167,6 @@ initFunction(initQuery);
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">folium</span>
-<span class="kn">from</span> <span class="nn">folium</span> <span class="kn">import</span> <span class="n">GeoJson</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -873,38 +1192,1066 @@ initFunction(initQuery);
 
 <p>Write code that pulls the data into your environment with an API call. Here is the link to the API: https://data.sfgov.org/resource/PdId.json</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span>
-</code></pre></div></div>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sf_police</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'Police_Department_Sample_Incidents.csv'</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sf_police</span><span class="p">)</span>
+<span class="n">df</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># the url that we want to get our data from</span>
-<span class="c">#</span>
-<span class="c">#  ******* THIS IS THE OLD DATA PULLING CELL. DO NOT USE. USE CELL BELOW. *******</span>
-<span class="n">data_url</span> <span class="o">=</span> <span class="s">'https://data.sfgov.org/resource/PdId.json?$limit=1&amp;$offset=0&amp;$order=date DESC'</span>
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c"># making our http request to DATA_URL</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
-<span class="c"># using the built-in json decoder of the requests library to interpret the text</span>
-<span class="n">json_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">json_response</span><span class="p">)</span>
-</code></pre></div></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>incidntnum</th>
+      <th>category</th>
+      <th>descript</th>
+      <th>dayofweek</th>
+      <th>date</th>
+      <th>time</th>
+      <th>pddistrict</th>
+      <th>resolution</th>
+      <th>address</th>
+      <th>x</th>
+      <th>y</th>
+      <th>location</th>
+      <th>pdid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>30325834</td>
+      <td>OTHER OFFENSES</td>
+      <td>POSSESSION OF BURGLARY TOOLS</td>
+      <td>Wednesday</td>
+      <td>03/19/2003</td>
+      <td>01:06:00</td>
+      <td>MISSION</td>
+      <td>ARREST, BOOKED</td>
+      <td>3100 Block of CESAR CHAVEZ ST</td>
+      <td>-122.412594</td>
+      <td>37.748166</td>
+      <td>(37.7481660056223, -122.412594354828)</td>
+      <td>3.032583e+12</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>150119979</td>
+      <td>OTHER OFFENSES</td>
+      <td>TRAFFIC VIOLATION</td>
+      <td>Sunday</td>
+      <td>02/08/2015</td>
+      <td>03:26:00</td>
+      <td>INGLESIDE</td>
+      <td>ARREST, BOOKED</td>
+      <td>MISSION ST / COLLEGE AV</td>
+      <td>-122.424702</td>
+      <td>37.735370</td>
+      <td>(37.7353699090873, -122.424702079332)</td>
+      <td>1.501200e+13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>130507219</td>
+      <td>OTHER OFFENSES</td>
+      <td>RESISTING ARREST</td>
+      <td>Thursday</td>
+      <td>06/20/2013</td>
+      <td>15:22:00</td>
+      <td>CENTRAL</td>
+      <td>ARREST, CITED</td>
+      <td>200 Block of SACRAMENTO ST</td>
+      <td>-122.398405</td>
+      <td>37.794412</td>
+      <td>(37.7944120086129, -122.39840549202)</td>
+      <td>1.305072e+13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>40459865</td>
+      <td>OTHER OFFENSES</td>
+      <td>LOST/STOLEN LICENSE PLATE</td>
+      <td>Wednesday</td>
+      <td>04/21/2004</td>
+      <td>11:00:00</td>
+      <td>INGLESIDE</td>
+      <td>NONE</td>
+      <td>600 Block of 28TH ST</td>
+      <td>-122.436797</td>
+      <td>37.744751</td>
+      <td>(37.7447510901057, -122.436796627403)</td>
+      <td>4.045987e+12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>70067529</td>
+      <td>FORGERY/COUNTERFEITING</td>
+      <td>CHECKS, MAKE OR PASS FICTITIOUS</td>
+      <td>Friday</td>
+      <td>01/05/2007</td>
+      <td>12:00:00</td>
+      <td>INGLESIDE</td>
+      <td>NONE</td>
+      <td>1600 Block of BURROWS ST</td>
+      <td>-122.419412</td>
+      <td>37.724888</td>
+      <td>(37.7248875198607, -122.41941248624)</td>
+      <td>7.006753e+12</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>106103162</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT OF PROPERTY</td>
+      <td>Thursday</td>
+      <td>08/19/2010</td>
+      <td>14:05:00</td>
+      <td>BAYVIEW</td>
+      <td>NONE</td>
+      <td>1300 Block of REVERE AV</td>
+      <td>-122.385545</td>
+      <td>37.728980</td>
+      <td>(37.728979731984, -122.385545453301)</td>
+      <td>1.061032e+13</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>120276214</td>
+      <td>ASSAULT</td>
+      <td>BATTERY WITH SERIOUS INJURIES</td>
+      <td>Saturday</td>
+      <td>04/07/2012</td>
+      <td>03:05:00</td>
+      <td>PARK</td>
+      <td>ARREST, BOOKED</td>
+      <td>500 Block of CENTRAL AV</td>
+      <td>-122.444569</td>
+      <td>37.774618</td>
+      <td>(37.7746181158166, -122.444568876114)</td>
+      <td>1.202762e+13</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>170096642</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT SHOPLIFTING</td>
+      <td>Friday</td>
+      <td>02/03/2017</td>
+      <td>15:00:00</td>
+      <td>MISSION</td>
+      <td>NONE</td>
+      <td>400 Block of CASTRO ST</td>
+      <td>-122.435150</td>
+      <td>37.761760</td>
+      <td>(37.761759724359806, -122.43515009981229)</td>
+      <td>1.700966e+13</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>40822096</td>
+      <td>OTHER OFFENSES</td>
+      <td>DRIVERS LICENSE, SUSPENDED OR REVOKED</td>
+      <td>Monday</td>
+      <td>07/19/2004</td>
+      <td>13:00:00</td>
+      <td>TENDERLOIN</td>
+      <td>ARREST, CITED</td>
+      <td>EDDY ST / HYDE ST</td>
+      <td>-122.415885</td>
+      <td>37.783516</td>
+      <td>(37.7835160563924, -122.415885065795)</td>
+      <td>4.082210e+12</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>100487776</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT FROM A BUILDING</td>
+      <td>Friday</td>
+      <td>05/07/2010</td>
+      <td>20:30:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>400 Block of MINNA ST</td>
+      <td>-122.407387</td>
+      <td>37.781069</td>
+      <td>(37.7810688918781, -122.407387172098)</td>
+      <td>1.004878e+13</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>160459555</td>
+      <td>ROBBERY</td>
+      <td>ROBBERY OF A SERVICE STATION WITH A GUN</td>
+      <td>Sunday</td>
+      <td>06/05/2016</td>
+      <td>18:35:00</td>
+      <td>TARAVAL</td>
+      <td>NONE</td>
+      <td>1100 Block of JUNIPERO SERRA BL</td>
+      <td>-122.472389</td>
+      <td>37.717501</td>
+      <td>(37.7175010456614, -122.4723890410333)</td>
+      <td>1.604596e+13</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>120107590</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT BICYCLE</td>
+      <td>Friday</td>
+      <td>02/03/2012</td>
+      <td>19:00:00</td>
+      <td>RICHMOND</td>
+      <td>NONE</td>
+      <td>600 Block of 25TH AV</td>
+      <td>-122.484596</td>
+      <td>37.777213</td>
+      <td>(37.7772129804302, -122.484595739169)</td>
+      <td>1.201076e+13</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>100847910</td>
+      <td>VANDALISM</td>
+      <td>MALICIOUS MISCHIEF, VANDALISM</td>
+      <td>Monday</td>
+      <td>09/13/2010</td>
+      <td>00:01:00</td>
+      <td>MISSION</td>
+      <td>NONE</td>
+      <td>100 Block of GRANDVIEW AV</td>
+      <td>-122.440412</td>
+      <td>37.755446</td>
+      <td>(37.7554456064661, -122.440411847156)</td>
+      <td>1.008479e+13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>30802688</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT FROM LOCKED AUTO</td>
+      <td>Saturday</td>
+      <td>07/05/2003</td>
+      <td>16:00:00</td>
+      <td>NORTHERN</td>
+      <td>NONE</td>
+      <td>FRANKLIN ST / ELLIS ST</td>
+      <td>-122.422654</td>
+      <td>37.783620</td>
+      <td>(37.7836201224122, -122.422654162991)</td>
+      <td>3.080269e+12</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>60098528</td>
+      <td>NON-CRIMINAL</td>
+      <td>TARASOFF REPORT</td>
+      <td>Thursday</td>
+      <td>01/26/2006</td>
+      <td>09:15:00</td>
+      <td>TENDERLOIN</td>
+      <td>NONE</td>
+      <td>300 Block of EDDY ST</td>
+      <td>-122.413791</td>
+      <td>37.783837</td>
+      <td>(37.7838365565348, -122.413790972781)</td>
+      <td>6.009853e+12</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>130149833</td>
+      <td>MISSING PERSON</td>
+      <td>MISSING JUVENILE</td>
+      <td>Wednesday</td>
+      <td>02/20/2013</td>
+      <td>09:00:00</td>
+      <td>PARK</td>
+      <td>LOCATED</td>
+      <td>100 Block of BELVEDERE ST</td>
+      <td>-122.449329</td>
+      <td>37.767774</td>
+      <td>(37.7677738874748, -122.449328648219)</td>
+      <td>1.301498e+13</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>41322974</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM A BUILDING</td>
+      <td>Thursday</td>
+      <td>11/18/2004</td>
+      <td>17:00:00</td>
+      <td>CENTRAL</td>
+      <td>NONE</td>
+      <td>900 Block of MASON ST</td>
+      <td>-122.410846</td>
+      <td>37.792316</td>
+      <td>(37.7923158747647, -122.410845624227)</td>
+      <td>4.132297e+12</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>100174597</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT SHOPLIFTING</td>
+      <td>Sunday</td>
+      <td>02/21/2010</td>
+      <td>17:20:00</td>
+      <td>SOUTHERN</td>
+      <td>ARREST, CITED</td>
+      <td>800 Block of MARKET ST</td>
+      <td>-122.407634</td>
+      <td>37.784189</td>
+      <td>(37.7841893501425, -122.407633520742)</td>
+      <td>1.001746e+13</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>130034347</td>
+      <td>OTHER OFFENSES</td>
+      <td>CONSPIRACY</td>
+      <td>Sunday</td>
+      <td>01/13/2013</td>
+      <td>01:03:00</td>
+      <td>TENDERLOIN</td>
+      <td>ARREST, BOOKED</td>
+      <td>100 Block of ELLIS ST</td>
+      <td>-122.408271</td>
+      <td>37.785494</td>
+      <td>(37.7854941424186, -122.408270724034)</td>
+      <td>1.300343e+13</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>150034220</td>
+      <td>VEHICLE THEFT</td>
+      <td>STOLEN AUTOMOBILE</td>
+      <td>Sunday</td>
+      <td>01/11/2015</td>
+      <td>23:00:00</td>
+      <td>INGLESIDE</td>
+      <td>NONE</td>
+      <td>1200 Block of ALEMANY BL</td>
+      <td>-122.432269</td>
+      <td>37.730139</td>
+      <td>(37.7301394309025, -122.432268894425)</td>
+      <td>1.500342e+13</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>101033821</td>
+      <td>DRUG/NARCOTIC</td>
+      <td>POSSESSION OF BASE/ROCK COCAINE FOR SALE</td>
+      <td>Saturday</td>
+      <td>11/06/2010</td>
+      <td>22:00:00</td>
+      <td>TENDERLOIN</td>
+      <td>ARREST, BOOKED</td>
+      <td>OFARRELL ST / JONES ST</td>
+      <td>-122.412971</td>
+      <td>37.785788</td>
+      <td>(37.7857883766888, -122.412970537591)</td>
+      <td>1.010338e+13</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>130473234</td>
+      <td>SUSPICIOUS OCC</td>
+      <td>SUSPICIOUS OCCURRENCE</td>
+      <td>Saturday</td>
+      <td>06/08/2013</td>
+      <td>18:00:00</td>
+      <td>RICHMOND</td>
+      <td>UNFOUNDED</td>
+      <td>300 Block of 7TH AV</td>
+      <td>-122.465490</td>
+      <td>37.781907</td>
+      <td>(37.7819066124774, -122.465490381382)</td>
+      <td>1.304732e+13</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>96024454</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Monday</td>
+      <td>04/06/2009</td>
+      <td>14:30:00</td>
+      <td>INGLESIDE</td>
+      <td>NONE</td>
+      <td>1500 Block of TREAT AV</td>
+      <td>-122.412506</td>
+      <td>37.745680</td>
+      <td>(37.7456802881475, -122.41250614556)</td>
+      <td>9.602445e+12</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>70430788</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM PERSON</td>
+      <td>Thursday</td>
+      <td>04/26/2007</td>
+      <td>13:15:00</td>
+      <td>NORTHERN</td>
+      <td>NONE</td>
+      <td>600 Block of EDDY ST</td>
+      <td>-122.418382</td>
+      <td>37.783258</td>
+      <td>(37.7832583770949, -122.418382008607)</td>
+      <td>7.043079e+12</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>171022519</td>
+      <td>LARCENY/THEFT</td>
+      <td>LOST PROPERTY, GRAND THEFT</td>
+      <td>Monday</td>
+      <td>12/18/2017</td>
+      <td>18:45:00</td>
+      <td>CENTRAL</td>
+      <td>NONE</td>
+      <td>CHESTNUT ST / POWELL ST</td>
+      <td>-122.411587</td>
+      <td>37.803962</td>
+      <td>(37.80396234588253, -122.41158662771912)</td>
+      <td>1.710225e+13</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>160131305</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT FROM LOCKED AUTO</td>
+      <td>Saturday</td>
+      <td>02/13/2016</td>
+      <td>16:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>HARRIET ST / FOLSOM ST</td>
+      <td>-122.406151</td>
+      <td>37.778081</td>
+      <td>(37.77808112789121, -122.40615148216322)</td>
+      <td>1.601313e+13</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>100587291</td>
+      <td>SUSPICIOUS OCC</td>
+      <td>SUSPICIOUS OCCURRENCE</td>
+      <td>Saturday</td>
+      <td>06/26/2010</td>
+      <td>03:55:00</td>
+      <td>MISSION</td>
+      <td>NONE</td>
+      <td>3000 Block of 16TH ST</td>
+      <td>-122.421083</td>
+      <td>37.764911</td>
+      <td>(37.764910844226, -122.421082850193)</td>
+      <td>1.005873e+13</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>50103165</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Wednesday</td>
+      <td>01/26/2005</td>
+      <td>07:45:00</td>
+      <td>CENTRAL</td>
+      <td>NONE</td>
+      <td>300 Block of CLAY ST</td>
+      <td>-122.398573</td>
+      <td>37.795292</td>
+      <td>(37.7952923975164, -122.398573051955)</td>
+      <td>5.010317e+12</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>80437166</td>
+      <td>OTHER OFFENSES</td>
+      <td>DRIVERS LICENSE, SUSPENDED OR REVOKED</td>
+      <td>Saturday</td>
+      <td>04/26/2008</td>
+      <td>17:16:00</td>
+      <td>BAYVIEW</td>
+      <td>ARREST, CITED</td>
+      <td>CESAR CHAVEZ ST / KANSAS ST</td>
+      <td>-122.402063</td>
+      <td>37.749398</td>
+      <td>(37.7493979879214, -122.402063377785)</td>
+      <td>8.043717e+12</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>110218113</td>
+      <td>OTHER OFFENSES</td>
+      <td>MISCELLANEOUS INVESTIGATION</td>
+      <td>Wednesday</td>
+      <td>03/16/2011</td>
+      <td>10:30:00</td>
+      <td>PARK</td>
+      <td>NONE</td>
+      <td>700 Block of CLAYTON ST</td>
+      <td>-122.448266</td>
+      <td>37.767909</td>
+      <td>(37.7679091107584, -122.448266122025)</td>
+      <td>1.102181e+13</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9970</th>
+      <td>90773615</td>
+      <td>VEHICLE THEFT</td>
+      <td>STOLEN AUTOMOBILE</td>
+      <td>Wednesday</td>
+      <td>07/29/2009</td>
+      <td>07:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>6TH ST / STEVENSON ST</td>
+      <td>-122.409696</td>
+      <td>37.781754</td>
+      <td>(37.7817540588712, -122.409696355558)</td>
+      <td>9.077362e+12</td>
+    </tr>
+    <tr>
+      <th>9971</th>
+      <td>171009573</td>
+      <td>SUSPICIOUS OCC</td>
+      <td>SUSPICIOUS OCCURRENCE</td>
+      <td>Thursday</td>
+      <td>12/14/2017</td>
+      <td>09:03:00</td>
+      <td>MISSION</td>
+      <td>NONE</td>
+      <td>DUBOCE AV / WOODWARD ST</td>
+      <td>-122.420948</td>
+      <td>37.769979</td>
+      <td>(37.76997927943881, -122.42094803971935)</td>
+      <td>1.710096e+13</td>
+    </tr>
+    <tr>
+      <th>9972</th>
+      <td>30696867</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Sunday</td>
+      <td>06/08/2003</td>
+      <td>02:30:00</td>
+      <td>BAYVIEW</td>
+      <td>NONE</td>
+      <td>400 Block of BARNEVELD AV</td>
+      <td>-122.403360</td>
+      <td>37.741657</td>
+      <td>(37.7416571720538, -122.403359514965)</td>
+      <td>3.069687e+12</td>
+    </tr>
+    <tr>
+      <th>9973</th>
+      <td>66005553</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Wednesday</td>
+      <td>01/25/2006</td>
+      <td>22:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>800 Block of FOLSOM ST</td>
+      <td>-122.402246</td>
+      <td>37.781089</td>
+      <td>(37.7810888153345, -122.402246029097)</td>
+      <td>6.600555e+12</td>
+    </tr>
+    <tr>
+      <th>9974</th>
+      <td>41309477</td>
+      <td>WARRANTS</td>
+      <td>WARRANT ARREST</td>
+      <td>Tuesday</td>
+      <td>11/16/2004</td>
+      <td>13:20:00</td>
+      <td>MISSION</td>
+      <td>ARREST, BOOKED</td>
+      <td>16TH ST / HOFF ST</td>
+      <td>-122.420580</td>
+      <td>37.764997</td>
+      <td>(37.7649968622982, -122.420580440119)</td>
+      <td>4.130948e+12</td>
+    </tr>
+    <tr>
+      <th>9975</th>
+      <td>130576957</td>
+      <td>SUSPICIOUS OCC</td>
+      <td>SUSPICIOUS OCCURRENCE</td>
+      <td>Thursday</td>
+      <td>07/11/2013</td>
+      <td>23:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>9TH ST / FOLSOM ST</td>
+      <td>-122.411612</td>
+      <td>37.773768</td>
+      <td>(37.7737679567236, -122.411612378034)</td>
+      <td>1.305770e+13</td>
+    </tr>
+    <tr>
+      <th>9976</th>
+      <td>61239785</td>
+      <td>MISSING PERSON</td>
+      <td>MISSING ADULT</td>
+      <td>Monday</td>
+      <td>11/20/2006</td>
+      <td>05:30:00</td>
+      <td>BAYVIEW</td>
+      <td>LOCATED</td>
+      <td>1400 Block of PHELPS ST</td>
+      <td>-122.394439</td>
+      <td>37.736444</td>
+      <td>(37.7364438996732, -122.394438859914)</td>
+      <td>6.123979e+12</td>
+    </tr>
+    <tr>
+      <th>9977</th>
+      <td>130969346</td>
+      <td>ASSAULT</td>
+      <td>AGGRAVATED ASSAULT OF POLICE OFFICER,BODILY FORCE</td>
+      <td>Friday</td>
+      <td>11/15/2013</td>
+      <td>15:41:00</td>
+      <td>SOUTHERN</td>
+      <td>ARREST, BOOKED</td>
+      <td>800 Block of BRYANT ST</td>
+      <td>-122.403405</td>
+      <td>37.775421</td>
+      <td>(37.775420706711, -122.403404791479)</td>
+      <td>1.309693e+13</td>
+    </tr>
+    <tr>
+      <th>9978</th>
+      <td>130270018</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT FROM A BUILDING</td>
+      <td>Thursday</td>
+      <td>03/21/2013</td>
+      <td>01:02:00</td>
+      <td>PARK</td>
+      <td>NONE</td>
+      <td>4100 Block of 17TH ST</td>
+      <td>-122.437906</td>
+      <td>37.762376</td>
+      <td>(37.7623763079838, -122.437905731311)</td>
+      <td>1.302700e+13</td>
+    </tr>
+    <tr>
+      <th>9979</th>
+      <td>160168693</td>
+      <td>VANDALISM</td>
+      <td>MALICIOUS MISCHIEF, VANDALISM</td>
+      <td>Friday</td>
+      <td>02/26/2016</td>
+      <td>15:25:00</td>
+      <td>TARAVAL</td>
+      <td>ARREST, BOOKED</td>
+      <td>2300 Block of NORIEGA ST</td>
+      <td>-122.488808</td>
+      <td>37.753752</td>
+      <td>(37.75375194458355, -122.48880789335784)</td>
+      <td>1.601687e+13</td>
+    </tr>
+    <tr>
+      <th>9980</th>
+      <td>40988529</td>
+      <td>LARCENY/THEFT</td>
+      <td>PETTY THEFT WITH PRIOR</td>
+      <td>Sunday</td>
+      <td>08/29/2004</td>
+      <td>17:00:00</td>
+      <td>TENDERLOIN</td>
+      <td>ARREST, BOOKED</td>
+      <td>100 Block of OFARRELL ST</td>
+      <td>-122.407244</td>
+      <td>37.786565</td>
+      <td>(37.7865647607685, -122.407244087032)</td>
+      <td>4.098853e+12</td>
+    </tr>
+    <tr>
+      <th>9981</th>
+      <td>70576586</td>
+      <td>NON-CRIMINAL</td>
+      <td>LOST PROPERTY</td>
+      <td>Wednesday</td>
+      <td>03/07/2007</td>
+      <td>08:40:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>800 Block of BRYANT ST</td>
+      <td>-122.403405</td>
+      <td>37.775421</td>
+      <td>(37.775420706711, -122.403404791479)</td>
+      <td>7.057659e+12</td>
+    </tr>
+    <tr>
+      <th>9982</th>
+      <td>136168471</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Saturday</td>
+      <td>09/14/2013</td>
+      <td>13:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>200 Block of INTERSTATE80 HY</td>
+      <td>-122.365565</td>
+      <td>37.809671</td>
+      <td>(37.8096707013239, -122.365565425353)</td>
+      <td>1.361685e+13</td>
+    </tr>
+    <tr>
+      <th>9983</th>
+      <td>110861637</td>
+      <td>RECOVERED VEHICLE</td>
+      <td>RECOVERED VEHICLE - STOLEN OUTSIDE SF</td>
+      <td>Tuesday</td>
+      <td>10/25/2011</td>
+      <td>14:43:00</td>
+      <td>BAYVIEW</td>
+      <td>NONE</td>
+      <td>1300 Block of INGALLS ST</td>
+      <td>-122.382589</td>
+      <td>37.730465</td>
+      <td>(37.7304652920239, -122.382588718232)</td>
+      <td>1.108616e+13</td>
+    </tr>
+    <tr>
+      <th>9984</th>
+      <td>40345587</td>
+      <td>VEHICLE THEFT</td>
+      <td>STOLEN AUTOMOBILE</td>
+      <td>Wednesday</td>
+      <td>03/24/2004</td>
+      <td>21:00:00</td>
+      <td>MISSION</td>
+      <td>NONE</td>
+      <td>24TH ST / POTRERO AV</td>
+      <td>-122.406338</td>
+      <td>37.753004</td>
+      <td>(37.7530042877269, -122.406338412693)</td>
+      <td>4.034559e+12</td>
+    </tr>
+    <tr>
+      <th>9985</th>
+      <td>140819054</td>
+      <td>OTHER OFFENSES</td>
+      <td>DRIVERS LICENSE, SUSPENDED OR REVOKED</td>
+      <td>Sunday</td>
+      <td>09/28/2014</td>
+      <td>18:14:00</td>
+      <td>RICHMOND</td>
+      <td>ARREST, CITED</td>
+      <td>FULTON ST / 30TH AV</td>
+      <td>-122.489539</td>
+      <td>37.772325</td>
+      <td>(37.772324696627, -122.489538601712)</td>
+      <td>1.408191e+13</td>
+    </tr>
+    <tr>
+      <th>9986</th>
+      <td>120709920</td>
+      <td>BURGLARY</td>
+      <td>BURGLARY, HOT PROWL, FORCIBLE ENTRY</td>
+      <td>Wednesday</td>
+      <td>09/05/2012</td>
+      <td>10:06:00</td>
+      <td>TARAVAL</td>
+      <td>NONE</td>
+      <td>100 Block of ELVERANO WY</td>
+      <td>-122.461329</td>
+      <td>37.730631</td>
+      <td>(37.7306307008778, -122.461329068423)</td>
+      <td>1.207099e+13</td>
+    </tr>
+    <tr>
+      <th>9987</th>
+      <td>90239322</td>
+      <td>OTHER OFFENSES</td>
+      <td>HARASSING PHONE CALLS</td>
+      <td>Wednesday</td>
+      <td>03/04/2009</td>
+      <td>17:00:00</td>
+      <td>CENTRAL</td>
+      <td>NONE</td>
+      <td>500 Block of GREEN ST</td>
+      <td>-122.407932</td>
+      <td>37.799577</td>
+      <td>(37.7995771094892, -122.407931930502)</td>
+      <td>9.023932e+12</td>
+    </tr>
+    <tr>
+      <th>9988</th>
+      <td>91140174</td>
+      <td>ASSAULT</td>
+      <td>BATTERY</td>
+      <td>Thursday</td>
+      <td>11/05/2009</td>
+      <td>00:20:00</td>
+      <td>BAYVIEW</td>
+      <td>NONE</td>
+      <td>17TH ST / TEXAS ST</td>
+      <td>-122.395810</td>
+      <td>37.765189</td>
+      <td>(37.7651891001345, -122.395810281469)</td>
+      <td>9.114017e+12</td>
+    </tr>
+    <tr>
+      <th>9989</th>
+      <td>80279742</td>
+      <td>MISSING PERSON</td>
+      <td>MISSING ADULT</td>
+      <td>Friday</td>
+      <td>03/07/2008</td>
+      <td>23:30:00</td>
+      <td>TENDERLOIN</td>
+      <td>LOCATED</td>
+      <td>300 Block of MASON ST</td>
+      <td>-122.409661</td>
+      <td>37.786439</td>
+      <td>(37.7864394524764, -122.409660751795)</td>
+      <td>8.027974e+12</td>
+    </tr>
+    <tr>
+      <th>9990</th>
+      <td>170927865</td>
+      <td>ASSAULT</td>
+      <td>BATTERY, FORMER SPOUSE OR DATING RELATIONSHIP</td>
+      <td>Tuesday</td>
+      <td>11/14/2017</td>
+      <td>11:21:00</td>
+      <td>SOUTHERN</td>
+      <td>ARREST, BOOKED</td>
+      <td>800 Block of BRYANT ST</td>
+      <td>-122.403405</td>
+      <td>37.775421</td>
+      <td>(37.775420706711, -122.40340479147905)</td>
+      <td>1.709279e+13</td>
+    </tr>
+    <tr>
+      <th>9991</th>
+      <td>160689633</td>
+      <td>OTHER OFFENSES</td>
+      <td>VIOLATION OF RESTRAINING ORDER</td>
+      <td>Thursday</td>
+      <td>08/25/2016</td>
+      <td>09:00:00</td>
+      <td>MISSION</td>
+      <td>ARREST, BOOKED</td>
+      <td>400 Block of ALVARADO ST</td>
+      <td>-122.431019</td>
+      <td>37.753944</td>
+      <td>(37.753943582970585, -122.43101882896221)</td>
+      <td>1.606896e+13</td>
+    </tr>
+    <tr>
+      <th>9992</th>
+      <td>80917287</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Thursday</td>
+      <td>08/28/2008</td>
+      <td>20:00:00</td>
+      <td>NORTHERN</td>
+      <td>NONE</td>
+      <td>GOLDEN GATE AV / FILLMORE ST</td>
+      <td>-122.431952</td>
+      <td>37.779565</td>
+      <td>(37.7795647498663, -122.431952436364)</td>
+      <td>8.091729e+12</td>
+    </tr>
+    <tr>
+      <th>9993</th>
+      <td>40813841</td>
+      <td>ASSAULT</td>
+      <td>AGGRAVATED ASSAULT WITH A DEADLY WEAPON</td>
+      <td>Saturday</td>
+      <td>07/17/2004</td>
+      <td>01:57:00</td>
+      <td>MISSION</td>
+      <td>ARREST, BOOKED</td>
+      <td>16TH ST / HOFF ST</td>
+      <td>-122.420580</td>
+      <td>37.764997</td>
+      <td>(37.7649968622982, -122.420580440119)</td>
+      <td>4.081384e+12</td>
+    </tr>
+    <tr>
+      <th>9994</th>
+      <td>146231278</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM LOCKED AUTO</td>
+      <td>Wednesday</td>
+      <td>11/05/2014</td>
+      <td>09:45:00</td>
+      <td>CENTRAL</td>
+      <td>NONE</td>
+      <td>NORTHPOINT ST / LARKIN ST</td>
+      <td>-122.422009</td>
+      <td>37.805496</td>
+      <td>(37.8054960276478, -122.422008950077)</td>
+      <td>1.462313e+13</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>140224390</td>
+      <td>OTHER OFFENSES</td>
+      <td>DRIVERS LICENSE, SUSPENDED OR REVOKED</td>
+      <td>Sunday</td>
+      <td>03/16/2014</td>
+      <td>18:30:00</td>
+      <td>INGLESIDE</td>
+      <td>ARREST, CITED</td>
+      <td>PERSIA AV / MADRID ST</td>
+      <td>-122.432805</td>
+      <td>37.721618</td>
+      <td>(37.7216179113708, -122.432804728335)</td>
+      <td>1.402244e+13</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>140531101</td>
+      <td>VEHICLE THEFT</td>
+      <td>STOLEN AUTOMOBILE</td>
+      <td>Thursday</td>
+      <td>06/26/2014</td>
+      <td>18:00:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>0 Block of GOUGH ST</td>
+      <td>-122.421206</td>
+      <td>37.772531</td>
+      <td>(37.7725305162673, -122.421205551035)</td>
+      <td>1.405311e+13</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>70416857</td>
+      <td>BURGLARY</td>
+      <td>BURGLARY OF RESIDENCE, UNLAWFUL ENTRY</td>
+      <td>Monday</td>
+      <td>04/23/2007</td>
+      <td>09:15:00</td>
+      <td>TARAVAL</td>
+      <td>ARREST, BOOKED</td>
+      <td>1700 Block of 44TH AV</td>
+      <td>-122.503257</td>
+      <td>37.753978</td>
+      <td>(37.7539775965639, -122.503257080708)</td>
+      <td>7.041686e+12</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>130481259</td>
+      <td>DRUG/NARCOTIC</td>
+      <td>SALE OF MARIJUANA</td>
+      <td>Tuesday</td>
+      <td>06/11/2013</td>
+      <td>16:07:00</td>
+      <td>SOUTHERN</td>
+      <td>ARREST, BOOKED</td>
+      <td>900 Block of MARKET ST</td>
+      <td>-122.408595</td>
+      <td>37.783707</td>
+      <td>(37.7837069301545, -122.408595110869)</td>
+      <td>1.304813e+13</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>146101245</td>
+      <td>LARCENY/THEFT</td>
+      <td>GRAND THEFT FROM UNLOCKED AUTO</td>
+      <td>Sunday</td>
+      <td>05/18/2014</td>
+      <td>00:45:00</td>
+      <td>SOUTHERN</td>
+      <td>NONE</td>
+      <td>HARRISON ST / 5TH ST</td>
+      <td>-122.401846</td>
+      <td>37.779032</td>
+      <td>(37.7790324136251, -122.401846367522)</td>
+      <td>1.461012e+13</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 13 columns</p>
+</div>
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#ts = Table(data.labels)</span>
-<span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">recs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">lnk</span> <span class="o">=</span> <span class="s">'https://data.sfgov.org/resource/PdId.json?$limit=50000&amp;$offset={}&amp;$order=date DESC'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lnk</span><span class="p">)</span>
-    <span class="n">js</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">recs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">js</span><span class="p">)</span>
-    <span class="n">offset</span> <span class="o">+=</span> <span class="mi">50000</span>
-    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">recs</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">sodapy</span> <span class="kn">import</span> <span class="n">Socrata</span>
+
+<span class="c"># Unauthenticated client only works with public data sets. Note 'None'</span>
+<span class="c"># in place of application token, and no username or password:</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Socrata</span><span class="p">(</span><span class="s">"data.sfgov.org"</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+<span class="c"># Example authenticated client (needed for non-public datasets):</span>
+<span class="c"># client = Socrata(data.sfgov.org,</span>
+<span class="c">#                  MyAppToken,</span>
+<span class="c">#                  userame="user@example.com",</span>
+<span class="c">#                  password="AFakePassword")</span>
+
+<span class="c"># First 2000 results, returned as JSON from API / converted to Python list of</span>
+<span class="c"># dictionaries by sodapy.</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"tmnf-yvry"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="c"># Convert to pandas DataFrame</span>
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    ModuleNotFoundError                       Traceback (most recent call last)
+
+    &lt;ipython-input-17-c5d4879f0181&gt; in &lt;module&gt;()
+          1 #ts = Table(data.labels)
+          2 import pandas as pd
+    ----&gt; 3 from sodapy import Socrata
+          4 
+          5 # Unauthenticated client only works with public data sets. Note 'None'
+
+
+    ModuleNotFoundError: No module named 'sodapy'
+
+
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -912,8 +2259,71 @@ initFunction(initQuery);
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>code</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>error</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>message</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>data</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>code</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'location'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">data</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-10-cf486b52f37a&gt; in &lt;module&gt;()
+          1 # data = Table.from_df(df.drop('location', axis=1))
+    ----&gt; 2 data
+    
+
+    NameError: name 'data' is not defined
+
+
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'date'</span><span class="p">])</span>
@@ -927,6 +2337,21 @@ initFunction(initQuery);
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float'</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-9-8d418cf325f3&gt; in &lt;module&gt;()
+    ----&gt; 1 data['y'] = data['y'].astype('float')
+          2 data['x'] = data['x'].astype('float')
+
+
+    NameError: name 'data' is not defined
+
+
 </code></pre></div></div>
 
 <p><strong>QUESTION: What are the advantages to downloading data this way, instead of with a point-and-click action?</strong></p>
@@ -1108,7 +2533,7 @@ initFunction(initQuery);
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/legal_studies/1-18">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/legal_studies/1-18.html">
       〈 <span class="u-margin-right-tiny"></span> Intro to Python
     </a>
   

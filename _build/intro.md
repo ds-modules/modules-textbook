@@ -4,11 +4,11 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /https://github.com/ds-modules/
+  url: https://github.com/ds-modules/
   title: 'DSEP Modules Repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-# DSEP Data Science Modules
+# UC Berkeley Data Science Modules
 
 <img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left">
 
@@ -17,6 +17,18 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education Program (DSEP) at UC Berkeley, we believe in providing opportunities to students to be exposed to this paradigm shift.
 
 Feel free to take a look at the wealth of curriculum resources on the left of the screen.
+
+## Data Science at Berkeley
+
+In the Fall of 2018, the [UC Berkeley Division of Data Sciences and Information](https://data.berkeley.edu/) released the official Bachelor of Arts in Data Science major. Even before then, many years of planning went into increasing the exposure of the data sciences to the ungraduate community of Cal. From it's inception in 2017, [Data 8: The Foundations of Data Science](http://data8.org/) has become the fastest growing class in Berkeley's history. From that rising popularity came the construction of many other data science classes, such as the supplemental 2-unit [Connector Courses](https://data.berkeley.edu/education/connectors), as well as the liberal arts-focused [Modules](https://data.berkeley.edu/education/modules) program.
+
+## Data Science Education Programs (DSEP)
+
+The [DSEP team](https://data.berkeley.edu/data-science-education-programs) at UC Berkeley is an autonomous working arm of the Division of Data Sciences and Information. The team is made up of a variety of professors and undergraduates motivated to improve the way data science is being taught across all college and K-12 education systems. Our mission is to democratize data science pedagogy by integrating statistical analysis lectures and curriculum materials into the social sciences.
+
+## Acknowledgements
+
+This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex], [Shalini Kunapuli][shalini], and [Christopher Pyles][chris]. Contributors to certain chapters are recognized on each page of this textbook.
 
 ## Jupyter Books
 
@@ -33,13 +45,9 @@ Here are a few features of Jupyter Books
 * There are lots of nifty HTML features under-the-hood, such as Turbolinks fast-navigation and
   click-to-copy in code cells.
 
-## Acknowledgements
-
-This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex], [Shalini Kunapuli][shalini], and [Christopher Pyles][chris]. Contributors to certain chapters are recognized on each page of this textbook.
-
 ## License
 TBD.
 
 [alex]: https://www.linkedin.com/in/alexnakagawa/
 [shalini]: https://www.linkedin.com/in/shalinikunapuli/
-[chris]: https://cpyles.com
+[chris]: https://chrispyles.io

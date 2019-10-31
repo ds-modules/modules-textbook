@@ -1,16 +1,16 @@
 ---
 interact_link: content/cp-101/lab09/lab09.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Lab 9'
 prev_page:
-  url: /cp-101/lab08/lab08
+  url: /cp-101/lab08/lab08.html
   title: 'Lab 8'
 next_page:
-  url: /cp-101/lab10/lab10
+  url: /cp-101/lab10/lab10.html
   title: 'Lab 10'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # Introduction to `geopandas`
 ---
 Today we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in `geopandas`. `geopandas` is built on top of the `pandas` package you saw in the previous lab. Many of the methods you will see in this lab are shared between the two packages.

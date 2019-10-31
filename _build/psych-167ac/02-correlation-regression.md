@@ -1,16 +1,16 @@
 ---
 interact_link: content/psych-167ac/02-correlation-regression.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Correlation & Regression'
 prev_page:
-  url: /psych-167ac/01-intro
+  url: /psych-167ac/01-intro.html
   title: 'Introduction'
 next_page:
-  url: /psych-167ac/03-my-project
+  url: /psych-167ac/03-my-project.html
   title: 'My Project'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # Correlation, regression, and prediction
 
 *If you run into errors, check the [common errors](https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing) Google doc first.*

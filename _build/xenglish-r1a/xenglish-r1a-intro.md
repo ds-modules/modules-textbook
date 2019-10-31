@@ -1,10 +1,10 @@
 ---
 title: 'English'
 prev_page:
-  url: /cp-101/lab10/lab10
+  url: /cp-101/lab10/lab10.html
   title: 'Lab 10'
 next_page:
-  url: /xenglish-r1a/01-Chinatowns
+  url: /xenglish-r1a/01-Chinatowns.html
   title: 'Chinatowns'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

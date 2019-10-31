@@ -1,10 +1,10 @@
 ---
 title: 'Legal Studies'
 prev_page:
-  url: /xenglish-r1a/01-Chinatowns
+  url: /xenglish-r1a/01-Chinatowns.html
   title: 'Chinatowns'
 next_page:
-  url: /legalst-190/1-18
+  url: /legalst-190/1-18.html
   title: 'Intro to Python'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

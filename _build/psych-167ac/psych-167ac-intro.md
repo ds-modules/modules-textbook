@@ -1,10 +1,10 @@
 ---
 title: 'Psychology'
 prev_page:
-  url: /legalst-190/ps1/SF_Crime_PSET1
+  url: /legalst-190/ps1/SF_Crime_PSET1.html
   title: 'Problem Set 1'
 next_page:
-  url: /psych-167ac/01-intro
+  url: /psych-167ac/01-intro.html
   title: 'Introduction'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

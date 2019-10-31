@@ -10,10 +10,10 @@
   <title>City Planning</title>
   <meta name="description" content="Introduction to the City Planning Modules">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/cp-101/cp-101-intro.html">
-  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+  <link rel="canonical" href="http://ds-modules.github.io/modules-textbook/cp-101/cp-101-intro.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://ds-modules.github.io/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/cp-101/cp-101-intro.html" />
+  <meta property="og:url"         content="http://ds-modules.github.io/modules-textbook/cp-101/cp-101-intro.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="City Planning" />
 <meta property="og:description" content="Introduction to the City Planning Modules" />
@@ -25,13 +25,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/cp-101/cp-101-intro.html",
+    "http://ds-modules.github.io/modules-textbook/cp-101/cp-101-intro.html",
   "headline":
     "City Planning",
   "datePublished":
-    "2019-05-31T17:05:06-05:00",
+    "2019-10-31T10:01:27-07:00",
   "dateModified":
-    "2019-05-31T17:05:06-05:00",
+    "2019-10-31T10:01:27-07:00",
   "description":
     "Introduction to the City Planning Modules",
   "author": {
@@ -43,14 +43,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://0.0.0.0:4000/modules-textbook",
+      "url": "http://ds-modules.github.io/modules-textbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "http://0.0.0.0:4000/modules-textbook",
+    "url": "http://ds-modules.github.io/modules-textbook",
     "height": 60,
     "width": 60
   }
@@ -148,7 +148,7 @@ initFunction(function () {
     {
       requestKernel: true,
       binderOptions: {
-        repo: 'ds-modules/featured-modules',
+        repo: 'ds-modules/modules-textbook',
         ref: 'master',
       },
       kernelOptions: {
@@ -460,7 +460,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://ds-modules.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -695,7 +695,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+          href="https://ds-modules.github.io/curriculum-guide/intro"
         >
           
           Data Science Curriculum Guide
@@ -762,15 +762,69 @@ initFunction(initQuery);
               </li>
               
             
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Social Sciences</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/features/notebooks.html"
+                  href="/modules-textbook/legalst-190/1-18.html"
                 >
                   
-                  Jupyter notebooks
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
                 </a>
 
                 
@@ -787,7 +841,145 @@ initFunction(initQuery);
     
       
       
-        <li><h2 class="c-sidebar__title">Modules</li>
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
+                >
+                  
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Arts and Humanities</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Professional</li>
         
       
       
@@ -890,207 +1082,6 @@ initFunction(initQuery);
 
       
     
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
-        >
-          
-          English
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
-                >
-                  
-                  Chinatowns
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/modules-textbook/legalst-190/legalst-190-intro.html"
-        >
-          
-          Legal Studies
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/legalst-190/1-18.html"
-                >
-                  
-                  Intro to Python
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
-                >
-                  
-                  Problem Set 1
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
-        >
-          
-          Psychology
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych-167ac/01-intro.html"
-                >
-                  
-                  Introduction
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
-                >
-                  
-                  Correlation & Regression
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych-167ac/03-my-project.html"
-                >
-                  
-                  My Project
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
   </ul>
   <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
 </nav>
@@ -1142,14 +1133,14 @@ initFunction(initQuery);
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/features/notebooks">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/features/notebooks.html">
       〈 <span class="u-margin-right-tiny"></span> Jupyter notebooks
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/cp-101/lab07/lab07">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/cp-101/lab07/lab07.html">
       Lab 7 <span class="u-margin-right-tiny"></span> 〉
     </a>
   

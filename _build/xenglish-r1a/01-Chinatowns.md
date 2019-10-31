@@ -3,17 +3,16 @@ redirect_from:
   - "/xenglish-r1a/01-chinatowns"
 interact_link: content/xenglish-r1a/01-Chinatowns.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Chinatowns'
 prev_page:
-  url: /xenglish-r1a/xenglish-r1a-intro
+  url: /xenglish-r1a/xenglish-r1a-intro.html
   title: 'English'
 next_page:
-  url: /legalst-190/legalst-190-intro
+  url: /legalst-190/legalst-190-intro.html
   title: 'Legal Studies'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
 # ENGLISH R1A: Chinatown and the Culture of Exclusion
 **Instructor: Amy Lee**
 
@@ -912,14 +911,14 @@ IFrame('output/map-Population.html', width=700, height=400)
 
 <div markdown="0" class="output output_html">
 
-        <iframe
-            width="700"
-            height="400"
-            src="output/map-Population.html"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        
+<iframe
+    width="700"
+    height="400"
+    src="output/map-Population.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
 </div>
 
 
@@ -1543,14 +1542,14 @@ IFrame('output/map-Chinese-Population.html', width=700, height=400)
 
 <div markdown="0" class="output output_html">
 
-        <iframe
-            width="700"
-            height="400"
-            src="output/map-Chinese-Population.html"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        
+<iframe
+    width="700"
+    height="400"
+    src="output/map-Chinese-Population.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
 </div>
 
 
@@ -1608,14 +1607,14 @@ IFrame('output/map-Asian_percentage.html', width=700, height=400)
 
 <div markdown="0" class="output output_html">
 
-        <iframe
-            width="700"
-            height="400"
-            src="output/map-Asian_percentage.html"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        
+<iframe
+    width="700"
+    height="400"
+    src="output/map-Asian_percentage.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
 </div>
 
 

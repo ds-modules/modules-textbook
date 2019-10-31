@@ -1,16 +1,16 @@
 ---
 interact_link: content/psych-167ac/03-my-project.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'My Project'
 prev_page:
-  url: /psych-167ac/02-correlation-regression
+  url: /psych-167ac/02-correlation-regression.html
   title: 'Correlation & Regression'
 next_page:
   url: 
   title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # Using your own data
 
 *If you run into errors, check the [common errors](https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing) Google doc first.*

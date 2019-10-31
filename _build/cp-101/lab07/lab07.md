@@ -1,16 +1,16 @@
 ---
 interact_link: content/cp-101/lab07/lab07.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Lab 7'
 prev_page:
-  url: /cp-101/cp-101-intro
+  url: /cp-101/cp-101-intro.html
   title: 'City Planning'
 next_page:
-  url: /cp-101/lab08/lab08
+  url: /cp-101/lab08/lab08.html
   title: 'Lab 8'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 ## Intro to Python
 
 In this lab you will be familiarizing yourself with the programming language called Python. Python is a so-called high level programming language. Which means it is very abstracted from machine languages and are easily readable by humans. 

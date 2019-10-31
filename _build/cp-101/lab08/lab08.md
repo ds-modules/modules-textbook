@@ -1,16 +1,16 @@
 ---
 interact_link: content/cp-101/lab08/lab08.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Lab 8'
 prev_page:
-  url: /cp-101/lab07/lab07
+  url: /cp-101/lab07/lab07.html
   title: 'Lab 7'
 next_page:
-  url: /cp-101/lab09/lab09
+  url: /cp-101/lab09/lab09.html
   title: 'Lab 9'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # Web Scraping
 ---
 In today's lab, we are going to download data from the internet using an API. API stands for application programming interface. Companies often create APIs as a way to allow users to more directly interact with their servers to retrieve data. Today, we are going to be using Twitter's API to download tweets to get some experience with larger datasets.

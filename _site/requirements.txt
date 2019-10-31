@@ -7,3 +7,16 @@ folium
 matplotlib
 requests
 branca
+sodapy
+geopandas
+shapely
+sklearn
+scipy
+seaborn
+plotly
+statsmodels
+spacy
+wordcloud
+textblob
+geojson
+nltk

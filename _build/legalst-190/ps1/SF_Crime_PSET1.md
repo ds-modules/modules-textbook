@@ -3,16 +3,16 @@ redirect_from:
   - "/legalst-190/ps1/sf-crime-pset1"
 interact_link: content/legalst-190/ps1/SF_Crime_PSET1.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Problem Set 1'
 prev_page:
-  url: /legalst-190/1-18
+  url: /legalst-190/1-18.html
   title: 'Intro to Python'
 next_page:
-  url: /psych-167ac/psych-167ac-intro
+  url: /psych-167ac/psych-167ac-intro.html
   title: 'Psychology'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # SF Crime PSET 1
 
 1. [Introduction](#intro)

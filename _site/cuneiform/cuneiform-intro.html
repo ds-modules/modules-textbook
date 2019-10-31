@@ -10,10 +10,10 @@
   <title>Cuneiform</title>
   <meta name="description" content="Cuneiform Introduction Modules">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/cuneiform/cuneiform-intro.html">
-  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+  <link rel="canonical" href="http://ds-modules.github.io/modules-textbook/cuneiform/cuneiform-intro.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://ds-modules.github.io/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/cuneiform/cuneiform-intro.html" />
+  <meta property="og:url"         content="http://ds-modules.github.io/modules-textbook/cuneiform/cuneiform-intro.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Cuneiform" />
 <meta property="og:description" content="Cuneiform Introduction Modules" />
@@ -25,13 +25,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/cuneiform/cuneiform-intro.html",
+    "http://ds-modules.github.io/modules-textbook/cuneiform/cuneiform-intro.html",
   "headline":
     "Cuneiform",
   "datePublished":
-    "2019-05-26T21:24:49-05:00",
+    "2019-10-31T10:01:27-07:00",
   "dateModified":
-    "2019-05-26T21:24:49-05:00",
+    "2019-10-31T10:01:27-07:00",
   "description":
     "Cuneiform Introduction Modules",
   "author": {
@@ -43,14 +43,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://0.0.0.0:4000/modules-textbook",
+      "url": "http://ds-modules.github.io/modules-textbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "http://0.0.0.0:4000/modules-textbook",
+    "url": "http://ds-modules.github.io/modules-textbook",
     "height": 60,
     "width": 60
   }
@@ -143,6 +143,99 @@ initFunction(function () {
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/modules-textbook',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
 
 
   <!-- Google analytics -->
@@ -367,7 +460,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("http://0.0.0.0:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://ds-modules.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -546,7 +639,7 @@ initFunction(initQuery);
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
   <ul class="c-sidebar__chapters">
     
@@ -602,7 +695,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+          href="https://ds-modules.github.io/curriculum-guide/intro"
         >
           
           Data Science Curriculum Guide
@@ -669,23 +762,6 @@ initFunction(initQuery);
               </li>
               
             
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/features/notebooks.html"
-                >
-                  
-                  Jupyter notebooks
-                </a>
-
-                
-                
-
-              </li>
-              
-            
           </ul>
         
       </li>
@@ -694,58 +770,8 @@ initFunction(initQuery);
     
       
       
-        <li><h2 class="c-sidebar__title">Modules</li>
+        <li><h2 class="c-sidebar__title">Social Sciences</li>
         
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry c-sidebar__entry--active"
-          href="/modules-textbook/cuneiform/cuneiform-intro.html"
-        >
-          
-          Cuneiform
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/cuneiform/nb-pt1-intro-text-analysis.html"
-                >
-                  
-                  Introduction and Text Analysis
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
       
       
 
@@ -756,175 +782,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/modules-textbook/econ/econ-intro.html"
-        >
-          
-          Economics
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/econ/convergence-to-balanced-growth-path.html"
-                >
-                  
-                  Convergence to Balanced Growth Path
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/econ/problem-sets.html"
-                >
-                  
-                  Problem Sets Overview
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/econ/ps1/PS1.html"
-                >
-                  
-                  Problem Set 1
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/econ/ps3/flex_price.html"
-                >
-                  
-                  Flex Price Economy (PS3)
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/econ/ps5/macroeconomic-policy.html"
-                >
-                  
-                  Macroeconomic Policy (PS5)
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/modules-textbook/english/english-intro.html"
-        >
-          
-          English
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/english/01-Chinatowns.html"
-                >
-                  
-                  Chinatowns
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/modules-textbook/legal_studies/intro-legal-studies.html"
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
         >
           
           Legal Studies
@@ -939,14 +797,14 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections ">
+          <ul class="c-sidebar__sections u-hidden-visually">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/legal_studies/1-18.html"
+                  href="/modules-textbook/legalst-190/1-18.html"
                 >
                   
                   Intro to Python
@@ -963,7 +821,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html"
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
                 >
                   
                   Problem Set 1
@@ -991,7 +849,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/modules-textbook/psych/psych-intro.html"
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
         >
           
           Psychology
@@ -1006,14 +864,14 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections ">
+          <ul class="c-sidebar__sections u-hidden-visually">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych/01-intro.html"
+                  href="/modules-textbook/psych-167ac/01-intro.html"
                 >
                   
                   Introduction
@@ -1030,10 +888,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych/02-correlation-regression.html"
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
                 >
                   
-                  Correlation, Regression, & Prediction
+                  Correlation & Regression
                 </a>
 
                 
@@ -1047,7 +905,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/psych/03-my-project.html"
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
                 >
                   
                   My Project
@@ -1067,6 +925,10 @@ initFunction(initQuery);
     
       
       
+        <li><h2 class="c-sidebar__title">Arts and Humanities</li>
+        
+      
+      
 
       
       
@@ -1075,10 +937,10 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/modules-textbook/rhetoric/rhetoric-intro.html"
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
         >
           
-          Rhetoric
+          English
         </a>
 
         
@@ -1090,17 +952,71 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections ">
+          <ul class="c-sidebar__sections u-hidden-visually">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/rhetoric/01-intro/01-intro.html"
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
                 >
                   
-                  Introduction
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Professional</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
                 </a>
 
                 
@@ -1114,10 +1030,44 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis.html"
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
                 >
                   
-                  Moral Foundations Analysis
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
                 </a>
 
                 

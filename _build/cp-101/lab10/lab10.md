@@ -1,18 +1,16 @@
 ---
 interact_link: content/cp-101/lab10/lab10.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Lab 10'
 prev_page:
-  url: /cp-101/lab09/lab09
+  url: /cp-101/lab09/lab09.html
   title: 'Lab 9'
 next_page:
-  url: /xenglish-r1a/xenglish-r1a-intro
+  url: /xenglish-r1a/xenglish-r1a-intro.html
   title: 'English'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
-
-
 {:.input_area}
 ```python
 # Libraries that this notebook will use:

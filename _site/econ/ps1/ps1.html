@@ -1,11 +1,2372 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
+  
+
+  <head>
   <meta charset="utf-8">
-  <title>Redirecting&hellip;</title>
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/econ/ps1/PS1.html">
-  <script>location="http://0.0.0.0:4000/modules-textbook/econ/ps1/PS1.html"</script>
-  <meta http-equiv="refresh" content="0; url=http://0.0.0.0:4000/modules-textbook/econ/ps1/PS1.html">
-  <meta name="robots" content="noindex">
-  <h1>Redirecting&hellip;</h1>
-  <a href="http://0.0.0.0:4000/modules-textbook/econ/ps1/PS1.html">Click here if you are not redirected.</a>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Problem Set 1</title>
+  <meta name="description" content="Economics 101B Spring 2018 Pre-Semester Exercises">
+
+  <link rel="canonical" href="http://ds-modules.github.io/modules-textbook/econ/ps1/PS1.html">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://ds-modules.github.io/modules-textbook/feed.xml">
+
+  <meta property="og:url"         content="http://ds-modules.github.io/modules-textbook/econ/ps1/PS1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Problem Set 1" />
+<meta property="og:description" content="Economics 101B Spring 2018 Pre-Semester Exercises" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://ds-modules.github.io/modules-textbook/econ/ps1/PS1.html",
+  "headline":
+    "Problem Set 1",
+  "datePublished":
+    "2019-10-31T10:01:27-07:00",
+  "dateModified":
+    "2019-10-31T10:01:27-07:00",
+  "description":
+    "Economics 101B Spring 2018 Pre-Semester Exercises",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Nakagawa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://ds-modules.github.io/modules-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://ds-modules.github.io/modules-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/modules-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/modules-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/modules-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/modules-textbook/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/modules-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'ds-modules/modules-textbook',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/modules-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/modules-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/modules-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/modules-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/modules-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://ds-modules.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/ds-modules/"
+        >
+          
+          DSEP Modules Repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://ds-modules.github.io/curriculum-guide/intro"
+        >
+          
+          Data Science Curriculum Guide
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/modules-textbook/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Introduction</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/introduction/ds-intro.html"
+        >
+          
+          Data Science in Python and Jupyter
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/introduction/intro-module-final.html"
+                >
+                  
+                  Intro to Python and Jupyter
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Social Sciences</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
+        >
+          
+          Legal Studies
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/1-18.html"
+                >
+                  
+                  Intro to Python
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
+                >
+                  
+                  Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
+                >
+                  
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Arts and Humanities</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Professional</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
+                >
+                  
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#professor-delong">Professor DeLong</a></li>
+  <li><a href="#text-cells">Text cells</a></li>
+  <li><a href="#code-cells">Code cells</a></li>
+  <li><a href="#writing-jupyter-notebooks">Writing Jupyter notebooks</a></li>
+  <li><a href="#errors">Errors</a></li>
+  <li><a href="#submitting-your-work">Submitting your work</a></li>
+  <li><a href="#part-1-python-basics-">Part 1: Python basics </a></li>
+  <li><a href="#part-2-pandas-dataframes-">Part 2: Pandas Dataframes </a></li>
+  <li><a href="#part-3-visualization-">Part 3: Visualization </a></li>
+  <li><a href="#chapter-1-introduction-to-macroeconomics-">Chapter 1: Introduction to Macroeconomics </a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/modules-textbook/content/econ/ps1/PS1.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/ds-modules/modules-textbook/master?filepath=content%2Fecon%2Fps1%2FPS1.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_binder.svg" alt="Interact" />Binder</button></a>
+
+
+
+
+
+
+<a href="https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https://github.com//ds-modules/modules-textbook&amp;branch=master&amp;subPath=content%2Fecon%2Fps1%2FPS1.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/modules-textbook/assets/images/logo_jupyterhub.svg" alt="Interact" />DataHub</button></a>
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <h1 id="economics-101b-spring-2018-pre-semester-exercises">Economics 101B Spring 2018 Pre-Semester Exercises</h1>
+
+<h3 id="professor-delong">Professor DeLong</h3>
+
+<p>Welcome to 101B! This introductory notebook will familiarize you with some of the basic strategies for data analysis that will be useful to you throughout the course. It will cover an overview of our software, an introduction to programming, and some economics.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<p>1 - <a href="#computing-environment">Computing Environment</a></p>
+
+<p>2 - <a href="#programming-concepts">Introduction to Coding Concepts</a></p>
+
+<p>       1 - <a href="#python-basics">Python Basics</a></p>
+
+<p>       2 - <a href="#pandas">Pandas</a></p>
+
+<p>       3 - <a href="#viz">Visualization</a></p>
+
+<p>3 - <a href="#econ">Macroeconomics</a></p>
+
+<p>       1 - <a href="#chapter-1">Chapter 1</a></p>
+
+<p>       2 - <a href="#chapter-2">Chapter 2</a></p>
+
+<h2 id="our-computing-environment-jupyter-notebooks--">Our Computing Environment, Jupyter notebooks  <a id="computing-environment"></a></h2>
+<p>This webpage is called a Jupyter notebook. A notebook is a place to write programs and view their results.</p>
+
+<h3 id="text-cells">Text cells</h3>
+<p>In a notebook, each rectangle containing text or code is called a <em>cell</em>.</p>
+
+<p>Text cells (like this one) can be edited by double-clicking on them. They’re written in a simple format called <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> to add formatting and section headings.  You don’t need to learn Markdown, but you might want to.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>After you edit a text cell, click the “run cell” button at the top that looks like ▶</td>
+      <td>to confirm any changes. (Try not to delete the instructions of the lab.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Understanding Check 1</strong> This paragraph is in its own text cell.  Try editing it so that this sentence is the last sentence in the paragraph, and then click the “run cell” ▶</td>
+      <td>button .  This sentence, for example, should be deleted.  So should this one.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="code-cells">Code cells</h3>
+<p>Other cells contain code in the Python 3 language. Running a code cell will execute all of the code it contains.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>To run the code in a code cell, first click on that cell to activate it.  It’ll be highlighted with a little green or blue rectangle.  Next, either press ▶</td>
+      <td>or hold down the <code class="highlighter-rouge">shift</code> key and press <code class="highlighter-rouge">return</code> or <code class="highlighter-rouge">enter</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Try running this cell:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>And this one:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\N{WAVING HAND SIGN}</span><span class="s">, </span><span class="err">\</span><span class="s">N{EARTH GLOBE ASIA-AUSTRALIA}!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The fundamental building block of Python code is an expression. Cells can contain multiple lines with multiple expressions. When you run a cell, the lines of code are executed in the order in which they appear. Every <code class="highlighter-rouge">print</code> expression prints a line. Run the next cell and notice the order of the output.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"First this line is printed,"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"and then this one."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Understanding Check 2</strong> Change the cell above so that it prints out:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First this line,
+then the whole 🌏,
+and then this one.
+</code></pre></div></div>
+
+<p>Don’t be scared if you see a “Kernel Restarting” message! Your data and work will still be saved. Once you see “Kernel Ready” in a light blue box on the top right of the notebook, you’ll be ready to work again. You should rerun any cells with imports, variables, and loaded data.</p>
+
+<p><img src="images/kernel.png" /></p>
+
+<h3 id="writing-jupyter-notebooks">Writing Jupyter notebooks</h3>
+<p>You can use Jupyter notebooks for your own projects or documents.  When you make your own notebook, you’ll need to create your own cells for text and code.</p>
+
+<p>To add a cell, click the + button in the menu bar.  It’ll start out as a text cell.  You can change it to a code cell by clicking inside it so it’s highlighted, clicking the drop-down box next to the restart (⟳) button in the menu bar, and choosing “Code”.</p>
+
+<p><strong>Understanding Check 3</strong> Add a code cell below this one.  Write code in it that prints out:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A whole new cell! ♪🌏♪
+</code></pre></div></div>
+
+<p>(That musical note symbol is like the Earth symbol.  Its long-form name is <code class="highlighter-rouge">\N{EIGHTH NOTE}</code>.)</p>
+
+<p>Run your cell to verify that it works.</p>
+
+<h3 id="errors">Errors</h3>
+<p>Python is a language, and like natural human languages, it has rules.  It differs from natural language in two important ways:</p>
+<ol>
+  <li>The rules are <em>simple</em>.  You can learn most of them in a few weeks and gain reasonable proficiency with the language in a semester.</li>
+  <li>The rules are <em>rigid</em>.  If you’re proficient in a natural language, you can understand a non-proficient speaker, glossing over small mistakes.  A computer running Python code is not smart enough to do that.</li>
+</ol>
+
+<p>Whenever you write code, you’ll make mistakes.  When you run a code cell that has errors, Python will sometimes produce error messages to tell you what you did wrong.</p>
+
+<p>Errors are okay; even experienced programmers make many errors.  When you make an error, you just have to find the source of the problem, fix it, and move on.</p>
+
+<p>We have made an error in the next cell.  Run it and see what happens.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"This line is missing something."</span>
+</code></pre></div></div>
+
+<p>You should see something like this (minus our annotations):</p>
+
+<p><img src="images/error.jpg" /></p>
+
+<p>The last line of the error output attempts to tell you what went wrong.  The <em>syntax</em> of a language is its structure, and this <code class="highlighter-rouge">SyntaxError</code> tells you that you have created an illegal structure.  “<code class="highlighter-rouge">EOF</code>” means “end of file,” so the message is saying Python expected you to write something more (in this case, a right parenthesis) before finishing the cell.</p>
+
+<p>There’s a lot of terminology in programming languages, but you don’t need to know it all in order to program effectively. If you see a cryptic message like this, you can often get by without deciphering it.  (Of course, if you’re frustrated, feel free to ask a friend or post on the class Piazza.)</p>
+
+<p><strong>Understanding Check 4</strong> Try to fix the code above so that you can run the cell and see the intended message instead of an error.</p>
+
+<h3 id="submitting-your-work">Submitting your work</h3>
+<p>All assignments in the course will be distributed as notebooks like this one, and you will submit your work from the notebook. We will use a system called OK that checks your work and helps you submit. At the top of each assignment, you’ll see a cell like the one below that prompts you to identify yourself. Run it and follow the instructions.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Don't change this cell; just run it. </span>
+<span class="c"># The result will give you directions about how to log in to the submission system, called OK.</span>
+<span class="c"># Once you're logged in, you can run this cell again, but it won't ask you who you are because</span>
+<span class="c"># it remembers you. However, you will need to log in once per assignment.</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">okpy</span>
+<span class="kn">from</span> <span class="nn">client.api.notebook</span> <span class="kn">import</span> <span class="n">Notebook</span>
+<span class="n">ok</span> <span class="o">=</span> <span class="n">Notebook</span><span class="p">(</span><span class="s">'Intro.ok'</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ok</span><span class="o">.</span><span class="n">auth</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>When you finish an assignment, you need to submit it by running the submit command below. It’s OK to submit multiple times, OK will only try to grade your final submission for each assignment. Don’t forget to submit your assignment, even if you haven’t finished everything.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span> <span class="o">=</span> <span class="n">ok</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Now that you are comfortable with our computing environment, we are going to be moving into more of the fundamentals of Python, but first, run the cell below to ensure all the libraries needed for this notebook are installed.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+</code></pre></div></div>
+
+<h2 id="introduction-to-programming-concepts-">Introduction to Programming Concepts <a id="programming-concepts"></a></h2>
+
+<h3 id="part-1-python-basics-">Part 1: Python basics <a id="python-basics"></a></h3>
+<p>Before getting into the more advanced analysis techniques that will be required in this course, we need to cover a few of the foundational elements of programming in Python.</p>
+<h4 id="a-expressions">A. Expressions</h4>
+<p>The departure point for all programming is the concept of the <strong>expression</strong>. An expression is a combination of variables, operators, and other Python elements that the language interprets and acts upon. Expressions act as a set of instructions to be fed through the interpreter, with the goal of generating specific outcomes. See below for some examples of basic expressions.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Examples of expressions:</span>
+
+<span class="c">#addition</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c">#string concatenation </span>
+<span class="k">print</span><span class="p">(</span><span class="s">'me'</span> <span class="o">+</span> <span class="s">' and I'</span><span class="p">)</span>
+
+<span class="c">#you can print a number with a string if you cast it </span>
+<span class="k">print</span><span class="p">(</span><span class="s">"me"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c">#exponents</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">12</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+me and I
+me2
+144
+
+</code></pre></div></div>
+
+<p>You will notice that only the last line in a cell gets printed out. If you want to see the values of previous expressions, you need to call <code class="highlighter-rouge">print</code> on that expression. Try adding <code class="highlighter-rouge">print</code> statements to some of the above expressions to get them to display.</p>
+
+<h4 id="b-variables">B. Variables</h4>
+<p>In the example below, <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> are Python objects known as <strong>variables</strong>. We are giving an object (in this case, an <code class="highlighter-rouge">integer</code> and a <code class="highlighter-rouge">float</code>, two Python data types) a name that we can store for later use. To use that value, we can simply type the name that we stored the value as. Variables are stored within the notebook’s environment, meaning stored variable values carry over from cell to cell.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="mi">5</span>
+</code></pre></div></div>
+
+<p>Notice that when you create a variable, unlike what you previously saw with the expressions, it does not print anything out.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Notice that 'a' retains its value.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<h4 id="question-1-variables">Question 1: Variables</h4>
+<p>See if you can write a series of expressions that creates two new variables called <strong>x</strong> and <strong>y</strong> and assigns them values of <strong>10.5</strong> and <strong>7.2</strong>. Then assign their product to the variable <strong>combo</strong> and print it.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fill in the missing lines to complete the expressions.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="k">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Running the cell below will give you some feed back on your responses. Though the OK tests are not always comprehensive (passing all of the tests does not guarantee full credit for questions), they give you a pretty good indication as to whether or not you’re on track.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ok</span><span class="o">.</span><span class="n">grade</span><span class="p">(</span><span class="s">'q01'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="c-lists">C. Lists</h4>
+<p>The next topic is particularly useful in the kind of data manipulation that you will see throughout 101B. The following few cells will introduce the concept of <strong>lists</strong> (and their counterpart, <code class="highlighter-rouge">numpy arrays</code>). Read through the following cell to understand the basic structure of a list.</p>
+
+<p>A list is an ordered collection of objects. They allow us to store and access groups of variables and other objects for easy access and analysis. Check out this <a href="https://www.tutorialspoint.com/python/python_lists.htm">documentation</a> for an in-depth look at the capabilities of lists.</p>
+
+<p>To initialize a list, you use brackets. Putting objects separated by commas in between the brackets will add them to the list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># an empty list</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+
+<span class="c"># reassigning our empty list to a new list</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s">'lists'</span><span class="p">,</span> <span class="s">'are'</span> <span class="s">'fun'</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>To access a value in the list, put the index of the item you wish to access in brackets following the variable that stores the list. Lists in Python are zero-indexed, so the indicies for <code class="highlighter-rouge">lst</code> are 0, 1, 2, 3, 4, 5, and 6.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Elements are selected like this:</span>
+<span class="n">example</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c"># The above line selects the 3rd element of lst (list indices are 0-offset) and sets it to a variable named example.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It is important to note that when you store a list to a variable, you are actually storing the <strong>pointer</strong> to the list. That means if you assign your list to another variable, and you change the elements in your other variable, then you are changing the same data as in the original list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="c">#original list</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="c">#b now points to list a </span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c">#return 4 since we modified the first element of the list pointed to by a and b </span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+
+</code></pre></div></div>
+
+<h4 id="slicing-lists">Slicing lists</h4>
+<p>As you can see from above, lists do not have to be made up of elements of the same kind. Indices do not have to be taken one at a time, either. Instead, we can take a slice of indices and return the elements at those indices as a separate list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">### This line will store the first (inclusive) through fourth (exclusive) elements of lst as a new list called lst_2:</span>
+<span class="n">lst_2</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">lst_2</span>
+</code></pre></div></div>
+
+<h4 id="question-2-lists">Question 2: Lists</h4>
+<p>Build a list of length 10 containing whatever elements you’d like. Then, slice it into a new list of length five using a index slicing. Finally, assign the last element in your sliced list to the given variable and print it.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">### Fill in the ellipses to complete the question.</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">my_list_sliced</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">last_of_sliced</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="k">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ok</span><span class="o">.</span><span class="n">grade</span><span class="p">(</span><span class="s">'q02'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lists can also be operated on with a few built-in analysis functions. These include <code class="highlighter-rouge">min</code> and <code class="highlighter-rouge">max</code>, among others. Lists can also be concatenated together. Find some examples below.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># A list containing six integers.</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c"># Another list containing six integers.</span>
+<span class="n">b_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Max of a_list:'</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Min of b_list:'</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
+
+<span class="c"># Concatenate a_list and b_list:</span>
+<span class="n">c_list</span> <span class="o">=</span> <span class="n">a_list</span> <span class="o">+</span> <span class="n">b_list</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Concatenated:'</span><span class="p">,</span> <span class="n">c_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="d-numpy-arrays">D. Numpy Arrays</h4>
+<p>Closely related to the concept of a list is the array, a nested sequence of elements that is structurally identical to a list. Arrays, however, can be operated on arithmetically with much more versatility than regular lists. For the purpose of later data manipulation, we’ll access arrays through <a href="https://docs.scipy.org/doc/numpy/reference/routines.html">Numpy</a>, which will require an import statement.</p>
+
+<p>Now run the next cell to import the numpy library into your notebook, and examine how numpy arrays can be used.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initialize an array of integers 0 through 9.</span>
+<span class="n">example_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="c"># This can also be accomplished using np.arange</span>
+<span class="n">example_array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Undoubled Array:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">example_array_2</span><span class="p">)</span>
+
+<span class="c"># Double the values in example_array and print the new array.</span>
+<span class="n">double_array</span> <span class="o">=</span> <span class="n">example_array</span><span class="o">*</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Doubled Array:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">double_array</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This behavior differs from that of a list. See below what happens if you multiply a list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">example_list</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p>Notice that instead of multiplying each of the elements by two, multiplying a list and a number returns that many copies of that list. This is the reason that we will sometimes use Numpy over lists. Other mathematical operations have interesting behaviors with lists that you should explore on your own.</p>
+
+<h4 id="e-looping">E. Looping</h4>
+<p><a href="https://www.tutorialspoint.com/python/python_loops.htm">Loops</a> are often useful in manipulating, iterating over, or transforming large lists and arrays. The first type we will discuss is the <strong>for loop</strong>. For loops are helpful in traversing a list and performing an action at each element. For example, the following code moves through every element in example_array, adds it to the previous element in example_array, and copies this sum to a new array.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">example_array</span><span class="p">:</span>
+    <span class="n">new_element</span> <span class="o">=</span> <span class="n">element</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_element</span><span class="p">)</span>
+
+<span class="n">new_list</span>
+</code></pre></div></div>
+
+<p>The most important line in the above cell is the “<code class="highlighter-rouge">for element in...</code>” line. This statement sets the structure of our  loop, instructing the machine to stop at every number in <code class="highlighter-rouge">example_array</code>, perform the indicated operations, and then move on. Once Python has stopped at every element in <code class="highlighter-rouge">example_array</code>, the loop is completed and the final line, which outputs <code class="highlighter-rouge">new_list</code>, is executed. It’s important to note that “element” is an arbitrary variable name used to represent whichever index value the loop is currently operating on. We can change the variable name to whatever we want and achieve the same result, as long as we stay consistent. For example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">newer_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">completely_arbitrary_name</span> <span class="ow">in</span> <span class="n">example_array</span><span class="p">:</span>
+    <span class="n">newer_element</span> <span class="o">=</span> <span class="n">completely_arbitrary_name</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="n">newer_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newer_element</span><span class="p">)</span>
+    
+<span class="n">newer_list</span>
+</code></pre></div></div>
+
+<p>For loops can also iterate over ranges of numerical values. If I wanted to alter <code class="highlighter-rouge">example_array</code> without copying it over to a new list, I would use a numerical iterator to access list indices rather than the elements themselves. This iterator, called <code class="highlighter-rouge">i</code>, would range from 0, the value of the first index, to 9, the value of the last. I can make sure of this by using the built-in <code class="highlighter-rouge">range</code> and <code class="highlighter-rouge">len</code> functions.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_array</span><span class="p">)):</span>
+    <span class="n">example_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">example_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span>
+
+<span class="n">example_array</span>
+</code></pre></div></div>
+
+<h4 id="other-types-of-loops">Other types of loops</h4>
+<p>The <strong>while loop</strong> repeatedly performs operations until a conditional is no longer satisfied. A conditional is a <a href="https://en.wikipedia.org/wiki/Boolean_expression">boolean expression</a>, that is an expression that evaluates to <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>.</p>
+
+<p>In the below example, an array of integers 0 to 9 is generated. When the program enters the while loop on the subsequent line, it notices that the maximum value of the array is less than 50. Because of this, it adds 1 to the fifth element, as instructed. Once the instructions embedded in the loop are complete, the program refers back to the conditional. Again, the maximum value is less than 50. This process repeats until the the fifth element, now the maximum value of the array, is equal to 50, at which point the conditional is no longer true and the loop breaks.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">while_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>        <span class="c"># Generate our array of values</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Before:'</span><span class="p">,</span> <span class="n">while_array</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">while_array</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">):</span>      <span class="c"># Set our conditional</span>
+    <span class="n">while_array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>            <span class="c"># Add 1 to the fifth element if the conditional is satisfied </span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">'After:'</span><span class="p">,</span> <span class="n">while_array</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="question-3-loops">Question 3: Loops</h4>
+<p>In the following cell, partial steps to manipulate an array are included. You must fill in the blanks to accomplish the following: <br /></p>
+<ol>
+  <li>Iterate over the entire array, checking if each element is a multiple of 5</li>
+  <li>If an element is not a multiple of 5, add 1 to it repeatedly until it is</li>
+  <li>Iterate back over the list and print each element.</li>
+</ol>
+
+<blockquote>
+  <p>Hint: To check if an integer <code class="highlighter-rouge">x</code> is a multiple of <code class="highlighter-rouge">y</code>, use the modulus operator <code class="highlighter-rouge">%</code>. Typing <code class="highlighter-rouge">x % y</code> will return the remainder when <code class="highlighter-rouge">x</code> is divided by <code class="highlighter-rouge">y</code>. Therefore, (<code class="highlighter-rouge">x % y != 0</code>) will return <code class="highlighter-rouge">True</code> when <code class="highlighter-rouge">y</code> <strong>does not divide</strong> <code class="highlighter-rouge">x</code>, and <code class="highlighter-rouge">False</code> when it does.</p>
+</blockquote>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Make use of iterators, range, length, while loops, and indices to complete this question.</span>
+<span class="n">question_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">77</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+        <span class="n">question_3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+        
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">question_3</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ok</span><span class="o">.</span><span class="n">grade</span><span class="p">(</span><span class="s">'q03'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="f-functions">F. Functions!</h4>
+<p>Functions are useful when you want to repeat a series of steps on multiple different objects, but don’t want to type out the steps over and over again. Many functions are built into Python already; for example, you’ve already made use of <code class="highlighter-rouge">len()</code> to retrieve the number of elements in a list. You can also write your own functions, and at this point you already have the skills to do so.</p>
+
+<p>Functions generally take a set of <strong>parameters</strong> (also called inputs), which define the objects they will use when they are run. For example, the <code class="highlighter-rouge">len()</code> function takes a list or array as its parameter, and returns the length of that list.</p>
+
+<p>The following cell gives an example of an extremely simple function, called <code class="highlighter-rouge">add_two</code>, which takes as its parameter an integer and returns that integer with, you guessed it, 2 added to it.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># An adder function that adds 2 to the given n.</span>
+<span class="k">def</span> <span class="nf">add_two</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_two</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Easy enough, right? Let’s look at a function that takes two parameters, compares them somehow, and then returns a boolean value (<code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>) depending on the comparison. The <code class="highlighter-rouge">is_multiple</code> function below takes as parameters an integer <code class="highlighter-rouge">m</code> and an integer <code class="highlighter-rouge">n</code>, checks if <code class="highlighter-rouge">m</code> is a multiple of <code class="highlighter-rouge">n</code>, and returns <code class="highlighter-rouge">True</code> if it is. Otherwise, it returns <code class="highlighter-rouge">False</code>.</p>
+
+<p><code class="highlighter-rouge">if</code> statements, just like <code class="highlighter-rouge">while</code> loops, are dependent on boolean expressions. If the conditional is <code class="highlighter-rouge">True</code>, then the following indented code block will be executed. If the conditional evaluates to <code class="highlighter-rouge">False</code>, then the code block will be skipped over. Read more about <code class="highlighter-rouge">if</code> statements <a href="https://www.tutorialspoint.com/python/python_if_else.htm">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_multiple</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">%</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_multiple</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_multiple</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Sidenote:</strong> Another way to write <code class="highlighter-rouge">is_multiple</code> is below, think about why it works.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def is_multiple(m, n):
+    return m % n == 0
+</code></pre></div></div>
+
+<p>Since functions are so easily replicable, we can include them in loops if we want. For instance, our <code class="highlighter-rouge">is_multiple</code> function can be used to check if a number is prime! See for yourself by testing some possible prime numbers in the cell below.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Change possible_prime to any integer to test its primality</span>
+<span class="c"># NOTE: If you happen to stumble across a large (&gt; 8 digits) prime number, the cell could take a very, very long time</span>
+<span class="c"># to run and will likely crash your kernel. Just click kernel&gt;interrupt if it looks like it's caught.</span>
+
+<span class="n">possible_prime</span> <span class="o">=</span> <span class="mi">9999991</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">possible_prime</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_multiple</span><span class="p">(</span><span class="n">possible_prime</span><span class="p">,</span> <span class="n">i</span><span class="p">)):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">possible_prime</span><span class="p">,</span> <span class="s">'is not prime'</span><span class="p">)</span>   
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="n">possible_prime</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">possible_prime</span><span class="p">,</span> <span class="s">'is prime'</span><span class="p">)</span>
+        <span class="k">break</span>
+</code></pre></div></div>
+
+<h4 id="question-4-writing-functions">Question 4: Writing functions</h4>
+<p>In the following cell, complete a function that will take as its parameters a list and two integers x and y, iterate through the list, and replace any number in the list that is a multiple of x with y.</p>
+<blockquote>
+  <p>Hint: use the is_multiple() function to streamline your code.</p>
+</blockquote>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">replace_with_y</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+            <span class="o">...</span>
+    <span class="k">return</span> <span class="n">lst</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ok</span><span class="o">.</span><span class="n">grade</span><span class="p">(</span><span class="s">'q04'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="part-2-pandas-dataframes-">Part 2: Pandas Dataframes <a id="pandas"></a></h3>
+
+<p>We will be using Pandas dataframes for much of this class to organize and sort through economic data. <a href="http://pandas.pydata.org/pandas-docs/stable/">Pandas</a> is one of the most widely used Python libraries in data science. It is commonly used for data cleaning, and with good reason: it’s very powerful and flexible, among many other things. Like we did with <code class="highlighter-rouge">numpy</code>, we will have to import <code class="highlighter-rouge">pandas</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<h4 id="creating-dataframes">Creating dataframes</h4>
+
+<p>The rows and columns of a pandas dataframe are essentially a collection of lists stacked on top/next to each other. For example, if I wanted to store the top 10 movies and their ratings in a datatable, I could create 10 lists that each contain a rating and a corresponding title, and these lists would be the rows of the table:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_10_movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[[</span><span class="mf">9.2</span><span class="p">,</span> <span class="s">'The Shawshank Redemption (1994)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">9.2</span><span class="p">,</span> <span class="s">'The Godfather (1972)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="s">'The Godfather: Part II (1974)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">'Pulp Fiction (1994)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">"Schindler's List (1993)"</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">'The Lord of the Rings: The Return of the King (2003)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">'12 Angry Men (1957)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">'The Dark Knight (2008)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.9</span><span class="p">,</span> <span class="s">'Il buono, il brutto, il cattivo (1966)'</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">8.8</span><span class="p">,</span> <span class="s">'The Lord of the Rings: The Fellowship of the Ring (2001)'</span><span class="p">]]),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Rating"</span><span class="p">,</span> <span class="s">"Movie"</span><span class="p">])</span>
+<span class="n">top_10_movies</span>
+</code></pre></div></div>
+
+<p>Alternatively, we can store data in a dictionary instead of in lists. A dictionary keeps a mapping of keys to a set of values, and each key is unique. Using our top 10 movies example, we could create a dictionary that contains ratings a key, and movie titles as another key.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_10_movies_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Rating"</span> <span class="p">:</span> <span class="p">[</span><span class="mf">9.2</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">9.</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">8.8</span><span class="p">],</span> 
+                      <span class="s">"Movie"</span> <span class="p">:</span> <span class="p">[</span><span class="s">'The Shawshank Redemption (1994)'</span><span class="p">,</span>
+                                <span class="s">'The Godfather (1972)'</span><span class="p">,</span>
+                                <span class="s">'The Godfather: Part II (1974)'</span><span class="p">,</span>
+                                <span class="s">'Pulp Fiction (1994)'</span><span class="p">,</span>
+                                <span class="s">"Schindler's List (1993)"</span><span class="p">,</span>
+                                <span class="s">'The Lord of the Rings: The Return of the King (2003)'</span><span class="p">,</span>
+                                <span class="s">'12 Angry Men (1957)'</span><span class="p">,</span>
+                                <span class="s">'The Dark Knight (2008)'</span><span class="p">,</span>
+                                <span class="s">'Il buono, il brutto, il cattivo (1966)'</span><span class="p">,</span>
+                                <span class="s">'The Lord of the Rings: The Fellowship of the Ring (2001)'</span><span class="p">]}</span>
+</code></pre></div></div>
+
+<p>Now, we can use this dictionary to create a table with columns <code class="highlighter-rouge">Rating</code> and <code class="highlighter-rouge">Movie</code></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_10_movies_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_10_movies_dict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Rating"</span><span class="p">,</span> <span class="s">"Movie"</span><span class="p">])</span>
+<span class="n">top_10_movies_2</span>
+</code></pre></div></div>
+
+<p>Notice how both ways return the same table! However, the list method created the table by essentially taking the lists and making up the rows of the table, while the dictionary method took the keys from the dictionary to make up the columns of the table. In this way, dataframes can be viewed as a collection of basic data structures, either through collecting rows or columns.</p>
+
+<h4 id="reading-in-dataframes">Reading in Dataframes</h4>
+
+<p>Luckily for you, most datatables in this course will be premade and given to you in a form that is easily read into a pandas method, which creates the table for you. A common file type that is used for economic data is a Comma-Separated Values (.csv) file, which stores tabular data. It is not necessary for you to know exactly how .csv files store data, but you should know how to read a file in as a pandas dataframe. You can use the “read_csv” method from pandas, which takes in one parameter which is the path to the csv file you are reading in.</p>
+
+<p>We will read in a .csv file that contains quarterly real GDI, real GDP, and nominal GDP data in the U.S. from 1947 to the present.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run this cell to read in the table</span>
+<span class="n">accounts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"data/Quarterly_Accounts.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">pd.read_csv</code> function expects a path to a .csv file as its input, and will return a data table created from the data contained in the csv.
+We have provided <code class="highlighter-rouge">Quarterly_Accouunts.csv</code> in the data directory, which is all contained in the current working directory (aka the folder this assignment is contained in). For this reason, we must specify to the <code class="highlighter-rouge">read_csv</code> function that it should look for the csv in the data directory, and the <code class="highlighter-rouge">/</code> indicates that <code class="highlighter-rouge">Quarterly_Accounts.csv</code> can be found there.</p>
+
+<p>Here is a sample of some of the rows in this datatable:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="indexing-dataframes">Indexing Dataframes</h4>
+
+<p>Oftentimes, tables will contain a lot of extraneous data that muddles our data tables, making it more difficult to quickly and accurately obtain the data we need. To correct for this, we can select out columns or rows that we need by indexing our dataframes.</p>
+
+<p>The easiest way to index into a table is with square bracket notation. Suppose you wanted to obtain all of the Real GDP data from the data. Using a single pair of square brackets, you could index the table for <code class="highlighter-rouge">"Real GDP"</code></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run this cell and see what it outputs</span>
+<span class="n">accounts</span><span class="p">[</span><span class="s">"Real GDP"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Notice how the above cell returns an array of all the real GDP values in their original order.
+Now, if you wanted to get the first real GDP value from this array, you could index it with another pair of square brackets:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="s">"Real GDP"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Pandas columns have many of the same properties as numpy arrays. Keep in mind that pandas dataframes, as well as many other data structures, are zero-indexed, meaning indexes start at 0 and end at the number of elements minus one.</p>
+
+<p>If you wanted to create a new datatable with select columns from the original table, you can index with double brackets.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Note: .head() returns the first five rows of the table</span>
+<span class="n">accounts</span><span class="p">[[</span><span class="s">"Year"</span><span class="p">,</span> <span class="s">"Quarter"</span><span class="p">,</span> <span class="s">"Real GDP"</span><span class="p">,</span> <span class="s">"Real GDI"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You can also use column indices instead of names.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Alternatively, you can also get rid of columns you dont need using <code class="highlighter-rouge">.drop()</code></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">"Nominal GDP"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Finally, you can use square bracket notation to index rows by their indices with a single set of brackets. You must specify a range of values for which you want to index. For example, if I wanted the 20th to 30th rows of <code class="highlighter-rouge">accounts</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="filtering-data">Filtering Data</h4>
+
+<p>As you can tell from the previous, indexing rows based on indices is only useful when you know the specific set of rows that you need, and you can only really get a range of entries. Working with data often involves huge datasets, making it inefficient and sometimes impossible to know exactly what indices to be looking at. On top of that, most data analysis concerns itself with looking for patterns or specific conditions in the data, which is impossible to look for with simple index based sorting.</p>
+
+<p>Thankfully, you can also use square bracket notation to filter out data based on a condition. Suppose we only wanted real GDP and nominal GDP data from the 21st century:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="n">accounts</span><span class="p">[</span><span class="s">"Year"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">][[</span><span class="s">"Real GDP"</span><span class="p">,</span> <span class="s">"Nominal GDP"</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">accounts</code> table is being indexed by the condition <code class="highlighter-rouge">accounts["Year"] &gt;= 2000</code>, which returns a table where only rows that have a “Year” greater than $2000$ is returned. We then index this table with the double bracket notation from the previous section to only get the real GDP and nominal GDP columns.</p>
+
+<p>Suppose now we wanted a table with data from the first quarter, and where the real GDP was less than 5000 or nominal GDP is greater than 15,000.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[(</span><span class="n">accounts</span><span class="p">[</span><span class="s">"Quarter"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"Q1"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">accounts</span><span class="p">[</span><span class="s">"Real GDP"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">accounts</span><span class="p">[</span><span class="s">"Nominal GDP"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">15000</span><span class="p">))]</span>
+</code></pre></div></div>
+
+<p>Many different conditions can be included to filter, and you can use <code class="highlighter-rouge">&amp;</code> and <code class="highlighter-rouge">|</code> operators to connect them together. Make sure to include parantheses for each condition!</p>
+
+<p>Another way to reorganize data to make it more convenient is to sort the data by the values in a specific column. For example, if we wanted to find the highest real GDP since 1947, we could sort the table for real GDP:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"Real GDP"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>But wait! The table looks like it’s sorted in increasing order. This is because <code class="highlighter-rouge">sort_values</code> defaults to ordering the column in ascending order. To correct this, add in the extra optional parameter</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"Real GDP"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now we can clearly see that the highest real GDP was attained in the first quarter of this year, and had a value of 16903.2</p>
+
+<h4 id="useful-functions-for-numeric-data">Useful Functions for Numeric Data</h4>
+
+<p>Here are a few useful functions when dealing with numeric data columns.
+To find the minimum value in a column, call <code class="highlighter-rouge">min()</code> on a column of the table.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="s">"Real GDP"</span><span class="p">]</span><span class="o">.</span><span class="nb">min</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>To find the maximum value, call <code class="highlighter-rouge">max()</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="s">"Nominal GDP"</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>And to find the average value of a column, use <code class="highlighter-rouge">mean()</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">accounts</span><span class="p">[</span><span class="s">"Real GDI"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="part-3-visualization-">Part 3: Visualization <a id="viz"></a></h3>
+
+<p>Now that you can read in data and manipulate it, you are now ready to learn about how to visualize data. To begin, run the cells below to import the required packages we will be using.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<p>We will be using US unemployment data from <a href="https://fred.stlouisfed.org/">FRED</a> to show what we can do with data. The statement below will put the csv file into a pandas DataFrame.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unemployment_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"data/detailed_unemployment.csv"</span><span class="p">)</span>
+<span class="n">unemployment_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>One of the advantages of pandas is its built-in plotting methods. We can simply call <code class="highlighter-rouge">.plot()</code> on a dataframe to plot columns against one another. All that we have to do is specify which column to plot on which axis. Something special that pandas does is attempt to automatically parse dates into something that it can understand and order them sequentially.</p>
+
+<p><strong>Sidenote:</strong> <code class="highlighter-rouge">total_unemployed</code> is a percent.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unemployment_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'date'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_unemployed'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The base package for most plotting in Python is <code class="highlighter-rouge">matplotlib</code>. Below we will look at how to plot with it. First we will extract the columns that we are interested in, then plot them in a scatter plot. Note that <code class="highlighter-rouge">plt</code> is the common convention for <code class="highlighter-rouge">matplotlib.pyplot</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total_unemployed</span> <span class="o">=</span> <span class="n">unemployment_data</span><span class="p">[</span><span class="s">'total_unemployed'</span><span class="p">]</span>
+<span class="n">not_labor</span> <span class="o">=</span> <span class="n">unemployment_data</span><span class="p">[</span><span class="s">'not_in_labor_searched_for_work'</span><span class="p">]</span>
+
+<span class="c">#Plot the data by inputting the x and y axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">total_unemployed</span><span class="p">,</span> <span class="n">not_labor</span><span class="p">)</span>
+
+<span class="c"># we can then go on to customize the plot with labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Percent Unemployed"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Total Not In Labor, Searched for Work"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Though matplotlib is sometimes considered an “ugly” plotting tool, it is powerful. It is highly customizable and is the foundation for most Python plotting libraries. Check out the <a href="https://matplotlib.org/api/pyplot_summary.html">documentation</a> to get a sense of all of the things you can do with it, which extend far beyond scatter and line plots. An arguably more attractive package is <a href="https://seaborn.pydata.org/">seaborn</a>, which we will go over in future notebooks.</p>
+
+<h4 id="question-5-plotting">Question 5: Plotting</h4>
+
+<p>Try plotting the total percent of people unemployed vs those unemployed for more than 15 weeks.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total_unemployed</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">unemp_15_weeks</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">total_unemployed</span><span class="p">,</span> <span class="n">unemp_15_weeks</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c"># note: plt.show() is the equivalent of print, but for graphs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ok</span><span class="o">.</span><span class="n">grade</span><span class="p">(</span><span class="s">'q05'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="macroeconomics-">Macroeconomics <a id="econ"></a></h2>
+
+<p>These questions are a mixture of math review and questions directly related to the reading from the textbook. There will be no OK tests available feedback, but these questions will be autograded.</p>
+
+<p>For questions that are to be answered numerically, there is a code cell that starts with <strong># ANSWER</strong> and has a variable currently set to underscores. Replace those underscores with your final answer. It is okay to make other computations in that cell and others, so long a the given variable matches your answer.</p>
+
+<p>For free response questions, write your answers in the provided markdown cell that starts with <font color="blue"> ANSWER:</font>. Do not change the heading, and write your entire answer in that one cell.</p>
+
+<h3 id="chapter-1-introduction-to-macroeconomics-">Chapter 1: Introduction to Macroeconomics <a id="chapter-1"></a></h3>
+
+<h4 id="suppose-a-quantity-grows-at-a-steady-proportional-rate-of-3-per-year">Suppose a quantity grows at a steady proportional rate of 3% per year.</h4>
+<p>How long will it take to double?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ANSWER</span>
+<span class="n">TIME_TO_DOUBLE</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>Quadruple?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ANSWER</span>
+<span class="n">TIME_TO_QUADRUPLE</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>Grow 1024-fold?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ANSWER</span>
+<span class="n">TIME_TO_1024</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<h4 id="suppose-we-have-a-quantity-xt-that-varies-over-time-following-the-equation-fracdxtdt---006t--036">Suppose we have a quantity x(t) that varies over time following the equation: $\frac{dx(t)}{dt} = -(0.06)t + 0.36$</h4>
+
+<p>Without integrating the equation:</p>
+
+<p>$1.$ Tell me what the long-run steady-state value of $x$–that is, the limit of $x$ as $t$ approaches in infinity–is going to be.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">steady_state_val</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>$2.$ Suppose that the value of $x$ at time $t=0$, $x(0)$ equals 12. Once again, without integrating the equation, tell me how long it will take x to close half the distance between its initial value of 12 and its steady-state value.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half_dist_time</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>$3.$ How long will it take to close 3/4 of the distance?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">three_fourth_time</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>$4.$ $7/8$ of the distance?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">seven_eighth_time</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>$5.$ $15/16$ of the distance?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fifteen_sixteenth</span> <span class="o">=</span> <span class="n">___</span>
+</code></pre></div></div>
+
+<p>Now you are allowed to integrate $\frac{dx(t)}{dt} = -(0.06)t + 0.36$.</p>
+
+<p>$1.$ Write down and solve the indefinite integral.</p>
+
+<font color="blue"> ANSWER:
+
+$2.$ Write down and solve the definite integral for the initial condition $x(0) = 12$.
+
+<font color="blue"> ANSWER:
+
+$3.$ Write down and solve the definite integral for the initial condition $x(0) = 6$.
+
+<font color="blue"> ANSWER:
+
+#### Suppose we have a quantity $z = (\frac{x}{y})^\beta$
+
+Suppose $x$ is growing at 4% per year and that $\beta=1/4$:
+
+$1.$ How fast is $z$ growing if $y$ is growing at 0% per year? 
+
+
+
+{:.input_area}
+```python
+zero_per_growth = ___
+```
+
+
+$2.$ If $y$ is growing at 2% per year?
+
+
+
+{:.input_area}
+```python
+two_per_growth = ___
+```
+
+
+$3.$ If $y$ is growing at 4% per year?
+
+
+
+{:.input_area}
+```python
+four_per_growth = ___
+```
+
+
+#### Rule of 72 (Use it for the next four questions)
+
+1. If a quantity grows at about 3% per year, how long will it take to double?
+
+
+
+{:.input_area}
+```python
+time_to_double = ___
+```
+
+
+$2.$ If a quantity shrinks at about 4% per year, how long will it take it to halve itself?
+
+
+
+{:.input_area}
+```python
+time_to_half = ___
+```
+
+
+$3.$ If a quantity doubles five times, how large is it relative to its original value?
+
+
+
+{:.input_area}
+```python
+doubled_five_times_ratio = ___
+```
+
+
+$4.$ If a quantity halves itself three times, how large is it relative to its original value?
+
+
+
+{:.input_area}
+```python
+halved_three_times_ratio = ___
+```
+
+
+#### Interactive Model for Rule of 72
+
+In future problem sets, you will build models of your own, but for now, look over this code. Its a simple model that shows what happens as you adjust a single parameter (the interest rate) and its effect on the outcome (the time to double). First we need to make sure all of our packages are imported.
+
+
+
+{:.input_area}
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from ipywidgets import interact, IntSlider
+%matplotlib inline
+```
+
+
+Our model is going to be graph that shows what happens as the interest rate varies.
+
+
+
+{:.input_area}
+```python
+def graph_rule_of_72(interest_rate):
+    # np.linspace takes values evenly spaced between a stop and end point. In this case,
+    # will take 30 values between 1 and 10. These will be our x values in the graph.
+    x = np.linspace(1,10,30)
+    
+    # Here we create are corresponding y values
+    y = 72 / x
+    
+    print('Time to double:', 72 / interest_rate, 'years')
+    
+    # graphing our lines
+    plt.plot(x,y)
+    # graphing the specific point for our interest_rate
+    plt.scatter(interest_rate, 72 / interest_rate, c='r')
+    
+    plt.xlabel('interest rate (%)')
+    plt.ylabel('time (years)')
+    plt.show()
+```
+
+
+When we call `interact`, select the function that we want to interact with (`graph_rule_of_72`) and tell it what the value we want its parameters to take on. In this case, `graph_rule_of_72` only takes one parameter, `interest_rate`, and we choose to put an adjustable slider there. You can check out the [ipywidget examples](https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb) for more uses.
+
+
+
+{:.input_area}
+```python
+interact(graph_rule_of_72, interest_rate=IntSlider(min=1,max=10,step=1))
+```
+
+
+#### Why do DeLong and Olney think that the interest rate and the level of the stock market are important macroeconomic variables?
+
+<font color="blue"> ANSWER:
+
+#### What are the principal flaws in using national product per worker as a measure of material welfare? Given these flaws, why do we use it anyway?
+
+<font color="blue"> ANSWER:
+
+#### What is the difference between the nominal interest rate and the real interest rate? Why do DeLong and Olney think that the real interest rate is more important?
+
+<font color="blue"> ANSWER:
+
+### Chapter 2: Measuring the Macroeconomy <a id="chapter 2"></a>
+
+#### National Income and Product Accounting
+
+Explain whether or not, why, and how the following items are included in the calculations of national product:
+
+$1.$ Increases in business inventories. 
+
+<font color="blue"> ANSWER:
+
+$2.$ Fees earned by real estate agents on selling existing homes.
+
+<font color="blue"> ANSWER:
+
+$3.$ Social Security checks written by the government. 
+
+<font color="blue"> ANSWER:
+
+$4.$ Building of a new dam by the Army Corps of Engineers.
+
+<font color="blue"> ANSWER:
+
+$5.$ Interest that your parents pay on the mortgage they have on their house.
+
+<font color="blue"> ANSWER:
+
+$6.$ Purchases of foreign-made trucks by American residents
+
+<font color="blue"> ANSWER:
+
+#### In or Out of National Product? And Why
+
+Explain whether or not, why, and how the following items are included in the calculation of national product:
+
+$1.$ The sale for \\$25,000 of an automobile that cost \\$20,000 to manufacture that had been produced here at home last year and carried over in inventory.
+
+<font color="blue"> ANSWER:
+
+$2.$ The sale for \\$35,000 of an automobile that cost \\$25,000 to manufacture newly- made at home this year.
+
+<font color="blue"> ANSWER:
+
+$3.$ The sale for \\$45,000 of an automobile that cost \\$30,000 to manufacture that was newly-made abroad this year and imported.
+
+<font color="blue"> ANSWER:
+
+$4.$ The sale for \\$25,000 of an automobile that cost \\$20,000 to manufacture that was made abroad and imported last year.
+
+<font color="blue"> ANSWER:
+
+#### In or Out of National Product? And Why II
+
+Explain whether or not, why, and how the following items are included in the calculation of GDP:
+
+$1.$ The purchase for \\$500 of a dishwasher produced here at home this year.
+
+<font color="blue"> ANSWER:
+
+$2.$ The purchase for $500 of a dishwasher made abroad this year.
+
+<font color="blue"> ANSWER:
+
+$3.$ The purchase for $500 of a used dishwasher.
+
+<font color="blue"> ANSWER:
+
+$4.$ The manufacture of a new dishwasher here at home for $500 of a dishwasher that
+then nobody wants to buy.
+
+<font color="blue"> ANSWER:
+
+#### Components of National Income and Product
+
+Suppose that the appliance store buys a refrigerator from the manufacturer on December 15, 2018 for \\$600, and that you then buy that refrigerator on January 15, 2019 for \\$1000:
+
+$1.$ What is the contribution to GDP in 2018? 
+
+
+
+{:.input_area}
+```python
+contribution_2018 = ___
+```
+
+
+$2.$ How is the refrigerator accounted for in the NIPA in 2019?
+
+<font color="blue"> ANSWER:
+
+$3.$ What is the contribution to GDP in 2018?
+
+
+
+{:.input_area}
+```python
+contribution_2019 = ___
+```
+
+
+$4.$ How is the refrigerator accounted for in the NIPA in 2019?
+
+<font color="blue"> ANSWER:
+
+
+
+{:.input_area}
+```python
+# These lines are reading in CSV files and creating dataframes from then, you don't have to change about them!
+unemployment = pd.read_csv("data/Unemployment.csv")
+quarterly_acc = pd.read_csv("data/Quarterly_Accounts.csv")
+from_2007 = quarterly_acc.loc[(quarterly_acc["Year"].isin(np.arange(2007, 2018)))]
+```
+
+
+### Estimating National Product
+
+The Bureau of Economic Analysis measures national product in two different ways: as total expenditure on the economy’s output of goods and services and as the total income of everyone in the economy. Since – as you learned in earlier courses – these two things are the same, the two approaches should give the same answer. But in practice they do not.
+
+We have provided a data table `quarterly_gdp` that contains quarterly data on real GDP measured on the expenditure side (referred to in the National Income and Product Accounts as “Real Gross Domestic Product, chained dollars”) and real GDP measured on the income side (referred to as “Real Gross Domestic Income, chained dollars”). The table refers to Real Gross Dometic Product as "Real GDP" and to Real Gross Dometic Income as "Real GDI", and they are measured in billions of dollars. (Note: You will not have to use Nominal GDP)
+
+Another table, `from_2007`, has been created from `quarterly_gdp`, and includes information from 2007 to 2017. 
+Below is a snippet from `from_2007`:
+
+
+
+{:.input_area}
+```python
+from_2007.head(10)
+```
+
+
+$1.$ Compute the growth rate at an annual rate of each of the two series by quarter for
+2007:Q1–2012:Q4.
+
+
+
+{:.input_area}
+```python
+gdi_rate = ___
+gdp_rate = ___
+```
+
+
+$2.$ Describe any two things you see when you compare the two series that you find
+interesting, and explain why you find them interesting.
+
+<font color="blue"> ANSWER:
+
+#### Calculating Real Magnitudes:
+
+$1.$ When you calculate real national product, do you do so by dividing nominal national product by the price level or by subtracting the price level from nominal national product? 
+
+<font color="blue"> ANSWER:
+
+$2.$ When you calculate the real interest rate, do you do so by dividing the nominal interest rate by the price level or by subtracting the inflation rate from the nominal interest rate? 
+
+<font color="blue"> ANSWER:
+
+$3.$ Are your answers to (a) and (b) the same? Why or why not?
+
+<font color="blue"> ANSWER:
+
+### Unemployment Rate
+
+Use the `unemployment` table provided to answer the following questions. ***All numbers (other than percents) are in the thousands.***
+
+Here are the first five entries of the table.
+
+
+
+{:.input_area}
+```python
+unemployment.head()
+```
+
+
+#### What, roughly, was the highest level the U.S. unemployment rate (measured as Percent Unemployed of Labor Force in the table) reached in:
+
+$1.$ The 20th century?
+
+
+
+{:.input_area}
+```python
+unemployment_20th = ___
+```
+
+
+$2.$ The past fifty years? 
+
+
+
+{:.input_area}
+```python
+unemployment_past_50 = ___
+```
+
+
+$3.$ The twenty years before 2006?
+
+
+
+{:.input_area}
+```python
+unemployment_before_2006 = ___
+```
+
+
+$4.$ Given your answers to (1) through (3), Do you think there is a connection between your answer to the question above and the fact that Federal Reserve Chair Alan Greenspan received a five-minute standing ovation at the end of the first of many events marking his retirement in 2005?
+
+<font color="blue"> ANSWER:
+
+#### The State of the Labor Market
+
+$1.$ About how many people lose or quit their jobs in an average year?
+
+
+
+{:.input_area}
+```python
+average_quitters = ___
+```
+
+
+$2.$ About how many people get jobs in an average year?
+
+
+
+{:.input_area}
+```python
+average_getters = ___
+```
+
+
+$3.$ About how many people are unemployed in an average year?
+
+
+
+{:.input_area}
+```python
+average_unemployed = ___
+```
+
+
+$4.$ About how many people are at work in an average year?
+
+
+
+{:.input_area}
+```python
+average_workers = ___
+```
+
+
+$5.$ About how many people are unemployed now?
+
+
+
+{:.input_area}
+```python
+unemployed_now = ___
+```
+
+
+#### National Income Accounting:
+
+$1.$ What was the level of real GDP in 2005 dollars in 1970?
+
+
+
+{:.input_area}
+```python
+real_gdp_2005 = ___
+```
+
+
+$2.$ What was the rate of inflation in the United States in 2000?
+
+
+
+{:.input_area}
+```python
+inflation_rate_2000 = ___
+```
+
+
+$3.$ Explain whether or not, how, and why the following items are included in the calculation of GDP: (i) rent you pay on an apartment, (ii) purchase of a used textbook, (iii) purchase of a new tank by the Department of Defense, (iv) watching an advertisement on youtube.
+
+<font color="blue"> ANSWER:
+
+Congratulations, you have finished your first assignment for Econ 101B! Run the cell below to submit all of your work. Make sure to check on OK to make sure that it has uploaded.
+
+
+
+{:.input_area}
+```python
+_ = ok.submit()
+```
+
+
+Some materials this notebook were taken from [Data 8](http://data8.org/), [CS 61A](http://cs61a.org/), and  [DS Modules](http://data.berkeley.edu/education/modules) lessons.
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font>
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/modules-textbook/econ/problem-sets">
+      〈 <span class="u-margin-right-tiny"></span> Problem Sets Overview
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/modules-textbook/econ/ps3/flex_price">
+      Flex Price Economy (PS3) <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
 </html>

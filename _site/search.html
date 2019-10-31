@@ -10,10 +10,10 @@
   <title>Search the site</title>
   <meta name="description" content="This book is a compilation of a couple modules created at UC Berkeley.">
 
-  <link rel="canonical" href="http://0.0.0.0:4000/modules-textbook/search">
-  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://0.0.0.0:4000/modules-textbook/feed.xml">
+  <link rel="canonical" href="http://ds-modules.github.io/modules-textbook/search">
+  <link rel="alternate" type="application/rss+xml" title="UC Berkeley Data Science Modules" href="http://ds-modules.github.io/modules-textbook/feed.xml">
 
-  <meta property="og:url"         content="http://0.0.0.0:4000/modules-textbook/search" />
+  <meta property="og:url"         content="http://ds-modules.github.io/modules-textbook/search" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Search the site" />
 <meta property="og:description" content="This book is a compilation of a couple modules created at UC Berkeley." />
@@ -25,13 +25,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "http://0.0.0.0:4000/modules-textbook/search",
+    "http://ds-modules.github.io/modules-textbook/search",
   "headline":
     "Search the site",
   "datePublished":
-    "2019-05-01T23:07:08-05:00",
+    "2019-10-31T10:01:27-07:00",
   "dateModified":
-    "2019-05-01T23:07:08-05:00",
+    "2019-10-31T10:01:27-07:00",
   "description":
     "This book is a compilation of a couple modules created at UC Berkeley.",
   "author": {
@@ -43,14 +43,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://0.0.0.0:4000/modules-textbook",
+      "url": "http://ds-modules.github.io/modules-textbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "http://0.0.0.0:4000/modules-textbook",
+    "url": "http://ds-modules.github.io/modules-textbook",
     "height": 60,
     "width": 60
   }
@@ -148,7 +148,7 @@ initFunction(function () {
     {
       requestKernel: true,
       binderOptions: {
-        repo: 'YOUR-ORG/YOUR-REPO',
+        repo: 'ds-modules/modules-textbook',
         ref: 'master',
       },
       kernelOptions: {
@@ -400,6 +400,147 @@ initFunction(initHiddenCells);
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://ds-modules.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("https://datahub.berkeley.edu", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
 
   <!-- Lunr search code - will only be executed on the /search page -->
   <script src="/modules-textbook/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
@@ -498,7 +639,7 @@ initFunction(initQuery);
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <a href="https://ds-modules.github.io/modules-textbook"><img src="/modules-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">UC Berkeley Data Science Modules</h2>
   <ul class="c-sidebar__chapters">
     
@@ -554,7 +695,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="https://berkeley-data.gitbook.io/curriculum-guide/introduction/readme"
+          href="https://ds-modules.github.io/curriculum-guide/intro"
         >
           
           Data Science Curriculum Guide
@@ -621,23 +762,6 @@ initFunction(initQuery);
               </li>
               
             
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/modules-textbook/features/notebooks.html"
-                >
-                  
-                  Jupyter notebooks
-                </a>
-
-                
-                
-
-              </li>
-              
-            
           </ul>
         
       </li>
@@ -646,7 +770,7 @@ initFunction(initQuery);
     
       
       
-        <li><h2 class="c-sidebar__title">Modules</li>
+        <li><h2 class="c-sidebar__title">Social Sciences</li>
         
       
       
@@ -658,7 +782,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/modules-textbook/legal_studies/intro-legal-studies.html"
+          href="/modules-textbook/legalst-190/legalst-190-intro.html"
         >
           
           Legal Studies
@@ -673,14 +797,14 @@ initFunction(initQuery);
 
           
 
-          <ul class="c-sidebar__sections ">
+          <ul class="c-sidebar__sections u-hidden-visually">
             
               
               
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/legal_studies/1-18.html"
+                  href="/modules-textbook/legalst-190/1-18.html"
                 >
                   
                   Intro to Python
@@ -697,10 +821,253 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html"
+                  href="/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html"
                 >
                   
                   Problem Set 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/psych-167ac/psych-167ac-intro.html"
+        >
+          
+          Psychology
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/01-intro.html"
+                >
+                  
+                  Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/02-correlation-regression.html"
+                >
+                  
+                  Correlation & Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/psych-167ac/03-my-project.html"
+                >
+                  
+                  My Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Arts and Humanities</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html"
+        >
+          
+          English
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/xenglish-r1a/01-Chinatowns.html"
+                >
+                  
+                  Chinatowns
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Professional</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/modules-textbook/cp-101/cp-101-intro.html"
+        >
+          
+          City Planning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab07/lab07.html"
+                >
+                  
+                  Lab 7
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab08/lab08.html"
+                >
+                  
+                  Lab 8
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab09/lab09.html"
+                >
+                  
+                  Lab 9
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/modules-textbook/cp-101/lab10/lab10.html"
+                >
+                  
+                  Lab 10
                 </a>
 
                 
@@ -746,13 +1113,141 @@ initFunction(initQuery);
 <script>
     // Add the lunr store since we will now search it
     var store = [{
+        "title": "City Planning",
+        
+        "excerpt":
+            "Introduction to the City Planning Modules CYPLAN 101: Introduction to Urban Data Analytics Course Description: This course (1) provides a basic intro to census and economic data collection, processing, and analysis; (2) surveys forecasting and modeling techniques in planning; (3) demonstrates the uses of real-time urban data and analytics; and...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cp-101/cp-101-intro.html",
+        "teaser":null},{
+        "title": "Lab 7",
+        
+        "excerpt":
+            "Intro to Python In this lab you will be familiarizing yourself with the programming language called Python. Python is a so-called high level programming language. Which means it is very abstracted from machine languages and are easily readable by humans. Python is one of the most popular programming languages nowadays,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cp-101/lab07/lab07.html",
+        "teaser":null},{
+        "title": "Lab 8",
+        
+        "excerpt":
+            "Web Scraping In today’s lab, we are going to download data from the internet using an API. API stands for application programming interface. Companies often create APIs as a way to allow users to more directly interact with their servers to retrieve data. Today, we are going to be using...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cp-101/lab08/lab08.html",
+        "teaser":null},{
+        "title": "Lab 9",
+        
+        "excerpt":
+            "Introduction to geopandas Today we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in geopandas. geopandas is built on top of the pandas package you saw in the previous lab. Many of the methods you will see in...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cp-101/lab09/lab09.html",
+        "teaser":null},{
+        "title": "Lab 10",
+        
+        "excerpt":
+            "# Libraries that this notebook will use: import numpy as np import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd from shapely.geometry import Point # Helps the maps display nicely in the notebook: %matplotlib inline plt.rcParams['figure.figsize'] = [30, 20] # Tells the notebook not to display warnings:...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cp-101/lab10/lab10.html",
+        "teaser":null},{
+        "title": "Cuneiform",
+        
+        "excerpt":
+            "Cuneiform Introduction Modules Welcome to the Rhetoric modules! The Rhetoric Department has a few courses for which modules were created, some of which are listed below. CUNEIF 102A: Sumerian Text Analysis This module works with an interesting data set, the Electronic Text Corpus of Sumerian Literature (ETCSL). These texts are...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cuneiform/cuneiform-intro.html",
+        "teaser":null},{
+        "title": "Introduction and Text Analysis",
+        
+        "excerpt":
+            "CUNEIF 102A Professor Veldhuis Sumerian Text Analysis This notebook introduces how to use Python and Jupyter Notebooks, how to read in and process data, and how to find differences between texts based on their words (what measurements we can use to find the “distances” between texts). Module Developers: Sujude, Erik,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/cuneiform/nb-pt1-intro-text-analysis.html",
+        "teaser":null},{
+        "title": "Convergence to Balanced Growth Path",
+        
+        "excerpt":
+            "Convergence to Balanced Growth Path Setting up the Python/Jupyter environment # set up the environment by reading in every library we might need: # os... graphics... data manipulation... time... math... statistics... import sys import os from urllib.request import urlretrieve import matplotlib as mpl import matplotlib.pyplot as plt from IPython.display import...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/convergence-to-balanced-growth-path.html",
+        "teaser":null},{
+        "title": "Economics",
+        
+        "excerpt":
+            "Economics Introduction Modules Welcome to the economics modules! Economics is a multi-faceted field that can be conceptualized in multiple ways, including as the study of scarcity and responses to it; the study of production, consumption, and transfer of wealth; and as the study of resources and incentives. The Economics Department...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/econ-intro.html",
+        "teaser":null},{
+        "title": "Problem Sets Overview",
+        
+        "excerpt":
+            "Econ 101B Problem Sets Setting Up the Environment %matplotlib inline import numpy as np import matplotlib as mpl import matplotlib.pyplot as plt import seaborn as sns from pandas import DataFrame, Series from datetime import datetime import pandas as pd import plotly plotly.tools.set_credentials_file(username='', api_key='') import plotly.plotly as py import plotly.graph_objs as...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/problem-sets.html",
+        "teaser":null},{
+        "title": "Problem Set 1",
+        
+        "excerpt":
+            "Economics 101B Spring 2018 Pre-Semester Exercises Professor DeLong Welcome to 101B! This introductory notebook will familiarize you with some of the basic strategies for data analysis that will be useful to you throughout the course. It will cover an overview of our software, an introduction to programming, and some economics....",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/ps1/PS1.html",
+        "teaser":null},{
+        "title": "Flex Price Economy (PS3)",
+        
+        "excerpt":
+            "Flexible Price Economy Problem Set (PS3) Short-Run Economic Fluctuations: Flexible-Price Macroeconomics This assignment is due on Sunday 2-25-2018 at 5 PM. The purpose of the notebook is to enforce understanding of the flexible price model, starting with applications of production functions and moving into income-expenditure models. The assignment covers both...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/ps3/flex_price.html",
+        "teaser":null},{
+        "title": "Macroeconomic Policy (PS5)",
+        
+        "excerpt":
+            "Problem Set 5: Macroeconomic Policy Due xx/xx/2018 This assignment covers chapters 16-21 in the textbook, covering how policy decisions affect the economy. Chapter 16: Stabilization Policy This will likely be the bulk of the assignment. We can include all or most of the short-answer questions, and the computational monetary policy...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/ps5/macroeconomic-policy.html",
+        "teaser":null},{
+        "title": "Topics & Assignments",
+        
+        "excerpt":
+            "Econ 101b Spring 2018 Topics and Assignments Before Class Begins Read: Robert Skidelsky: Keynes: A Very Short Introduction http://amzn.to/2fTAMiJ. Start with the first paragraph of chapter 1, then skip forward to chapters 3-5, then read the Epilogue. After that, go back to read the Introduction, chapters 1 and 2, and...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/econ/sp18-topics-assignments.html",
+        "teaser":null},{
+        "title": "Chinatowns",
+        
+        "excerpt":
+            "ENGLISH R1A: Chinatown and the Culture of Exclusion Instructor: Amy Lee Developers: Michaela Palmer, Maya Shen, Cynthia Leu, Chris Cheung FPF 2017 Welcome to lab! Please read this lab in its entirety, as the analysis will make a lot more sense with the background context provided. This lab is intended...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/english/01-Chinatowns.html",
+        "teaser":null},{
+        "title": "English",
+        
+        "excerpt":
+            "English Introduction Modules Welcome to the English modules! The English Department has a few courses for which modules were created, some of which are listed below. XENGLISH R1A: Chinatown and the Culture of Exclusion Using demographic data from the 20th-21st century, this module has students analyzing how a specific Chinatown,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/english/english-intro.html",
+        "teaser":null},{
         "title": "Features and customization",
         
         "excerpt":
             "Features This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll. The markdown files for this page (and others in the textbook) is generated from the notebooks with the scripts/generate_textbook.py script, which is called when you run make book. The...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/features.html",
+        "url": "http://ds-modules.github.io/modules-textbook/features/features.html",
         "teaser":null},{
         "title": "Markdown files",
         
@@ -760,7 +1255,7 @@ initFunction(initQuery);
             "Creating book content The two kinds of files that contain course content are: Jupyter Notebooks Markdown files Each are contained in the content/ folder and referenced from _data/toc.yml. If the file is markdown, it will be copied over with front-matter YAML added so that Jekyll can parse it Sidebars with...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/markdown.html",
+        "url": "http://ds-modules.github.io/modules-textbook/features/markdown.html",
         "teaser":null},{
         "title": "Jupyter notebooks",
         
@@ -768,15 +1263,15 @@ initFunction(initQuery);
             "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/features/notebooks.html",
+        "url": "http://ds-modules.github.io/modules-textbook/features/notebooks.html",
         "teaser":null},{
         "title": "Home",
         
         "excerpt":
-            "DSEP Data Science Modules Data Science for the Social Sciences It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education...",
+            "UC Berkeley Data Science Modules Data Science for the Social Sciences It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/intro.html",
+        "url": "http://ds-modules.github.io/modules-textbook/intro.html",
         "teaser":null},{
         "title": "Data Science in Python and Jupyter",
         
@@ -784,7 +1279,7 @@ initFunction(initQuery);
             "Data Science Introduction Modules Welcome to the introduction for data science! If this is your first exposure ever to the data science realm, this is the place for you. Take a look at the sidebar to view the topics of this first chapter. Not only will you be exposed to...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/ds-intro.html",
+        "url": "http://ds-modules.github.io/modules-textbook/introduction/ds-intro.html",
         "teaser":null},{
         "title": "Intro to Python and Jupyter",
         
@@ -792,7 +1287,7 @@ initFunction(initQuery);
             "Introduction to Data Science Welcome to Data Science! In this notebook, you will learn how to use Jupyter Notebooks and the basics of programming in Python. Estimated Time: 30 minutes Topics Covered: Learn how to work with Jupyter notebooks. Learn about variables in Python, including variable types, variable assignment, and...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/introduction/intro-module-final.html",
+        "url": "http://ds-modules.github.io/modules-textbook/introduction/intro-module-final.html",
         "teaser":null},{
         "title": "Intro to Python",
         
@@ -800,7 +1295,7 @@ initFunction(initQuery);
             "Legal Studies 190 - Data, Prediction, and Law Welcome to our class! This introductory notebook will reviews concepts that you may already be familiar with from Data 8 or similar courses. The basic strategies and tools for data analysis covered in this notebook will be the foundations of this class....",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/1-18.html",
+        "url": "http://ds-modules.github.io/modules-textbook/legal_studies/1-18.html",
         "teaser":null},{
         "title": "Legal Studies",
         
@@ -808,7 +1303,31 @@ initFunction(initQuery);
             "Introduction to the Legal Studies Modules LEGALST 190: Data, Prediction, and Law Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course also introduces...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/intro-legal-studies.html",
+        "url": "http://ds-modules.github.io/modules-textbook/legal_studies/intro-legal-studies.html",
+        "teaser":null},{
+        "title": "Problem Set 1",
+        
+        "excerpt":
+            "SF Crime PSET 1 Introduction Getting the Data Descriptive Statistics Geographic Information Systems Discussion Questions # imports import requests from datascience import * import matplotlib.pyplot as plt import datetime import folium import time import json import os from branca.colormap import linear import branca.colormap import pandas as pd %matplotlib inline 1....",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
+        "teaser":null},{
+        "title": "Intro to Python",
+        
+        "excerpt":
+            "Legal Studies 190 - Data, Prediction, and Law Welcome to our class! This introductory notebook will reviews concepts that you may already be familiar with from Data 8 or similar courses. The basic strategies and tools for data analysis covered in this notebook will be the foundations of this class....",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/legalst-190/1-18.html",
+        "teaser":null},{
+        "title": "Legal Studies",
+        
+        "excerpt":
+            "Introduction to the Legal Studies Modules LEGALST 190: Data, Prediction, and Law Course Description: Data, Prediction, and Law is a new Legal Studies seminar that allows students to explore different data sources that scholars and government officials use to make generalizations and predictions in the realm of law. The course...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/legalst-190/legalst-190-intro.html",
         "teaser":null},{
         "title": "Problem Set 1",
         
@@ -816,7 +1335,111 @@ initFunction(initQuery);
             "SF Crime PSET 1 Introduction Getting the Data Descriptive Statistics Geographic Information Systems Discussion Questions # imports import requests from datascience import * import matplotlib.pyplot as plt import datetime import folium from folium import GeoJson import time import json import os from branca.colormap import linear import branca.colormap import pandas as...",
         "categories": [],
         "tags": [],
-        "url": "http://0.0.0.0:4000/modules-textbook/legal_studies/ps1/SF_Crime_PSET1.html",
+        "url": "http://ds-modules.github.io/modules-textbook/legalst-190/ps1/SF_Crime_PSET1.html",
+        "teaser":null},{
+        "title": "Introduction",
+        
+        "excerpt":
+            "Introduction to Importing Data, Using Tables and Creating Graphs The Jupyter Notebook If you run into errors, check the common errors Google doc first. First of all, note that this page is divided into what are called “cells”. For example, the following cell is a “code cell” where you will...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych-167ac/01-intro.html",
+        "teaser":null},{
+        "title": "Correlation & Regression",
+        
+        "excerpt":
+            "Correlation, regression, and prediction If you run into errors, check the common errors Google doc first. One of the most important and interesting aspects of data science is making predictions about the future. How can we learn about temperatures a few decades from now by analyzing historical data about climate...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych-167ac/02-correlation-regression.html",
+        "teaser":null},{
+        "title": "My Project",
+        
+        "excerpt":
+            "Using your own data If you run into errors, check the common errors Google doc first. All the information/functions you will need are on the notebooks. The notebooks follow the general order you will want to follow during your own data analysis for the project. If you need help, please...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych-167ac/03-my-project.html",
+        "teaser":null},{
+        "title": "Psychology",
+        
+        "excerpt":
+            "Introduction to the Psychology Modules PSYCH 167AC: Implicit Bias and Social Outcomes Course Description: Traditionally, research on prejudice and stereotyping has focused on the psychological mechanisms that lead people to be biased against others. Recent research has begun to shed light on the psychological legacy of prejudice and stereotyping for...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych-167ac/psych-167ac-intro.html",
+        "teaser":null},{
+        "title": "Introduction",
+        
+        "excerpt":
+            "Introduction to Importing Data, Using Tables and Creating Graphs The Jupyter Notebook If you run into errors, check the common errors Google doc first. First of all, note that this page is divided into what are called “cells”. For example, the following cell is a “code cell” where you will...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych/01-intro.html",
+        "teaser":null},{
+        "title": "Correlation, Regression, & Prediction",
+        
+        "excerpt":
+            "Correlation, regression, and prediction If you run into errors, check the common errors Google doc first. One of the most important and interesting aspects of data science is making predictions about the future. How can we learn about temperatures a few decades from now by analyzing historical data about climate...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych/02-correlation-regression.html",
+        "teaser":null},{
+        "title": "My Project",
+        
+        "excerpt":
+            "Using your own data If you run into errors, check the common errors Google doc first. All the information/functions you will need are on the notebooks. The notebooks follow the general order you will want to follow during your own data analysis for the project. If you need help, please...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych/03-my-project.html",
+        "teaser":null},{
+        "title": "Psychology",
+        
+        "excerpt":
+            "Psychology Introduction Modules Welcome to the Psychology modules! The Psychology Department has a few courses for which modules were created, some of which are listed below. PSYCH 167AC: Implicit Bias and Social Outcomes This module introduces students to correlation and regression analysis. Students pick from a set of datasets on...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/psych/psych-intro.html",
+        "teaser":null},{
+        "title": "Introduction",
+        
+        "excerpt":
+            "XRHETOR-R1A Data Science Module 01 - Intro to Data Science in Rhetoric Professor Amy Tick Data Science is a fast-growing discipline with applications in many fields. Over the course of the next week, these modules will explore the use of Data Science in Rhetoric. Module 01 introduces the Python programming...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/rhetoric/01-intro/01-intro.html",
+        "teaser":null},{
+        "title": "Moral Foundations Analysis",
+        
+        "excerpt":
+            "Data Analysis: Moral Foundations Theory Professor Amy Tick Moral Foundations Theory (MFT) hypothesizes that people’s sensitivity to the foundations is different based on their political ideology: liberals are more sensitive to care and fairness, while conservatives are equally sensitive to all five. Here, we’ll explore whether we can find evidence...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis.html",
+        "teaser":null},{
+        "title": "Rhetoric",
+        
+        "excerpt":
+            "Rhetoric Introduction Modules Welcome to the Rhetoric modules! The Rhetoric Department has a few courses for which modules were created, some of which are listed below. XRHETOR R1A: Moral Foundations Theory These modules connect word use in political speeches to the Moral Foundations Theory. Statistical inferences and visualizations from this...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/rhetoric/rhetoric-intro.html",
+        "teaser":null},{
+        "title": "Chinatowns",
+        
+        "excerpt":
+            "ENGLISH R1A: Chinatown and the Culture of Exclusion Instructor: Amy Lee Developers: Michaela Palmer, Maya Shen, Cynthia Leu, Chris Cheung FPF 2017 Welcome to lab! Please read this lab in its entirety, as the analysis will make a lot more sense with the background context provided. This lab is intended...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/xenglish-r1a/01-Chinatowns.html",
+        "teaser":null},{
+        "title": "English",
+        
+        "excerpt":
+            "Introduction to the English Modules XENGLISH R1A: Chinatown and the Culture of Exclusion Module Description: Using demographic data from the 20th-21st century, this module has students analyzing how a specific Chinatown, such as SF Chinatown, has changed over time. Students will also use some simple computational text analysis methods to...",
+        "categories": [],
+        "tags": [],
+        "url": "http://ds-modules.github.io/modules-textbook/xenglish-r1a/xenglish-r1a-intro.html",
         "teaser":null},]
 </script>
               <nav class="c-page__nav">

@@ -1,16 +1,16 @@
 ---
 interact_link: content/psych-167ac/01-intro.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'Introduction'
 prev_page:
-  url: /psych-167ac/psych-167ac-intro
+  url: /psych-167ac/psych-167ac-intro.html
   title: 'Psychology'
 next_page:
-  url: /psych-167ac/02-correlation-regression
+  url: /psych-167ac/02-correlation-regression.html
   title: 'Correlation & Regression'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-
 # Introduction to Importing Data, Using Tables and Creating Graphs
 
 ## The Jupyter Notebook
