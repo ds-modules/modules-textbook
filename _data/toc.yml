@@ -71,6 +71,34 @@
     url: /legalst-190/ps1/SF_Crime_PSET1
     not_numbered: true
 
+- header: Physical Sciences
+
+# Molecular Biology Chapter
+- title: Human Physiology
+  url: /mcb-32/mcb-32-intro
+  not_numbered: true
+  expand_sections: false
+  sections:
+  - title: Lab 2
+    url: /mcb-32/lab02/lab02
+    not_numbered: true
+  - title: Lab 4
+    url: /mcb-32/lab04/lab04
+    not_numbered: true
+  - title: Lab 5
+    url: /mcb-32/lab05/lab05
+    not_numbered: true
+  - title: Lab 6
+    url: /mcb-32/lab06/lab06
+    not_numbered: true
+  - title: Lab 8
+    url: /mcb-32/lab08/lab08
+    not_numbered: true
+  - title: Lab 9
+    url: /mcb-32/lab09/lab09
+    not_numbered: true
+    
+    
 # Psych Chapter
 - title: Psychology
   url: /psych-167ac/psych-167ac-intro
@@ -98,6 +126,7 @@
     - title: Chinatowns
       url: /xenglish-r1a/01-Chinatowns
       not_numbered: true
+
 
 - header: Professional
 

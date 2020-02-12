@@ -1,0 +1,393 @@
+---
+interact_link: content/mcb-32/lab04/lab04.ipynb
+kernel_name: python3
+kernel_path: content/mcb-32/lab04
+has_widgets: false
+title: |-
+  Lab 4
+pagenum: 8
+prev_page:
+  url: /mcb-32/lab02/lab02.html
+next_page:
+  url: /mcb-32/lab05/lab05.html
+suffix: .ipynb
+search: data cell table div alert plot graph below into class line stimulus section computer goes amplitude lab using enter spreadsheet nan info question run should called axis get python graphs entering br graphing id shown after replace take transfer please verify correct plt module notation its parentheses x subject note
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MCB-32:-Lab-04---Muscle-Excitability-and-Contractility">MCB 32: Lab 04 - Muscle Excitability and Contractility<a class="anchor-link" href="#MCB-32:-Lab-04---Muscle-Excitability-and-Contractility"> </a></h1><hr>
+<h3 id="Professor-Robin-Ball">Professor Robin Ball<a class="anchor-link" href="#Professor-Robin-Ball"> </a></h3><p>During this lab, you will get more practice using Python and creating graphs.</p>
+<p><em>Estimated Time: ~1 Hour</em></p>
+<hr>
+<h3 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h3><ol>
+<li><a href="#section-1">Entering your data</a><br></li>
+<li><a href="#section-2">Graphing your data</a><br></li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">qgrid</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+<span class="n">grid_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;forceFitColumns&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;defaultColumnWidth&quot;</span> <span class="p">:</span> <span class="mi">175</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Entering-your-data-">1. Entering your data <a id="section-1" /><a class="anchor-link" href="#1.-Entering-your-data-"> </a></h2><p>Before you can graph your data, you must enter it into the computer. The cell below will load a spreadsheet with each cell filled with the value <code>NaN</code>.</p>
+<div class='alert alert-info'>
+
+**QUESTION:** Enter your data from Table 1 into the spreadsheet shown after you run the cell below. You should replace the `NaN` in each cell.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table_1_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;empty-table-1.csv&quot;</span><span class="p">)</span>
+<span class="n">table_1_sheet</span> <span class="o">=</span> <span class="n">qgrid</span><span class="o">.</span><span class="n">show_grid</span><span class="p">(</span><span class="n">table_1_df</span><span class="p">,</span> <span class="n">show_toolbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid_options</span><span class="o">=</span><span class="n">grid_options</span><span class="p">)</span>
+<span class="n">table_1_sheet</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The cell below will take your data and transfer it into a Table for you. Please verify that your data is correct.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table_1_df</span> <span class="o">=</span> <span class="n">table_1_sheet</span><span class="o">.</span><span class="n">get_changed_df</span><span class="p">()</span>
+<span class="n">table_1</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">table_1_df</span><span class="p">)</span>
+<span class="n">table_1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class='alert alert-info'>
+
+**QUESTION:** Enter your data from Table 4 into the spreadsheet shown after you run the cell below. You should replace the `NaN` in each cell.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table_4_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;empty-table-4.csv&quot;</span><span class="p">)</span>
+<span class="n">table_4_sheet</span> <span class="o">=</span> <span class="n">qgrid</span><span class="o">.</span><span class="n">show_grid</span><span class="p">(</span><span class="n">table_4_df</span><span class="p">,</span> <span class="n">show_toolbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid_options</span><span class="o">=</span><span class="n">grid_options</span><span class="p">)</span>
+<span class="n">table_4_sheet</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The cell below will take your data and transfer it into a Table for you. Please verify that your data is correct.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table_4_df</span> <span class="o">=</span> <span class="n">table_4_sheet</span><span class="o">.</span><span class="n">get_changed_df</span><span class="p">()</span>
+<span class="n">table_4</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">table_4_df</span><span class="p">)</span>
+<span class="n">table_4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Graphing-your-data-">2. Graphing your data <a id="section-2" /><a class="anchor-link" href="#2.-Graphing-your-data-"> </a></h2><p>We're interested in a function called <code>plot</code>, which makes line graphs. We can tell the computer to find <code>plot</code> in the <code>plt</code> module using what's called <em>dot notation</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># use the plot function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>plot</code> needs to get data to plot as its arguments. In this case, we can give it the lists of data we made earlier. The data goes inside the parentheses: the data that goes on the x-axis is the first argument, and the data that goes on the y-axis is the second.</p>
+<p>Here's an example of how to plot Stimulus Amplitude against Stimulus Duration for Subject 1. Stimulus Amplitude is on the x-axis, so it goes first in the parentheses.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a line plot of data for subject 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">table_1</span><span class="p">[</span><span class="s2">&quot;Stimulus Amplitude 1&quot;</span><span class="p">],</span> <span class="n">table_1</span><span class="p">[</span><span class="s2">&quot;Twitch Duration 1&quot;</span><span class="p">])</span>
+
+<span class="c1"># a function to show the line plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note how we accessed the values in our table as this will be important later on. To access a column of the table, use the bracket notation (known as "slicing"):</p>
+<div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;Column Name&quot;</span><span class="p">]</span>
+</pre></div>
+<p>The cell below will access the stimulus amplitude for subject 2:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table_1</span><span class="p">[</span><span class="s2">&quot;Stimulus Amplitude 2&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As good scientists, we know that this graph is missing a lot. Our axes, graph, and line should all be labeled. Fortunately, the <code>plt</code> module has functions to do all of those things.</p>
+<p>Read over the call expressions in the next cell to figure out what each does, then run the cell to make the graph.</p>
+<div class="alert alert-warning">
+
+Note that we put labels and titles in quotation marks. This tells the computer that they are text data (also called *strings*). If we didn't put them in quotes, the computer would think they are variables, then throw a fit when it couldn't find what they stood for.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create the line plot for subject 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">table_1</span><span class="p">[</span><span class="s2">&quot;Stimulus Amplitude 1&quot;</span><span class="p">],</span> <span class="n">table_1</span><span class="p">[</span><span class="s2">&quot;Twitch Duration 1&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Subject 1&quot;</span><span class="p">)</span>
+
+<span class="c1"># label the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Stimulus amplitude (mA)&quot;</span><span class="p">)</span>
+
+<span class="c1"># label the y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Twitch duration (sec)&quot;</span><span class="p">)</span>
+
+<span class="c1"># title the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Twitch size vs. stimulus strength&quot;</span><span class="p">)</span>
+
+<span class="c1"># show the legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now it's time to create your graph!</p>
+<div class='alert alert-info'>
+
+**QUESTION:** Using the functions you learned in lab 2 and the refresher above, create a line plot of your data. Make one graph from Table 1 of twitch tension vs stimulus amplitude that includes lines for both subjects. Then make another line plot from Table 4 of twitch tension vs the frequency of stimulation.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">...</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class='alert alert-warning'>
+If you are not getting a nice trend line, check that your data has been entered in order of increasing frequency.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>Notebook developed by: Monica Wilkinson and Chris Pyles</p>
+<p>Data Science Modules: <a href="http://data.berkeley.edu/education/modules">http://data.berkeley.edu/education/modules</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

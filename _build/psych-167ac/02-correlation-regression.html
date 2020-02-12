@@ -1,0 +1,1045 @@
+---
+interact_link: content/psych-167ac/02-correlation-regression.ipynb
+kernel_name: python3
+kernel_path: content/psych-167ac
+has_widgets: false
+title: |-
+  Correlation & Regression
+pagenum: 15
+prev_page:
+  url: /psych-167ac/01-intro.html
+next_page:
+  url: /psych-167ac/03-my-project.html
+suffix: .ipynb
+search: data our line value correlation regression variable model acceleration r notebook between fit well points scatter not p lets y us price linear coefficient equation alpha epsiloni thats below code using msrp per mpg association straight plot relationship beta just squared increase going run science based predict cars analyze table
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Correlation,-regression,-and-prediction">Correlation, regression, and prediction<a class="anchor-link" href="#Correlation,-regression,-and-prediction"> </a></h1><p><em>If you run into errors, check the <a href="https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing">common errors</a> Google doc first.</em></p>
+<p>One of the most important and interesting aspects of data science is making predictions about the future. How can we learn about temperatures a few decades from now by analyzing historical data about climate change and pollution? Based on a person's social media profile, what conclusions can we draw about their interests? How can we use a patient's medical history to judge how well he or she will respond to a treatment?</p>
+<p>Run the cell below to import the code we'll use in this notebook.
+Don't worry about getting an output, simply run the cell.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plots</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this module, you will look at two <strong>correlated</strong> phenomena and predict unseen data points!</p>
+<p>We will be using data from the online data archive of Prof. Larry Winner of the University of Florida. The file <em>hybrid</em> contains data on hybrid passenger cars sold in the United States from 1997 to 2013. In order to analyze the data, we must first <strong>import</strong> it to our Jupyter notebook and <strong>create a table.</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/hybrid.csv&#39;</span><span class="p">)</span>  <span class="c1"># Imports the data and creates a table</span>
+<span class="n">hybrid</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Displays the first five rows of the table</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>vehicle</th> <th>year</th> <th>msrp</th> <th>acceleration</th> <th>mpg</th> <th>class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Prius (1st Gen)</td> <td>1997</td> <td>24509.7</td> <td>7.46        </td> <td>41.26</td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Tino           </td> <td>2000</td> <td>35355  </td> <td>8.2         </td> <td>54.1 </td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Prius (2nd Gen)</td> <td>2000</td> <td>26832.2</td> <td>7.97        </td> <td>45.23</td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Insight        </td> <td>2000</td> <td>18936.4</td> <td>9.52        </td> <td>53   </td> <td>Two Seater</td>
+        </tr>
+        <tr>
+            <td>Civic (1st Gen)</td> <td>2001</td> <td>25833.4</td> <td>7.04        </td> <td>47.04</td> <td>Compact   </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (148 rows omitted)</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>References: vehicle: model of the car, year: year of manufacture, msrp: manufacturer's suggested retail price in 2013 dollars, acceleration: acceleration rate in km per hour per second, mpg: fuel economy in miles per gallon, class: the model's class.</em></p>
+<p><strong>Note: whenever we write an equal sign (=) in python, we are assigning somthing to a variable.</strong></p>
+<p>Let's visualize some of the data to see if we can spot a possible association!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;acceleration&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">)</span> <span class="c1"># Creates a scatter plot of two variables in a table</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/psych-167ac/02-correlation-regression_5_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see in the above scatter, there seems to be a positive association between acceleration and price. That is, cars with greater acceleration tend to cost more, on average; conversely, cars that cost more tend to have greater acceleration on average.</p>
+<p>What about miles per gallon and price? Do you expect a positive or negative association?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/psych-167ac/02-correlation-regression_7_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Along with the negative association, the scatter diagram of price versus efficiency shows a <strong>non-linear relation</strong> between the two variables, i.e., the points appear to be clustered around a curve, not around a straight line.</p>
+<p>Let's subset the data so that we're only looking at SUVs. Use what you learned in the previous notebook to choose only <code>SUV</code>s and then make a scatter plot of <code>mpg</code> and <code>msrp</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># task</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="The-correlation-coefficient---r">The correlation coefficient - <em>r</em><a class="anchor-link" href="#The-correlation-coefficient---r"> </a></h3><blockquote><p>The correlation coefficient ranges from −1 to 1. A value of 1 implies that a linear equation describes the relationship between X and Y perfectly, with all data points lying on a line for which Y increases as X increases. A value of −1 implies that all data points lie on a line for which Y decreases as X increases. A value of 0 implies that there is no linear correlation between the variables. ~Wikipedia</p>
+</blockquote>
+<p><em>r</em> = 1: the scatter diagram is a perfect straight line sloping upwards</p>
+<p><em>r</em> = -1: the scatter diagram is a perfect straight line sloping downwards.</p>
+<p>Let's calculate the correlation coefficient between acceleration and price. We can use the <code>np.corrcoef</code> function on the two variable (columns here) that we want to correlate:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">hybrid</span><span class="p">[</span><span class="s1">&#39;acceleration&#39;</span><span class="p">],</span> <span class="n">hybrid</span><span class="p">[</span><span class="s1">&#39;msrp&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0.6955778996913979, 1.9158000667128373e-23)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This function two numbers. The first number is our <code>r</code> value, and the second number is the <code>p-value</code> for our correlation. A <code>p-value</code> of under .05 indicates strong validity in the correlation. Our coefficient here is 0.6955779, and our p-value is low <strong><em>implying strong positive correlation</em></strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="Regression">Regression<a class="anchor-link" href="#Regression"> </a></h3><p>As mentioned earlier, an important tool in data science is to make predictions based on data. The code that we've created so far has helped us establish a relationship between our two variables. Once a relationship has been established, it's time to create a model that predicts unseen data values. To do this we'll find the equation of the <strong>regression line</strong>!</p>
+<p>The regression line is the <strong>best fit</strong> line for our data. It’s like an average of where all the points line up. In linear regression, the regression line is a perfectly straight line! Below is a picture showing the best fit line.</p>
+<p><img src="http://onlinestatbook.com/2/regression/graphics/gpa.jpg" alt="image"></p>
+<p>As you can infer from the picture, once we find the <strong>slope</strong> and the <strong>y-intercept</strong> we can start predicting values! The equation for the above regression to predict university GPA based on high school GPA would look like this:</p>
+<p>$UNIGPA_i= \alpha + \beta HSGPA + \epsilon_i$</p>
+<p>The variable we want to predict (or model) is the left side <code>y</code> variable, the variable which we think has an influence on our left side variable is on the right side. The $\alpha$ term is the y-intercept and the $\epsilon_i$ describes the randomness.</p>
+<p>We can fit the model by setting up an equation without the $\alpha$ and $\epsilon_i$ in the <code>formula</code> parameter of the function below, we'll give it our data variable in the <code>data</code> parameter. Then we just <code>fit</code> the model and ask for a <code>summary</code>. We'll try a model for:</p>
+<p>$MSRP_i= \alpha + \beta ACCELERATION + \epsilon_i$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;msrp ~ acceleration&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hybrid</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   msrp   R-squared:                       0.484
+Model:                            OLS   Adj. R-squared:                  0.480
+Method:                 Least Squares   F-statistic:                     141.5
+Date:                Wed, 22 May 2019   Prob (F-statistic):           1.92e-23
+Time:                        22:33:36   Log-Likelihood:                -1691.7
+No. Observations:                 153   AIC:                             3387.
+Df Residuals:                     151   BIC:                             3394.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept    -2.128e+04   5244.588     -4.058      0.000   -3.16e+04   -1.09e+04
+acceleration  5067.6611    425.961     11.897      0.000    4226.047    5909.275
+==============================================================================
+Omnibus:                       32.737   Durbin-Watson:                   1.656
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               52.692
+Skew:                           1.072   Prob(JB):                     3.61e-12
+Kurtosis:                       4.915   Cond. No.                         52.1
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's a lot of information! While we should consider everything, we'll look at the <code>p</code> value, the <code>coef</code>, and the <code>R-squared</code>. A p-value of &lt; .05 is generally considered to be statistically significant. The <code>coef</code> is how much increase one sees in the left side variable for a one unit increase of the right side variable. So for a 1 unit increase in acceleration one might see an increase of $5067 MSRP, according to our model. But how great is our model? That's the <code>R-squared</code>. The <code>R-squared</code> tells us how much of the variation in the data can be explained by our model, .484 isn't that bad, but obviously more goes into the MSRP value of a car than <em>just</em> acceleration.</p>
+<p>We can plot this line of "best fit" too:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;acceleration&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">,</span> <span class="n">fit_line</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/psych-167ac/02-correlation-regression_16_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Covariate">Covariate<a class="anchor-link" href="#Covariate"> </a></h4><p>We might want to add another independent variable because we think it could influence our dependent variable. If we think <code>mpg</code> could have an influence and needs to be controlled for we just <code>+</code> add that to the equation. (NB: the example below would exhibit high <a href="https://en.wikipedia.org/wiki/Multicollinearity">multicollinearity</a>)</p>
+<p>$MSRP_i= \alpha + \beta ACCELERATION + \beta MPG + \epsilon_i$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;msrp ~ acceleration + mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hybrid</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   msrp   R-squared:                       0.527
+Model:                            OLS   Adj. R-squared:                  0.521
+Method:                 Least Squares   F-statistic:                     83.66
+Date:                Wed, 22 May 2019   Prob (F-statistic):           3.93e-25
+Time:                        22:33:37   Log-Likelihood:                -1685.0
+No. Observations:                 153   AIC:                             3376.
+Df Residuals:                     150   BIC:                             3385.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept     5796.5295   8861.211      0.654      0.514   -1.17e+04    2.33e+04
+acceleration  4176.4342    474.195      8.807      0.000    3239.471    5113.398
+mpg           -471.9015    127.066     -3.714      0.000    -722.973    -220.830
+==============================================================================
+Omnibus:                       24.929   Durbin-Watson:                   1.614
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               33.903
+Skew:                           0.922   Prob(JB):                     4.35e-08
+Kurtosis:                       4.384   Cond. No.                         282.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>We are going to walk through a brief example using the datasets that you will using. You will not be allowed to use this correlation for your project. However, the process for your project will be the same. Our goal is to make the project as seamless as possible for you. That being said, our example will be abbreviated so that you have some freedom to explore with your own data.</p>
+<p>First we are going to read in two datasets.</p>
+<p><code>Implicit-Age-IAT.csv</code> gives us the implicit <em>age</em> bias according to FIPS code.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Implicit-Age_IAT.csv&#39;</span><span class="p">)</span>
+<span class="n">age</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>10001</td> <td>7.13782</td> <td>7.17363</td> <td>0.462662             </td>
+        </tr>
+        <tr>
+            <td>10003</td> <td>7.07723</td> <td>6.88274</td> <td>0.439701             </td>
+        </tr>
+        <tr>
+            <td>10005</td> <td>6.84831</td> <td>6.96089</td> <td>0.445957             </td>
+        </tr>
+        <tr>
+            <td>1001 </td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td>
+        </tr>
+        <tr>
+            <td>1003 </td> <td>7.17904</td> <td>7.04148</td> <td>0.457369             </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (3133 rows omitted)</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Outcome-Heart-Attack-Mortality.csv</code> gives us the heart attack mortality count by year according to FIPS code.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">heart</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Outcome-Heart-Attack-Mortality.csv&#39;</span><span class="p">)</span>
+<span class="n">heart</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>State</th> <th>FIPS</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2000</td> <td>220.8                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2001</td> <td>100.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2002</td> <td>68.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2003</td> <td>66.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2005</td> <td>63.2                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (34780 rows omitted)</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Keep in mind that all the functions/syntax that we are using are either in this notebook, or the previous one from lecture.</p>
+<p>Now, we are going to join the two tables together. We will be joining on the 'FIPS' column because that's the only one they have in common! That column is a unique identifier for counties. We are also going to drop duplicate rows from the table.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">joined_data</span> <span class="o">=</span> <span class="n">age</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;FIPS&quot;</span><span class="p">,</span> <span class="n">heart</span><span class="p">)</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">joined_data</span><span class="p">)</span>
+<span class="n">joined_data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th> <th>State</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2000</td> <td>220.8                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2001</td> <td>100.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2002</td> <td>68.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2003</td> <td>66.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2005</td> <td>63.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2006</td> <td>68.3                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2007</td> <td>73.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2008</td> <td>104.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2009</td> <td>60                    </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2010</td> <td>93.2                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (34706 rows omitted)</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's great! By displaying the table, we can get a general idea as to what columns exist, and what kind of relations we can try to analyze.</p>
+<p>One thing to notice is that there are a lot of data points! Our visualization and regression may be cleaner if we subset the data. Let's use the functions from the first notebook to subset the data to California data from 2010.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="mi">2010</span><span class="p">))</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;State&quot;</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="s2">&quot;California&quot;</span><span class="p">))</span>
+<span class="n">joined_data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th> <th>State</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>6001</td> <td>6.96069</td> <td>6.78826</td> <td>0.423026             </td> <td>California</td> <td>Alameda     </td> <td>2010</td> <td>45.8                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6005</td> <td>6.575  </td> <td>6.85   </td> <td>0.446357             </td> <td>California</td> <td>Amador      </td> <td>2010</td> <td>78.6                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6007</td> <td>7.11892</td> <td>7.04696</td> <td>0.442157             </td> <td>California</td> <td>Butte       </td> <td>2010</td> <td>62.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6009</td> <td>7.65079</td> <td>7.8254 </td> <td>0.460807             </td> <td>California</td> <td>Calaveras   </td> <td>2010</td> <td>99.5                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6013</td> <td>6.96188</td> <td>6.87655</td> <td>0.418506             </td> <td>California</td> <td>Contra Costa</td> <td>2010</td> <td>48.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6015</td> <td>7      </td> <td>6.83871</td> <td>0.43266              </td> <td>California</td> <td>Del Norte   </td> <td>2010</td> <td>75.8                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6017</td> <td>6.84016</td> <td>6.85714</td> <td>0.408486             </td> <td>California</td> <td>El Dorado   </td> <td>2010</td> <td>53.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6019</td> <td>7.0461 </td> <td>7.09315</td> <td>0.424963             </td> <td>California</td> <td>Fresno      </td> <td>2010</td> <td>80.4                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6021</td> <td>6.6    </td> <td>7.2    </td> <td>0.260103             </td> <td>California</td> <td>Glenn       </td> <td>2010</td> <td>91.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6023</td> <td>6.86624</td> <td>6.79618</td> <td>0.433324             </td> <td>California</td> <td>Humboldt    </td> <td>2010</td> <td>94.4                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (39 rows omitted)</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We now have a lot less points, which will hopefully make the visualization a bit cleaner.</p>
+<p>Let's make a simple scatter plot with a fit line to look at the relation between the category <code>D_biep_Young_Good_all</code> and <code>Heart_Attack_Mortality</code>. Remember, all these functions are either on Notebook 1 or Notebook 2!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">joined_data</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s2">&quot;D_biep_Young_Good_all&quot;</span><span class="p">,</span> <span class="s2">&quot;Heart_Attack_Mortality&quot;</span><span class="p">,</span> <span class="n">fit_line</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/psych-167ac/02-correlation-regression_28_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see, the correlation and subsequent linear fit do not seem to be good. That means that there is not an easily quantifiable relationship between implicit age bias and the heart attack mortality rate for that geographic region.</p>
+<p>Let's verify this quantitatively with an r-value calculation!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">joined_data</span><span class="p">[</span><span class="s1">&#39;D_biep_Young_Good_all&#39;</span><span class="p">],</span> <span class="n">joined_data</span><span class="p">[</span><span class="s1">&#39;Heart_Attack_Mortality&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-0.2566592892097549, 0.0750451858488917)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our r-value is moderately negative, and our p-value is pretty low, but not &lt; .05, so we would <em>not</em> reject the null hypothesis and call this "significant". This indicates little to no correlation, similar to what our scatter plot predicited.</p>
+<p>Let us display a regression summary, just for practice!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;Heart_Attack_Mortality ~  D_biep_Young_Good_all + told&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">joined_data</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                              OLS Regression Results                              
+==================================================================================
+Dep. Variable:     Heart_Attack_Mortality   R-squared:                       0.067
+Model:                                OLS   Adj. R-squared:                  0.027
+Method:                     Least Squares   F-statistic:                     1.661
+Date:                    Wed, 22 May 2019   Prob (F-statistic):              0.201
+Time:                            22:33:40   Log-Likelihood:                -215.40
+No. Observations:                      49   AIC:                             436.8
+Df Residuals:                          46   BIC:                             442.5
+Df Model:                               2                                         
+Covariance Type:                nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept               104.0577     93.565      1.112      0.272     -84.278     292.394
+D_biep_Young_Good_all  -133.0227     79.819     -1.667      0.102    -293.690      27.645
+told                      3.0434     11.323      0.269      0.789     -19.749      25.836
+==============================================================================
+Omnibus:                        3.154   Durbin-Watson:                   1.878
+Prob(Omnibus):                  0.207   Jarque-Bera (JB):                2.932
+Skew:                           0.585   Prob(JB):                        0.231
+Kurtosis:                       2.744   Cond. No.                         269.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A quick scan above shows an extremeley low R-squared and a high p-value, both of which imply that our model does not fit the data very well at all.</p>
+<p>That's it! By working through this module, you've learned how to <strong>visually analyze your data</strong>, <strong>establish a correlation</strong> by calculating the <strong>correlation coefficient</strong>, <strong>set up a regression (with a covariate)</strong>, and <strong>find the regression line</strong>!</p>
+<!-- 
+
+---
+
+***We would also appreciate if you filled out this feedback form regarding the notebook:
+https://goo.gl/forms/ADY9TJU3TGKlllyT2***
+
+***Your input allows us to continue improving our educational notebooks!***
+
+-->
+
+<hr>
+<p>If you need help, please consult the <a href="https://data.berkeley.edu/education/data-science-community">Data Peers</a>!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
