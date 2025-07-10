@@ -1,0 +1,76 @@
+root: build
+entries:
+- file: README
+- file: _build/intro
+  entries:
+  - file: _build/cp-101/cp-101-intro
+    entries:
+    - file: _build/cp-101/lab07/lab07
+    - file: _build/cp-101/lab08/lab08
+    - file: _build/cp-101/lab09/lab09
+    - file: _build/cp-101/lab10/lab10
+  - file: _build/cuneiform/cuneiform-intro
+    entries:
+    - file: _build/cuneiform/nb-pt1-intro-text-analysis
+  - file: _build/econ/convergence-to-balanced-growth-path
+    entries:
+    - file: _build/econ/econ-intro
+    - file: _build/econ/problem-sets
+    - file: _build/econ/sp18-topics-assignments
+    - file: _build/econ/ps1/PS1
+    - file: _build/econ/ps3/flex_price
+    - file: _build/econ/ps5/macroeconomic-policy
+  - file: _build/english/01-Chinatowns
+    entries:
+    - file: _build/english/english-intro
+  - file: _build/features/features
+    entries:
+    - file: _build/features/markdown
+    - file: _build/features/notebooks
+  - file: _build/introduction/ds-intro
+    entries:
+    - file: _build/introduction/intro-module-final
+  - file: _build/legal_studies/1-18
+    entries:
+    - file: _build/legal_studies/intro-legal-studies
+    - file: _build/legal_studies/ps1/SF_Crime_PSET1
+  - file: _build/legalst-190/1-18
+    entries:
+    - file: _build/legalst-190/legalst-190-intro
+    - file: _build/legalst-190/ps1/SF_Crime_PSET1
+  - file: _build/psych/01-intro
+    entries:
+    - file: _build/psych/02-correlation-regression
+    - file: _build/psych/03-my-project
+    - file: _build/psych/psych-intro
+  - file: _build/psych-167ac/01-intro
+    entries:
+    - file: _build/psych-167ac/02-correlation-regression
+    - file: _build/psych-167ac/03-my-project
+    - file: _build/psych-167ac/psych-167ac-intro
+  - file: _build/rhetoric/rhetoric-intro
+    entries:
+    - file: _build/rhetoric/01-intro/01-intro
+    - file: _build/rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis
+  - file: _build/xenglish-r1a/01-Chinatowns
+    entries:
+    - file: _build/xenglish-r1a/xenglish-r1a-intro
+- file: content/intro
+  entries:
+  - file: content/LICENSE
+  - file: content/cp-101/cp-101-intro
+  - file: content/cuneif-102a/cuneif-102a-intro
+    entries:
+    - file: content/cuneif-102a/README
+  - file: content/features/features
+    entries:
+    - file: content/features/markdown
+  - file: content/introduction/ds-intro
+  - file: content/legalst-190/legalst-190-intro
+  - file: content/psych-167ac/psych-167ac-intro
+  - file: content/sociology/soc-intro
+  - file: content/xenglish-r1a/xenglish-r1a-intro
+  - file: content/xrhetor-r1a/README
+    entries:
+    - file: content/xrhetor-r1a/xrhetor-r1a-intro
+
