@@ -10,7 +10,7 @@ branca
 sodapy
 geopandas
 shapely
-sklearn
+scikit-learn
 scipy
 seaborn
 plotly
