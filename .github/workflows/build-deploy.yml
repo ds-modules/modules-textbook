@@ -1,0 +1,84 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master 
+  pull_request:
+    branches:
+      - master
+
+# Grant GITHUB_TOKEN the necessary permissions
+permissions:
+  contents: read 
+  pages: write   
+  id-token: write 
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build_page_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build page intermediate HTML files
+        run: jupyter-book build .
+
+      - name: Upload built HTML files (Jupyter-Book output)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-html-files # This artifact is used by the doc job
+          path: ./_build/
+
+  doc: 
+    needs: build_page_files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download built HTML files (Jupyter-Book output)
+        uses: actions/download-artifact@v4
+        with:
+          name: built-html-files
+          path: ./. # Downloads _build/ to current working directory
+
+      - name: Set up Ruby and Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x' # Use a modern Ruby version
+          bundler-cache: true # Installs dependencies with bundle install
+
+      - name: Build the website
+        run: bundle exec jekyll build --baseurl /0/html/
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3 # Use v3 or latest
+        with:
+          path: _site/ # The directory containing your built static files
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: doc # This job needs the 'doc' job to complete and upload the artifact
+
+    # Only deploy if pushing to the main branch
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Use v4 or latest
