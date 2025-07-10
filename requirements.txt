@@ -20,3 +20,4 @@ wordcloud
 textblob
 geojson
 nltk
+jupyter-book
