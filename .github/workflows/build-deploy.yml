@@ -42,28 +42,37 @@ jobs:
           name: built-html-files # This artifact is used by the doc job
           path: ./_build/
 
-  doc: 
+  doc:
     needs: build_page_files
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+  
       - name: Download built HTML files (Jupyter-Book output)
         uses: actions/download-artifact@v4
         with:
           name: built-html-files
           path: ./. # Downloads _build/ to current working directory
-
+  
       - name: Set up Ruby and Jekyll
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.4' # Use a modern Ruby version
-          bundler-cache: true # Installs dependencies with bundle install
-
+          # Remove or comment out 'bundler-cache: true' for this specific issue,
+          # or be aware of its interaction with manual 'bundle update --bundler'
+          # bundler-cache: true
+  
+      # IMPORTANT NEW STEP: Update Bundler to a compatible version
+      - name: Update Bundler
+        run: gem update --system && gem install bundler --no-document && bundle update --bundler
+  
+      - name: Install Ruby dependencies (from Gemfile.lock, if exists)
+        run: bundle install
+  
       - name: Build the website
         run: bundle exec jekyll build --baseurl /0/html/
-
+  
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3 # Use v3 or latest
         with:
