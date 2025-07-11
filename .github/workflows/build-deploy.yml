@@ -58,7 +58,7 @@ jobs:
       - name: Set up Ruby and Jekyll
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x' # Use a modern Ruby version
+          ruby-version: '3.4.4' # Use a modern Ruby version
           bundler-cache: true # Installs dependencies with bundle install
 
       - name: Build the website
