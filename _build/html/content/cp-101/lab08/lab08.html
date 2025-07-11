@@ -1,0 +1,903 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Web Scraping &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/cp-101/lab08/lab08';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Introduction to geopandas" href="../lab09/lab09.html" />
+    <link rel="prev" title="Intro to Python" href="../lab07/lab07.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../cp-101-intro.html">City Planning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/cp-101/lab08/lab08.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Web Scraping</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-tweets">Downloading Tweets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-tweets-by-location">Scraping Tweets by Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-data">Temporal Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-turn">Your turn!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="web-scraping">
+<h1>Web Scraping<a class="headerlink" href="#web-scraping" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>In today’s lab, we are going to download data from the internet using an API. API stands for application programming interface. Companies often create APIs as a way to allow users to more directly interact with their servers to retrieve data. Today, we are going to be using Twitter’s API to download tweets to get some experience with larger datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to set up your notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="c1"># These are the utility functions in the twitter_utils.py file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twitter_utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Ensure that Pandas shows at least 280 characters in columns, so we can see full tweets</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_colwidth&#39;</span><span class="p">,</span> <span class="mi">280</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>For this lab, we will be importing utility functions to interact with Twitter’s API. Underneath the hood, these utility functions use the <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> package, which is the how you can interface with Twitter’s API using <code class="docutils literal notranslate"><span class="pre">python</span></code>. First, we need to install <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> so that our utility functions will be able to use use it. If you have time at the end of this lab, you can look in the <code class="docutils literal notranslate"><span class="pre">twitter_utils.py</span></code> file in this folder and try to understand how the utility functions work.</p>
+<p>Twitter requires you to have authentication keys to access their API.  To get your keys, you’ll have to sign up for a Twitter developer account. Note that <strong>anyone who has your authentication keys can post as you</strong>. In order to protect your keys, you will be storing them in a separate file, which we have called <code class="docutils literal notranslate"><span class="pre">keys.json</span></code>, and reading them into this notebook from that file. Also note that <strong>Twitter limits developers to a certain rate of data requests</strong>. This means that if you make too many API calls in a short period of time, Twitter may block you from retrieving data for a certain period of time. Avoid rerunning cells that retrieve new tweets.</p>
+<p>Follow the instructions below to get your Twitter API keys.  <strong>Read the instructions completely before starting.</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://twitter.com">Create a Twitter account</a>.  You can use an existing account if you have one; if you prefer to not do this assignment under your regular account, feel free to create a throw-away account.</p></li>
+<li><p>Under account settings, add your phone number to the account.</p></li>
+<li><p><a class="reference external" href="https://dev.twitter.com/resources/signup">Create a Twitter developer account</a> by clicking the ‘Apply’ button on the top right of the page. Attach it to your Twitter account. You’ll have to fill out a form describing what you want to do with the developer account. Explain that you are doing this for a class at UC Berkeley and that you don’t know exactly what you’re building yet and just need the account to get started. These applications are approved by some sort of AI system, so it doesn’t matter exactly what you write.</p></li>
+<li><p>Once you’re logged into your developer account, <a class="reference external" href="https://apps.twitter.com/app/new">create an application for this assignment</a>.  You can call it whatever you want, and you can write any URL when it asks for a web site.  You don’t need to provide a callback URL.</p></li>
+<li><p>On the page for that application, find your Consumer Key and Consumer Secret.</p></li>
+<li><p>On the same page, create an Access Token.  Record the resulting Access Token and Access Token Secret.</p></li>
+<li><p>Edit the file <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> in the same folder as this file and replace the placeholders with your keys.</p></li>
+</ol>
+<p>Now you should be all ready to go! Let’s test that you have correctly set up your developer account and the <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> folder. The following cell loads your keys into this notebook, then validates them with the Twitter API. It should display your Twitter username without any warnings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">key_file</span> <span class="o">=</span> <span class="s2">&quot;keys.json&quot;</span> <span class="c1"># Add your keys to keys.json before running this cell</span>
+
+<span class="c1"># Loading your keys from keys.json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">key_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="c1"># if you print or view the contents of keys be sure to delete the cell!</span>
+
+<span class="c1"># Validate keys.</span>
+<span class="c1"># If your notebook does not print out &quot;The keys are valid. Your username is: &lt;your username&gt;&quot;</span>
+<span class="c1"># you may have copied and pasted your keys incorrectly.</span>
+<span class="n">validate_authentication</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are getting any errors in this cell, ask a TA for help. If you do not have valid keys, you will not be able to use the API.</p>
+</section>
+<section id="downloading-tweets">
+<h2>Downloading Tweets<a class="headerlink" href="#downloading-tweets" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Now we should be ready to download some tweets! In the following cell, we use one of the utility functions to download recent tweets with the hashtag “#gentrification”. This cell can take a few minutes to finish running.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note that you do not write the actual hashtag symbol</span>
+<span class="n">gentrification</span> <span class="o">=</span> <span class="n">download_recent_tweets_by_hashtag</span><span class="p">(</span><span class="n">hashtag</span> <span class="o">=</span> <span class="s2">&quot;gentrification&quot;</span><span class="p">,</span>
+                                                   <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="p">,</span>
+                                                   <span class="n">count</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are running into errors downloading these tweets, uncomment and run the following cell to load in tweets that we scraped earlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gentrification = load_tweets(&#39;gentrification.json&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, if you download any datasets during this lab that you would like to save for later, you can use the <code class="docutils literal notranslate"><span class="pre">save_tweets()</span></code> function, which takes as its arguments a list of dictionaries and a name for the new file you are writing.</p>
+<p>We now have <code class="docutils literal notranslate"><span class="pre">gentrification</span></code> assigned to a list with each element corresponding to a tweet. Let’s examine one of these elements to get a better understanding of our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This accesses the first (zero index) element of the list</span>
+<span class="n">gentrification</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is an example of another <code class="docutils literal notranslate"><span class="pre">python</span></code> data structure called a <em>dictionary</em>. Dictionaries store <em>values</em> by associating them with a <em>key</em> rather than by an integer index. You can access the values stored in a dictionary using bracket notation just like a list. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this dictionary, the keys are strings, and the values are all numbers</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The dictionary we were looking at above is a little bit hard to interpret because there dictionaries nested inside of some our keys. We can look only at the first level of keys in our dictionary by using the <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gentrification</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># You can also use .values() to access all of the values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unfortunately, Twitter by default does not attach geographic data to the metadata of each tweet. To get around this, we can use the location associated to the account of each poster. First, we want to extract only the parts of the data that are relevant to what we are looking for. To do this, we first need to turn our list of dictionaries into a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code>. Fortunately, there is a function that can do this easily for us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gentrification_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gentrification</span><span class="p">)</span>
+<span class="n">gentrification_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we want to extract out only the columns that are relevant to us. Discarding columns that do not help us answer our question can be helpful because it prevents the computer from having to do unnecessary computations. However, if we want to be able to connect any conclusions we make after we get rid of columns, it is helpful to keep an identifying column in your <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> even if you are not performing analyses on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">gentrification_df</span><span class="p">[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a closer look at an element of the <code class="docutils literal notranslate"><span class="pre">user</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In each row, the <code class="docutils literal notranslate"><span class="pre">user</span></code> column contains another dictionary with information about the user who posted the tweet. We can access the user’s location using the <code class="docutils literal notranslate"><span class="pre">location</span></code> key.</p>
+<p>The strategy that we are going to use to extract the locations from each user will be to iterate through the rows of <code class="docutils literal notranslate"><span class="pre">users</span></code>; at each row we will add the tweet id and the user location to a new dictionary. This dictionary will then be added to a list. Once we have iterated through all of the rows of <code class="docutils literal notranslate"><span class="pre">users</span></code>, we will convert our final list of dictionaries into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty list.</span>
+<span class="n">locations_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)):</span>
+    <span class="c1"># Create an empty dictionary.</span>
+    <span class="n">new_entry</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Copy the tweet id into the new dictionary.</span>
+    <span class="n">new_entry</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="c1"># Create a new key (&#39;location&#39;) and assign it to the location of the user who</span>
+    <span class="c1"># wrote that tweet.</span>
+    <span class="n">new_entry</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+    <span class="c1"># Append the dictionary as another element of our list.</span>
+    <span class="n">locations_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_entry</span><span class="p">)</span>
+    
+<span class="c1"># Transform our list into a DataFrame. As before, each element of the list becomes</span>
+<span class="c1"># a row in the DataFrame, and each key becomes a column.</span>
+<span class="n">all_locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">locations_list</span><span class="p">)</span>
+
+<span class="c1"># Display the first 10 tweets.</span>
+<span class="n">all_locations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly this isn’t a foolproof method, since the location associated with an account may have little bearing on the actual location from which a tweet was posted. Also, not all users have a specific location connected to their account. Depending on the data you have pulled from Twitter, you may also notice that some of the “locations” are not actually real places. We can do a bit of data cleaning to filter out the rows that contain true locations. First, let’s get rid of the rows that do not contain any text at all in the <code class="docutils literal notranslate"><span class="pre">location</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty DataFrame with the columns &#39;location&#39; and &#39;id&#39;</span>
+<span class="n">no_empties</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_locations</span><span class="p">)):</span>
+    <span class="c1"># This filters out tweets whose location column is an empty string.</span>
+    <span class="k">if</span> <span class="n">all_locations</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">no_empties</span> <span class="o">=</span> <span class="n">no_empties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_locations</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span>
+<span class="n">no_empties</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks pretty good! We would still like to filter through our locations for places that actually exist. Let’s use the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method to take a look at what locations we have in our data.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method takes in a table, a column, and optionally, an aggregate function (the default is count() which counts how many rows have the same value for the column we are grouping by. Other options include sum() and max() or min()). Groupby goes through each row, looks at the column that has been given to it of the current row, and groups each row based on if they have the same value at given column. After it has a list of rows for each distinct column value, it applies the aggregate function for each list, and returns a table of each distinct column value with the aggregate function applied to the rows that corresponded with the column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_empties</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you scroll through this list, you will likely see a whole litany of “locations” that do not resemble locations since the user is allowed to write whatever they like as their location. We do not have time to day to sort through all of these right now, so we are goign to move on to a few other techniques that we can use to analyze these kinds of data.</p>
+</section>
+<section id="scraping-tweets-by-location">
+<h2>Scraping Tweets by Location<a class="headerlink" href="#scraping-tweets-by-location" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Since many of the tweets we scraped earlier do not have useful locations, we may want to filter by location when we ask the API for tweets. We can use the same function as before, using the optional <code class="docutils literal notranslate"><span class="pre">location</span></code> argument. The format of the location argument is <code class="docutils literal notranslate"><span class="pre">&quot;latitude,longitude,radius&quot;</span></code>. The following code searches for tweets hashtagged “gentrification” within a 5 km radius of the Temescal Oakland area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gentrification_oak</span> <span class="o">=</span> <span class="n">download_recent_tweets_by_hashtag</span><span class="p">(</span><span class="n">hashtag</span> <span class="o">=</span> <span class="s2">&quot;gentrification&quot;</span><span class="p">,</span>
+                                                       <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="p">,</span>
+                                                       <span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;37.829314,-122.264433,5km&quot;</span><span class="p">,</span>
+                                                       <span class="n">count</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are running into errors downloading these tweets, uncomment and run the following cell to load in tweets that we scraped earlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gentrification_oak = load_tweets(&#39;gentrification_oak.json&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Your turn:</strong> Let’s use the procedure we went through earlier to find the most common user location in the <code class="docutils literal notranslate"><span class="pre">gentrification_oak</span></code> tweets. We’ve provided some starter code, but you need to fill in wherever you see a <code class="docutils literal notranslate"><span class="pre">...</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users_oak</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gentrification_oak</span><span class="p">)</span>
+<span class="n">users_oak</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># select columns of interest</span>
+
+<span class="n">locations_list_oak</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">users_oak</span><span class="p">)):</span>
+    <span class="n">new_entry</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">new_entry</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">users_oak</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">new_entry</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">users_oak</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+    <span class="n">locations_list_oak</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># we want to add the new entry to our list</span>
+<span class="n">all_locations_oak</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># turn the list into a DataFrame</span>
+
+<span class="n">no_empties_oak</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_locations_oak</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">all_locations_oak</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">no_empties_oak</span> <span class="o">=</span> <span class="n">no_empties_oak</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_locations_oak</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span>
+        
+<span class="n">grouped_locations</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># This finds the number of repeats of the most common location.</span>
+<span class="n">max_number_of_tweets</span> <span class="o">=</span> <span class="n">grouped_locations</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">most_common_location</span> <span class="o">=</span> <span class="n">grouped_locations</span><span class="p">[</span><span class="n">grouped_locations</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">max_number_of_tweets</span><span class="p">]</span>
+
+<span class="c1"># most_common_location is a DataFrame with one item. This access all of the indices in the</span>
+<span class="c1"># DataFrame, then takes the first (and only) one.</span>
+<span class="n">most_common_location</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="temporal-data">
+<h2>Temporal Data<a class="headerlink" href="#temporal-data" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Another facet of the tweets that you may want to analyze is the time at which they were posted. Currently, the only way we have information about the time the tweets were posted is in the <code class="docutils literal notranslate"><span class="pre">'created_at'</span></code> column, which is a string. As you may remember from the Introductory lab, <code class="docutils literal notranslate"><span class="pre">python</span></code> compares strings by assigning values to the letters themselves based on their position in the alphabet. We want to convert these strings to <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects, which will tell <code class="docutils literal notranslate"><span class="pre">python</span></code> at what time tweets were posted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gentrification_oak</span><span class="p">)[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]]</span>
+<span class="n">post_time</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">post_time</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">])</span>
+<span class="n">post_time</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that each string has been converted into a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object, we can extract the day, hour, minute, etc. of each time point like so</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">day</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">minute</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that we are not adding parentheses at the end of each line. That is because the <code class="docutils literal notranslate"><span class="pre">.day</span></code>, <code class="docutils literal notranslate"><span class="pre">.hour</span></code>, and <code class="docutils literal notranslate"><span class="pre">.minute</span></code> are not <em>functions</em> we are calling, but rather <em>attributes</em> of the particular <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object. If we want to look at the time of day that people tend to tweet about #gentrification, we can extract these attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_time</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span> <span class="o">+</span>
+                     <span class="n">post_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">second</span><span class="o">/</span><span class="mi">3600</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">post_time</span><span class="p">))]</span>
+<span class="n">post_time</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Hour (UTC)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Tweets&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question:</strong> What observations or trends do you notice about this graph?</p>
+<p><strong>Question:</strong> What could be improved about this graph or the process we used to obtain the data that generated it?</p>
+</section>
+<section id="sentiment-analysis">
+<h2>Sentiment Analysis<a class="headerlink" href="#sentiment-analysis" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>We can use the words the tweets to measure the sentiment, or the positive/negative feeling generated by the tweet. To do so we will be using the <a class="reference external" href="https://github.com/cjhutto/vaderSentiment">VADER (Valence Aware Dictionary and sEntiment Reasoner)</a>, which is a rule-based sentiment analysis tool specifically designed for social media. It even includes emojis! Run the following cell to load in the lexicon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vader</span> <span class="o">=</span> <span class="n">load_vader</span><span class="p">()</span>
+<span class="n">vader</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">500</span><span class="p">:</span><span class="mi">510</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The more positive the polarity of a word, the more positive feeling the word evokes in the reader. All of the words in <code class="docutils literal notranslate"><span class="pre">vader</span></code> are all lowercase, while many of our tweets are not. We need to modify the text in the tweets so that the words in our tweets will match up with the words stored in <code class="docutils literal notranslate"><span class="pre">vader</span></code>. Additionally, we need to remove punctuation since that will cause the words to not match up as well. We will put these modified tweets into another column in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> so that we can still have access to them later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select our columns of interest</span>
+<span class="n">tweets_and_retweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gentrification_oak</span><span class="p">)[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Set the index of the DataFrame to the tweet ID. This step is necessary</span>
+<span class="c1"># in order to use our utility functions.</span>
+<span class="n">tweets_and_retweets</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Remove punctuation and lowercase tweets</span>
+<span class="n">tweets_and_retweets</span><span class="p">[</span><span class="s1">&#39;cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_tweets</span><span class="p">(</span><span class="n">tweets_and_retweets</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+
+<span class="n">tweets_and_retweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we want to merge our sentiment lexicon with our cleaned tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_and_retweets</span><span class="p">[</span><span class="s1">&#39;polarity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compose_polarity</span><span class="p">(</span><span class="n">tweets_and_retweets</span><span class="p">,</span> <span class="n">vader</span><span class="p">)</span>
+<span class="n">tweets_and_retweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we want to see if more polarizing tweets are retweeted more often. To do this, we can plot the <code class="docutils literal notranslate"><span class="pre">polarity</span></code> and <code class="docutils literal notranslate"><span class="pre">retweet_count</span></code> columns against each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_and_retweets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;polarity&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question:</strong> What conclusions can you draw about polarity and retweets from this graph? How does this compare with your assumptions?</p>
+</section>
+<section id="your-turn">
+<h2>Your turn!<a class="headerlink" href="#your-turn" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>If time allows, try these exercises on your own or as a class!</p>
+<p><strong>Exercise 1:</strong> Using the <code class="docutils literal notranslate"><span class="pre">gentrification_oak</span></code> tweets, make a histogram of the time of day the tweets were posted. Note that if you would like the x-axis of the plot to reflect the correct time of day, you will have to convert the time from UTC to PDT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 2:</strong> Try scraping tweets from multiple locations and the same hashtag. Make a histogram for each location and see if there are any differences in the distribution of polarity of the tweets. Feel free to use multiple cells to avoid querying the API repeatedly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="authors-monica-wilkinson-and-vera-wang">
+<h3>Authors: Monica Wilkinson and Vera Wang<a class="headerlink" href="#authors-monica-wilkinson-and-vera-wang" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/cp-101/lab08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lab07/lab07.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Intro to Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lab09/lab09.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-tweets">Downloading Tweets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-tweets-by-location">Scraping Tweets by Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-data">Temporal Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-turn">Your turn!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

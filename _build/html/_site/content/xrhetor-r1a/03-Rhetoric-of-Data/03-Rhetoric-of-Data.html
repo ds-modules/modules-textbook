@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>[XRHETOR-R1A] Module 3: The Rhetoric of Data &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_site/content/xrhetor-r1a/03-Rhetoric-of-Data/03-Rhetoric-of-Data';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../content/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../content/intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/_site/content/xrhetor-r1a/03-Rhetoric-of-Data/03-Rhetoric-of-Data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>[XRHETOR-R1A] Module 3: The Rhetoric of Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction <a id="section 0"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deceitful-data-three-ways-to-make-a-dictionary">1. Deceitful Data: Three Ways to Make a Dictionary <a id="section 1"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-method-1-do-it-by-hand">i. Method 1: Do it by hand*<a id="subsection 1"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-method-2-write-some-code">ii. Method 2: Write some code<a id="subsection 2"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-method-3-write-some-code-and-do-some-by-hand">ii. Method 3: Write some code and do some by hand <a id="subsection 3"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ambiguous-analysis">2. Ambiguous Analysis <a id="section 2"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-simple-word-counts">i. Simple word counts <a id="subsection 4"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-advanced-text-analysis">ii. Advanced Text Analysis <a id="subsection 5"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-statistical-significance">iii. Statistical Significance <a id="subsection 6"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grifting-graphs">3. Grifting Graphs <a id="section 3"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-types-of-graphs">i. Types of Graphs <a id="subsection 7"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-color">ii. Color <a id="subsection 8"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">4. What’s Next? <a id="section 4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="xrhetor-r1a-module-3-the-rhetoric-of-data">
+<h1>[XRHETOR-R1A] Module 3: The Rhetoric of Data<a class="headerlink" href="#xrhetor-r1a-module-3-the-rhetoric-of-data" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<img src="https://pixel.nymag.com/imgs/daily/science/2014/10/16/16-trustingraphsnew.nocrop.w536.h2147483647.2x.gif" style="width: 400px; height: 400px;" />
+<section id="professor-amy-tick">
+<h2>Professor Amy Tick<a class="headerlink" href="#professor-amy-tick" title="Link to this heading">#</a></h2>
+<p>This module explores how data science can persuade or mislead through intentional or unintentional decisions at every step of the data science process. First, we’ll how human judgment still plays a part in seemingly unbiased, ‘automated’ programming processes by picking apart how Module 2’s Wordnet dictionary was compiled. Then, we’ll discover how some common cognitive biases are exploited in charts and graphs to emphasize a particular mesage.</p>
+<p><em>Estimated Time: 50 minutes</em></p>
+<hr class="docutils" />
+</section>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Cognitive biases</p></li>
+<li><p>Natural Language Processing</p></li>
+<li><p>Text Analysis</p></li>
+<li><p>Data Visualization</p></li>
+<li><p>Data Communication</p></li>
+</ul>
+</section>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<p>[Introduction](#section 0)<br></p>
+<p>1 - [Deceitful Data: Three Ways to Make a Dictionary](#section 1)<br></p>
+<p>       i - [By Hand](#subsection 1)</p>
+<p>       ii - [By Computer](#subsection 2)</p>
+<p>       iii - [Both](#subsection 3)</p>
+<p>2 - [Ambiguous Analysis](#section 2)<br></p>
+<p>       i - [Simple Word Counts](#subsection 4)</p>
+<p>       ii - [Advanced Text Analysis](#subsection 5)</p>
+<p>       iii - [Statistical Significance](#subsection 6)</p>
+<p>3 - [Grifting Graphs](#section 3)<br></p>
+<p>       i - [Types of Graphs](#subsection 7)</p>
+<p>       ii - [Color](#subsection 8)</p>
+<p>4 - [What’s Next?](#section 4)<br></p>
+<p><strong>Dependencies:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>plotly
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.offline</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">py</span>
+<span class="n">py</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.figure_factory</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ff</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction <a id='section 0'></a><a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>*“No study is less alluring or more dry and tedious than statistics, unless the mind and imagination are set to work.” - William Playfair, inventor of the line graph, bar graph, and pie chart. *</p>
+</div></blockquote>
+<p>As data science becomes more and more in-demand, it has emerged as a powerful rhetorical tool. Major news sources pair their stories with ‘infographics,’ while <a class="reference internal" href="#'http://journals.sagepub.com/doi/abs/10.1177/0963662514549688'"><span class="xref myst">studies</span></a> <a class="reference internal" href="#'http://lsr.nellco.org/cgi/viewcontent.cgi?article=1476&amp;context=nyu_plltwp'"><span class="xref myst">show</span></a> that the average person finds data and data visualizations highly persuasive. After all, ‘numbers don’t lie’. Or do they?</p>
+<p>Let’s return to the data analysis we did in module 2 and see, at each step of the process, the many opportunities to make our numbers ‘lie.’ As a refresher, here’s a map of the data science process we used.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Data_visualization_process_v1.png" style="width: 550px; height: 400px;" /></section>
+<hr class="docutils" />
+<section id="deceitful-data-three-ways-to-make-a-dictionary">
+<h2>1. Deceitful Data: Three Ways to Make a Dictionary <a id='section 1'></a><a class="headerlink" href="#deceitful-data-three-ways-to-make-a-dictionary" title="Link to this heading">#</a></h2>
+<p>Data science starts with a data set upon which all subsequent analysis is built. If that data is skewed, incomplete, or just plain wrong, it’s impossible to draw accurate conclusions from it.</p>
+<p>In module 02, we relied on the set of Moral Foundations words and their synonyms, collected in a Python dictionary, to answer questions about candidate and party values. Let’s look further into the ways such data sets are constructed and how they can lead you horribly astray.</p>
+<section id="i-method-1-do-it-by-hand">
+<h3>i. Method 1: Do it by hand*<a id='subsection 1'></a><a class="headerlink" href="#i-method-1-do-it-by-hand" title="Link to this heading">#</a></h3>
+<p>*<em>or by your grad students’ hands</em></p>
+<p>The original MFT word count analysis was done on religious sermon texts by Graham, Haidt, and Nosek as detailed in <a class="reference external" href="http://projectimplicit.net/nosek/papers/GHN2009.pdf">this paper</a>. Their methodology for constructing their dictionary is below:</p>
+<blockquote>
+<div><p>Dictionary development had an expansive phase and a contractive phase, all occurring before reading the sermons. In the expansive phase Jesse Graham and five research assistants generated as many associations, synonyms, and antonyms for the base foundation words as possible, using thesauruses and conversations with colleagues. This included full words and word stems (for instance, nation  covers national, nationalistic, etc.)…In the contractive phase, Jesse Graham and Jonathan Haidt deleted words that seemed too distantly related to the five foun- dations and also words whose primary meanings were not moral (e.g., just more often means only than fair).</p>
+</div></blockquote>
+<p>The file <code class="docutils literal notranslate"><span class="pre">haidt_dict.json</span></code> contains the relevant portions of the dictionary Graham, Haidt, and Nosek used in their paper. Run the cell below to load the dictionary into the variable <code class="docutils literal notranslate"><span class="pre">haidt_dict</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to load the dictionary into a variable</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../mft_data/haidt_dict.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_data</span><span class="p">:</span>
+    <span class="n">haidt_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compiling a dictionary this way is extremely time-consuming. Moreover, it involves many, many judgments from researchers, who like all humans are biased. <strong>Selection bias</strong> in data processing leads to a data set that may not be representative of the population to be analyzed. In this case, it could result in a dictionary that includes or omits certain words and leads to skewed word count results.</p>
+<p>Selection bias can be caused by cognitive biases like <strong>confirmation bias</strong>, where people are predisposed to look for data that they think will confirm their preconceptions.</p>
+<p>What are some ways selection bias could have happened while making this dictionary? How did Graham, Haidt, and Nosek try to avoid biasing their data?</p>
+</section>
+<section id="ii-method-2-write-some-code">
+<h3>ii. Method 2: Write some code<a id='subsection 2'></a><a class="headerlink" href="#ii-method-2-write-some-code" title="Link to this heading">#</a></h3>
+<p>It’s possible to make a dictionary much faster by writing code that utilizes Wordnet.</p>
+<p><a class="reference external" href="https://wordnet.princeton.edu/">Wordnet</a> is a database of words and meanings that can be used like a sophisticated thesaurus. Each word is associated with one or more senses (meanings), and each sense is associated with a <strong>synset</strong>- a set of synomyms associated with that meaning.</p>
+<p>Wordnet functions can be used by typing <code class="docutils literal notranslate"><span class="pre">wn.</span></code> (which tells Python we want to use Wordnet) followed by the function. Try looking up a set of Synsets by calling the <code class="docutils literal notranslate"><span class="pre">synsets</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look up synsets by calling wn.synsets()</span>
+<span class="c1"># Hint: the synsets function takes one argument: a word in the form of a string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each synset contains a lot of information.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">lemma_names()</span></code> returns a list of synonyms for that sense.</p>
+<p><code class="docutils literal notranslate"><span class="pre">definition()</span></code> returns the definition.</p>
+<p><code class="docutils literal notranslate"><span class="pre">example()</span></code> gives an example of the word being used in a sentence.</p>
+<p>Try calling these functions on the <code class="docutils literal notranslate"><span class="pre">data_synset</span></code> synset below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The synset for the first sense of &#39;data&#39;</span>
+<span class="n">data_synset</span> <span class="o">=</span> <span class="n">wn</span><span class="o">.</span><span class="n">synset</span><span class="p">(</span><span class="s1">&#39;data.n.01&#39;</span><span class="p">)</span>
+
+<span class="c1"># Your code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">lemma_names()</span></code> function suggests a way to make our Moral Foundations dictionary. For each Moral Foundation:</p>
+<ol class="arabic simple">
+<li><p>Look up the foundation word in Wordnet to get a list of synsets</p></li>
+<li><p>For each synset, use <code class="docutils literal notranslate"><span class="pre">lemma_names()</span></code> to get a lit of synonyms</p></li>
+</ol>
+<p>The function <code class="docutils literal notranslate"><span class="pre">get_entries</span></code> does these two steps. <code class="docutils literal notranslate"><span class="pre">get_entries</span></code> uses some Python syntax we haven’t learned yet; use the docstring and the comments to get a sense of what it does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to define the get_rel_wds function</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_rel_wds</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; returns the set of synonyms and antonyms for WORD in Wordnet&#39;&#39;&#39;</span>
+    <span class="c1"># get a list of synsets</span>
+    <span class="n">syns</span> <span class="o">=</span> <span class="n">wn</span><span class="o">.</span><span class="n">synsets</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="c1"># the list to return</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># cycle through each synset</span>
+    <span class="k">for</span> <span class="n">syn</span> <span class="ow">in</span> <span class="n">syns</span><span class="p">:</span>
+        <span class="c1"># cycle through words</span>
+        <span class="k">for</span> <span class="n">lem</span> <span class="ow">in</span> <span class="n">syn</span><span class="o">.</span><span class="n">lemmas</span><span class="p">():</span>
+            <span class="c1"># check for duplicates and add to values</span>
+            <span class="k">if</span> <span class="n">lem</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lem</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+            <span class="c1">#check for antonyms and add to values</span>
+            <span class="k">if</span> <span class="n">lem</span><span class="o">.</span><span class="n">antonyms</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">ant</span> <span class="ow">in</span> <span class="n">lem</span><span class="o">.</span><span class="n">antonyms</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">ant</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ant</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>     
+    <span class="k">return</span> <span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try using <code class="docutils literal notranslate"><span class="pre">get_rel_wds</span></code> for each of the Moral Foundations: “care”, “fairness”, “loyalty”, “authority”,  and “sanctity”. What entries do you get back? What do you notice about the different entries?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use get_rel_wds to get synonym lists</span>
+<span class="n">get_rel_wds</span><span class="p">(</span><span class="s1">&#39;care&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare the entries from Wordnet to those in <code class="docutils literal notranslate"><span class="pre">haidt_dict</span></code>. Which entries or kinds of entries are similar? Which are different?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remember, you can access the entries for a key by putting the key in square brackets []</span>
+<span class="c1"># You can get the keys for this dictionary using .keys()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ii-method-3-write-some-code-and-do-some-by-hand">
+<h3>ii. Method 3: Write some code and do some by hand <a id='subsection 3'></a><a class="headerlink" href="#ii-method-3-write-some-code-and-do-some-by-hand" title="Link to this heading">#</a></h3>
+<p>By coding, we can create a dictionary in a fraction of the time it would take by hand. But, the dictionary is far from perfect:</p>
+<ul class="simple">
+<li><p>the computer doesn’t know the difference between the senses we want and the senses we don’t, so some entries are unrelated to the foundation</p></li>
+<li><p>some words that seem like obvious entries aren’t included</p></li>
+<li><p>the number of entries that are returned for each foundation are very different. Foundation words that aren’t as commonly used (like ‘sanctity’) have very few entries.</p></li>
+</ul>
+<p>Ultimately, we created the dictionary used in Module 02 by combining methods 1 and 2: writing code to get synonyms, then adding and subtracting additional synonyms using our judgment.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ambiguous-analysis">
+<h2>2. Ambiguous Analysis <a id='section 2'></a><a class="headerlink" href="#ambiguous-analysis" title="Link to this heading">#</a></h2>
+<p>After the data is collected and processed, the next step is to do exploratory analysis, then model and estimate. Here, we’ll evaluate the approach we used in Module 02 as well as some more advanced text-analysis methods.</p>
+<section id="i-simple-word-counts">
+<h3>i. Simple word counts <a id='subsection 4'></a><a class="headerlink" href="#i-simple-word-counts" title="Link to this heading">#</a></h3>
+<p>The word count metric is appealing: it’s straightforward to code, fast to calculate, and easy to visualize. However, it relies heavily on the dictionary it uses, making it very susceptible to selection bias.</p>
+<p>The cell below compares the averages for the speech data, calculated once using the WordNet dictionary from Module 02, and recalculated using the dictionary from the Graham, Haidt, Nosek study. How large is the difference between the two sets of averages?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in the table of averages</span>
+<span class="n">foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">haidt_foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;haidt_party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plot the averages</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Wordnet Dictionary&#39;</span><span class="p">)</span>
+
+<span class="n">haidt_foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Haidt Dictionary&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another issue with this approach is <strong>word ambiguity</strong>. One of our entries for ‘care’ is ‘charg’, as in “the babysitter is in charge of taking care of the baby.” But, Python returns matches for these uses of the word in speeches:</p>
+<ul class="simple">
+<li><p>[20]”<em>…a unique advisory group charged with thinking of new ideas…</em>” Yes!</p></li>
+<li><p>[86]”<em>…so much in line with what often we are charged with…</em>” Yes!</p></li>
+<li><p>[169]”<em>…it is even worse that you re being charged interest rates..</em>” No?</p></li>
+<li><p>[39]”<em>…imagine if you could charge your car in your garage at night…</em>” Definitely no.</p></li>
+</ul>
+<p>Clearly, Python’s string-matching function is not sophisticated enough to pick out only the word senses we intend.</p>
+<p>Some more sophisticated algorithms can try to infer ambigous word meaning from a word’s context (<a class="reference external" href="http://madlyambiguous.osu.edu:1035/">Madly Ambiguous</a> uses Wordnet for this very purpose!). However, even they are far from 100% accurate. The field of <strong>Natural Language Processing</strong> has been progressing by leaps and bounds to improve computers’ ability to process language in the way that humans do naturally.</p>
+</section>
+<section id="ii-advanced-text-analysis">
+<h3>ii. Advanced Text Analysis <a id='subsection 5'></a><a class="headerlink" href="#ii-advanced-text-analysis" title="Link to this heading">#</a></h3>
+<p>Given how biased we know human brains to be, it’s tempting to remove the human element from analysis as much as possible. The <strong>Bag of Words</strong> method is one way to analyze texts by their word counts, <em>without</em> making decisions about which words are of interest.</p>
+<p><em>Note: the code in this section uses Python libraries and linear algebra techniques not covered in these modules. You are not expected to write code like this- we are walking you through it so you can see the kinds of things you can do further down the road in data science.</em></p>
+<p>The first step is to combine all the speeches into one big ‘word bag’, then find the unique set of words across all speeches. Then, a table is made with one column for every unique word in the speeches and one row for every speech (a ‘word vector’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All code in this subsection adapted from Deborah Nolan and Joey Gonzalez, DATA-100 Lecture 08. </span>
+<span class="c1"># http://www.ds100.org/fa17/assets/notebooks/08-lec/regular_expression_examples.html</span>
+
+<span class="c1"># Create a copy of our speech data</span>
+<span class="n">speech</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;speeches.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># create the word vectors</span>
+<span class="n">vec</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">speech</span><span class="p">[</span><span class="s1">&#39;clean_speech&#39;</span><span class="p">])</span>
+
+<span class="n">tfidf</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last line gives the shape of the table: that’s a lot of columns, or put another way, that’s a very high-dimensional table! It’s hard for us to visualize 22316th-dimensional space, but we’re good at visualizing 2-dimensional space. So, our next step is to reduce the dimensions of this table, keeping only the most informative dimensions. The code does this by treating the frequency of each individual word as a feature of a speech and finding the feature vectors that vary the most.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Finds the 2 largest singular values/vectors for the table</span>
+<span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">vt</span><span class="p">)</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svds</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">speech</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">speech</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Plot the graph</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;rgba(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">,</span><span class="si">{2}</span><span class="s2">,1)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">speech</span><span class="p">))])</span>
+<span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rgba(.99,.5,.2,1.)&quot;</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">speech</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">speech</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">),</span> 
+                     <span class="n">text</span><span class="o">=</span><span class="n">speech</span><span class="p">[</span><span class="s1">&#39;Candidate&#39;</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This graph can show underlying patterns to the speech data that may not be visible to the human eye. But, it suffers from two immediate problems:</p>
+<ul class="simple">
+<li><p>Difficult to interpret</p></li>
+<li><p>Doesn’t solve word ambiguity issue</p></li>
+</ul>
+<p>No perfect solution exists for unbiased text analysis. But, it is still possible to gain powerful, well-supported insights from data by using the right tools for the analysis task at hand.</p>
+</section>
+<section id="iii-statistical-significance">
+<h3>iii. Statistical Significance <a id='subsection 6'></a><a class="headerlink" href="#iii-statistical-significance" title="Link to this heading">#</a></h3>
+<p>Even if text analyis shows a difference between two groups (such as Democrat and Republican speech), that difference may not be significant. <strong>Statistical significance</strong> is determined by testing hypotheses about how the observed difference came about.</p>
+<p>There are two hypotheses:</p>
+<ol class="arabic simple">
+<li><p>The <strong>null hypothesis</strong>- Democrats and Republicans use Moral Foundation words at the same rates. Any difference in observed word usage is due to random chance.</p></li>
+<li><p>The <strong>alternate hypothesis</strong>- The difference in how Democrats and Republicans use words is not due to chance.</p></li>
+</ol>
+<p>By using statistical methods, it’s possible to calculate the <strong>p-value</strong>: the chance that we’d see a word usage difference as large or larger than the one we saw in the data, if the null hypothesis were true. For example, a p-value of <span class="math notranslate nohighlight">\(0.10\)</span> means there’s a ten percent chance that the Democrat-Republican difference we saw would happen if all candidates used words at the same rates. By convention, a p-value of 0.05 is <strong>statistically significant</strong> and a p-value of 0.01 is <strong>highly statistically significant</strong>.</p>
+<p>But, significance can be manufactured using <strong>p-hacking</strong>: manipulating test data without a hypothesis to find patterns, then presenting those patterns as significant.</p>
+<p>Go to the <a class="reference external" href="https://projects.fivethirtyeight.com/p-hacking/">FiveThirtyEight Interactive</a> to do some p-hacking of your own.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="grifting-graphs">
+<h2>3. Grifting Graphs <a id='section 3'></a><a class="headerlink" href="#grifting-graphs" title="Link to this heading">#</a></h2>
+<p>Once analysis is complete, a proud data scientist will want to communicate their results. A good visualization can draw attention to a pattern, summarize a finding, or support an argument. This section will cover guidelines for displaying data faithfully and convincingly.</p>
+<p>To show how the same data can be represented many different ways, we’ll use the speech data from Module 02- specifically, the average Moral Foundation percents we calculated. Run the cell below to load the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the speech data into a pandas table</span>
+<span class="n">foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">foundation_avg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="i-types-of-graphs">
+<h3>i. Types of Graphs <a id='subsection 7'></a><a class="headerlink" href="#i-types-of-graphs" title="Link to this heading">#</a></h3>
+<p>Different types of plots are great for emphasizing different things. Pandas makes plotting easy: for a DataFrame with numerical data like <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code>, you can create a plot by calling <code class="docutils literal notranslate"><span class="pre">.plot</span></code> followed by the specific plotting method. For example, in Module 02 we relied heavily on bar graphs using <code class="docutils literal notranslate"><span class="pre">.bar()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot of foundation averages. </span>
+<span class="c1"># Note: the figsize argument is optional, but can make the plot bigger and easier to read</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bar plots are great for this purpose because they make it very easy to compare numerical variables to one another. In this case, we can easily compare the average percentages of each foundation for each party.</p>
+<p>But, not all bar plots are created equal. Here, it’s easy to compare percentages within a party, but harder to compare percentages across parties because Democratic and Republican averages are so far apart.</p>
+<p>We can emphasize the differences between parties for each foundation by <strong>transposing</strong> <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> (i.e. making the columns into rows and the rows into columns) and making a bar chart of that. Create a variable <code class="docutils literal notranslate"><span class="pre">party_avg</span></code> by calling <code class="docutils literal notranslate"><span class="pre">.transpose()</span></code> on <code class="docutils literal notranslate"><span class="pre">foundtion_avg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">party_avg</span> <span class="o">=</span> <span class="n">foundation_avg</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">party_avg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now create another bar chart for <code class="docutils literal notranslate"><span class="pre">party_avg</span></code>, which has the same data as the <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> bar plot but different bar groupings. When would you want to use this plot instead of the first one?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An alternative to the bar plot is the <strong>stacked bar plot</strong>, which stacks all of the bars for each party on top of each other. Create a stacked bar plot for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> below by creating a bar plot, then adding the argument <code class="docutils literal notranslate"><span class="pre">stacked=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a stacked bar plot of foundation averages. </span>
+<span class="c1"># Hint: this should look like the code for a bar graph, but with one extra argument for bar()</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Stacked plots combine a lot of info into fewer bars, which can be visually appealing. But, they can cause comparison errors because they <strong>jiggle the baseline</strong>: for every stacked bar except the base bar, the baseline begins at a different height, making it hard to compare lengths.</p>
+<p>Here’s an extreme example of jiggling (with a few other bonus graph sins: which ones can you find?):</p>
+<img src="https://i.kinja-img.com/gawker-media/image/upload/s--DstspxbR--/c_fit,fl_progressive,q_80,w_636/b5icpqdsnzsdaezvnrm1.jpg" width="500" height="500" />
+<p>Another way we might represent our percentages is with a <strong>pie plot</strong>, where each variable value is represented by a ‘slice’ of a circle. Create a pie chart using <code class="docutils literal notranslate"><span class="pre">.pie()</span></code> for the <code class="docutils literal notranslate"><span class="pre">party_avg_pie</span></code> table. Note: since there are 2 parties, pandas needs to be told to make one pie plot for each party by including the argument <code class="docutils literal notranslate"><span class="pre">subplot=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this table to make a pie chart. </span>
+<span class="c1"># Values are multiplied to be larger so pandas plots it more easily (the proportions are the same)</span>
+<span class="n">party_avg_pie</span> <span class="o">=</span> <span class="n">party_avg</span> <span class="o">*</span> <span class="mi">1000</span>
+
+<span class="c1"># Create a pie chart using .pie()</span>
+<span class="c1"># Hint: don&#39;t forget to set subplot=True!</span>
+<span class="c1"># Optional: set legend=False and figsize=(9,5) to get a cleaner graph</span>
+<span class="n">party_avg_pie</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pie charts are visually appealing, but they can be problematic for readers. Consider these two bars:</p>
+<img src='len_compare.png' width=600 height=200>
+<p>It’s quick and easy to see that the top one is twice as long as the bottom. (That’s why we like bar plots so much)</p>
+<p>Now, consider this image. How much smaller is the second pizza compared to the first?</p>
+<img src='area_compare.png' width=500 height=150>
+<p>The first one has about twice the area of the second, but it’s much harder to form a confident and accurate judgment.</p>
+<p>This has major implications for pie charts and other area-based visualizations. While representing numbers with area seems intuitive, adding the extra dimension makes it harder for people to form accurate comparisons.</p>
+</section>
+<section id="ii-color">
+<h3>ii. Color <a id='subsection 8'></a><a class="headerlink" href="#ii-color" title="Link to this heading">#</a></h3>
+<p>The human visual cortex processes color preattentively; that is, people notice colors without trying to. Therefore, color can be a powerful tool to communicate information, and its use in data visualization has been the focus of many <a class="reference external" href="https://conference.scipy.org/scipy2014/schedule/presentation/1741/">studies</a>.</p>
+<p>Pandas allows users to change their plot colors by including the <code class="docutils literal notranslate"><span class="pre">color=</span></code> argument. <code class="docutils literal notranslate"><span class="pre">color</span></code> can be set to equal a single color or a list of colors- one for each type of bar in the legend.</p>
+<p>Try changing the colors for a bar plot of <code class="docutils literal notranslate"><span class="pre">party_avg</span></code>. You’ll need a list of two colors, one for Democrats and one for Republicans in that order. Here are some of the colors pandas recognizes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>blue</p></td>
+<td><p>‘b’</p></td>
+</tr>
+<tr class="row-odd"><td><p>red</p></td>
+<td><p>‘r’</p></td>
+</tr>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>‘g’</p></td>
+</tr>
+<tr class="row-odd"><td><p>magenta</p></td>
+<td><p>‘m’</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+<td><p>‘y’</p></td>
+</tr>
+<tr class="row-odd"><td><p>cyan</p></td>
+<td><p>‘c’</p></td>
+</tr>
+<tr class="row-even"><td><p>black</p></td>
+<td><p>‘k’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar graph with non-default colors with the color= argument</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas plot functions can also take an argument called <code class="docutils literal notranslate"><span class="pre">colormap=</span></code> that colors graphs from a premade pallete.</p>
+<p>Try creating a bar plot for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> where <code class="docutils literal notranslate"><span class="pre">colormap</span></code> is set to equal <code class="docutils literal notranslate"><span class="pre">Pastel2</span></code>. You can also try out any of the other colormaps listed <a class="reference external" href="https://scipy.github.io/old-wiki/pages/Cookbook/Matplotlib/Show_colormaps">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg where bar() has the argument colormap=&#39;Pastel2&#39;</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Pastel2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Colors help to create contrast and facilitate comparison. If colors are too similar to one another, two separate bars start to look like one individual blob and it’s hard to compare the values. Set the colormap for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code>’s bar plot equal to ‘spring’ to see an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg with the &#39;spring&#39; colormap</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Additionally, colors can communicate information about the importance of data. Lighter colors usually make areas look larger than darker colors. Furthermore, darker colors stand out more against the white background of most presentation platforms (paper, slideshows, Jupyter notebooks) and tend to look more prominent, weighty, and important.</p>
+<p>Using a colormap that ranges from light to dark, then, can imply that your data varies along a scale, and the data at the dark end is more important.</p>
+<p>Try setting the colormap for a <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> bar plot to <code class="docutils literal notranslate"><span class="pre">'Blues'</span></code>. How does that change our perception of the information? Is it appropriate for this graph, and if not, can you think of a graph where it would be appropriate?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg with the &#39;Blues&#39; colormap</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Changing a plot’s color palatte can also improve understanding by matching a <strong>mental model</strong>. For instance, Democrats are associated with the color blue while Republicans are associated with red. If a plot violates these associations…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the following cell to make a very misleading plot</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>…a reader could very easily read the results as exactly opposite what they are.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-s-next">
+<h2>4. What’s Next? <a id='section 4'></a><a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>Data science is a fast-growing field with applications in almost every subject you can imagine. Students and researchers alike have used Jupyter notebooks and data-driven methods to do everything from completing a lower-division class problem set to presenting a graduate research project.</p>
+<p>If you’d like to learn more about how to incorporate data science into your academic career:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://data8.org">DATA-8</a> is offered every semester and is a great introduction to coding and statistics. The website includes links to the textbook, syllibi, and past homeworks.</p></li>
+<li><p>Data Science <a class="reference external" href="https://data.berkeley.edu/education/connectors">Connector Courses</a> teach applied data science in everything from literature to cancer research. They can be taken with or after DATA-8.</p></li>
+<li><p>The Berkeley Institute for Data Science (<a class="reference external" href="https://bids.berkeley.edu/">BIDS</a>) hosts data science talks, research resources organized by field, and office hours for those interested in more in-depth data science research.</p></li>
+<li><p><a class="reference external" href="http://dlab.berkeley.edu/">DLAB</a> also offers workshops and consulting to help you hone your skills.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Playfair, W. (1801). The Statistical Breviary: Shewing, on a Principle Entirely New, the Resources of Every State and Kingdom in Europe; Illustrated with Stained Copper-plate Charts the Physical Powers of Each Distinct Nation with Ease and Perspicuity: to which is Added, a Similar Exhibition of the Ruling Powers of Hindoostan. T. Bensley, Bolt Court, Fleet Street.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Notebook developed by: Keeley Takimoto, Sean Seungwoo Son, Sujude Dalieh</p>
+<p>Data Science Modules: <a class="reference external" href="http://data.berkeley.edu/education/modules">http://data.berkeley.edu/education/modules</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_site/content/xrhetor-r1a/03-Rhetoric-of-Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction <a id="section 0"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deceitful-data-three-ways-to-make-a-dictionary">1. Deceitful Data: Three Ways to Make a Dictionary <a id="section 1"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-method-1-do-it-by-hand">i. Method 1: Do it by hand*<a id="subsection 1"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-method-2-write-some-code">ii. Method 2: Write some code<a id="subsection 2"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-method-3-write-some-code-and-do-some-by-hand">ii. Method 3: Write some code and do some by hand <a id="subsection 3"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ambiguous-analysis">2. Ambiguous Analysis <a id="section 2"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-simple-word-counts">i. Simple word counts <a id="subsection 4"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-advanced-text-analysis">ii. Advanced Text Analysis <a id="subsection 5"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-statistical-significance">iii. Statistical Significance <a id="subsection 6"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grifting-graphs">3. Grifting Graphs <a id="section 3"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-types-of-graphs">i. Types of Graphs <a id="subsection 7"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-color">ii. Color <a id="subsection 8"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">4. What’s Next? <a id="section 4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

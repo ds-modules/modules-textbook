@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Correlation, regression, and prediction &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/psych-167ac/02-correlation-regression';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using your own data" href="03-my-project.html" />
+    <link rel="prev" title="Introduction to Importing Data, Using Tables and Creating Graphs" href="01-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="psych-167ac-intro.html">Psychology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-intro.html">Introduction</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/psych-167ac/02-correlation-regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Correlation, regression, and prediction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correlation-coefficient-r">The correlation coefficient - <em>r</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariate">Covariate</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="correlation-regression-and-prediction">
+<h1>Correlation, regression, and prediction<a class="headerlink" href="#correlation-regression-and-prediction" title="Link to this heading">#</a></h1>
+<p><em>If you run into errors, check the <a class="reference external" href="https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing">common errors</a> Google doc first.</em></p>
+<p>One of the most important and interesting aspects of data science is making predictions about the future. How can we learn about temperatures a few decades from now by analyzing historical data about climate change and pollution? Based on a person’s social media profile, what conclusions can we draw about their interests? How can we use a patient’s medical history to judge how well he or she will respond to a treatment?</p>
+<p>Run the cell below to import the code we’ll use in this notebook.
+Don’t worry about getting an output, simply run the cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datascience</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plots</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this module, you will look at two <strong>correlated</strong> phenomena and predict unseen data points!</p>
+<p>We will be using data from the online data archive of Prof. Larry Winner of the University of Florida. The file <em>hybrid</em> contains data on hybrid passenger cars sold in the United States from 1997 to 2013. In order to analyze the data, we must first <strong>import</strong> it to our Jupyter notebook and <strong>create a table.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/hybrid.csv&#39;</span><span class="p">)</span>  <span class="c1"># Imports the data and creates a table</span>
+<span class="n">hybrid</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Displays the first five rows of the table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>vehicle</th> <th>year</th> <th>msrp</th> <th>acceleration</th> <th>mpg</th> <th>class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Prius (1st Gen)</td> <td>1997</td> <td>24509.7</td> <td>7.46        </td> <td>41.26</td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Tino           </td> <td>2000</td> <td>35355  </td> <td>8.2         </td> <td>54.1 </td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Prius (2nd Gen)</td> <td>2000</td> <td>26832.2</td> <td>7.97        </td> <td>45.23</td> <td>Compact   </td>
+        </tr>
+        <tr>
+            <td>Insight        </td> <td>2000</td> <td>18936.4</td> <td>9.52        </td> <td>53   </td> <td>Two Seater</td>
+        </tr>
+        <tr>
+            <td>Civic (1st Gen)</td> <td>2001</td> <td>25833.4</td> <td>7.04        </td> <td>47.04</td> <td>Compact   </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (148 rows omitted)</p></div></div>
+</div>
+<p><em>References: vehicle: model of the car, year: year of manufacture, msrp: manufacturer’s suggested retail price in 2013 dollars, acceleration: acceleration rate in km per hour per second, mpg: fuel economy in miles per gallon, class: the model’s class.</em></p>
+<p><strong>Note: whenever we write an equal sign (=) in python, we are assigning somthing to a variable.</strong></p>
+<p>Let’s visualize some of the data to see if we can spot a possible association!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;acceleration&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">)</span> <span class="c1"># Creates a scatter plot of two variables in a table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c0d89322989a7b99e4deb8127323c0afc1de3529cbd34093e8192ea39cebd822.png" src="../../_images/c0d89322989a7b99e4deb8127323c0afc1de3529cbd34093e8192ea39cebd822.png" />
+</div>
+</div>
+<p>As we can see in the above scatter, there seems to be a positive association between acceleration and price. That is, cars with greater acceleration tend to cost more, on average; conversely, cars that cost more tend to have greater acceleration on average.</p>
+<p>What about miles per gallon and price? Do you expect a positive or negative association?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9c4709d6991408fe2d8c319ac38052a83ad975dda3ea38314bf68a1e265317cc.png" src="../../_images/9c4709d6991408fe2d8c319ac38052a83ad975dda3ea38314bf68a1e265317cc.png" />
+</div>
+</div>
+<p>Along with the negative association, the scatter diagram of price versus efficiency shows a <strong>non-linear relation</strong> between the two variables, i.e., the points appear to be clustered around a curve, not around a straight line.</p>
+<p>Let’s subset the data so that we’re only looking at SUVs. Use what you learned in the previous notebook to choose only <code class="docutils literal notranslate"><span class="pre">SUV</span></code>s and then make a scatter plot of <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">msrp</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># task</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<section id="the-correlation-coefficient-r">
+<h2>The correlation coefficient - <em>r</em><a class="headerlink" href="#the-correlation-coefficient-r" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>The correlation coefficient ranges from −1 to 1. A value of 1 implies that a linear equation describes the relationship between X and Y perfectly, with all data points lying on a line for which Y increases as X increases. A value of −1 implies that all data points lie on a line for which Y decreases as X increases. A value of 0 implies that there is no linear correlation between the variables. ~Wikipedia</p>
+</div></blockquote>
+<p><em>r</em> = 1: the scatter diagram is a perfect straight line sloping upwards</p>
+<p><em>r</em> = -1: the scatter diagram is a perfect straight line sloping downwards.</p>
+<p>Let’s calculate the correlation coefficient between acceleration and price. We can use the <code class="docutils literal notranslate"><span class="pre">np.corrcoef</span></code> function on the two variable (columns here) that we want to correlate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">hybrid</span><span class="p">[</span><span class="s1">&#39;acceleration&#39;</span><span class="p">],</span> <span class="n">hybrid</span><span class="p">[</span><span class="s1">&#39;msrp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6955778996913979, 1.9158000667128373e-23)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function two numbers. The first number is our <code class="docutils literal notranslate"><span class="pre">r</span></code> value, and the second number is the <code class="docutils literal notranslate"><span class="pre">p-value</span></code> for our correlation. A <code class="docutils literal notranslate"><span class="pre">p-value</span></code> of under .05 indicates strong validity in the correlation. Our coefficient here is 0.6955779, and our p-value is low <em><strong>implying strong positive correlation</strong></em>.</p>
+<hr class="docutils" />
+</section>
+<section id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h2>
+<p>As mentioned earlier, an important tool in data science is to make predictions based on data. The code that we’ve created so far has helped us establish a relationship between our two variables. Once a relationship has been established, it’s time to create a model that predicts unseen data values. To do this we’ll find the equation of the <strong>regression line</strong>!</p>
+<p>The regression line is the <strong>best fit</strong> line for our data. It’s like an average of where all the points line up. In linear regression, the regression line is a perfectly straight line! Below is a picture showing the best fit line.</p>
+<p><img alt="image" src="http://onlinestatbook.com/2/regression/graphics/gpa.jpg" /></p>
+<p>As you can infer from the picture, once we find the <strong>slope</strong> and the <strong>y-intercept</strong> we can start predicting values! The equation for the above regression to predict university GPA based on high school GPA would look like this:</p>
+<p><span class="math notranslate nohighlight">\(UNIGPA_i= \alpha + \beta HSGPA + \epsilon_i\)</span></p>
+<p>The variable we want to predict (or model) is the left side <code class="docutils literal notranslate"><span class="pre">y</span></code> variable, the variable which we think has an influence on our left side variable is on the right side. The <span class="math notranslate nohighlight">\(\alpha\)</span> term is the y-intercept and the <span class="math notranslate nohighlight">\(\epsilon_i\)</span> describes the randomness.</p>
+<p>We can fit the model by setting up an equation without the <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\epsilon_i\)</span> in the <code class="docutils literal notranslate"><span class="pre">formula</span></code> parameter of the function below, we’ll give it our data variable in the <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter. Then we just <code class="docutils literal notranslate"><span class="pre">fit</span></code> the model and ask for a <code class="docutils literal notranslate"><span class="pre">summary</span></code>. We’ll try a model for:</p>
+<p><span class="math notranslate nohighlight">\(MSRP_i= \alpha + \beta ACCELERATION + \epsilon_i\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;msrp ~ acceleration&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hybrid</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   msrp   R-squared:                       0.484
+Model:                            OLS   Adj. R-squared:                  0.480
+Method:                 Least Squares   F-statistic:                     141.5
+Date:                Wed, 22 May 2019   Prob (F-statistic):           1.92e-23
+Time:                        22:33:36   Log-Likelihood:                -1691.7
+No. Observations:                 153   AIC:                             3387.
+Df Residuals:                     151   BIC:                             3394.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept    -2.128e+04   5244.588     -4.058      0.000   -3.16e+04   -1.09e+04
+acceleration  5067.6611    425.961     11.897      0.000    4226.047    5909.275
+==============================================================================
+Omnibus:                       32.737   Durbin-Watson:                   1.656
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               52.692
+Skew:                           1.072   Prob(JB):                     3.61e-12
+Kurtosis:                       4.915   Cond. No.                         52.1
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s a lot of information! While we should consider everything, we’ll look at the <code class="docutils literal notranslate"><span class="pre">p</span></code> value, the <code class="docutils literal notranslate"><span class="pre">coef</span></code>, and the <code class="docutils literal notranslate"><span class="pre">R-squared</span></code>. A p-value of &lt; .05 is generally considered to be statistically significant. The <code class="docutils literal notranslate"><span class="pre">coef</span></code> is how much increase one sees in the left side variable for a one unit increase of the right side variable. So for a 1 unit increase in acceleration one might see an increase of $5067 MSRP, according to our model. But how great is our model? That’s the <code class="docutils literal notranslate"><span class="pre">R-squared</span></code>. The <code class="docutils literal notranslate"><span class="pre">R-squared</span></code> tells us how much of the variation in the data can be explained by our model, .484 isn’t that bad, but obviously more goes into the MSRP value of a car than <em>just</em> acceleration.</p>
+<p>We can plot this line of “best fit” too:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;acceleration&#39;</span><span class="p">,</span> <span class="s1">&#39;msrp&#39;</span><span class="p">,</span> <span class="n">fit_line</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/376c767408ed880cd9d09086b6278caa27df915b5a119f92e8cedd0d1da47b23.png" src="../../_images/376c767408ed880cd9d09086b6278caa27df915b5a119f92e8cedd0d1da47b23.png" />
+</div>
+</div>
+<section id="covariate">
+<h3>Covariate<a class="headerlink" href="#covariate" title="Link to this heading">#</a></h3>
+<p>We might want to add another independent variable because we think it could influence our dependent variable. If we think <code class="docutils literal notranslate"><span class="pre">mpg</span></code> could have an influence and needs to be controlled for we just <code class="docutils literal notranslate"><span class="pre">+</span></code> add that to the equation. (NB: the example below would exhibit high <a class="reference external" href="https://en.wikipedia.org/wiki/Multicollinearity">multicollinearity</a>)</p>
+<p><span class="math notranslate nohighlight">\(MSRP_i= \alpha + \beta ACCELERATION + \beta MPG + \epsilon_i\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;msrp ~ acceleration + mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hybrid</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   msrp   R-squared:                       0.527
+Model:                            OLS   Adj. R-squared:                  0.521
+Method:                 Least Squares   F-statistic:                     83.66
+Date:                Wed, 22 May 2019   Prob (F-statistic):           3.93e-25
+Time:                        22:33:37   Log-Likelihood:                -1685.0
+No. Observations:                 153   AIC:                             3376.
+Df Residuals:                     150   BIC:                             3385.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept     5796.5295   8861.211      0.654      0.514   -1.17e+04    2.33e+04
+acceleration  4176.4342    474.195      8.807      0.000    3239.471    5113.398
+mpg           -471.9015    127.066     -3.714      0.000    -722.973    -220.830
+==============================================================================
+Omnibus:                       24.929   Durbin-Watson:                   1.614
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               33.903
+Skew:                           0.922   Prob(JB):                     4.35e-08
+Kurtosis:                       4.384   Cond. No.                         282.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>We are going to walk through a brief example using the datasets that you will using. You will not be allowed to use this correlation for your project. However, the process for your project will be the same. Our goal is to make the project as seamless as possible for you. That being said, our example will be abbreviated so that you have some freedom to explore with your own data.</p>
+<p>First we are going to read in two datasets.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Implicit-Age-IAT.csv</span></code> gives us the implicit <em>age</em> bias according to FIPS code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Implicit-Age_IAT.csv&#39;</span><span class="p">)</span>
+<span class="n">age</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>10001</td> <td>7.13782</td> <td>7.17363</td> <td>0.462662             </td>
+        </tr>
+        <tr>
+            <td>10003</td> <td>7.07723</td> <td>6.88274</td> <td>0.439701             </td>
+        </tr>
+        <tr>
+            <td>10005</td> <td>6.84831</td> <td>6.96089</td> <td>0.445957             </td>
+        </tr>
+        <tr>
+            <td>1001 </td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td>
+        </tr>
+        <tr>
+            <td>1003 </td> <td>7.17904</td> <td>7.04148</td> <td>0.457369             </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (3133 rows omitted)</p></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Outcome-Heart-Attack-Mortality.csv</span></code> gives us the heart attack mortality count by year according to FIPS code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Outcome-Heart-Attack-Mortality.csv&#39;</span><span class="p">)</span>
+<span class="n">heart</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>State</th> <th>FIPS</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2000</td> <td>220.8                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2001</td> <td>100.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2002</td> <td>68.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2003</td> <td>66.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>Alabama</td> <td>1001</td> <td>Autauga</td> <td>2005</td> <td>63.2                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (34780 rows omitted)</p></div></div>
+</div>
+<p>Keep in mind that all the functions/syntax that we are using are either in this notebook, or the previous one from lecture.</p>
+<p>Now, we are going to join the two tables together. We will be joining on the ‘FIPS’ column because that’s the only one they have in common! That column is a unique identifier for counties. We are also going to drop duplicate rows from the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joined_data</span> <span class="o">=</span> <span class="n">age</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;FIPS&quot;</span><span class="p">,</span> <span class="n">heart</span><span class="p">)</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">joined_data</span><span class="p">)</span>
+<span class="n">joined_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th> <th>State</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2000</td> <td>220.8                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2001</td> <td>100.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2002</td> <td>68.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2003</td> <td>66.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2005</td> <td>63.2                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2006</td> <td>68.3                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2007</td> <td>73.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2008</td> <td>104.7                 </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2009</td> <td>60                    </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>1001</td> <td>7.05085</td> <td>6.79661</td> <td>0.502814             </td> <td>Alabama</td> <td>Autauga</td> <td>2010</td> <td>93.2                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (34706 rows omitted)</p></div></div>
+</div>
+<p>That’s great! By displaying the table, we can get a general idea as to what columns exist, and what kind of relations we can try to analyze.</p>
+<p>One thing to notice is that there are a lot of data points! Our visualization and regression may be cleaner if we subset the data. Let’s use the functions from the first notebook to subset the data to California data from 2010.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="mi">2010</span><span class="p">))</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;State&quot;</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="s2">&quot;California&quot;</span><span class="p">))</span>
+<span class="n">joined_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>FIPS</th> <th>tyoung</th> <th>told</th> <th>D_biep_Young_Good_all</th> <th>State</th> <th>County</th> <th>Year</th> <th>Heart_Attack_Mortality</th> <th>Stability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>6001</td> <td>6.96069</td> <td>6.78826</td> <td>0.423026             </td> <td>California</td> <td>Alameda     </td> <td>2010</td> <td>45.8                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6005</td> <td>6.575  </td> <td>6.85   </td> <td>0.446357             </td> <td>California</td> <td>Amador      </td> <td>2010</td> <td>78.6                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6007</td> <td>7.11892</td> <td>7.04696</td> <td>0.442157             </td> <td>California</td> <td>Butte       </td> <td>2010</td> <td>62.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6009</td> <td>7.65079</td> <td>7.8254 </td> <td>0.460807             </td> <td>California</td> <td>Calaveras   </td> <td>2010</td> <td>99.5                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6013</td> <td>6.96188</td> <td>6.87655</td> <td>0.418506             </td> <td>California</td> <td>Contra Costa</td> <td>2010</td> <td>48.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6015</td> <td>7      </td> <td>6.83871</td> <td>0.43266              </td> <td>California</td> <td>Del Norte   </td> <td>2010</td> <td>75.8                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6017</td> <td>6.84016</td> <td>6.85714</td> <td>0.408486             </td> <td>California</td> <td>El Dorado   </td> <td>2010</td> <td>53.9                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6019</td> <td>7.0461 </td> <td>7.09315</td> <td>0.424963             </td> <td>California</td> <td>Fresno      </td> <td>2010</td> <td>80.4                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6021</td> <td>6.6    </td> <td>7.2    </td> <td>0.260103             </td> <td>California</td> <td>Glenn       </td> <td>2010</td> <td>91.7                  </td> <td>1        </td>
+        </tr>
+        <tr>
+            <td>6023</td> <td>6.86624</td> <td>6.79618</td> <td>0.433324             </td> <td>California</td> <td>Humboldt    </td> <td>2010</td> <td>94.4                  </td> <td>1        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (39 rows omitted)</p></div></div>
+</div>
+<p>We now have a lot less points, which will hopefully make the visualization a bit cleaner.</p>
+<p>Let’s make a simple scatter plot with a fit line to look at the relation between the category <code class="docutils literal notranslate"><span class="pre">D_biep_Young_Good_all</span></code> and <code class="docutils literal notranslate"><span class="pre">Heart_Attack_Mortality</span></code>. Remember, all these functions are either on Notebook 1 or Notebook 2!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joined_data</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s2">&quot;D_biep_Young_Good_all&quot;</span><span class="p">,</span> <span class="s2">&quot;Heart_Attack_Mortality&quot;</span><span class="p">,</span> <span class="n">fit_line</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/699efdba91e0b0ff5e5985ae4f728e214337daa6a3556406cb7e5c52a6f47651.png" src="../../_images/699efdba91e0b0ff5e5985ae4f728e214337daa6a3556406cb7e5c52a6f47651.png" />
+</div>
+</div>
+<p>As we can see, the correlation and subsequent linear fit do not seem to be good. That means that there is not an easily quantifiable relationship between implicit age bias and the heart attack mortality rate for that geographic region.</p>
+<p>Let’s verify this quantitatively with an r-value calculation!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">joined_data</span><span class="p">[</span><span class="s1">&#39;D_biep_Young_Good_all&#39;</span><span class="p">],</span> <span class="n">joined_data</span><span class="p">[</span><span class="s1">&#39;Heart_Attack_Mortality&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.2566592892097549, 0.0750451858488917)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our r-value is moderately negative, and our p-value is pretty low, but not &lt; .05, so we would <em>not</em> reject the null hypothesis and call this “significant”. This indicates little to no correlation, similar to what our scatter plot predicited.</p>
+<p>Let us display a regression summary, just for practice!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;Heart_Attack_Mortality ~  D_biep_Young_Good_all + told&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">joined_data</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                              OLS Regression Results                              
+==================================================================================
+Dep. Variable:     Heart_Attack_Mortality   R-squared:                       0.067
+Model:                                OLS   Adj. R-squared:                  0.027
+Method:                     Least Squares   F-statistic:                     1.661
+Date:                    Wed, 22 May 2019   Prob (F-statistic):              0.201
+Time:                            22:33:40   Log-Likelihood:                -215.40
+No. Observations:                      49   AIC:                             436.8
+Df Residuals:                          46   BIC:                             442.5
+Df Model:                               2                                         
+Covariance Type:                nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept               104.0577     93.565      1.112      0.272     -84.278     292.394
+D_biep_Young_Good_all  -133.0227     79.819     -1.667      0.102    -293.690      27.645
+told                      3.0434     11.323      0.269      0.789     -19.749      25.836
+==============================================================================
+Omnibus:                        3.154   Durbin-Watson:                   1.878
+Prob(Omnibus):                  0.207   Jarque-Bera (JB):                2.932
+Skew:                           0.585   Prob(JB):                        0.231
+Kurtosis:                       2.744   Cond. No.                         269.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>A quick scan above shows an extremeley low R-squared and a high p-value, both of which imply that our model does not fit the data very well at all.</p>
+<p>That’s it! By working through this module, you’ve learned how to <strong>visually analyze your data</strong>, <strong>establish a correlation</strong> by calculating the <strong>correlation coefficient</strong>, <strong>set up a regression (with a covariate)</strong>, and <strong>find the regression line</strong>!</p>
+<!-- 
+
+---
+
+***We would also appreciate if you filled out this feedback form regarding the notebook:
+https://goo.gl/forms/ADY9TJU3TGKlllyT2***
+
+***Your input allows us to continue improving our educational notebooks!***
+
+-->
+<hr class="docutils" />
+<p>If you need help, please consult the <a class="reference external" href="https://data.berkeley.edu/education/data-science-community">Data Peers</a>!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/psych-167ac"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Importing Data, Using Tables and Creating Graphs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-my-project.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using your own data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-correlation-coefficient-r">The correlation coefficient - <em>r</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariate">Covariate</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

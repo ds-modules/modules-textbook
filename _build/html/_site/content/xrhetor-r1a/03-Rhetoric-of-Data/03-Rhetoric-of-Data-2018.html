@@ -1,0 +1,1188 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>[XRHETOR-R1A] Module 3: The Rhetoric of Data &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_site/content/xrhetor-r1a/03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../content/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../content/intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/_site/content/xrhetor-r1a/03-Rhetoric-of-Data/03-Rhetoric-of-Data-2018.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>[XRHETOR-R1A] Module 3: The Rhetoric of Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction <a id="section 0"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deceitful-data-three-ways-to-make-a-dictionary">1. Deceitful Data: Three Ways to Make a Dictionary <a id="section 1"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-method-1-do-it-by-hand">i. Method 1: Do it by hand*<a id="subsection 1"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ambiguous-analysis">2. Ambiguous Analysis <a id="section 2"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-simple-word-counts">i. Simple word counts <a id="subsection 4"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-advanced-text-analysis">ii. Advanced Text Analysis <a id="subsection 5"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-statistical-significance">iii. Statistical Significance <a id="subsection 6"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grifting-graphs">3. Grifting Graphs <a id="section 3"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-types-of-graphs">i. Types of Graphs <a id="subsection 7"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-distorting-data">ii. Distorting Data<a id="subsection 8"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-color">ii. Color <a id="subsection 8"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">4. What’s Next? <a id="section 4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="xrhetor-r1a-module-3-the-rhetoric-of-data">
+<h1>[XRHETOR-R1A] Module 3: The Rhetoric of Data<a class="headerlink" href="#xrhetor-r1a-module-3-the-rhetoric-of-data" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<img src="https://pixel.nymag.com/imgs/daily/science/2014/10/16/16-trustingraphsnew.nocrop.w536.h2147483647.2x.gif" style="width: 400px; height: 400px;" />
+<section id="professor-amy-tick">
+<h2>Professor Amy Tick<a class="headerlink" href="#professor-amy-tick" title="Link to this heading">#</a></h2>
+<p>This module explores how data science can persuade or mislead through intentional or unintentional decisions at every step of the data science process. First, we’ll how human judgment still plays a part in seemingly unbiased, ‘automated’ programming processes by picking apart how Module 2’s Wordnet dictionary was compiled. Then, we’ll discover how some common cognitive biases are exploited in charts and graphs to emphasize a particular mesage.</p>
+<p><em>Estimated Time: 50 minutes</em></p>
+<hr class="docutils" />
+</section>
+<section id="topics-covered">
+<h2>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Cognitive biases</p></li>
+<li><p>Natural Language Processing</p></li>
+<li><p>Text Analysis</p></li>
+<li><p>Data Visualization</p></li>
+<li><p>Data Communication</p></li>
+</ul>
+<!--
+
+### Table of Contents
+
+[Introduction](#section 0)<br>
+
+1 - [Deceitful Data: Three Ways to Make a Dictionary](#section 1)<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i - [By Hand](#subsection 1)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii - [By Computer](#subsection 2)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii - [Both](#subsection 3)
+
+
+2 - [Ambiguous Analysis](#section 2)<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i - [Simple Word Counts](#subsection 4)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii - [Advanced Text Analysis](#subsection 5)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii - [Statistical Significance](#subsection 6)
+
+3 - [Grifting Graphs](#section 3)<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i - [Types of Graphs](#subsection 7)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii - [Color](#subsection 8)
+
+4 - [What's Next?](#section 4)<br>
+
+-->
+<p><strong>Dependencies:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.offline</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">py</span>
+<span class="n">py</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.figure_factory</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ff</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        </div></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction <a id='section 0'></a><a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>*“No study is less alluring or more dry and tedious than statistics, unless the mind and imagination are set to work.” - William Playfair, inventor of the line graph, bar graph, and pie chart. *</p>
+</div></blockquote>
+<p>As data science becomes more and more in-demand, it has emerged as a powerful rhetorical tool. Major news sources pair their stories with ‘infographics,’ while <a class="reference internal" href="#'http://journals.sagepub.com/doi/abs/10.1177/0963662514549688'"><span class="xref myst">studies</span></a> <a class="reference internal" href="#'http://lsr.nellco.org/cgi/viewcontent.cgi?article=1476&amp;context=nyu_plltwp'"><span class="xref myst">show</span></a> that the average person finds data and data visualizations highly persuasive. After all, ‘numbers don’t lie’. Or do they?</p>
+<p>Let’s return to the data analysis we did in module 2 and see, at each step of the process, the many opportunities to make our numbers ‘lie.’ As a refresher, here’s a map of the data science process we used.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Data_visualization_process_v1.png" style="width: 550px; height: 400px;" /></section>
+<hr class="docutils" />
+<section id="deceitful-data-three-ways-to-make-a-dictionary">
+<h2>1. Deceitful Data: Three Ways to Make a Dictionary <a id='section 1'></a><a class="headerlink" href="#deceitful-data-three-ways-to-make-a-dictionary" title="Link to this heading">#</a></h2>
+<p>Data science starts with a data set upon which all subsequent analysis is built. If that data is skewed, incomplete, or just plain wrong, it’s impossible to draw accurate conclusions from it.</p>
+<p>In module 02, we relied on the set of Moral Foundations words and their synonyms, collected in a Python dictionary, to answer questions about candidate and party values. Let’s look further into the ways such data sets are constructed and how they can lead you horribly astray.</p>
+<section id="i-method-1-do-it-by-hand">
+<h3>i. Method 1: Do it by hand*<a id='subsection 1'></a><a class="headerlink" href="#i-method-1-do-it-by-hand" title="Link to this heading">#</a></h3>
+<p>*<em>or by your grad students’ hands</em></p>
+<p>The original MFT word count analysis was done on religious sermon texts by Graham, Haidt, and Nosek as detailed in <a class="reference external" href="http://projectimplicit.net/nosek/papers/GHN2009.pdf">this paper</a>. Their methodology for constructing their dictionary is below:</p>
+<blockquote>
+<div><p>Dictionary development had an expansive phase and a contractive phase, all occurring before reading the sermons. In the expansive phase Jesse Graham and five research assistants generated as many associations, synonyms, and antonyms for the base foundation words as possible, using thesauruses and conversations with colleagues. This included full words and word stems (for instance, nation  covers national, nationalistic, etc.)…In the contractive phase, Jesse Graham and Jonathan Haidt deleted words that seemed too distantly related to the five foun- dations and also words whose primary meanings were not moral (e.g., just more often means only than fair).</p>
+</div></blockquote>
+<p>The file <code class="docutils literal notranslate"><span class="pre">haidt_dict.json</span></code> contains the relevant portions of the dictionary Graham, Haidt, and Nosek used in their paper. Run the cell below to load the dictionary into the variable <code class="docutils literal notranslate"><span class="pre">haidt_dict</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to load the dictionary into a variable</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../mft_data/haidt_dict.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_data</span><span class="p">:</span>
+    <span class="n">haidt_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compiling a dictionary this way is extremely time-consuming. Moreover, it involves many, many judgments from researchers, who like all humans are biased. <strong>Selection bias</strong> in data processing leads to a data set that may not be representative of the population to be analyzed. In this case, it could result in a dictionary that includes or omits certain words and leads to skewed word count results.</p>
+<p>Selection bias can be caused by cognitive biases like <strong>confirmation bias</strong>, where people are predisposed to look for data that they think will confirm their preconceptions.</p>
+<p>What are some ways selection bias could have happened while making this dictionary? How did Graham, Haidt, and Nosek try to avoid biasing their data?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ambiguous-analysis">
+<h2>2. Ambiguous Analysis <a id='section 2'></a><a class="headerlink" href="#ambiguous-analysis" title="Link to this heading">#</a></h2>
+<p>After the data is collected and processed, the next step is to do exploratory analysis, then model and estimate. Here, we’ll evaluate the approach we used in Module 02 as well as some more advanced text-analysis methods.</p>
+<section id="i-simple-word-counts">
+<h3>i. Simple word counts <a id='subsection 4'></a><a class="headerlink" href="#i-simple-word-counts" title="Link to this heading">#</a></h3>
+<p>The word count metric is appealing: it’s straightforward to code, fast to calculate, and easy to visualize. However, it relies heavily on the dictionary it uses, making it very susceptible to selection bias.</p>
+<p>The cell below compares the averages for the speech data, calculated once using the WordNet dictionary from Module 02, and recalculated using the dictionary from the Graham, Haidt, Nosek study. How large is the difference between the two sets of averages?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in the table of averages</span>
+<span class="n">foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">haidt_foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;haidt_party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plot the averages</span>
+
+
+<span class="n">haidt_foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Haidt Dictionary&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Haidt Dictionary&#39;)
+</pre></div>
+</div>
+<img alt="../../../../_images/cb0d8b2da36a96b60d4bd964283923dfc36fc0460f3e26bf30658f54255ea494.png" src="../../../../_images/cb0d8b2da36a96b60d4bd964283923dfc36fc0460f3e26bf30658f54255ea494.png" />
+</div>
+</div>
+<p>Another issue with this approach is <strong>word ambiguity</strong>. One of our entries for ‘care’ is ‘charg’, as in “the babysitter is in charge of taking care of the baby.” But, Python returns matches for these uses of the word in speeches:</p>
+<ul class="simple">
+<li><p>[20]”<em>…a unique advisory group charged with thinking of new ideas…</em>” Yes!</p></li>
+<li><p>[86]”<em>…so much in line with what often we are charged with…</em>” Yes!</p></li>
+<li><p>[169]”<em>…it is even worse that you re being charged interest rates..</em>” No?</p></li>
+<li><p>[39]”<em>…imagine if you could charge your car in your garage at night…</em>” Definitely no.</p></li>
+</ul>
+<p>Clearly, Python’s string-matching function is not sophisticated enough to pick out only the word senses we intend.</p>
+<p>Some more sophisticated algorithms can try to infer ambigous word meaning from a word’s context (<a class="reference external" href="http://madlyambiguous.osu.edu:1035/">Madly Ambiguous</a> uses Wordnet for this very purpose!). However, even they are far from 100% accurate. The field of <strong>Natural Language Processing</strong> has been progressing by leaps and bounds to improve computers’ ability to process language in the way that humans do naturally.</p>
+</section>
+<section id="ii-advanced-text-analysis">
+<h3>ii. Advanced Text Analysis <a id='subsection 5'></a><a class="headerlink" href="#ii-advanced-text-analysis" title="Link to this heading">#</a></h3>
+<p>Given how biased we know human brains to be, it’s tempting to remove the human element from analysis as much as possible. The <strong>Bag of Words</strong> method is one way to analyze texts by their word counts, <em>without</em> making decisions about which words are of interest.</p>
+<p><em>Note: the code in this section uses Python libraries and linear algebra techniques not covered in these modules. You are not expected to write code like this- we are walking you through it so you can see the kinds of things you can do further down the road in data science.</em></p>
+<p>The first step is to combine all the speeches into one big ‘word bag’, then find the unique set of words across all speeches. Then, a table is made with one column for every unique word in the speeches and one row for every speech (a ‘word vector’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All code in this subsection adapted from Deborah Nolan and Joey Gonzalez, DATA-100 Lecture 08. </span>
+<span class="c1"># http://www.ds100.org/fa17/assets/notebooks/08-lec/regular_expression_examples.html</span>
+
+<span class="c1"># Create a copy of our speech data</span>
+<span class="n">speech</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;speeches.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># create the word vectors</span>
+<span class="n">vec</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">speech</span><span class="p">[</span><span class="s1">&#39;clean_speech&#39;</span><span class="p">])</span>
+
+<span class="n">tfidf</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(430, 22316)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last line gives the shape of the table: that’s a lot of columns, or put another way, that’s a very high-dimensional table! It’s hard for us to visualize 22316th-dimensional space, but we’re good at visualizing 2-dimensional space. So, our next step is to reduce the dimensions of this table, keeping only the most informative dimensions. The code does this by treating the frequency of each individual word as a feature of a speech and finding the feature vectors that vary the most.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Finds the 2 largest singular values/vectors for the table</span>
+<span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">vt</span><span class="p">)</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svds</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">speech</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">speech</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Plot the graph</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;rgba(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">,</span><span class="si">{2}</span><span class="s2">,1)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">speech</span><span class="p">))])</span>
+<span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rgba(.99,.5,.2,1.)&quot;</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">speech</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">speech</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">),</span> 
+                     <span class="n">text</span><span class="o">=</span><span class="n">speech</span><span class="p">[</span><span class="s1">&#39;Candidate&#39;</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+        
+        
+            <div id="c6d0ad72-0416-434f-99b7-ced1538cec41" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    window.PLOTLYENV.BASE_URL='https://plot.ly';
+                    
+                if (document.getElementById("c6d0ad72-0416-434f-99b7-ced1538cec41")) {
+                    Plotly.newPlot(
+                        'c6d0ad72-0416-434f-99b7-ced1538cec41',
+                        [{"marker": {"color": ["rgba(0.0196078431372549,0.18823529411764706,0.3803921568627451,1)", "rgba(0.023913879277201077,0.19653979238754324,0.3919261822376009,1)", "rgba(0.023913879277201077,0.19653979238754324,0.3919261822376009,1)", "rgba(0.028219915417147252,0.20484429065743945,0.4034602076124567,1)", "rgba(0.028219915417147252,0.20484429065743945,0.4034602076124567,1)", "rgba(0.032525951557093424,0.21314878892733563,0.4149942329873126,1)", "rgba(0.0368319876970396,0.22145328719723184,0.4265282583621684,1)", "rgba(0.0368319876970396,0.22145328719723184,0.4265282583621684,1)", "rgba(0.041138023836985775,0.22975778546712802,0.4380622837370242,1)", "rgba(0.041138023836985775,0.22975778546712802,0.4380622837370242,1)", "rgba(0.04544405997693195,0.23806228373702423,0.44959630911188003,1)", "rgba(0.049750096116878126,0.24636678200692042,0.4611303344867359,1)", "rgba(0.049750096116878126,0.24636678200692042,0.4611303344867359,1)", "rgba(0.054056132256824305,0.2546712802768166,0.4726643598615917,1)", "rgba(0.054056132256824305,0.2546712802768166,0.4726643598615917,1)", "rgba(0.05836216839677048,0.26297577854671284,0.48419838523644754,1)", "rgba(0.06266820453671665,0.271280276816609,0.49573241061130335,1)", "rgba(0.06266820453671665,0.271280276816609,0.49573241061130335,1)", "rgba(0.06697424067666283,0.2795847750865052,0.5072664359861592,1)", "rgba(0.06697424067666283,0.2795847750865052,0.5072664359861592,1)", "rgba(0.071280276816609,0.2878892733564014,0.518800461361015,1)", "rgba(0.07558631295655517,0.29619377162629756,0.5303344867358708,1)", "rgba(0.07558631295655517,0.29619377162629756,0.5303344867358708,1)", "rgba(0.07989234909650136,0.3044982698961938,0.5418685121107267,1)", "rgba(0.07989234909650136,0.3044982698961938,0.5418685121107267,1)", "rgba(0.08419838523644753,0.31280276816609,0.5534025374855824,1)", "rgba(0.08850442137639371,0.3211072664359862,0.5649365628604384,1)", "rgba(0.08850442137639371,0.3211072664359862,0.5649365628604384,1)", "rgba(0.09281045751633987,0.32941176470588235,0.5764705882352941,1)", "rgba(0.09281045751633987,0.32941176470588235,0.5764705882352941,1)", "rgba(0.09711649365628605,0.33771626297577856,0.58800461361015,1)", "rgba(0.10142252979623223,0.34602076124567477,0.5995386389850058,1)", "rgba(0.10142252979623223,0.34602076124567477,0.5995386389850058,1)", "rgba(0.1057285659361784,0.3543252595155709,0.6110726643598616,1)", "rgba(0.1057285659361784,0.3543252595155709,0.6110726643598616,1)", "rgba(0.11003460207612457,0.36262975778546713,0.6226066897347174,1)", "rgba(0.11003460207612457,0.36262975778546713,0.6226066897347174,1)", "rgba(0.11434063821607075,0.37093425605536334,0.6341407151095733,1)", "rgba(0.11864667435601693,0.37923875432525955,0.6456747404844292,1)", "rgba(0.11864667435601693,0.37923875432525955,0.6456747404844292,1)", "rgba(0.1229527104959631,0.38754325259515576,0.6572087658592849,1)", "rgba(0.1229527104959631,0.38754325259515576,0.6572087658592849,1)", "rgba(0.12725874663590928,0.3958477508650519,0.6687427912341408,1)", "rgba(0.13202614379084968,0.40346020761245677,0.6762783544790466,1)", "rgba(0.13202614379084968,0.40346020761245677,0.6762783544790466,1)", "rgba(0.13725490196078433,0.41038062283737026,0.6798154555940024,1)", "rgba(0.13725490196078433,0.41038062283737026,0.6798154555940024,1)", "rgba(0.14248366013071898,0.41730103806228375,0.6833525567089581,1)", "rgba(0.1477124183006536,0.42422145328719724,0.6868896578239139,1)", "rgba(0.1477124183006536,0.42422145328719724,0.6868896578239139,1)", "rgba(0.15294117647058825,0.4311418685121107,0.6904267589388697,1)", "rgba(0.15294117647058825,0.4311418685121107,0.6904267589388697,1)", "rgba(0.1581699346405229,0.4380622837370242,0.6939638600538255,1)", "rgba(0.16339869281045752,0.4449826989619377,0.6975009611687812,1)", "rgba(0.16339869281045752,0.4449826989619377,0.6975009611687812,1)", "rgba(0.16862745098039214,0.45190311418685114,0.701038062283737,1)", "rgba(0.16862745098039214,0.45190311418685114,0.701038062283737,1)", "rgba(0.1738562091503268,0.4588235294117647,0.7045751633986929,1)", "rgba(0.17908496732026147,0.46574394463667823,0.7081122645136486,1)", "rgba(0.17908496732026147,0.46574394463667823,0.7081122645136486,1)", "rgba(0.1843137254901961,0.47266435986159167,0.7116493656286044,1)", "rgba(0.1843137254901961,0.47266435986159167,0.7116493656286044,1)", "rgba(0.18954248366013068,0.4795847750865051,0.7151864667435601,1)", "rgba(0.19477124183006536,0.4865051903114187,0.718723567858516,1)", "rgba(0.19477124183006536,0.4865051903114187,0.718723567858516,1)", "rgba(0.2,0.4934256055363322,0.7222606689734717,1)", "rgba(0.2,0.4934256055363322,0.7222606689734717,1)", "rgba(0.20522875816993463,0.5003460207612457,0.7257977700884275,1)", "rgba(0.20522875816993463,0.5003460207612457,0.7257977700884275,1)", "rgba(0.21045751633986925,0.5072664359861591,0.7293348712033833,1)", "rgba(0.21568627450980393,0.5141868512110727,0.7328719723183391,1)", "rgba(0.21568627450980393,0.5141868512110727,0.7328719723183391,1)", "rgba(0.22091503267973855,0.5211072664359861,0.7364090734332949,1)", "rgba(0.22091503267973855,0.5211072664359861,0.7364090734332949,1)", "rgba(0.2261437908496732,0.5280276816608996,0.7399461745482506,1)", "rgba(0.2313725490196078,0.5349480968858131,0.7434832756632064,1)", "rgba(0.2313725490196078,0.5349480968858131,0.7434832756632064,1)", "rgba(0.2366013071895425,0.5418685121107266,0.7470203767781622,1)", "rgba(0.2366013071895425,0.5418685121107266,0.7470203767781622,1)", "rgba(0.24183006535947715,0.5487889273356401,0.750557477893118,1)", "rgba(0.24705882352941178,0.5557093425605536,0.7540945790080738,1)", "rgba(0.24705882352941178,0.5557093425605536,0.7540945790080738,1)", "rgba(0.2522875816993464,0.5626297577854671,0.7576316801230295,1)", "rgba(0.2522875816993464,0.5626297577854671,0.7576316801230295,1)", "rgba(0.257516339869281,0.5695501730103806,0.7611687812379854,1)", "rgba(0.2627450980392157,0.5764705882352941,0.7647058823529411,1)", "rgba(0.2627450980392157,0.5764705882352941,0.7647058823529411,1)", "rgba(0.2748942714340638,0.584159938485198,0.7688581314878892,1)", "rgba(0.2748942714340638,0.584159938485198,0.7688581314878892,1)", "rgba(0.28704344482891186,0.5918492887351018,0.7730103806228373,1)", "rgba(0.2991926182237601,0.5995386389850057,0.7771626297577854,1)", "rgba(0.2991926182237601,0.5995386389850057,0.7771626297577854,1)", "rgba(0.3113417916186082,0.6072279892349096,0.7813148788927335,1)", "rgba(0.3113417916186082,0.6072279892349096,0.7813148788927335,1)", "rgba(0.3234909650134563,0.6149173394848135,0.7854671280276816,1)", "rgba(0.33564013840830437,0.6226066897347173,0.7896193771626296,1)", "rgba(0.33564013840830437,0.6226066897347173,0.7896193771626296,1)", "rgba(0.3477893118031526,0.6302960399846212,0.7937716262975778,1)", "rgba(0.3477893118031526,0.6302960399846212,0.7937716262975778,1)", "rgba(0.3599384851980007,0.6379853902345252,0.7979238754325259,1)", "rgba(0.3599384851980007,0.6379853902345252,0.7979238754325259,1)", "rgba(0.37208765859284887,0.645674740484429,0.802076124567474,1)", "rgba(0.38423683198769687,0.6533640907343328,0.8062283737024221,1)", "rgba(0.38423683198769687,0.6533640907343328,0.8062283737024221,1)", "rgba(0.3963860053825451,0.6610534409842368,0.8103806228373702,1)", "rgba(0.3963860053825451,0.6610534409842368,0.8103806228373702,1)", "rgba(0.4085351787773932,0.6687427912341406,0.8145328719723183,1)", "rgba(0.4206843521722413,0.6764321414840445,0.8186851211072664,1)", "rgba(0.4206843521722413,0.6764321414840445,0.8186851211072664,1)", "rgba(0.4328335255670895,0.6841214917339484,0.8228373702422145,1)", "rgba(0.4328335255670895,0.6841214917339484,0.8228373702422145,1)", "rgba(0.44498269896193743,0.6918108419838522,0.8269896193771625,1)", "rgba(0.45713187235678576,0.6995001922337561,0.8311418685121107,1)", "rgba(0.45713187235678576,0.6995001922337561,0.8311418685121107,1)", "rgba(0.4692810457516339,0.7071895424836601,0.8352941176470587,1)", "rgba(0.4692810457516339,0.7071895424836601,0.8352941176470587,1)", "rgba(0.481430219146482,0.714878892733564,0.8394463667820069,1)", "rgba(0.4935793925413301,0.7225682429834679,0.843598615916955,1)", "rgba(0.4935793925413301,0.7225682429834679,0.843598615916955,1)", "rgba(0.5057285659361782,0.7302575932333717,0.8477508650519031,1)", "rgba(0.5057285659361782,0.7302575932333717,0.8477508650519031,1)", "rgba(0.5178777393310263,0.7379469434832756,0.8519031141868512,1)", "rgba(0.5300269127258745,0.7456362937331795,0.8560553633217992,1)", "rgba(0.5300269127258745,0.7456362937331795,0.8560553633217992,1)", "rgba(0.5421760861207224,0.7533256439830832,0.8602076124567473,1)", "rgba(0.5421760861207224,0.7533256439830832,0.8602076124567473,1)", "rgba(0.5543252595155708,0.7610149942329872,0.8643598615916954,1)", "rgba(0.5664744329104188,0.7687043444828912,0.8685121107266436,1)", "rgba(0.5664744329104188,0.7687043444828912,0.8685121107266436,1)", "rgba(0.5773933102652824,0.7750096116878123,0.8719723183391003,1)", "rgba(0.5773933102652824,0.7750096116878123,0.8719723183391003,1)", "rgba(0.5870818915801613,0.7799307958477508,0.8747404844290657,1)", "rgba(0.5870818915801613,0.7799307958477508,0.8747404844290657,1)", "rgba(0.5967704728950403,0.7848519800076893,0.8775086505190312,1)", "rgba(0.6064590542099191,0.7897731641676278,0.8802768166089965,1)", "rgba(0.6064590542099191,0.7897731641676278,0.8802768166089965,1)", "rgba(0.616147635524798,0.7946943483275662,0.8830449826989619,1)", "rgba(0.616147635524798,0.7946943483275662,0.8830449826989619,1)", "rgba(0.6258362168396767,0.7996155324875047,0.8858131487889273,1)", "rgba(0.6355247981545558,0.8045367166474433,0.8885813148788927,1)", "rgba(0.6355247981545558,0.8045367166474433,0.8885813148788927,1)", "rgba(0.6452133794694347,0.8094579008073818,0.8913494809688581,1)", "rgba(0.6452133794694347,0.8094579008073818,0.8913494809688581,1)", "rgba(0.6549019607843136,0.8143790849673203,0.8941176470588235,1)", "rgba(0.6645905420991925,0.8193002691272587,0.8968858131487889,1)", "rgba(0.6645905420991925,0.8193002691272587,0.8968858131487889,1)", "rgba(0.6742791234140714,0.8242214532871972,0.8996539792387543,1)", "rgba(0.6742791234140714,0.8242214532871972,0.8996539792387543,1)", "rgba(0.6839677047289503,0.8291426374471357,0.9024221453287197,1)", "rgba(0.6936562860438292,0.8340638216070742,0.9051903114186851,1)", "rgba(0.6936562860438292,0.8340638216070742,0.9051903114186851,1)", "rgba(0.7033448673587079,0.8389850057670126,0.9079584775086504,1)", "rgba(0.7033448673587079,0.8389850057670126,0.9079584775086504,1)", "rgba(0.713033448673587,0.8439061899269512,0.9107266435986159,1)", "rgba(0.7227220299884659,0.8488273740868897,0.9134948096885813,1)", "rgba(0.7227220299884659,0.8488273740868897,0.9134948096885813,1)", "rgba(0.7324106113033448,0.8537485582468282,0.9162629757785467,1)", "rgba(0.7324106113033448,0.8537485582468282,0.9162629757785467,1)", "rgba(0.7420991926182237,0.8586697424067666,0.9190311418685121,1)", "rgba(0.7517877739331026,0.8635909265667051,0.9217993079584775,1)", "rgba(0.7517877739331026,0.8635909265667051,0.9217993079584775,1)", "rgba(0.7614763552479815,0.8685121107266436,0.9245674740484429,1)", "rgba(0.7614763552479815,0.8685121107266436,0.9245674740484429,1)", "rgba(0.7711649365628603,0.8734332948865821,0.9273356401384083,1)", "rgba(0.7808535178777392,0.8783544790465205,0.9301038062283736,1)", "rgba(0.7808535178777392,0.8783544790465205,0.9301038062283736,1)", "rgba(0.7905420991926182,0.8832756632064591,0.9328719723183391,1)", "rgba(0.7905420991926182,0.8832756632064591,0.9328719723183391,1)", "rgba(0.800230680507497,0.8881968473663976,0.9356401384083045,1)", "rgba(0.800230680507497,0.8881968473663976,0.9356401384083045,1)", "rgba(0.8099192618223761,0.8931180315263361,0.9384083044982698,1)", "rgba(0.8196078431372549,0.8980392156862745,0.9411764705882353,1)", "rgba(0.8196078431372549,0.8980392156862745,0.9411764705882353,1)", "rgba(0.8254517493271818,0.90080738177624,0.9422529796232219,1)", "rgba(0.8254517493271818,0.90080738177624,0.9422529796232219,1)", "rgba(0.8312956555171088,0.9035755478662053,0.9433294886582083,1)", "rgba(0.8371395617070357,0.9063437139561707,0.9444059976931949,1)", "rgba(0.8371395617070357,0.9063437139561707,0.9444059976931949,1)", "rgba(0.8429834678969625,0.9091118800461361,0.9454825067281815,1)", "rgba(0.8429834678969625,0.9091118800461361,0.9454825067281815,1)", "rgba(0.8488273740868897,0.9118800461361015,0.946559015763168,1)", "rgba(0.8546712802768166,0.914648212226067,0.9476355247981545,1)", "rgba(0.8546712802768166,0.914648212226067,0.9476355247981545,1)", "rgba(0.8605151864667435,0.9174163783160323,0.9487120338331411,1)", "rgba(0.8605151864667435,0.9174163783160323,0.9487120338331411,1)", "rgba(0.8663590926566704,0.9201845444059977,0.9497885428681276,1)", "rgba(0.8722029988465975,0.9229527104959632,0.9508650519031142,1)", "rgba(0.8722029988465975,0.9229527104959632,0.9508650519031142,1)", "rgba(0.8780469050365244,0.9257208765859285,0.9519415609381007,1)", "rgba(0.8780469050365244,0.9257208765859285,0.9519415609381007,1)", "rgba(0.8838908112264514,0.9284890426758939,0.9530180699730872,1)", "rgba(0.8897347174163782,0.9312572087658593,0.9540945790080738,1)", "rgba(0.8897347174163782,0.9312572087658593,0.9540945790080738,1)", "rgba(0.8955786236063052,0.9340253748558247,0.9551710880430604,1)", "rgba(0.8955786236063052,0.9340253748558247,0.9551710880430604,1)", "rgba(0.9014225297962322,0.9367935409457901,0.9562475970780469,1)", "rgba(0.9072664359861592,0.9395617070357555,0.9573241061130334,1)", "rgba(0.9072664359861592,0.9395617070357555,0.9573241061130334,1)", "rgba(0.9131103421760861,0.9423298731257209,0.95840061514802,1)", "rgba(0.9131103421760861,0.9423298731257209,0.95840061514802,1)", "rgba(0.918954248366013,0.9450980392156862,0.9594771241830066,1)", "rgba(0.918954248366013,0.9450980392156862,0.9594771241830066,1)", "rgba(0.92479815455594,0.9478662053056517,0.960553633217993,1)", "rgba(0.930642060745867,0.9506343713956171,0.9616301422529796,1)", "rgba(0.930642060745867,0.9506343713956171,0.9616301422529796,1)", "rgba(0.9364859669357939,0.9534025374855825,0.9627066512879662,1)", "rgba(0.9364859669357939,0.9534025374855825,0.9627066512879662,1)", "rgba(0.9423298731257208,0.9561707035755479,0.9637831603229527,1)", "rgba(0.9481737793156478,0.9589388696655132,0.9648596693579392,1)", "rgba(0.9481737793156478,0.9589388696655132,0.9648596693579392,1)", "rgba(0.9540176855055748,0.9617070357554787,0.9659361783929258,1)", "rgba(0.9540176855055748,0.9617070357554787,0.9659361783929258,1)", "rgba(0.9598615916955018,0.9644752018454441,0.9670126874279124,1)", "rgba(0.9657054978854287,0.9672433679354094,0.9680891964628989,1)", "rgba(0.9657054978854287,0.9672433679354094,0.9680891964628989,1)", "rgba(0.9690888119953864,0.9664744329104191,0.9649365628604383,1)", "rgba(0.9690888119953864,0.9664744329104191,0.9649365628604383,1)", "rgba(0.9700115340253749,0.962168396770473,0.9575547866205306,1)", "rgba(0.9709342560553633,0.9578623606305268,0.9501730103806229,1)", "rgba(0.9709342560553633,0.9578623606305268,0.9501730103806229,1)", "rgba(0.9718569780853518,0.9535563244905806,0.9427912341407152,1)", "rgba(0.9718569780853518,0.9535563244905806,0.9427912341407152,1)", "rgba(0.9727797001153402,0.9492502883506345,0.9354094579008077,1)", "rgba(0.9737024221453288,0.9449442522106882,0.9280276816608997,1)", "rgba(0.9737024221453288,0.9449442522106882,0.9280276816608997,1)", "rgba(0.9746251441753172,0.940638216070742,0.920645905420992,1)", "rgba(0.9746251441753172,0.940638216070742,0.920645905420992,1)", "rgba(0.9755478662053056,0.9363321799307959,0.9132641291810842,1)", "rgba(0.9764705882352941,0.9320261437908497,0.9058823529411766,1)", "rgba(0.9764705882352941,0.9320261437908497,0.9058823529411766,1)", "rgba(0.9773933102652825,0.9277201076509035,0.8985005767012688,1)", "rgba(0.9773933102652825,0.9277201076509035,0.8985005767012688,1)", "rgba(0.9783160322952711,0.9234140715109573,0.891118800461361,1)", "rgba(0.9783160322952711,0.9234140715109573,0.891118800461361,1)", "rgba(0.9792387543252595,0.9191080353710112,0.8837370242214534,1)", "rgba(0.980161476355248,0.914801999231065,0.8763552479815456,1)", "rgba(0.980161476355248,0.914801999231065,0.8763552479815456,1)", "rgba(0.9810841983852364,0.9104959630911188,0.868973471741638,1)", "rgba(0.9810841983852364,0.9104959630911188,0.868973471741638,1)", "rgba(0.9820069204152249,0.9061899269511726,0.8615916955017302,1)", "rgba(0.9829296424452134,0.9018838908112266,0.8542099192618225,1)", "rgba(0.9829296424452134,0.9018838908112266,0.8542099192618225,1)", "rgba(0.9838523644752019,0.8975778546712803,0.8468281430219148,1)", "rgba(0.9838523644752019,0.8975778546712803,0.8468281430219148,1)", "rgba(0.9847750865051903,0.8932718185313342,0.8394463667820071,1)", "rgba(0.9856978085351787,0.888965782391388,0.8320645905420994,1)", "rgba(0.9856978085351787,0.888965782391388,0.8320645905420994,1)", "rgba(0.9866205305651673,0.8846597462514418,0.8246828143021916,1)", "rgba(0.9866205305651673,0.8846597462514418,0.8246828143021916,1)", "rgba(0.9875432525951557,0.8803537101114958,0.817301038062284,1)", "rgba(0.9884659746251442,0.8760476739715495,0.8099192618223762,1)", "rgba(0.9884659746251442,0.8760476739715495,0.8099192618223762,1)", "rgba(0.9893886966551326,0.8717416378316033,0.8025374855824685,1)", "rgba(0.9893886966551326,0.8717416378316033,0.8025374855824685,1)", "rgba(0.9903114186851211,0.8674356016916571,0.7951557093425607,1)", "rgba(0.9912341407151096,0.8631295655517109,0.787773933102653,1)", "rgba(0.9912341407151096,0.8631295655517109,0.787773933102653,1)", "rgba(0.9921568627450981,0.8588235294117648,0.7803921568627453,1)", "rgba(0.9921568627450981,0.8588235294117648,0.7803921568627453,1)", "rgba(0.9907727797001155,0.8505190311418687,0.7697808535178781,1)", "rgba(0.9893886966551327,0.8422145328719725,0.7591695501730107,1)", "rgba(0.9893886966551327,0.8422145328719725,0.7591695501730107,1)", "rgba(0.98800461361015,0.8339100346020764,0.7485582468281433,1)", "rgba(0.98800461361015,0.8339100346020764,0.7485582468281433,1)", "rgba(0.9866205305651673,0.8256055363321801,0.7379469434832759,1)", "rgba(0.9866205305651673,0.8256055363321801,0.7379469434832759,1)", "rgba(0.9852364475201846,0.8173010380622839,0.7273356401384086,1)", "rgba(0.983852364475202,0.8089965397923877,0.7167243367935412,1)", "rgba(0.983852364475202,0.8089965397923877,0.7167243367935412,1)", "rgba(0.9824682814302192,0.8006920415224915,0.7061130334486739,1)", "rgba(0.9824682814302192,0.8006920415224915,0.7061130334486739,1)", "rgba(0.9810841983852365,0.7923875432525953,0.6955017301038066,1)", "rgba(0.9797001153402538,0.7840830449826992,0.6848904267589392,1)", "rgba(0.9797001153402538,0.7840830449826992,0.6848904267589392,1)", "rgba(0.9783160322952711,0.775778546712803,0.6742791234140718,1)", "rgba(0.9783160322952711,0.775778546712803,0.6742791234140718,1)", "rgba(0.9769319492502885,0.767474048442907,0.6636678200692048,1)", "rgba(0.9755478662053058,0.7591695501730106,0.6530565167243371,1)", "rgba(0.9755478662053058,0.7591695501730106,0.6530565167243371,1)", "rgba(0.974163783160323,0.7508650519031144,0.6424452133794697,1)", "rgba(0.974163783160323,0.7508650519031144,0.6424452133794697,1)", "rgba(0.9727797001153403,0.7425605536332183,0.6318339100346023,1)", "rgba(0.9713956170703576,0.7342560553633221,0.6212226066897351,1)", "rgba(0.9713956170703576,0.7342560553633221,0.6212226066897351,1)", "rgba(0.970011534025375,0.7259515570934258,0.6106113033448677,1)", "rgba(0.970011534025375,0.7259515570934258,0.6106113033448677,1)", "rgba(0.9686274509803923,0.7176470588235296,0.6000000000000003,1)", "rgba(0.9672433679354095,0.7093425605536334,0.5893886966551329,1)", "rgba(0.9672433679354095,0.7093425605536334,0.5893886966551329,1)", "rgba(0.9658592848904268,0.7010380622837373,0.5787773933102656,1)", "rgba(0.9658592848904268,0.7010380622837373,0.5787773933102656,1)", "rgba(0.9644752018454441,0.6927335640138411,0.5681660899653982,1)", "rgba(0.9630911188004614,0.6844290657439449,0.5575547866205308,1)", "rgba(0.9630911188004614,0.6844290657439449,0.5575547866205308,1)", "rgba(0.9617070357554788,0.6761245674740487,0.5469434832756634,1)", "rgba(0.9617070357554788,0.6761245674740487,0.5469434832756634,1)", "rgba(0.9603229527104961,0.6678200692041525,0.5363321799307961,1)", "rgba(0.9589388696655133,0.6595155709342564,0.5257208765859287,1)", "rgba(0.9589388696655133,0.6595155709342564,0.5257208765859287,1)", "rgba(0.9575547866205306,0.6512110726643601,0.5151095732410613,1)", "rgba(0.9575547866205306,0.6512110726643601,0.5151095732410613,1)", "rgba(0.9545559400230682,0.6417531718569784,0.5057285659361785,1)", "rgba(0.9545559400230682,0.6417531718569784,0.5057285659361785,1)", "rgba(0.949942329873126,0.6311418685121113,0.4975778546712807,1)", "rgba(0.9453287197231836,0.6205305651672437,0.4894271434063823,1)", "rgba(0.9453287197231836,0.6205305651672437,0.4894271434063823,1)", "rgba(0.9407151095732412,0.6099192618223763,0.4812764321414842,1)", "rgba(0.9407151095732412,0.6099192618223763,0.4812764321414842,1)", "rgba(0.9361014994232989,0.599307958477509,0.4731257208765861,1)", "rgba(0.9314878892733566,0.5886966551326416,0.464975009611688,1)", "rgba(0.9314878892733566,0.5886966551326416,0.464975009611688,1)", "rgba(0.9268742791234142,0.5780853517877742,0.45682429834678984,1)", "rgba(0.9268742791234142,0.5780853517877742,0.45682429834678984,1)", "rgba(0.9222606689734718,0.5674740484429068,0.4486735870818917,1)", "rgba(0.9176470588235295,0.5568627450980395,0.44052287581699356,1)", "rgba(0.9176470588235295,0.5568627450980395,0.44052287581699356,1)", "rgba(0.9130334486735872,0.5462514417531721,0.4323721645520955,1)", "rgba(0.9130334486735872,0.5462514417531721,0.4323721645520955,1)", "rgba(0.9084198385236448,0.5356401384083047,0.42422145328719735,1)", "rgba(0.9038062283737025,0.5250288350634373,0.4160707420222992,1)", "rgba(0.9038062283737025,0.5250288350634373,0.4160707420222992,1)", "rgba(0.8991926182237602,0.51441753171857,0.4079200307574011,1)", "rgba(0.8991926182237602,0.51441753171857,0.4079200307574011,1)", "rgba(0.8945790080738178,0.5038062283737026,0.39976931949250294,1)", "rgba(0.8899653979238755,0.4931949250288352,0.39161860822760486,1)", "rgba(0.8899653979238755,0.4931949250288352,0.39161860822760486,1)", "rgba(0.8853517877739332,0.48258362168396784,0.38346789696270667,1)", "rgba(0.8853517877739332,0.48258362168396784,0.38346789696270667,1)", "rgba(0.8807381776239909,0.47197231833910047,0.3753171856978086,1)", "rgba(0.8761245674740487,0.4613610149942334,0.3671664744329107,1)", "rgba(0.8761245674740487,0.4613610149942334,0.3671664744329107,1)", "rgba(0.8715109573241062,0.4507497116493657,0.3590157631680123,1)", "rgba(0.8715109573241062,0.4507497116493657,0.3590157631680123,1)", "rgba(0.8668973471741639,0.44013840830449835,0.35086505190311423,1)", "rgba(0.8668973471741639,0.44013840830449835,0.35086505190311423,1)", "rgba(0.8622837370242215,0.429527104959631,0.3427143406382161,1)", "rgba(0.8576701268742791,0.4189158016147636,0.33456362937331796,1)", "rgba(0.8576701268742791,0.4189158016147636,0.33456362937331796,1)", "rgba(0.8530565167243368,0.40830449826989623,0.3264129181084199,1)", "rgba(0.8530565167243368,0.40830449826989623,0.3264129181084199,1)", "rgba(0.8484429065743945,0.39769319492502886,0.3182622068435217,1)", "rgba(0.8438292964244521,0.3870818915801615,0.3101114955786236,1)", "rgba(0.8438292964244521,0.3870818915801615,0.3101114955786236,1)", "rgba(0.8392156862745098,0.3764705882352941,0.30196078431372547,1)", "rgba(0.8392156862745098,0.3764705882352941,0.30196078431372547,1)", "rgba(0.833679354094579,0.3653979238754325,0.29673202614379085,1)", "rgba(0.8281430219146482,0.3543252595155709,0.2915032679738562,1)", "rgba(0.8281430219146482,0.3543252595155709,0.2915032679738562,1)", "rgba(0.8226066897347174,0.34325259515570933,0.28627450980392155,1)", "rgba(0.8226066897347174,0.34325259515570933,0.28627450980392155,1)", "rgba(0.8170703575547866,0.33217993079584773,0.28104575163398693,1)", "rgba(0.8115340253748559,0.32110726643598614,0.27581699346405225,1)", "rgba(0.8115340253748559,0.32110726643598614,0.27581699346405225,1)", "rgba(0.8059976931949251,0.31003460207612454,0.27058823529411763,1)", "rgba(0.8059976931949251,0.31003460207612454,0.27058823529411763,1)", "rgba(0.8004613610149942,0.29896193771626295,0.265359477124183,1)", "rgba(0.7949250288350636,0.2878892733564017,0.2601307189542485,1)", "rgba(0.7949250288350636,0.2878892733564017,0.2601307189542485,1)", "rgba(0.7893886966551327,0.2768166089965398,0.2549019607843137,1)", "rgba(0.7893886966551327,0.2768166089965398,0.2549019607843137,1)", "rgba(0.7838523644752018,0.26574394463667816,0.2496732026143791,1)", "rgba(0.778316032295271,0.2546712802768166,0.24444444444444444,1)", "rgba(0.778316032295271,0.2546712802768166,0.24444444444444444,1)", "rgba(0.7727797001153403,0.243598615916955,0.2392156862745098,1)", "rgba(0.7727797001153403,0.243598615916955,0.2392156862745098,1)", "rgba(0.7672433679354095,0.23252595155709344,0.23398692810457516,1)", "rgba(0.7672433679354095,0.23252595155709344,0.23398692810457516,1)", "rgba(0.7617070357554786,0.2214532871972318,0.22875816993464052,1)", "rgba(0.7561707035755478,0.21038062283737025,0.22352941176470587,1)", "rgba(0.7561707035755478,0.21038062283737025,0.22352941176470587,1)", "rgba(0.7506343713956171,0.19930795847750865,0.21830065359477124,1)", "rgba(0.7506343713956171,0.19930795847750865,0.21830065359477124,1)", "rgba(0.7450980392156863,0.18823529411764706,0.21307189542483662,1)", "rgba(0.7395617070357554,0.17716262975778546,0.20784313725490194,1)", "rgba(0.7395617070357554,0.17716262975778546,0.20784313725490194,1)", "rgba(0.7340253748558246,0.16608996539792387,0.20261437908496732,1)", "rgba(0.7340253748558246,0.16608996539792387,0.20261437908496732,1)", "rgba(0.7284890426758939,0.15501730103806227,0.1973856209150327,1)", "rgba(0.7229527104959631,0.1439446366782007,0.19215686274509805,1)", "rgba(0.7229527104959631,0.1439446366782007,0.19215686274509805,1)", "rgba(0.7174163783160322,0.13287197231833908,0.1869281045751634,1)", "rgba(0.7174163783160322,0.13287197231833908,0.1869281045751634,1)", "rgba(0.7118800461361015,0.12179930795847749,0.18169934640522878,1)", "rgba(0.7063437139561708,0.11072664359861623,0.17647058823529427,1)", "rgba(0.7063437139561708,0.11072664359861623,0.17647058823529427,1)", "rgba(0.7008073817762399,0.09965397923875435,0.1712418300653595,1)", "rgba(0.7008073817762399,0.09965397923875435,0.1712418300653595,1)", "rgba(0.6922722029988465,0.0922722029988466,0.1677047289504037,1)", "rgba(0.6807381776239907,0.08858131487889273,0.16585928489042678,1)", "rgba(0.6807381776239907,0.08858131487889273,0.16585928489042678,1)", "rgba(0.6692041522491349,0.08489042675893888,0.16401384083044984,1)", "rgba(0.6692041522491349,0.08489042675893888,0.16401384083044984,1)", "rgba(0.6576701268742791,0.081199538638985,0.1621683967704729,1)", "rgba(0.6461361014994232,0.07750865051903114,0.16032295271049596,1)", "rgba(0.6461361014994232,0.07750865051903114,0.16032295271049596,1)", "rgba(0.6346020761245674,0.07381776239907728,0.15847750865051904,1)", "rgba(0.6346020761245674,0.07381776239907728,0.15847750865051904,1)", "rgba(0.6230680507497116,0.07012687427912341,0.1566320645905421,1)", "rgba(0.6230680507497116,0.07012687427912341,0.1566320645905421,1)", "rgba(0.6115340253748558,0.06643598615916954,0.1547866205305652,1)", "rgba(0.6,0.06274509803921569,0.15294117647058825,1)", "rgba(0.6,0.06274509803921569,0.15294117647058825,1)", "rgba(0.5884659746251442,0.05905420991926182,0.1510957324106113,1)", "rgba(0.5884659746251442,0.05905420991926182,0.1510957324106113,1)", "rgba(0.5769319492502883,0.05536332179930796,0.14925028835063436,1)", "rgba(0.5653979238754325,0.05167243367935409,0.14740484429065745,1)", "rgba(0.5653979238754325,0.05167243367935409,0.14740484429065745,1)", "rgba(0.5538638985005767,0.047981545559400235,0.1455594002306805,1)", "rgba(0.5538638985005767,0.047981545559400235,0.1455594002306805,1)", "rgba(0.5423298731257209,0.044290657439446365,0.1437139561707036,1)", "rgba(0.5307958477508654,0.04059976931949261,0.1418685121107267,1)", "rgba(0.5307958477508654,0.04059976931949261,0.1418685121107267,1)", "rgba(0.5192618223760093,0.03690888119953864,0.1400230680507497,1)", "rgba(0.5192618223760093,0.03690888119953864,0.1400230680507497,1)", "rgba(0.5077277970011533,0.03321799307958477,0.13817762399077277,1)", "rgba(0.4961937716262976,0.029527104959630915,0.13633217993079585,1)", "rgba(0.4961937716262976,0.029527104959630915,0.13633217993079585,1)", "rgba(0.48465974625144176,0.025836216839677045,0.1344867358708189,1)", "rgba(0.48465974625144176,0.025836216839677045,0.1344867358708189,1)", "rgba(0.47312572087658594,0.02214532871972319,0.132641291810842,1)", "rgba(0.46159169550173007,0.01845444059976932,0.13079584775086506,1)", "rgba(0.46159169550173007,0.01845444059976932,0.13079584775086506,1)", "rgba(0.45005767012687425,0.01476355247981545,0.12895040369088812,1)", "rgba(0.45005767012687425,0.01476355247981545,0.12895040369088812,1)", "rgba(0.43852364475201844,0.011072664359861595,0.12710495963091117,1)", "rgba(0.4269896193771627,0.007381776239907739,0.12525951557093426,1)", "rgba(0.4269896193771627,0.007381776239907739,0.12525951557093426,1)", "rgba(0.4154555940023068,0.0036908881199538557,0.12341407151095732,1)", "rgba(0.4154555940023068,0.0036908881199538557,0.12341407151095732,1)", "rgba(.99,.5,.2,1.)"]}, "mode": "markers", "text": ["Jeb Bush", "Jeb Bush", "Jeb Bush", "Jeb Bush", "Jeb Bush", "Jeb Bush", "Ben Carson", "Ben Carson", "Lincoln Chafee", "Lincoln Chafee", "Lincoln Chafee", "Chris Christie", "Chris Christie", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Hillary Clinton ", "Ted Cruz", "Ted Cruz", "Ted Cruz", "Ted Cruz", "Ted Cruz", "Ted Cruz", "Carly Fiorina", "Lindsey Graham", "Lindsey Graham", "Lindsey Graham", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Mike Huckabee", "Bobby Jindal", "John Kasich", "John Kasich", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "Martin O'Malley", "George Pataki", "Rand Paul", "Rand Paul", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Rick Perry", "Marco Rubio", "Marco Rubio", "Marco Rubio", "Marco Rubio", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Bernie Sanders", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Rick Santorum", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", "Scott Walker", "Scott Walker", "Scott Walker", "Jim Webb"], "type": "scatter", "uid": "a4236788-8f72-4f56-a486-a7d565016f3b", "x": [-0.03829950759085353, -0.02594487555656627, -0.061943245385832665, -0.04135979251771908, -0.045287403914772664, -0.0713573987272829, 0.05853377959566334, 0.03297042585568693, -0.02443073555680865, -0.04164339101757364, -0.02554942368460257, 0.010039341527236626, -0.021172208583045537, 0.006661250516417611, 0.033303864066797084, 0.04202805495454258, 0.015563248695113652, -0.07015718756106161, -0.07591430088212879, -0.015181311300968399, 0.004999815660989733, 0.02000154327134633, 0.04849562313892347, 0.009439405321943579, -0.019395200263357615, 0.01514129903888281, 0.012083725812080906, -0.026929204888982754, -0.026237788461795752, -0.03134487556007368, -0.06939166603417582, -0.07457514066506321, 0.0013871971355305657, 0.007171178204292181, 0.01969933333632139, -0.023499551388354606, 0.03661674890454657, -0.02050836989769536, -0.012266014994905703, -0.012532633173150759, -0.014261304154554622, -0.05247178382693121, -0.01172396172996433, 0.01653723334782517, 0.044291744470005424, 0.02372547882228422, -0.0071652013847680815, 0.00571357198081094, 0.02266953896269961, -0.051166769411586585, 0.008278960773608984, -0.0377970703828803, -0.013297760293068714, -0.0071552883568734675, 0.04956985068672315, -0.020816155702581905, -0.01106100507476377, -0.03320324492675106, 0.03472260520584414, 0.04902965015531324, 0.009109645983993116, -0.0060872964669950735, -0.00461981559128339, 0.054797197512887814, 0.043560480930461956, -0.007914810083810571, 0.06347881170626393, 0.00455081826471157, -0.013121014111995892, 0.009550623444256147, 0.07277119583337222, 0.00458998521352675, 0.05412791438883055, -0.008547868826176254, 0.05801750772795684, -0.01811779939145959, -0.03252881493028681, 0.02014113620478353, 0.00405120552715443, -0.00011304892338327363, 0.008276924692479246, -0.010227535558713127, -0.03967713141743821, 0.03449575966524365, 0.021781373958648858, 0.008069163345681455, -0.002153839073668347, -0.06385021396597597, -0.00460576358568586, -0.027680464855218245, 0.01608251590675075, 0.012632673406571721, -0.013057873457160599, 0.0002634518779097148, -0.0618067808565431, -0.005824293231183025, 0.04697562144467579, -0.06455150970000426, 0.020963821279819987, 0.03943652423233096, -0.020484469451738346, 0.0502918511880917, -0.021691516483115843, 0.04896150234169884, 0.04117600320049102, 0.019467566732809805, -0.0011144807498092019, -0.020896319309289212, 0.06087828124173854, 0.027077603122679133, 0.04777749667582417, 0.057836120040790764, -0.020056285435124263, -0.01505991664424327, -0.03777378562293777, -0.020540856695142665, -0.004317892526374774, -0.028496548647477096, -0.0068849004439250905, -0.03413139624087774, 0.015920400379010602, 0.027091194110100004, 0.08897495861278865, -0.032644149842849246, 0.05235957677948691, 0.05195655701974893, -0.010142964892697268, 0.03643969603041832, 0.038908158606547345, -0.008790776292951942, -0.015354403405002173, 0.05662372762124994, 0.04803741889554158, -0.01998137093674286, -0.009867799332515075, 0.011469179421922424, 0.0594170454080237, 0.04615531650912582, 0.06324210044512084, 0.03645754615754414, 0.05407410501032592, 0.04474845256700452, -0.0494795011195645, -0.010846527771484031, 0.047635152156110826, 0.05074939294793235, -0.025189406708470426, 0.05513196066545015, 0.06866280466294074, 0.05942288165842146, 0.06087509768686592, 0.05362324355098441, 0.05490169681694171, 0.03481489420777009, 0.0740738350240322, 0.05799326470871524, 0.09189253955884988, 0.0735144229442369, 0.01207403542786057, 0.06858194092785166, 0.03974264924234743, 0.0729969948452942, 0.05059750043093664, 0.07037145562960956, 0.07360607633713795, 0.03936025503988111, 0.0845559091997657, 0.06923942164256573, 0.07300729045546842, -0.05261390321049762, -0.018835244210046162, 0.0039175303604612475, -0.0013001345246254972, 0.031858499526812356, 0.0004307209615167576, -0.01124284822122322, 0.024305382933178472, 0.007290048229575364, 0.04921218373065602, 0.060804649260082264, 0.04291860169162738, 0.058300225564457235, 0.029362606933729406, -0.002191914905355169, 0.059115914375865775, 0.01894341934860254, 0.057304922903413893, -0.002612995852436892, 0.06862792326009054, 0.034441818102163124, 0.049215380462882485, 0.052197666868673394, 0.05152286412400661, 0.04041810651521195, 0.0636066970075601, 0.05476820517024332, 0.023643012662449413, 0.07001347448962887, 0.05521231569602032, 0.038113291587494776, -0.003507457378258118, 0.046713698996407246, 0.051845690743572544, 0.0552712296755273, 0.05711164471994849, 0.050505249260369346, 0.0459103094765608, 0.05186883872054586, 0.020054858662703165, -0.013193130618472937, -0.001353053764043613, 0.009221605224278374, -0.04733854893570604, -0.0441763558554629, -0.015444768778461244, -0.004465768249064627, -0.019729037563315614, -0.08633468495850082, -0.06344207701673957, 0.065113877545726, 0.070904449345943, 0.03915907856706462, 0.044585093931969084, 0.019948643306935673, 0.07639307936090056, 0.04692895804136448, 0.06372611305089933, 0.03841827745194559, 0.06172623484090008, 0.027227973722183885, 0.011818335099555599, 0.046076867116155745, 0.000878807506120502, 0.03978462220661173, 0.013602470981978577, 0.00041684917001502675, -0.053845536519399724, -0.0442971623513772, -0.062023290203976934, -0.058936035875700135, -0.08706264749314759, -0.05556346711942874, -0.02116223340697765, -0.005593151667954523, -0.05507150662336109, -0.018148858519687314, -0.03718427804324639, -0.01730100242878764, -0.07874400305782196, -0.0476328364326244, -0.04247146081213796, 0.01666368154384234, -0.03846189408337854, -0.07356465789006347, -0.05547247273745447, -0.02441571279829198, -0.08785755001567894, -0.06493321678097393, -0.07705547314937067, -0.0553499652644267, -0.052175606798199825, 0.04184270221233398, -0.04751297943992878, -0.06466386179981444, -0.048549672643900615, -0.06248139001099713, -0.05649092892174615, -0.056390360458498635, -0.06270511807759599, 0.06545106487210905, 0.02414735108869301, -0.02252022555467082, 0.03541471754334088, 0.06317738124692948, 0.006304169558502515, 0.046643668429336343, 0.03219564034240626, -0.040105629592885376, 0.0828224942483011, 0.025695071998903654, -0.059817329495241156, -0.04368222634467349, 0.0009030440520232733, -0.002549660639705381, 0.015526506928332174, -0.032823170538051005, -0.03665349442948877, -0.017144655790145603, -0.03583390927112912, 0.06481712282094881, 0.066959681081403, -0.012517634796635098, -0.044091198366167025, -0.012109651238212407, -0.05826006843691225, 0.021545220154737796, 0.05530748223399183, 0.04891930373223911, -0.040510546699859346, 0.04904201752301669, 0.06628091973197527, 0.025966915258122218, 0.0392061482799176, -0.00013846614531101004, -0.033428044543344596, 0.032055683654163246, 0.07604242059613275, 0.057466078073133475, 0.07706583647459872, 0.04525658609909691, -0.01451708419924029, -0.04533959656314732, 0.05132386450954664, 0.054521351464581175, 0.07150635187047756, 0.05817010860998885, -0.07267155340487892, 0.03234338879934, 0.055107194747277925, 0.08218539734402402, 0.0428524173006357, 0.06737151711750342, 0.03387457530221257, 0.05082714827233209, 0.03514611970675163, 0.045709469659546184, 0.0520949039017456, 0.03703972503424821, 0.058678591848319715, 0.04954447933893843, 0.016937394053111995, -0.04010998192221331, 0.032115648254387674, 0.010863294135189085, 0.025419047762395716, 0.02708306531140351, 0.03047919850145983, 0.027149287910151837, 0.017189854669569266, 0.006407445851071808, 0.0068882215749675076, 0.005551195287943504, 0.0229756008429651, 0.01265693014550362, 0.019526159826935452, 0.004214303916057739, -0.04952512343779298, -0.0005319545086163377, 0.0011734132795438099, 0.0029306319300254693, -0.06377439948125513, 0.0385460752734409, 0.05608140457384261, -0.009486405006957056, -0.07579638285072364, -0.06685911286566112, -0.07843589323955551, -0.06560796041632876, 0.04575410797359388, -0.07406293717608606, 0.07950217862689803, 0.0644121020094154, -0.09473457153451187, 0.07596903886501842, 0.07275923509186605, -0.049039480191122115, -0.07326969789977658, -0.06674603066063194, -0.0148649201729322, -0.07060231280183361, -0.010271089584852192, -0.09598725552279017, -0.020431272377566565, -0.0803414096135932, -0.0764163378195112, 0.023323272579938867, -0.07645775614349912, -0.09788705516522415, -0.07181359824448841, 0.037583148102882644, -0.08075949829949568, -0.06122538753359552, -0.07233075431729373, -0.06415708458160364, -0.09437059372196628, -0.08668395424563119, -0.09619574780006963, -0.08492805149672314, -0.050656309730003096, -0.08563229765267649, -0.0660502285483873, -0.09719914034783521, -0.07448050116122498, -0.06440911004344137, -0.06574742930455416, -0.0639521823726058, -0.061692403578336275, -0.06598562501448486, -0.08306890113747212, -0.07532710778407452, -0.08798930080102565, -0.07438013554637485, -0.056192487151694025, 0.04618434095799455, -0.06450506644950926, -0.06861616287981537, -0.07683376887078597, -0.07361031755989482, -0.07423310693460024, 0.012362837480020247, -0.06801414080390111, -0.07382188786198894, -0.0673822620511357, -0.012876482065676334, -0.0836776995284566, -0.09000045060535758, 0.002336182339116737, 0.02842930899703392, -0.05812014432352385, -0.09224552928823032, -0.0762079064154849, 0.01954573825187571, 0.03501895218864126, 0.010776960168987826, 0.047701431481270345, 0.0492311226124021, -0.03585100706173623, -0.03781716010070763, -0.012558923920499773, 0.006604884609122133], "y": [-0.05026862183823621, -0.05120016279859038, -0.05110055576329362, -0.04704947524218787, -0.04908832690502433, -0.044053475760280354, -0.05334791204622223, -0.043269517145161716, -0.051511906071747084, -0.04020160661706439, -0.04032118345403904, -0.0541871773389012, -0.03620143209815337, -0.03667218333431722, -0.0542230752179845, -0.053832626204650506, -0.054166029467314594, -0.0486403915284537, -0.04585979352783743, -0.04887015511317397, -0.03574682314026498, -0.02417830027397877, -0.052072226970669704, -0.051051068721048636, -0.05368841947522498, -0.04885159854617094, -0.05163678032830879, -0.046653548279311785, -0.05434712664850208, -0.05271516558614862, -0.05211281933565178, -0.050708039564019994, -0.051446011496079545, -0.05137297942547744, -0.050052462265394324, -0.05226771958887342, -0.05150194142752559, -0.05412831397548588, -0.04595555326591028, -0.055563578763277166, -0.05166242965109501, -0.0486875689960992, -0.05475741663474786, -0.04975546288478865, -0.054266524941098127, -0.051784445667126554, -0.05085291367866799, -0.05316010985224591, -0.04951157028296527, -0.05073389911294225, -0.05092472196567823, -0.03293393744059865, -0.053347623274557936, -0.036186977511625695, -0.04028340526917022, -0.047793656613268204, -0.04240101254823049, -0.0506200828468477, -0.05429822751709279, -0.05341136892621417, -0.051570344655975785, -0.05184537062400807, -0.05007522419356853, -0.0529746539201039, -0.04998282953044472, -0.04865999451538823, -0.04243033699412849, -0.04325965319911403, -0.055327518751595715, -0.04689075148642009, -0.046829526687728544, -0.054113489377602346, -0.04211141899082801, -0.053122643865685736, -0.04873949131254504, -0.04977514399278621, -0.05254485668402982, -0.05102203885605438, -0.049458736831484336, -0.05526739957333333, -0.05263196764095194, -0.05259469106439858, -0.052853607010078005, -0.05534312955809662, -0.02749563496862837, -0.04644267856366407, -0.023198204201847615, -0.050863059575004595, -0.05126372381738883, -0.0490562513066718, -0.03531442500197406, -0.05452221281012511, -0.047901567400069664, -0.05427007103400444, -0.03844998125186152, -0.04129732342290864, -0.05355531665516103, -0.052889618765606224, -0.05096670132439012, -0.05119868655213243, -0.049242762175911566, -0.04258801853222588, -0.007383801466923697, -0.04612763166697122, -0.04443827167495299, -0.05185760023493876, -0.051699387452322505, -0.0508373077110909, -0.04530129939837496, -0.03128695566631714, -0.04199455134930239, -0.04603366946532105, -0.051397958307260495, -0.04974535203059434, -0.046453900168852695, -0.04885650827357259, -0.05029577084731646, -0.04629665990827325, -0.05357605941353936, -0.05214123429287977, -0.016270743251271653, -0.04701713870940979, -0.0515066373283448, -0.050732844370714215, -0.05341841611573859, -0.05520897469774929, -0.0418677496019504, -0.05095513267481699, -0.05419031958854786, -0.04901650595330478, -0.054875677442135146, -0.054431210958798194, -0.03791944747953252, -0.053167115110334374, -0.04569054030186127, -0.05399642961573995, -0.04561681731396866, -0.046782367202163874, -0.04713439169670219, -0.051892038455572304, -0.04768523438566559, -0.04838108531907986, -0.0440746737381054, -0.053498638146448264, -0.051884579890687586, -0.049011742001428826, -0.052393073760572687, -0.05558201923342087, -0.034983601747537806, -0.046399864805162255, -0.04710592770243737, -0.04624637241434411, -0.04466621821215102, -0.046627957803966384, -0.04795256980634608, -0.055687954015990526, -0.04873718641479633, -0.04635877557291399, -0.049171011942381646, -0.043707113257472, -0.048967144720824016, -0.049388143651028886, -0.048285531802497415, -0.05327333479919145, -0.042599911347158445, -0.04484580740376477, -0.044166408249553764, -0.04793047908219721, -0.049562730627402234, -0.04677750582144676, -0.05146866721626252, -0.0555706116205314, -0.05150718255044182, -0.05124956014668612, -0.052298660044968526, -0.046571802780423506, -0.05352647534756263, -0.05149500570070057, -0.05449453027721991, -0.051898388330153436, -0.05440489908150293, -0.052177792973297304, -0.05115960620522819, -0.048792782265682455, -0.0526851490649964, -0.05386352987957526, -0.05451701824685159, -0.04811595663284604, -0.05316247662836886, -0.04667862135228552, -0.05371473923899463, -0.04692397644390524, -0.05442281607936864, -0.05367803672771086, -0.05327786033020723, -0.05157912808114876, -0.05033741806822647, -0.04888616255216614, -0.0518571858388056, -0.05235168911386671, -0.051866616419636406, -0.05134345356267016, -0.05461090326483629, -0.05387963340275964, -0.05456837633036621, -0.05463132852698523, -0.04844043630156558, -0.053486790521337604, -0.043394663039495476, -0.043433111608176665, -0.050565948877730575, -0.050400177957786486, -0.043453814087690314, -0.050133986484987, -0.0476541584030231, -0.02902902827613331, -0.04893430869714043, -0.04736141144415617, -0.04265966991370406, -0.04379322283720786, -0.044403769729658406, -0.04187330507283951, -0.040264342071810094, -0.0491816261630024, -0.04481033963436236, -0.041629361097558465, -0.04765363403907331, -0.04884738951574815, -0.04562536624891026, -0.04848077806972681, -0.05211877472738361, -0.044025808677412875, -0.05199150570610733, -0.04134870102227272, -0.04956048547202005, -0.049000258335878, -0.047181050769782525, -0.04785817203583473, -0.051506728797623476, -0.04916954508153454, -0.04819239016799436, -0.04940664905974977, -0.05034514302066888, -0.047601616989948005, -0.047217911085037666, -0.05363939570470367, -0.050246729784875155, -0.05127422067913447, -0.049273465176716484, -0.05090435052841518, -0.04923711325517772, -0.05338181538179936, -0.05175065666926774, -0.03667144534887475, -0.043523960381141896, -0.04929995809731971, -0.04370619023352527, -0.04664090753850153, -0.04748599474736749, -0.04547851154111808, -0.04703297565278864, -0.04627498806925181, -0.041619828520124504, -0.050556349886039, -0.04776484420970348, -0.04970193478406433, -0.04657698713268576, -0.04980561219804257, -0.048662664349984064, -0.043851708330788455, -0.055273633452294774, -0.04942249886691224, -0.04787469862330835, -0.03879515791806259, -0.04088923057234712, -0.0464131618074329, -0.03809370106738248, -0.053450013634560485, -0.035615932934837696, -0.043529909838630546, -0.048515384427514796, -0.0534437170558824, -0.047860372953555094, -0.04716063947064183, -0.05018588265387418, -0.05233973410001544, -0.04655716888113232, -0.04685597341408606, -0.04815272034482286, -0.027927312787539474, -0.02947625855374663, -0.05215217970731746, -0.04644379547514642, -0.05574419592496053, -0.05030890150201088, -0.043593044465567665, -0.04886044601743814, -0.03889958553344128, -0.04428883666023622, -0.040914277339750386, -0.041812281213656856, -0.05420747727903321, -0.05300413744206807, -0.051865398603102186, -0.05277758570458026, -0.04020382702573872, -0.038630212628181976, -0.040554329203448834, -0.03891266636955132, -0.04209786397468817, -0.04157226515435974, -0.04811953293098878, -0.04909618644450711, -0.04369152249825742, -0.04386918075136841, -0.04576374535241164, -0.04350280469608294, -0.043752414051563465, -0.04236648230825923, -0.04122049436509551, -0.046722604762226304, -0.04153866888091525, -0.046680262307828596, -0.04660601207350564, -0.002639829886118539, -0.04495424504225756, -0.03358137715442326, -0.04678883106067528, -0.04251396995783882, -0.045426935094362755, -0.049976469429141815, -0.050294924927323806, -0.04876123531331598, -0.05190007909469725, -0.048947268609425984, -0.04477985256704113, -0.04887940262268575, -0.04686751241880758, -0.052506164860790606, -0.04959050956898575, -0.05381935023622783, -0.055285250288641244, -0.052688761495005634, -0.04946697669352439, -0.049797494314299105, -0.051448356997492055, -0.02946687228156806, -0.047892636321402386, -0.049053415740959755, -0.04579013968373381, -0.04560331936855949, -0.051912255992135864, -0.049613127064188765, -0.04459875838806287, -0.050379210216125986, -0.04952108595427615, -0.04940477875460892, -0.04645103307047736, -0.050380568645357435, -0.05381774734533697, -0.045187312731069025, -0.05329862622594178, -0.048263069897496694, -0.05061271647331225, -0.05074334223733005, -0.05085682984389978, -0.0500343815872891, -0.0522577199948733, -0.050636060092492226, -0.04813935733932618, -0.0510745565159503, -0.05031480488444117, -0.05339503948530648, -0.04821914463517458, -0.04569638562837198, -0.04700565977053996, -0.04997179866855858, -0.045539388017651415, -0.047799284270280386, -0.047795922158585503, -0.05000966151853952, -0.04911369672535822, -0.047437971768430176, -0.041351175205152725, -0.04913427482648208, -0.04932994050828778, -0.048297130943617594, -0.04864564260508569, -0.04423081493201505, -0.04665503612913182, -0.052797233622221273, -0.044280091968830926, -0.05133272259662316, -0.04990878350097111, -0.04982443099358651, -0.05068691490190368, -0.04930590663965181, -0.05171111240064179, -0.03410038442305639, -0.051191281828868444, -0.051181413991477936, -0.050110085486781746, -0.04237450284112045, -0.052030401532468636, -0.04811476310446307, -0.049240594341871634, -0.04839618715991908, -0.04740501847876545, -0.04732180067461921, -0.052363754131320085, -0.050715758859181614, -0.049336453931911, -0.04771313203198317, -0.05242623415261937, -0.04875566491866811, -0.05060016103985784, -0.050707792918670114, -0.05044019731538659, -0.04155426274887983, -0.048013151378600336, -0.04947985382175378, -0.04608054800436246, -0.049595168679829, -0.0497137265603439, -0.04969171938116377, -0.039551810140146824, -0.05207670910507688, -0.044497452886760665, -0.0431127216216423, -0.02968860664122875]}],
+                        {},
+                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('c6d0ad72-0416-434f-99b7-ced1538cec41');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                });
+            </script>
+        </div></div></div>
+</div>
+<p>This graph can show underlying patterns to the speech data that may not be visible to the human eye. But, it suffers from two immediate problems:</p>
+<ul class="simple">
+<li><p>Difficult to interpret</p></li>
+<li><p>Doesn’t solve word ambiguity issue</p></li>
+</ul>
+<p>No perfect solution exists for unbiased text analysis. But, it is still possible to gain powerful, well-supported insights from data by using the right tools for the analysis task at hand.</p>
+</section>
+<section id="iii-statistical-significance">
+<h3>iii. Statistical Significance <a id='subsection 6'></a><a class="headerlink" href="#iii-statistical-significance" title="Link to this heading">#</a></h3>
+<p>Even if text analyis shows a difference between two groups (such as Democrat and Republican speech), that difference may not be significant. <strong>Statistical significance</strong> is determined by testing hypotheses about how the observed difference came about.</p>
+<p>There are two hypotheses:</p>
+<ol class="arabic simple">
+<li><p>The <strong>null hypothesis</strong>- Democrats and Republicans use Moral Foundation words at the same rates. Any difference in observed word usage is due to random chance.</p></li>
+<li><p>The <strong>alternate hypothesis</strong>- The difference in how Democrats and Republicans use words is not due to chance.</p></li>
+</ol>
+<p>By using statistical methods, it’s possible to calculate the <strong>p-value</strong>: the chance that we’d see a word usage difference as large or larger than the one we saw in the data, if the null hypothesis were true. For example, a p-value of <span class="math notranslate nohighlight">\(0.10\)</span> means there’s a ten percent chance that the Democrat-Republican difference we saw would happen if all candidates used words at the same rates. By convention, a p-value of 0.05 is <strong>statistically significant</strong> and a p-value of 0.01 is <strong>highly statistically significant</strong>.</p>
+<p>But, significance can be manufactured using <strong>p-hacking</strong>: manipulating test data without a hypothesis to find patterns, then presenting those patterns as significant.</p>
+<p>Go to the <a class="reference external" href="https://projects.fivethirtyeight.com/p-hacking/">FiveThirtyEight Interactive</a> to do some p-hacking of your own.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="grifting-graphs">
+<h2>3. Grifting Graphs <a id='section 3'></a><a class="headerlink" href="#grifting-graphs" title="Link to this heading">#</a></h2>
+<p>Once analysis is complete, a proud data scientist will want to communicate their results. A good visualization can draw attention to a pattern, summarize a finding, or support an argument. This section will cover guidelines for displaying data faithfully and convincingly.</p>
+<p>To show how the same data can be represented many different ways, we’ll use the speech data from Module 02- specifically, the average Moral Foundation percents we calculated. Run the cell below to load the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the speech data into a pandas table</span>
+<span class="n">foundation_avg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;party_avgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">foundation_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>authority/subversion</th>
+      <th>care/harm</th>
+      <th>fairness/cheating</th>
+      <th>liberty/oppression</th>
+      <th>loyalty/betrayal</th>
+      <th>sanctity/degradation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D_percent</th>
+      <td>0.321495</td>
+      <td>0.292418</td>
+      <td>0.082472</td>
+      <td>0.030215</td>
+      <td>0.145686</td>
+      <td>0.204513</td>
+    </tr>
+    <tr>
+      <th>R_percent</th>
+      <td>0.393636</td>
+      <td>0.176955</td>
+      <td>0.066454</td>
+      <td>0.039025</td>
+      <td>0.080041</td>
+      <td>0.191499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="i-types-of-graphs">
+<h3>i. Types of Graphs <a id='subsection 7'></a><a class="headerlink" href="#i-types-of-graphs" title="Link to this heading">#</a></h3>
+<p>Different types of plots are great for emphasizing different things. Pandas makes plotting easy: for a DataFrame with numerical data like <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code>, you can create a plot by calling <code class="docutils literal notranslate"><span class="pre">.plot</span></code> followed by the specific plotting method. For example, in Module 02 we relied heavily on bar graphs using <code class="docutils literal notranslate"><span class="pre">.bar()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot of foundation averages. </span>
+<span class="c1"># Note: the figsize argument is optional, but can make the plot bigger and easier to read</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d671748&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/3fd0d7460e25e5da08269b6525e57cbc240a34a17fde67b813645d42854bede7.png" src="../../../../_images/3fd0d7460e25e5da08269b6525e57cbc240a34a17fde67b813645d42854bede7.png" />
+</div>
+</div>
+<p>Bar plots are great for this purpose because they make it very easy to compare numerical variables to one another. In this case, we can easily compare the average percentages of each foundation for each party.</p>
+<p>But, not all bar plots are created equal. Here, it’s easy to compare percentages within a party, but harder to compare percentages across parties because Democratic and Republican averages are so far apart.</p>
+<p>We can emphasize the differences between parties for each foundation by <strong>transposing</strong> <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> (i.e. making the columns into rows and the rows into columns) and making a bar chart of that. Create a variable <code class="docutils literal notranslate"><span class="pre">party_avg</span></code> by calling <code class="docutils literal notranslate"><span class="pre">.transpose()</span></code> on <code class="docutils literal notranslate"><span class="pre">foundtion_avg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">party_avg</span> <span class="o">=</span> <span class="n">foundation_avg</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">party_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>D_percent</th>
+      <th>R_percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>authority/subversion</th>
+      <td>0.321495</td>
+      <td>0.393636</td>
+    </tr>
+    <tr>
+      <th>care/harm</th>
+      <td>0.292418</td>
+      <td>0.176955</td>
+    </tr>
+    <tr>
+      <th>fairness/cheating</th>
+      <td>0.082472</td>
+      <td>0.066454</td>
+    </tr>
+    <tr>
+      <th>liberty/oppression</th>
+      <td>0.030215</td>
+      <td>0.039025</td>
+    </tr>
+    <tr>
+      <th>loyalty/betrayal</th>
+      <td>0.145686</td>
+      <td>0.080041</td>
+    </tr>
+    <tr>
+      <th>sanctity/degradation</th>
+      <td>0.204513</td>
+      <td>0.191499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now create another bar chart for <code class="docutils literal notranslate"><span class="pre">party_avg</span></code>, which has the same data as the <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> bar plot but different bar groupings. When would you want to use this plot instead of the first one?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d7157f0&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/aab7c590b6ab11cb0c98f871eaac9d2752c416f73815623ea4c6ede8b488970d.png" src="../../../../_images/aab7c590b6ab11cb0c98f871eaac9d2752c416f73815623ea4c6ede8b488970d.png" />
+</div>
+</div>
+<p>An alternative to the bar plot is the <strong>stacked bar plot</strong>, which stacks all of the bars for each party on top of each other. Create a stacked bar plot for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> below by creating a bar plot, then adding the argument <code class="docutils literal notranslate"><span class="pre">stacked=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a stacked bar plot of foundation averages. </span>
+<span class="c1"># Hint: this should look like the code for a bar graph, but with one extra argument for bar()</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d81c978&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/6a054695c6a661e23884b6a7203531f243424d3cf1c53c825d18908a988c76d1.png" src="../../../../_images/6a054695c6a661e23884b6a7203531f243424d3cf1c53c825d18908a988c76d1.png" />
+</div>
+</div>
+<p>Stacked plots combine a lot of info into fewer bars, which can be visually appealing. But, they can cause comparison errors because they <strong>jiggle the baseline</strong>: for every stacked bar except the base bar, the baseline begins at a different height, making it hard to compare lengths.</p>
+<p>Here’s an extreme example of jiggling (with a few other bonus graph sins: which ones can you find?):</p>
+<img src="https://i.kinja-img.com/gawker-media/image/upload/s--DstspxbR--/c_fit,fl_progressive,q_80,w_636/b5icpqdsnzsdaezvnrm1.jpg" width="500" height="500" />
+<p>Another way we might represent our percentages is with a <strong>pie plot</strong>, where each variable value is represented by a ‘slice’ of a circle. Create a pie chart using <code class="docutils literal notranslate"><span class="pre">.pie()</span></code> for the <code class="docutils literal notranslate"><span class="pre">party_avg_pie</span></code> table. Note: since there are 2 parties, pandas needs to be told to make one pie plot for each party by including the argument <code class="docutils literal notranslate"><span class="pre">subplot=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this table to make a pie chart. </span>
+<span class="c1"># Values are multiplied to be larger so pandas plots it more easily (the proportions are the same)</span>
+<span class="n">party_avg_pie</span> <span class="o">=</span> <span class="n">party_avg</span> <span class="o">*</span> <span class="mi">1000</span>
+
+<span class="c1"># Create a pie chart using .pie()</span>
+<span class="c1"># Hint: don&#39;t forget to set subplot=True!</span>
+<span class="c1"># Optional: set legend=False and figsize=(9,5) to get a cleaner graph</span>
+<span class="n">party_avg_pie</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x12badb390&gt;,
+       &lt;matplotlib.axes._subplots.AxesSubplot object at 0x12c5be1d0&gt;],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="../../../../_images/54efbac0b19f0a82cca0a97365aef30b727de8ed7f697909889c05153d19b1b4.png" src="../../../../_images/54efbac0b19f0a82cca0a97365aef30b727de8ed7f697909889c05153d19b1b4.png" />
+</div>
+</div>
+<p>Pie charts are visually appealing, but they can be problematic for readers. Consider these two bars:</p>
+<img src='len_compare.png' width=600 height=200>
+<p>It’s quick and easy to see that the top one is twice as long as the bottom. (That’s why we like bar plots so much)</p>
+<p>Now, consider this image. How much smaller is the second pizza compared to the first?</p>
+<img src='area_compare.png' width=500 height=150>
+<p>The first one has about twice the area of the second, but it’s much harder to form a confident and accurate judgment.</p>
+<p>This has major implications for pie charts and other area-based visualizations. While representing numbers with area seems intuitive, adding the extra dimension makes it harder for people to form accurate comparisons.</p>
+</section>
+<section id="ii-distorting-data">
+<h3>ii. Distorting Data<a id='subsection 8'><a class="headerlink" href="#ii-distorting-data" title="Link to this heading">#</a></h3>
+<p>In the charts above, data was presented more clearly. However, it’s easy to display data in more misleading formats. How is the data below misrepresented?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_avg</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="mf">.3</span><span class="p">,</span><span class="mf">.4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12c6d6d68&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/334925bd1a254fd07232536de53c7c7646520c51710e58ff0f2a9d827831c8cd.png" src="../../../../_images/334925bd1a254fd07232536de53c7c7646520c51710e58ff0f2a9d827831c8cd.png" />
+</div>
+</div>
+<p>Data visualization can often be misleading! Let’s look at some ways data can be represented in ambiguous or decepetive forms.</p>
+<p>In the next example, the issue isn’t in the content, but in the implications:</p>
+<img src='MisleadingImg2.gif' width=600 height=200>
+What does this graph not take into account?
+<p>Pie charts can distort perception of proportions:
+<img src='Misleading_Pie_Chart.png' width=600 height=200></p>
+<p>This chart and the following represent the same data. How does the first incorrectly interpret the data?
+<img src='Misleading_Pie_Chart2.png' width=600 height=200></p>
+</section>
+<section id="ii-color">
+<h3>ii. Color <a id='subsection 8'></a><a class="headerlink" href="#ii-color" title="Link to this heading">#</a></h3>
+<p>The human visual cortex processes color preattentively; that is, people notice colors without trying to. Therefore, color can be a powerful tool to communicate information, and its use in data visualization has been the focus of many <a class="reference external" href="https://conference.scipy.org/scipy2014/schedule/presentation/1741/">studies</a>.</p>
+<p>Pandas allows users to change their plot colors by including the <code class="docutils literal notranslate"><span class="pre">color=</span></code> argument. <code class="docutils literal notranslate"><span class="pre">color</span></code> can be set to equal a single color or a list of colors- one for each type of bar in the legend.</p>
+<p>Try changing the colors for a bar plot of <code class="docutils literal notranslate"><span class="pre">party_avg</span></code>. You’ll need a list of two colors, one for Democrats and one for Republicans in that order. Here are some of the colors pandas recognizes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>blue</p></td>
+<td><p>‘b’</p></td>
+</tr>
+<tr class="row-odd"><td><p>red</p></td>
+<td><p>‘r’</p></td>
+</tr>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>‘g’</p></td>
+</tr>
+<tr class="row-odd"><td><p>magenta</p></td>
+<td><p>‘m’</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+<td><p>‘y’</p></td>
+</tr>
+<tr class="row-odd"><td><p>cyan</p></td>
+<td><p>‘c’</p></td>
+</tr>
+<tr class="row-even"><td><p>black</p></td>
+<td><p>‘k’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar graph with non-default colors with the color= argument</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128df3860&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/da13558c795e187c8a49f355246d9160c0993ffbd8ee80141f962ff46a02fdef.png" src="../../../../_images/da13558c795e187c8a49f355246d9160c0993ffbd8ee80141f962ff46a02fdef.png" />
+</div>
+</div>
+<p>Pandas plot functions can also take an argument called <code class="docutils literal notranslate"><span class="pre">colormap=</span></code> that colors graphs from a premade pallete.</p>
+<p>Try creating a bar plot for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> where <code class="docutils literal notranslate"><span class="pre">colormap</span></code> is set to equal <code class="docutils literal notranslate"><span class="pre">Pastel2</span></code>. You can also try out any of the other colormaps listed <a class="reference external" href="https://scipy.github.io/old-wiki/pages/Cookbook/Matplotlib/Show_colormaps">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg where bar() has the argument colormap=&#39;Pastel2&#39;</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Pastel2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d694c50&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/2007840590654d06213d89a2738322b329bb0c3a4688a719affb7594e446a37f.png" src="../../../../_images/2007840590654d06213d89a2738322b329bb0c3a4688a719affb7594e446a37f.png" />
+</div>
+</div>
+<p>Colors help to create contrast and facilitate comparison. If colors are too similar to one another, two separate bars start to look like one individual blob and it’s hard to compare the values. Set the colormap for <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code>’s bar plot equal to ‘spring’ to see an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg with the &#39;spring&#39; colormap</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d54b3c8&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/7a43a6421d4bef0e82f4722d974bcf3874caa04c76b4acf47366bf71026e219b.png" src="../../../../_images/7a43a6421d4bef0e82f4722d974bcf3874caa04c76b4acf47366bf71026e219b.png" />
+</div>
+</div>
+<p>Additionally, colors can communicate information about the importance of data. Lighter colors usually make areas look larger than darker colors. Furthermore, darker colors stand out more against the white background of most presentation platforms (paper, slideshows, Jupyter notebooks) and tend to look more prominent, weighty, and important.</p>
+<p>Using a colormap that ranges from light to dark, then, can imply that your data varies along a scale, and the data at the dark end is more important.</p>
+<p>Try setting the colormap for a <code class="docutils literal notranslate"><span class="pre">foundation_avg</span></code> bar plot to <code class="docutils literal notranslate"><span class="pre">'Blues'</span></code>. How does that change our perception of the information? Is it appropriate for this graph, and if not, can you think of a graph where it would be appropriate?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a bar plot for foundation_avg with the &#39;Blues&#39; colormap</span>
+<span class="n">foundation_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d63ee80&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/e42b1cb41b738394d707d78122b8595cbcf893695beac2e76e3a06289fbee795.png" src="../../../../_images/e42b1cb41b738394d707d78122b8595cbcf893695beac2e76e3a06289fbee795.png" />
+</div>
+</div>
+<p>Changing a plot’s color palatte can also improve understanding by matching a <strong>mental model</strong>. For instance, Democrats are associated with the color blue while Republicans are associated with red. If a plot violates these associations…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the following cell to make a very misleading plot</span>
+<span class="n">party_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12d595d30&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/023fa31f3d3938c52f3e682d9e6cf63c008ff327df2a271244e1cd1b7f9c3c0b.png" src="../../../../_images/023fa31f3d3938c52f3e682d9e6cf63c008ff327df2a271244e1cd1b7f9c3c0b.png" />
+</div>
+</div>
+<p>…a reader could very easily read the results as exactly opposite what they are.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-s-next">
+<h2>4. What’s Next? <a id='section 4'></a><a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>Please help us understand your views of this module with this short survey: <a class="reference external" href="https://docs.google.com/forms/d/1n5xb7YkesWmCS6X8xnTGQiCFjiU4nr4fnzNQHwm8Oz4/edit?usp=sharing">https://docs.google.com/forms/d/1n5xb7YkesWmCS6X8xnTGQiCFjiU4nr4fnzNQHwm8Oz4/edit?usp=sharing</a></p>
+<p>Data science is a fast-growing field with applications in almost every subject you can imagine. Students and researchers alike have used Jupyter notebooks and data-driven methods to do everything from completing a lower-division class problem set to presenting a graduate research project.</p>
+<p>If you’d like to learn more about how to incorporate data science into your academic career:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://data8.org">DATA-8</a> is offered every semester and is a great introduction to coding and statistics. The website includes links to the textbook, syllibi, and past homeworks.</p></li>
+<li><p>Data Science <a class="reference external" href="https://data.berkeley.edu/education/connectors">Connector Courses</a> teach applied data science in everything from literature to cancer research. They can be taken with or after DATA-8.</p></li>
+<li><p>The Berkeley Institute for Data Science (<a class="reference external" href="https://bids.berkeley.edu/">BIDS</a>) hosts data science talks, research resources organized by field, and office hours for those interested in more in-depth data science research.</p></li>
+<li><p><a class="reference external" href="http://dlab.berkeley.edu/">DLAB</a> also offers workshops and consulting to help you hone your skills.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Playfair, W. (1801). The Statistical Breviary: Shewing, on a Principle Entirely New, the Resources of Every State and Kingdom in Europe; Illustrated with Stained Copper-plate Charts the Physical Powers of Each Distinct Nation with Ease and Perspicuity: to which is Added, a Similar Exhibition of the Ruling Powers of Hindoostan. T. Bensley, Bolt Court, Fleet Street.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Current notebook developed by: Alec Kan, Shalini Kunapuli, William McEachen</p>
+<p>Previous notebook developed by: Keeley Takimoto, Sean Seungwoo Son, Sujude Dalieh</p>
+<p>Data Science Modules: <a class="reference external" href="http://data.berkeley.edu/education/modules">http://data.berkeley.edu/education/modules</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_site/content/xrhetor-r1a/03-Rhetoric-of-Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction <a id="section 0"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deceitful-data-three-ways-to-make-a-dictionary">1. Deceitful Data: Three Ways to Make a Dictionary <a id="section 1"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-method-1-do-it-by-hand">i. Method 1: Do it by hand*<a id="subsection 1"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ambiguous-analysis">2. Ambiguous Analysis <a id="section 2"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-simple-word-counts">i. Simple word counts <a id="subsection 4"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-advanced-text-analysis">ii. Advanced Text Analysis <a id="subsection 5"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-statistical-significance">iii. Statistical Significance <a id="subsection 6"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grifting-graphs">3. Grifting Graphs <a id="section 3"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-types-of-graphs">i. Types of Graphs <a id="subsection 7"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-distorting-data">ii. Distorting Data<a id="subsection 8"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-color">ii. Color <a id="subsection 8"></a></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">4. What’s Next? <a id="section 4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

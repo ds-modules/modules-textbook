@@ -1,0 +1,3881 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>XRHETOR-R1A Data Science Module &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/xrhetor-r1a/01-intro/01-intro';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/xrhetor-r1a/01-intro/01-intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>XRHETOR-R1A Data Science Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-data-science-in-rhetoric">01 - Intro to Data Science in Rhetoric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered"><strong>Topics Covered</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-intro">Data Science Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-processing">Text processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-need-to-know">What you need to know</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-datascience">What is Datascience?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-is-an-interdisciplinary-field-that-seeks-to-extract-knowledge-or-insights-from-various-forms-of-data">Data science is an interdisciplinary field that seeks to extract knowledge or insights from various forms of data.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-notebook">The Jupyter Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#names-identifiers">Names (Identifiers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#call-expressions">Call Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-operator">Attribute Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-python-dictionary">Dict (Python dictionary)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors">Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-library-functions">Importing Library Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-source">Data Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-dataframe-in-pandas">Using DataFrame in pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-string-and-split">Using String and split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-words-2">Counts words 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-code-your-dictionary-into-python">Assignment: Code your dictionary into Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next Week</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-02-moral-foundations-analysis">Module 02: Moral Foundations Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-03-the-rhetoric-of-data">Module 03: The Rhetoric of Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="xrhetor-r1a-data-science-module">
+<h1>XRHETOR-R1A Data Science Module<a class="headerlink" href="#xrhetor-r1a-data-science-module" title="Link to this heading">#</a></h1>
+<section id="intro-to-data-science-in-rhetoric">
+<h2>01 - Intro to Data Science in Rhetoric<a class="headerlink" href="#intro-to-data-science-in-rhetoric" title="Link to this heading">#</a></h2>
+</section>
+<section id="professor-amy-tick">
+<h2>Professor Amy Tick<a class="headerlink" href="#professor-amy-tick" title="Link to this heading">#</a></h2>
+<p>Data Science is a fast-growing discipline with applications in many fields. Over the course of the next week, these modules will explore the use of Data Science in Rhetoric. Module 01 introduces the Python programming language and the Pandas DataFrame table structure and shows how to apply coding skills exploratory analysis for text data. Module 02 walks through the data science process start to finish to test Moral Foundations Theory. Finally, Module 03 examines data science as a rhetorical tool: how human biases, conscious or unconscious, affect how data is processed and perceived.</p>
+<p>Estimated Time: 50 minutes</p>
+</section>
+<section id="topics-covered">
+<h2><strong>Topics Covered</strong><a class="headerlink" href="#topics-covered" title="Link to this heading">#</a></h2>
+<section id="data-science-intro">
+<h3>Data Science Intro<a class="headerlink" href="#data-science-intro" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The field of Data Science <br></p></li>
+<li><p>Environment (Jupyter Notebook/Data hub)<br></p></li>
+<li><p>Basic Python</p></li>
+<li><p>Introduction to Pandas DataFrames</p></li>
+</ul>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Election 2016 <br> <a class="reference external" href="http://www.presidency.ucsb.edu/2016_election.php">http://www.presidency.ucsb.edu/2016_election.php</a> <br></p></li>
+</ul>
+</section>
+<section id="text-processing">
+<h3>Text processing<a class="headerlink" href="#text-processing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>String manipulation</p></li>
+<li><p>Word counts</p></li>
+</ul>
+</section>
+<section id="what-you-need-to-know">
+<h3>What you need to know<a class="headerlink" href="#what-you-need-to-know" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>data type</p></li>
+<li><p>expression</p></li>
+<li><p>names</p></li>
+<li><p>call expression</p></li>
+<li><p>attribute operator</p></li>
+<li><p>lists</p></li>
+<li><p>dict</p></li>
+<li><p>importing library</p></li>
+<li><p>table</p></li>
+<li><p>functions</p></li>
+</ul>
+<p>**Dependencies: datascience, nltk, pandas</p>
+</section>
+</section>
+<section id="before-we-begin">
+<h2>Before we begin<a class="headerlink" href="#before-we-begin" title="Link to this heading">#</a></h2>
+<p>Please help us better establish the audience that we are reaching by filling out this survey:
+<a class="reference external" href="https://docs.google.com/forms/d/1f7EekVoQYHaFeXpzKUul_ZrxzvXz_Iso5aDOMXNl8ic/edit?usp=sharing">https://docs.google.com/forms/d/1f7EekVoQYHaFeXpzKUul_ZrxzvXz_Iso5aDOMXNl8ic/edit?usp=sharing</a></p>
+</section>
+<section id="what-is-datascience">
+<h2>What is Datascience?<a class="headerlink" href="#what-is-datascience" title="Link to this heading">#</a></h2>
+<section id="data-science-is-an-interdisciplinary-field-that-seeks-to-extract-knowledge-or-insights-from-various-forms-of-data">
+<h3>Data science is an interdisciplinary field that seeks to extract knowledge or insights from various forms of data.<a class="headerlink" href="#data-science-is-an-interdisciplinary-field-that-seeks-to-extract-knowledge-or-insights-from-various-forms-of-data" title="Link to this heading">#</a></h3>
+<img src="http://www.kiwidatascience.com/wp/wp-content/uploads/2016/01/data_scientist.png" style="width: 550px; height: 500px;\" />
+Statistics is a central component of data science because statistics studies how to make robust conclusions with incomplete information. Computing is a central component because programming allows us to apply analysis techniques to the large and diverse data sets that arise in real-world applications. Domain knowlege is the most important compoent among above. Domain expertise is perhaps most relevant in the interpretation of insights. Without knowlege in the domain of the subject, we can't decide what to analyze.</section>
+</section>
+<section id="the-jupyter-notebook">
+<h2>The Jupyter Notebook<a class="headerlink" href="#the-jupyter-notebook" title="Link to this heading">#</a></h2>
+<p>Note that this page is divided into what are called “cells”. For example, the following cell is a “code cell” where you will write your code. You’ll see a In [ ]: next to each cell for code, which is a counter for the cells you have run. You can navigate cells by clicking on them or by using the up and down arrows. Cells will be highlighted as you navigate them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is a code cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<section id="data-types">
+<h3>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h3>
+<p>Text analysis uses two basic types of data: numbers and text.</p>
+<p>In Jupyter notebooks, Python numbers are shown in green.</p>
+<p>Python text is referred to as a <strong>string</strong> and is written inside of single or double quotation marks. Jupyter shows it in red.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Numbers in Python</span>
+<span class="mi">3</span>
+<span class="mf">6.0</span>
+<span class="mf">1837720.8787623</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1837720.8787623
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python text, aka strings</span>
+<span class="s2">&quot;a&quot;</span>
+<span class="s2">&quot;word&quot;</span>
+<span class="s2">&quot;The quick brown fox jumped over the lazy dog&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The quick brown fox jumped over the lazy dog&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="expressions">
+<h3>Expressions<a class="headerlink" href="#expressions" title="Link to this heading">#</a></h3>
+<p>Programs are made up of expressions, which describe to the computer how to combine pieces of data.</p>
+<p>Running a code cell will output the result of the expression below the cell. Code cells are run by navigating to the cell and pressing <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number expression</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>168
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="names-identifiers">
+<h3>Names (Identifiers)<a class="headerlink" href="#names-identifiers" title="Link to this heading">#</a></h3>
+<p>Names are given to values in Python using an assignment statement. In an assignment, a name is followed by =, which is followed by any expression. The value of the expression to the right of = is assigned to the name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#if you want to save it for later use</span>
+<span class="n">hours_per_week</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hours_per_week</span> <span class="o">*</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10080
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seconds_per_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31536000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seconds_per_hour</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">hours_per_year</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+<span class="n">seconds_per_year</span> <span class="o">=</span> <span class="n">seconds_per_hour</span> <span class="o">*</span> <span class="n">hours_per_year</span>
+<span class="n">seconds_per_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31536000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="call-expressions">
+<h3>Call Expressions<a class="headerlink" href="#call-expressions" title="Link to this heading">#</a></h3>
+<p>The most important kind of compound expression is a call expression, which applies a function to some arguments. Recall from algebra that the mathematical notion of a function is a mapping from some input arguments to an output value. The way in which Python expresses function application is the same as in conventional mathematics.</p>
+<p>For instance, the abs function maps its single inputs to a single output, which is the absolute value of the inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>For instance, the max function maps its inputs to a single output, which is the largest of the inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="attribute-operator">
+<h3>Attribute Operator<a class="headerlink" href="#attribute-operator" title="Link to this heading">#</a></h3>
+<p>A few functions are available by default, such as abs and max, but most functions that are built into the Python language are stored in a collection of functions called a module. An import statement is used to provide access to a module, such as math or operator. Operators and call expressions can be used together in an expression.</p>
+<p>Put another way, specific types of data have specific functions that can be used with <strong>dot notation</strong>. The order of the syntax goes <code class="docutils literal notranslate"><span class="pre">data</span></code> then a ‘.’ then the function.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">upper()</span></code> function can be called on a string to make all of its characters uppercase.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;python is fun&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;PYTHON IS FUN&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h3>
+<p>Python has a great built-in list type named “list”. Items in a list are written within square brackets [ ] and separated by commas. Lists work similarly to strings – use square brackets [ ] to access data, with the first element at index 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">## red</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;red&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## green</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;green&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>  <span class="c1">## 3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dict-python-dictionary">
+<h3>Dict (Python dictionary)<a class="headerlink" href="#dict-python-dictionary" title="Link to this heading">#</a></h3>
+<p>Python also has a <strong>dictionary</strong> structure called a “dict”. The contents of a dict can be written as a series of key:value pairs within braces { }, e.g. dict = {key1:value1, key2:value2, … }. The “empty dict” is just an empty pair of curly braces {}.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Can build up a dict by starting with the the empty dict {}</span>
+<span class="c1">## and storing key/value pairs into the dict like this:</span>
+<span class="c1">## dict[key] = value-for-that-key</span>
+<span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;alpha&#39;</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gamma&#39;</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;omega&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;alpha&#39;, &#39;g&#39;: &#39;gamma&#39;, &#39;o&#39;: &#39;omega&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>     <span class="c1">## Simple lookup, returns &#39;alpha&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;alpha&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>       <span class="c1">## Put new key/value into dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">dict</span>         <span class="c1">## True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="errors">
+<h3>Errors<a class="headerlink" href="#errors" title="Link to this heading">#</a></h3>
+<p>The Python language has a very specific syntax. If code is not written in that syntax, running a cell will result in an <strong>error</strong> and show an error message.</p>
+<p>Error messages can be confusing, but they can also give information about what is wrong.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Un-comment the next line, then run the cell to create an error</span>
+<span class="c1"># dict[&#39;b&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="importing-library-functions">
+<h3>Importing Library Functions<a class="headerlink" href="#importing-library-functions" title="Link to this heading">#</a></h3>
+<p>Python defines a very large number of functions, including the operator functions mentioned in the preceding section, but does not make all of their names available by default. Instead, it organizes the functions and other quantities that it knows about into modules, which together comprise the Python Library. To use these elements, one imports them.
+These libraries below are what we are using in this demo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem.snowball</span><span class="w"> </span><span class="kn">import</span> <span class="n">SnowballStemmer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-source">
+<h2>Data Source<a class="headerlink" href="#data-source" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://www.presidency.ucsb.edu/2016_election.php">http://www.presidency.ucsb.edu/2016_election.php</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All the csv files are prepared.</span>
+<span class="c1"># We are not going to cover web scraping but you can see the code later if you have interest.</span>
+
+<span class="c1"># Loading csv data to jupyter notebook and save it as table.</span>
+
+<span class="n">clinton_press</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../mft_data/csv/Clinton_p.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-dataframe-in-pandas">
+<h2>Using DataFrame in pandas<a class="headerlink" href="#using-dataframe-in-pandas" title="Link to this heading">#</a></h2>
+<p>A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or table.</p>
+<p>Each row represents one <strong>entry</strong>: in this case, a speech, statement, or press release. Each column column describes an <strong>aspect</strong> of entries, like the title or date of the speech.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">head()</span></code> function shows us the first five rows of the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clinton_press</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Speech</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>January 20, 2007</td>
+      <td>Press Release - Clinton Candidacy Garners Huge...</td>
+      <td>Campaign web site signs up 100 new members per...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>January 20, 2007</td>
+      <td>FYI: New Washington Post-ABC Poll Shows Senato...</td>
+      <td>The new Washington Post-ABC poll out this afte...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>January 21, 2007</td>
+      <td>Press Release - 24 Hours Later, the Reviews Ar...</td>
+      <td>Top pundits on Hillary's announcement: 'brilli...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>January 22, 2007</td>
+      <td>Press Release - Conversation Begins Tonight</td>
+      <td>Senator Clinton's first video webcast is live ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>January 25, 2007</td>
+      <td>Press Release - Clinton Hires Former Harkin Ch...</td>
+      <td>Fourth-generation Iowan is veteran of numerous...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>While <code class="docutils literal notranslate"><span class="pre">shape</span></code> shows the number of rows and columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A csv file is either campaign speeches, statements or press releases of a candidate.</span>
+<span class="c1"># This is an example of candiate &quot;Hillary&quot; and her press releases</span>
+<span class="c1"># A single press release is saved in &quot;Speech&quot; column</span>
+<span class="c1"># How many press releases do we have?</span>
+<span class="n">clinton_press</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1925, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To select a single column, put the column name in square brackets next to the DataFrame (similar to looking up an entry in a Python dictionary).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting a single column</span>
+<span class="n">title_col</span> <span class="o">=</span> <span class="n">clinton_press</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
+<span class="n">title_col</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Press Release - Clinton Candidacy Garners Huge...
+1    FYI: New Washington Post-ABC Poll Shows Senato...
+2    Press Release - 24 Hours Later, the Reviews Ar...
+3          Press Release - Conversation Begins Tonight
+4    Press Release - Clinton Hires Former Harkin Ch...
+Name: Title, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Items in a column can be accessed like items in a Python list using square brackets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title_col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Press Release - Clinton Candidacy Garners Huge Online Response&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Select a row using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> with the number of the row inside the brackets.</p>
+<p>A range of rows can be selected by giving two numbers separated by a colon. The first number is the first row returned, and the last number is the last row returned.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Locate the 1st row</span>
+<span class="n">clinton_press</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Candidate                                     Hillary Clinton 
+Party                                                        D
+Type                                                         p
+Date                                          January 20, 2007
+Title        FYI: New Washington Post-ABC Poll Shows Senato...
+Speech       The new Washington Post-ABC poll out this afte...
+Name: 1, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Locate the 50th-55th rows</span>
+<span class="n">clinton_press</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Speech</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>50</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 1, 2007</td>
+      <td>Press Release - Clinton Reports $36 Million in...</td>
+      <td>Total includes $26 million raised since Jan 20...</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 2, 2007</td>
+      <td>Gov. Corzine, NJ Officials Endorse Clinton</td>
+      <td>The Clinton Campaign today announced the endor...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 3, 2007</td>
+      <td>Press Release - Clinton Launches Petition Call...</td>
+      <td>Bush Renews Veto Threat Today, Defying Congres...</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 5, 2007</td>
+      <td>Press Release - Nine More NH State Representat...</td>
+      <td>NH House Support Continues to Grow; Now Totals...</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 6, 2007</td>
+      <td>Clinton to Participate in South Carolina Debate</td>
+      <td>The Clinton campaign announced today that Hill...</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Hillary Clinton</td>
+      <td>D</td>
+      <td>p</td>
+      <td>April 10, 2007</td>
+      <td>Press Release - From the Senate: Senator Clint...</td>
+      <td>Visit to three Upstate New York VA &amp; Military ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>These filtering tools help us in text analysis. In the next section, we’ll analyze the first speech in the DataFrame. Run the next cell to select the speech and save it to a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_speech</span> <span class="o">=</span> <span class="n">clinton_press</span><span class="p">[</span><span class="s2">&quot;Speech&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">a_speech</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Campaign web site signs up 100 new members per minute, racks up 10,000 messages of support within 6 hours of announcement  Clinton candidacy hailed online as &quot;profoundly moving&quot;; &quot;top tier&quot;; &quot;exciting&quot;; &quot;remarkable&quot;; &quot;smart&quot;; and &quot;news of a generation&quot; Demonstrating the groundswell of enthusiasm generated by her historic candidacy, Senator Hillary Rodham Clinton\&#39;s announcement for President lit up the internet today, garnering rave reviews in the blogosphere, and thousands of supporters flocking to her web site each hour. Within just six hours of the announcement going live on her campaign web site, Senator Clinton\&#39;s candidacy attracted thousands of messages of support, and widespread accolades online. Overwhelming Response Within Hours of Going Live:  SIGN UPS = 100 per minute MESSAGES OF SUPPORT = 10,000 VIDEO WEBCAST SIGN-UPS = 7,700 BLOG CONTEST SUBMISSIONS = 2,200  Bloggers Give Clinton Announcement Rave Reviews: MYDD (Jerome Armstrong) - &quot;And as blogger savvy as John Edwards was in outreach, Clinton internet team had the emails of bloggers to notify them separate from the press (no such outreach from the Obama camp). The website has the clean, Kerry-2004 look about it. A smart &quot;write our first post&quot; call to action on the website. The announcement of &quot;an unprecedented series of video webcasts beginning Monday, January 22nd at 7pm EST for three nights&quot; creates a quick narrative of interaction and response around Bush\&#39;s SOTU address.&quot; DAILY KOS DIARY (nyceve) - &quot;I\&#39;m an open and honest person, and I\&#39;m profoundly moved by her announcement. What was unimaginable just a few decades ago, is now something we can almost touch.&quot; THE CARPETBAGGER REPORT - &quot;Clinton enters the race, without a doubt, at the top of the top tier. I\&#39;ve heard all the various concerns about her candidacy, but I don\&#39;t have any doubt that she has what it takes to win. Indeed, Clinton brings an enormous amount of talent, experience, and intelligence to the table.&quot; TAYLOR MARSH - &quot;Sitting in a living room setting, Senator Hillary Clinton made one simple statement that changed the landscape of the \&#39;08 presidential tournament to come. (To add, I got an email about this event this morning just after 6:00 a.m.) Because when the first woman to run for president, with an actual chance of winning, puts her name and reputation on the line, it becomes news of the day, week, even a generation.&quot; TALK LEFT - It is exciting to have a serious female candidate for President. OUTSIDE THE BELTWAY - After nearly eight years of speculation, Hillary Clinton has announced her candidacy for president.... she has done a remarkable job these past several years getting out of her husband\&#39;s shadow, positioning herself as more moderate than previously thought, and garnering bipartisan praise for collegiality and hard work in the Senate. DAILY KOS DIARY (Yellow Dog Blue) - &quot;How has she survived and thrived? Not by heavying up her armor. Not by engaging and overwhelming her opponents. Not even by appealing for public sympathy. Instead Hillary has just gone her business being a Senator, building personal relationships and support, getting and using power. And I really admire that.&quot; SEEING THE FOREST (Dave Johnson) - &quot;People say Hillary Clinton has &quot;baggage&quot; and is &quot;divisive.&quot; Actually she has been investigated more thoroughly than almost anyone in the country\&#39;s history and they found nothing at all. It isn\&#39;t Hillary who is divisive, it\&#39;s the people making all the accusations.&quot;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-string-and-split">
+<h2>Using String and split<a class="headerlink" href="#using-string-and-split" title="Link to this heading">#</a></h2>
+<p>When you break a large string down into smaller chunks, or strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;This is random text we’re going to split apart&quot;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;This&#39;, &#39;is&#39;, &#39;random&#39;, &#39;text&#39;, &#39;we’re&#39;, &#39;going&#39;, &#39;to&#39;, &#39;split&#39;, &#39;apart&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Splitting speech by words</span>
+<span class="n">by_words</span> <span class="o">=</span> <span class="n">a_speech</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="counting-words">
+<h2>Counting words<a class="headerlink" href="#counting-words" title="Link to this heading">#</a></h2>
+<p>A Counter is a dict subclass for counting. most_common() returns all elements in the counter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counting the number of words showed up in a speech</span>
+<span class="n">count_words_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">by_words</span><span class="p">)</span>
+<span class="n">count_words_freq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;&#39;: 3,
+         &#39;&quot;And&#39;: 1,
+         &#39;&quot;Clinton&#39;: 1,
+         &#39;&quot;How&#39;: 1,
+         &#39;&quot;I\&#39;m&#39;: 1,
+         &#39;&quot;People&#39;: 1,
+         &#39;&quot;Sitting&#39;: 1,
+         &#39;&quot;an&#39;: 1,
+         &#39;&quot;baggage&quot;&#39;: 1,
+         &#39;&quot;divisive.&quot;&#39;: 1,
+         &#39;&quot;exciting&quot;;&#39;: 1,
+         &#39;&quot;news&#39;: 1,
+         &#39;&quot;profoundly&#39;: 1,
+         &#39;&quot;remarkable&quot;;&#39;: 1,
+         &#39;&quot;smart&quot;;&#39;: 1,
+         &#39;&quot;top&#39;: 1,
+         &#39;&quot;write&#39;: 1,
+         &quot;&#39;08&quot;: 1,
+         &#39;(Dave&#39;: 1,
+         &#39;(Jerome&#39;: 1,
+         &#39;(To&#39;: 1,
+         &#39;(Yellow&#39;: 1,
+         &#39;(no&#39;: 1,
+         &#39;(nyceve)&#39;: 1,
+         &#39;-&#39;: 8,
+         &#39;10,000&#39;: 2,
+         &#39;100&#39;: 2,
+         &#39;2,200&#39;: 1,
+         &#39;22nd&#39;: 1,
+         &#39;6&#39;: 1,
+         &#39;6:00&#39;: 1,
+         &#39;7,700&#39;: 1,
+         &#39;7pm&#39;: 1,
+         &#39;=&#39;: 4,
+         &#39;A&#39;: 1,
+         &#39;Actually&#39;: 1,
+         &#39;After&#39;: 1,
+         &#39;And&#39;: 1,
+         &#39;Announcement&#39;: 1,
+         &#39;Armstrong)&#39;: 1,
+         &#39;BELTWAY&#39;: 1,
+         &#39;BLOG&#39;: 1,
+         &#39;Because&#39;: 1,
+         &#39;Bloggers&#39;: 1,
+         &#39;Blue)&#39;: 1,
+         &quot;Bush&#39;s&quot;: 1,
+         &#39;CARPETBAGGER&#39;: 1,
+         &#39;CONTEST&#39;: 1,
+         &#39;Campaign&#39;: 1,
+         &#39;Clinton&#39;: 7,
+         &quot;Clinton&#39;s&quot;: 2,
+         &#39;DAILY&#39;: 2,
+         &#39;DIARY&#39;: 2,
+         &#39;Demonstrating&#39;: 1,
+         &#39;Dog&#39;: 1,
+         &#39;EST&#39;: 1,
+         &#39;Edwards&#39;: 1,
+         &#39;FOREST&#39;: 1,
+         &#39;Give&#39;: 1,
+         &#39;Going&#39;: 1,
+         &#39;Hillary&#39;: 6,
+         &#39;Hours&#39;: 1,
+         &#39;I&#39;: 3,
+         &quot;I&#39;m&quot;: 1,
+         &quot;I&#39;ve&quot;: 1,
+         &#39;Indeed,&#39;: 1,
+         &#39;Instead&#39;: 1,
+         &#39;It&#39;: 2,
+         &#39;January&#39;: 1,
+         &#39;John&#39;: 1,
+         &#39;Johnson)&#39;: 1,
+         &#39;KOS&#39;: 2,
+         &#39;Kerry-2004&#39;: 1,
+         &#39;LEFT&#39;: 1,
+         &#39;Live:&#39;: 1,
+         &#39;MARSH&#39;: 1,
+         &#39;MESSAGES&#39;: 1,
+         &#39;MYDD&#39;: 1,
+         &#39;Monday,&#39;: 1,
+         &#39;Not&#39;: 3,
+         &#39;OF&#39;: 1,
+         &#39;OUTSIDE&#39;: 1,
+         &#39;Obama&#39;: 1,
+         &#39;Overwhelming&#39;: 1,
+         &#39;President&#39;: 1,
+         &#39;President.&#39;: 1,
+         &#39;REPORT&#39;: 1,
+         &#39;Rave&#39;: 1,
+         &#39;Response&#39;: 1,
+         &#39;Reviews:&#39;: 1,
+         &#39;Rodham&#39;: 1,
+         &#39;SEEING&#39;: 1,
+         &#39;SIGN&#39;: 1,
+         &#39;SIGN-UPS&#39;: 1,
+         &#39;SOTU&#39;: 1,
+         &#39;SUBMISSIONS&#39;: 1,
+         &#39;SUPPORT&#39;: 1,
+         &#39;Senate.&#39;: 1,
+         &#39;Senator&#39;: 3,
+         &#39;Senator,&#39;: 1,
+         &#39;TALK&#39;: 1,
+         &#39;TAYLOR&#39;: 1,
+         &#39;THE&#39;: 3,
+         &#39;The&#39;: 2,
+         &#39;UPS&#39;: 1,
+         &#39;VIDEO&#39;: 1,
+         &#39;WEBCAST&#39;: 1,
+         &#39;What&#39;: 1,
+         &#39;Within&#39;: 2,
+         &#39;a&#39;: 9,
+         &#39;a.m.)&#39;: 1,
+         &#39;about&#39;: 3,
+         &#39;accolades&#39;: 1,
+         &#39;accusations.&quot;&#39;: 1,
+         &#39;action&#39;: 1,
+         &#39;actual&#39;: 1,
+         &#39;add,&#39;: 1,
+         &#39;address.&quot;&#39;: 1,
+         &#39;admire&#39;: 1,
+         &#39;after&#39;: 1,
+         &#39;ago,&#39;: 1,
+         &#39;all&#39;: 2,
+         &#39;all.&#39;: 1,
+         &#39;almost&#39;: 2,
+         &#39;amount&#39;: 1,
+         &#39;an&#39;: 4,
+         &#39;and&#39;: 16,
+         &#39;announced&#39;: 1,
+         &#39;announcement&#39;: 4,
+         &#39;announcement.&#39;: 1,
+         &#39;any&#39;: 1,
+         &#39;anyone&#39;: 1,
+         &#39;appealing&#39;: 1,
+         &#39;armor.&#39;: 1,
+         &#39;around&#39;: 1,
+         &#39;as&#39;: 4,
+         &#39;at&#39;: 3,
+         &#39;attracted&#39;: 1,
+         &#39;becomes&#39;: 1,
+         &#39;been&#39;: 1,
+         &#39;beginning&#39;: 1,
+         &#39;being&#39;: 1,
+         &#39;bipartisan&#39;: 1,
+         &#39;blogger&#39;: 1,
+         &#39;bloggers&#39;: 1,
+         &#39;blogosphere,&#39;: 1,
+         &#39;brings&#39;: 1,
+         &#39;building&#39;: 1,
+         &#39;business&#39;: 1,
+         &#39;but&#39;: 1,
+         &#39;by&#39;: 5,
+         &#39;call&#39;: 1,
+         &#39;camp).&#39;: 1,
+         &#39;campaign&#39;: 1,
+         &#39;can&#39;: 1,
+         &#39;candidacy&#39;: 3,
+         &#39;candidacy,&#39;: 2,
+         &#39;candidate&#39;: 1,
+         &#39;chance&#39;: 1,
+         &#39;changed&#39;: 1,
+         &#39;clean,&#39;: 1,
+         &#39;collegiality&#39;: 1,
+         &#39;come.&#39;: 1,
+         &#39;concerns&#39;: 1,
+         &quot;country&#39;s&quot;: 1,
+         &#39;creates&#39;: 1,
+         &#39;day,&#39;: 1,
+         &#39;decades&#39;: 1,
+         &#39;divisive,&#39;: 1,
+         &quot;don&#39;t&quot;: 1,
+         &#39;done&#39;: 1,
+         &#39;doubt&#39;: 1,
+         &#39;doubt,&#39;: 1,
+         &#39;each&#39;: 1,
+         &#39;eight&#39;: 1,
+         &#39;email&#39;: 1,
+         &#39;emails&#39;: 1,
+         &#39;engaging&#39;: 1,
+         &#39;enormous&#39;: 1,
+         &#39;enters&#39;: 1,
+         &#39;enthusiasm&#39;: 1,
+         &#39;even&#39;: 2,
+         &#39;event&#39;: 1,
+         &#39;exciting&#39;: 1,
+         &#39;experience,&#39;: 1,
+         &#39;female&#39;: 1,
+         &#39;few&#39;: 1,
+         &#39;first&#39;: 2,
+         &#39;flocking&#39;: 1,
+         &#39;for&#39;: 7,
+         &#39;found&#39;: 1,
+         &#39;from&#39;: 2,
+         &#39;garnering&#39;: 2,
+         &#39;generated&#39;: 1,
+         &#39;generation&quot;&#39;: 1,
+         &#39;generation.&quot;&#39;: 1,
+         &#39;getting&#39;: 2,
+         &#39;going&#39;: 1,
+         &#39;gone&#39;: 1,
+         &#39;got&#39;: 1,
+         &#39;groundswell&#39;: 1,
+         &#39;had&#39;: 1,
+         &#39;hailed&#39;: 1,
+         &#39;hard&#39;: 1,
+         &#39;has&#39;: 8,
+         &#39;have&#39;: 2,
+         &#39;heard&#39;: 1,
+         &#39;heavying&#39;: 1,
+         &#39;her&#39;: 11,
+         &#39;herself&#39;: 1,
+         &#39;historic&#39;: 1,
+         &#39;history&#39;: 1,
+         &#39;honest&#39;: 1,
+         &#39;hour.&#39;: 1,
+         &#39;hours&#39;: 2,
+         &quot;husband&#39;s&quot;: 1,
+         &#39;in&#39;: 5,
+         &#39;intelligence&#39;: 1,
+         &#39;interaction&#39;: 1,
+         &#39;internet&#39;: 2,
+         &#39;investigated&#39;: 1,
+         &#39;is&#39;: 4,
+         &quot;isn&#39;t&quot;: 1,
+         &#39;it&#39;: 2,
+         &quot;it&#39;s&quot;: 1,
+         &#39;it.&#39;: 1,
+         &#39;job&#39;: 1,
+         &#39;just&#39;: 4,
+         &#39;landscape&#39;: 1,
+         &#39;line,&#39;: 1,
+         &#39;lit&#39;: 1,
+         &#39;live&#39;: 1,
+         &#39;living&#39;: 1,
+         &#39;look&#39;: 1,
+         &#39;made&#39;: 1,
+         &#39;making&#39;: 1,
+         &#39;members&#39;: 1,
+         &#39;messages&#39;: 2,
+         &#39;minute&#39;: 1,
+         &#39;minute,&#39;: 1,
+         &#39;moderate&#39;: 1,
+         &#39;more&#39;: 2,
+         &#39;morning&#39;: 1,
+         &#39;moved&#39;: 1,
+         &#39;moving&quot;;&#39;: 1,
+         &#39;name&#39;: 1,
+         &#39;narrative&#39;: 1,
+         &#39;nearly&#39;: 1,
+         &#39;new&#39;: 1,
+         &#39;news&#39;: 1,
+         &#39;nights&quot;&#39;: 1,
+         &#39;nothing&#39;: 1,
+         &#39;notify&#39;: 1,
+         &#39;now&#39;: 1,
+         &#39;of&#39;: 20,
+         &#39;on&#39;: 3,
+         &#39;one&#39;: 1,
+         &#39;online&#39;: 1,
+         &#39;online.&#39;: 1,
+         &#39;open&#39;: 1,
+         &#39;opponents.&#39;: 1,
+         &#39;our&#39;: 1,
+         &#39;out&#39;: 1,
+         &#39;outreach&#39;: 1,
+         &#39;outreach,&#39;: 1,
+         &#39;overwhelming&#39;: 1,
+         &#39;past&#39;: 1,
+         &#39;people&#39;: 1,
+         &#39;per&#39;: 2,
+         &#39;person,&#39;: 1,
+         &#39;personal&#39;: 1,
+         &#39;positioning&#39;: 1,
+         &#39;post&quot;&#39;: 1,
+         &#39;power.&#39;: 1,
+         &#39;praise&#39;: 1,
+         &#39;president,&#39;: 1,
+         &#39;president....&#39;: 1,
+         &#39;presidential&#39;: 1,
+         &#39;press&#39;: 1,
+         &#39;previously&#39;: 1,
+         &#39;profoundly&#39;: 1,
+         &#39;public&#39;: 1,
+         &#39;puts&#39;: 1,
+         &#39;quick&#39;: 1,
+         &#39;race,&#39;: 1,
+         &#39;racks&#39;: 1,
+         &#39;rave&#39;: 1,
+         &#39;really&#39;: 1,
+         &#39;relationships&#39;: 1,
+         &#39;remarkable&#39;: 1,
+         &#39;reputation&#39;: 1,
+         &#39;response&#39;: 1,
+         &#39;reviews&#39;: 1,
+         &#39;room&#39;: 1,
+         &#39;run&#39;: 1,
+         &#39;savvy&#39;: 1,
+         &#39;say&#39;: 1,
+         &#39;separate&#39;: 1,
+         &#39;series&#39;: 1,
+         &#39;serious&#39;: 1,
+         &#39;setting,&#39;: 1,
+         &#39;several&#39;: 1,
+         &#39;shadow,&#39;: 1,
+         &#39;she&#39;: 4,
+         &#39;signs&#39;: 1,
+         &#39;simple&#39;: 1,
+         &#39;site&#39;: 2,
+         &#39;site,&#39;: 1,
+         &#39;six&#39;: 1,
+         &#39;smart&#39;: 1,
+         &#39;something&#39;: 1,
+         &#39;speculation,&#39;: 1,
+         &#39;statement&#39;: 1,
+         &#39;such&#39;: 1,
+         &#39;support&#39;: 1,
+         &#39;support,&#39;: 2,
+         &#39;supporters&#39;: 1,
+         &#39;survived&#39;: 1,
+         &#39;sympathy.&#39;: 1,
+         &#39;table.&quot;&#39;: 1,
+         &#39;takes&#39;: 1,
+         &#39;talent,&#39;: 1,
+         &#39;team&#39;: 1,
+         &#39;than&#39;: 2,
+         &#39;that&#39;: 2,
+         &#39;that.&quot;&#39;: 1,
+         &#39;the&#39;: 23,
+         &#39;them&#39;: 1,
+         &#39;these&#39;: 1,
+         &#39;they&#39;: 1,
+         &#39;this&#39;: 2,
+         &#39;thoroughly&#39;: 1,
+         &#39;thought,&#39;: 1,
+         &#39;thousands&#39;: 2,
+         &#39;three&#39;: 1,
+         &#39;thrived?&#39;: 1,
+         &#39;tier&quot;;&#39;: 1,
+         &#39;tier.&#39;: 1,
+         &#39;to&#39;: 8,
+         &#39;today,&#39;: 1,
+         &#39;top&#39;: 2,
+         &#39;touch.&quot;&#39;: 1,
+         &#39;tournament&#39;: 1,
+         &#39;unimaginable&#39;: 1,
+         &#39;unprecedented&#39;: 1,
+         &#39;up&#39;: 4,
+         &#39;using&#39;: 1,
+         &#39;various&#39;: 1,
+         &#39;video&#39;: 1,
+         &#39;was&#39;: 2,
+         &#39;we&#39;: 1,
+         &#39;web&#39;: 3,
+         &#39;webcasts&#39;: 1,
+         &#39;website&#39;: 1,
+         &#39;website.&#39;: 1,
+         &#39;week,&#39;: 1,
+         &#39;what&#39;: 1,
+         &#39;when&#39;: 1,
+         &#39;who&#39;: 1,
+         &#39;widespread&#39;: 1,
+         &#39;win.&#39;: 1,
+         &#39;winning,&#39;: 1,
+         &#39;with&#39;: 1,
+         &#39;within&#39;: 1,
+         &#39;without&#39;: 1,
+         &#39;woman&#39;: 1,
+         &#39;work&#39;: 1,
+         &#39;years&#39;: 2})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Guess what are the most frequent words in it</span>
+<span class="c1"># Is it what you expected?</span>
+<span class="c1"># Why? / Why not?</span>
+<span class="n">count_words_freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;the&#39;, 23),
+ (&#39;of&#39;, 20),
+ (&#39;and&#39;, 16),
+ (&#39;her&#39;, 11),
+ (&#39;a&#39;, 9),
+ (&#39;to&#39;, 8),
+ (&#39;-&#39;, 8),
+ (&#39;has&#39;, 8),
+ (&#39;Clinton&#39;, 7),
+ (&#39;for&#39;, 7),
+ (&#39;Hillary&#39;, 6),
+ (&#39;by&#39;, 5),
+ (&#39;in&#39;, 5),
+ (&#39;up&#39;, 4),
+ (&#39;announcement&#39;, 4),
+ (&#39;as&#39;, 4),
+ (&#39;just&#39;, 4),
+ (&#39;=&#39;, 4),
+ (&#39;an&#39;, 4),
+ (&#39;is&#39;, 4),
+ (&#39;she&#39;, 4),
+ (&#39;web&#39;, 3),
+ (&#39;&#39;, 3),
+ (&#39;candidacy&#39;, 3),
+ (&#39;Senator&#39;, 3),
+ (&#39;on&#39;, 3),
+ (&#39;about&#39;, 3),
+ (&#39;at&#39;, 3),
+ (&#39;THE&#39;, 3),
+ (&#39;I&#39;, 3),
+ (&#39;Not&#39;, 3),
+ (&#39;site&#39;, 2),
+ (&#39;100&#39;, 2),
+ (&#39;per&#39;, 2),
+ (&#39;10,000&#39;, 2),
+ (&#39;messages&#39;, 2),
+ (&#39;hours&#39;, 2),
+ (&#39;candidacy,&#39;, 2),
+ (&quot;Clinton&#39;s&quot;, 2),
+ (&#39;internet&#39;, 2),
+ (&#39;garnering&#39;, 2),
+ (&#39;thousands&#39;, 2),
+ (&#39;Within&#39;, 2),
+ (&#39;support,&#39;, 2),
+ (&#39;was&#39;, 2),
+ (&#39;from&#39;, 2),
+ (&#39;The&#39;, 2),
+ (&#39;first&#39;, 2),
+ (&#39;DAILY&#39;, 2),
+ (&#39;KOS&#39;, 2),
+ (&#39;DIARY&#39;, 2),
+ (&#39;almost&#39;, 2),
+ (&#39;top&#39;, 2),
+ (&#39;all&#39;, 2),
+ (&#39;have&#39;, 2),
+ (&#39;that&#39;, 2),
+ (&#39;it&#39;, 2),
+ (&#39;this&#39;, 2),
+ (&#39;even&#39;, 2),
+ (&#39;It&#39;, 2),
+ (&#39;years&#39;, 2),
+ (&#39;getting&#39;, 2),
+ (&#39;more&#39;, 2),
+ (&#39;than&#39;, 2),
+ (&#39;Campaign&#39;, 1),
+ (&#39;signs&#39;, 1),
+ (&#39;new&#39;, 1),
+ (&#39;members&#39;, 1),
+ (&#39;minute,&#39;, 1),
+ (&#39;racks&#39;, 1),
+ (&#39;support&#39;, 1),
+ (&#39;within&#39;, 1),
+ (&#39;6&#39;, 1),
+ (&#39;hailed&#39;, 1),
+ (&#39;online&#39;, 1),
+ (&#39;&quot;profoundly&#39;, 1),
+ (&#39;moving&quot;;&#39;, 1),
+ (&#39;&quot;top&#39;, 1),
+ (&#39;tier&quot;;&#39;, 1),
+ (&#39;&quot;exciting&quot;;&#39;, 1),
+ (&#39;&quot;remarkable&quot;;&#39;, 1),
+ (&#39;&quot;smart&quot;;&#39;, 1),
+ (&#39;&quot;news&#39;, 1),
+ (&#39;generation&quot;&#39;, 1),
+ (&#39;Demonstrating&#39;, 1),
+ (&#39;groundswell&#39;, 1),
+ (&#39;enthusiasm&#39;, 1),
+ (&#39;generated&#39;, 1),
+ (&#39;historic&#39;, 1),
+ (&#39;Rodham&#39;, 1),
+ (&#39;President&#39;, 1),
+ (&#39;lit&#39;, 1),
+ (&#39;today,&#39;, 1),
+ (&#39;rave&#39;, 1),
+ (&#39;reviews&#39;, 1),
+ (&#39;blogosphere,&#39;, 1),
+ (&#39;supporters&#39;, 1),
+ (&#39;flocking&#39;, 1),
+ (&#39;each&#39;, 1),
+ (&#39;hour.&#39;, 1),
+ (&#39;six&#39;, 1),
+ (&#39;going&#39;, 1),
+ (&#39;live&#39;, 1),
+ (&#39;campaign&#39;, 1),
+ (&#39;site,&#39;, 1),
+ (&#39;attracted&#39;, 1),
+ (&#39;widespread&#39;, 1),
+ (&#39;accolades&#39;, 1),
+ (&#39;online.&#39;, 1),
+ (&#39;Overwhelming&#39;, 1),
+ (&#39;Response&#39;, 1),
+ (&#39;Hours&#39;, 1),
+ (&#39;Going&#39;, 1),
+ (&#39;Live:&#39;, 1),
+ (&#39;SIGN&#39;, 1),
+ (&#39;UPS&#39;, 1),
+ (&#39;minute&#39;, 1),
+ (&#39;MESSAGES&#39;, 1),
+ (&#39;OF&#39;, 1),
+ (&#39;SUPPORT&#39;, 1),
+ (&#39;VIDEO&#39;, 1),
+ (&#39;WEBCAST&#39;, 1),
+ (&#39;SIGN-UPS&#39;, 1),
+ (&#39;7,700&#39;, 1),
+ (&#39;BLOG&#39;, 1),
+ (&#39;CONTEST&#39;, 1),
+ (&#39;SUBMISSIONS&#39;, 1),
+ (&#39;2,200&#39;, 1),
+ (&#39;Bloggers&#39;, 1),
+ (&#39;Give&#39;, 1),
+ (&#39;Announcement&#39;, 1),
+ (&#39;Rave&#39;, 1),
+ (&#39;Reviews:&#39;, 1),
+ (&#39;MYDD&#39;, 1),
+ (&#39;(Jerome&#39;, 1),
+ (&#39;Armstrong)&#39;, 1),
+ (&#39;&quot;And&#39;, 1),
+ (&#39;blogger&#39;, 1),
+ (&#39;savvy&#39;, 1),
+ (&#39;John&#39;, 1),
+ (&#39;Edwards&#39;, 1),
+ (&#39;outreach,&#39;, 1),
+ (&#39;team&#39;, 1),
+ (&#39;had&#39;, 1),
+ (&#39;emails&#39;, 1),
+ (&#39;bloggers&#39;, 1),
+ (&#39;notify&#39;, 1),
+ (&#39;them&#39;, 1),
+ (&#39;separate&#39;, 1),
+ (&#39;press&#39;, 1),
+ (&#39;(no&#39;, 1),
+ (&#39;such&#39;, 1),
+ (&#39;outreach&#39;, 1),
+ (&#39;Obama&#39;, 1),
+ (&#39;camp).&#39;, 1),
+ (&#39;website&#39;, 1),
+ (&#39;clean,&#39;, 1),
+ (&#39;Kerry-2004&#39;, 1),
+ (&#39;look&#39;, 1),
+ (&#39;it.&#39;, 1),
+ (&#39;A&#39;, 1),
+ (&#39;smart&#39;, 1),
+ (&#39;&quot;write&#39;, 1),
+ (&#39;our&#39;, 1),
+ (&#39;post&quot;&#39;, 1),
+ (&#39;call&#39;, 1),
+ (&#39;action&#39;, 1),
+ (&#39;website.&#39;, 1),
+ (&#39;&quot;an&#39;, 1),
+ (&#39;unprecedented&#39;, 1),
+ (&#39;series&#39;, 1),
+ (&#39;video&#39;, 1),
+ (&#39;webcasts&#39;, 1),
+ (&#39;beginning&#39;, 1),
+ (&#39;Monday,&#39;, 1),
+ (&#39;January&#39;, 1),
+ (&#39;22nd&#39;, 1),
+ (&#39;7pm&#39;, 1),
+ (&#39;EST&#39;, 1),
+ (&#39;three&#39;, 1),
+ (&#39;nights&quot;&#39;, 1),
+ (&#39;creates&#39;, 1),
+ (&#39;quick&#39;, 1),
+ (&#39;narrative&#39;, 1),
+ (&#39;interaction&#39;, 1),
+ (&#39;response&#39;, 1),
+ (&#39;around&#39;, 1),
+ (&quot;Bush&#39;s&quot;, 1),
+ (&#39;SOTU&#39;, 1),
+ (&#39;address.&quot;&#39;, 1),
+ (&#39;(nyceve)&#39;, 1),
+ (&#39;&quot;I\&#39;m&#39;, 1),
+ (&#39;open&#39;, 1),
+ (&#39;honest&#39;, 1),
+ (&#39;person,&#39;, 1),
+ (&quot;I&#39;m&quot;, 1),
+ (&#39;profoundly&#39;, 1),
+ (&#39;moved&#39;, 1),
+ (&#39;announcement.&#39;, 1),
+ (&#39;What&#39;, 1),
+ (&#39;unimaginable&#39;, 1),
+ (&#39;few&#39;, 1),
+ (&#39;decades&#39;, 1),
+ (&#39;ago,&#39;, 1),
+ (&#39;now&#39;, 1),
+ (&#39;something&#39;, 1),
+ (&#39;we&#39;, 1),
+ (&#39;can&#39;, 1),
+ (&#39;touch.&quot;&#39;, 1),
+ (&#39;CARPETBAGGER&#39;, 1),
+ (&#39;REPORT&#39;, 1),
+ (&#39;&quot;Clinton&#39;, 1),
+ (&#39;enters&#39;, 1),
+ (&#39;race,&#39;, 1),
+ (&#39;without&#39;, 1),
+ (&#39;doubt,&#39;, 1),
+ (&#39;tier.&#39;, 1),
+ (&quot;I&#39;ve&quot;, 1),
+ (&#39;heard&#39;, 1),
+ (&#39;various&#39;, 1),
+ (&#39;concerns&#39;, 1),
+ (&#39;but&#39;, 1),
+ (&quot;don&#39;t&quot;, 1),
+ (&#39;any&#39;, 1),
+ (&#39;doubt&#39;, 1),
+ (&#39;what&#39;, 1),
+ (&#39;takes&#39;, 1),
+ (&#39;win.&#39;, 1),
+ (&#39;Indeed,&#39;, 1),
+ (&#39;brings&#39;, 1),
+ (&#39;enormous&#39;, 1),
+ (&#39;amount&#39;, 1),
+ (&#39;talent,&#39;, 1),
+ (&#39;experience,&#39;, 1),
+ (&#39;intelligence&#39;, 1),
+ (&#39;table.&quot;&#39;, 1),
+ (&#39;TAYLOR&#39;, 1),
+ (&#39;MARSH&#39;, 1),
+ (&#39;&quot;Sitting&#39;, 1),
+ (&#39;living&#39;, 1),
+ (&#39;room&#39;, 1),
+ (&#39;setting,&#39;, 1),
+ (&#39;made&#39;, 1),
+ (&#39;one&#39;, 1),
+ (&#39;simple&#39;, 1),
+ (&#39;statement&#39;, 1),
+ (&#39;changed&#39;, 1),
+ (&#39;landscape&#39;, 1),
+ (&quot;&#39;08&quot;, 1),
+ (&#39;presidential&#39;, 1),
+ (&#39;tournament&#39;, 1),
+ (&#39;come.&#39;, 1),
+ (&#39;(To&#39;, 1),
+ (&#39;add,&#39;, 1),
+ (&#39;got&#39;, 1),
+ (&#39;email&#39;, 1),
+ (&#39;event&#39;, 1),
+ (&#39;morning&#39;, 1),
+ (&#39;after&#39;, 1),
+ (&#39;6:00&#39;, 1),
+ (&#39;a.m.)&#39;, 1),
+ (&#39;Because&#39;, 1),
+ (&#39;when&#39;, 1),
+ (&#39;woman&#39;, 1),
+ (&#39;run&#39;, 1),
+ (&#39;president,&#39;, 1),
+ (&#39;with&#39;, 1),
+ (&#39;actual&#39;, 1),
+ (&#39;chance&#39;, 1),
+ (&#39;winning,&#39;, 1),
+ (&#39;puts&#39;, 1),
+ (&#39;name&#39;, 1),
+ (&#39;reputation&#39;, 1),
+ (&#39;line,&#39;, 1),
+ (&#39;becomes&#39;, 1),
+ (&#39;news&#39;, 1),
+ (&#39;day,&#39;, 1),
+ (&#39;week,&#39;, 1),
+ (&#39;generation.&quot;&#39;, 1),
+ (&#39;TALK&#39;, 1),
+ (&#39;LEFT&#39;, 1),
+ (&#39;exciting&#39;, 1),
+ (&#39;serious&#39;, 1),
+ (&#39;female&#39;, 1),
+ (&#39;candidate&#39;, 1),
+ (&#39;President.&#39;, 1),
+ (&#39;OUTSIDE&#39;, 1),
+ (&#39;BELTWAY&#39;, 1),
+ (&#39;After&#39;, 1),
+ (&#39;nearly&#39;, 1),
+ (&#39;eight&#39;, 1),
+ (&#39;speculation,&#39;, 1),
+ (&#39;announced&#39;, 1),
+ (&#39;president....&#39;, 1),
+ (&#39;done&#39;, 1),
+ (&#39;remarkable&#39;, 1),
+ (&#39;job&#39;, 1),
+ (&#39;these&#39;, 1),
+ (&#39;past&#39;, 1),
+ (&#39;several&#39;, 1),
+ (&#39;out&#39;, 1),
+ (&quot;husband&#39;s&quot;, 1),
+ (&#39;shadow,&#39;, 1),
+ (&#39;positioning&#39;, 1),
+ (&#39;herself&#39;, 1),
+ (&#39;moderate&#39;, 1),
+ (&#39;previously&#39;, 1),
+ (&#39;thought,&#39;, 1),
+ (&#39;bipartisan&#39;, 1),
+ (&#39;praise&#39;, 1),
+ (&#39;collegiality&#39;, 1),
+ (&#39;hard&#39;, 1),
+ (&#39;work&#39;, 1),
+ (&#39;Senate.&#39;, 1),
+ (&#39;(Yellow&#39;, 1),
+ (&#39;Dog&#39;, 1),
+ (&#39;Blue)&#39;, 1),
+ (&#39;&quot;How&#39;, 1),
+ (&#39;survived&#39;, 1),
+ (&#39;thrived?&#39;, 1),
+ (&#39;heavying&#39;, 1),
+ (&#39;armor.&#39;, 1),
+ (&#39;engaging&#39;, 1),
+ (&#39;overwhelming&#39;, 1),
+ (&#39;opponents.&#39;, 1),
+ (&#39;appealing&#39;, 1),
+ (&#39;public&#39;, 1),
+ (&#39;sympathy.&#39;, 1),
+ (&#39;Instead&#39;, 1),
+ (&#39;gone&#39;, 1),
+ (&#39;business&#39;, 1),
+ (&#39;being&#39;, 1),
+ (&#39;Senator,&#39;, 1),
+ (&#39;building&#39;, 1),
+ (&#39;personal&#39;, 1),
+ (&#39;relationships&#39;, 1),
+ (&#39;using&#39;, 1),
+ (&#39;power.&#39;, 1),
+ (&#39;And&#39;, 1),
+ (&#39;really&#39;, 1),
+ (&#39;admire&#39;, 1),
+ (&#39;that.&quot;&#39;, 1),
+ (&#39;SEEING&#39;, 1),
+ (&#39;FOREST&#39;, 1),
+ (&#39;(Dave&#39;, 1),
+ (&#39;Johnson)&#39;, 1),
+ (&#39;&quot;People&#39;, 1),
+ (&#39;say&#39;, 1),
+ (&#39;&quot;baggage&quot;&#39;, 1),
+ (&#39;&quot;divisive.&quot;&#39;, 1),
+ (&#39;Actually&#39;, 1),
+ (&#39;been&#39;, 1),
+ (&#39;investigated&#39;, 1),
+ (&#39;thoroughly&#39;, 1),
+ (&#39;anyone&#39;, 1),
+ (&quot;country&#39;s&quot;, 1),
+ (&#39;history&#39;, 1),
+ (&#39;they&#39;, 1),
+ (&#39;found&#39;, 1),
+ (&#39;nothing&#39;, 1),
+ (&#39;all.&#39;, 1),
+ (&quot;isn&#39;t&quot;, 1),
+ (&#39;who&#39;, 1),
+ (&#39;divisive,&#39;, 1),
+ (&quot;it&#39;s&quot;, 1),
+ (&#39;people&#39;, 1),
+ (&#39;making&#39;, 1),
+ (&#39;accusations.&quot;&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-processing">
+<h2>Data Processing<a class="headerlink" href="#data-processing" title="Link to this heading">#</a></h2>
+<p>Some libraries are huge. It takes time to retrieve the data from the libraries.
+So we prepared stopwords from  “from nltk.corpus import stopwords”.</p>
+<p>A <strong>stopword</strong> is a word that is often filtered out during text processing. Stopwords are usually common function words, like ‘the’, ‘a’, or ‘and’. These words are used frequently but aren’t very informative. Filtering them out results in more informative and interesting analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stop_words = set(stopwords.words(&quot;english&quot;))</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;stopwords.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_data</span><span class="p">:</span>
+    <span class="n">stop_words_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+    
+<span class="c1"># with open(&#39;foundations_dict.json&#39;) as json_data:</span>
+<span class="c1">#     mft_dict = json.load(json_data)</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stop_words_json</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">]</span>
+<span class="n">stop_words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;,
+ &#39;about&#39;,
+ &#39;above&#39;,
+ &#39;after&#39;,
+ &#39;again&#39;,
+ &#39;against&#39;,
+ &#39;ain&#39;,
+ &#39;all&#39;,
+ &#39;am&#39;,
+ &#39;an&#39;,
+ &#39;and&#39;,
+ &#39;any&#39;,
+ &#39;are&#39;,
+ &#39;aren&#39;,
+ &#39;as&#39;,
+ &#39;at&#39;,
+ &#39;be&#39;,
+ &#39;because&#39;,
+ &#39;been&#39;,
+ &#39;before&#39;,
+ &#39;being&#39;,
+ &#39;below&#39;,
+ &#39;between&#39;,
+ &#39;both&#39;,
+ &#39;but&#39;,
+ &#39;by&#39;,
+ &#39;can&#39;,
+ &#39;couldn&#39;,
+ &#39;d&#39;,
+ &#39;did&#39;,
+ &#39;didn&#39;,
+ &#39;do&#39;,
+ &#39;does&#39;,
+ &#39;doesn&#39;,
+ &#39;doing&#39;,
+ &#39;don&#39;,
+ &#39;down&#39;,
+ &#39;during&#39;,
+ &#39;each&#39;,
+ &#39;few&#39;,
+ &#39;for&#39;,
+ &#39;from&#39;,
+ &#39;further&#39;,
+ &#39;had&#39;,
+ &#39;hadn&#39;,
+ &#39;has&#39;,
+ &#39;hasn&#39;,
+ &#39;have&#39;,
+ &#39;haven&#39;,
+ &#39;having&#39;,
+ &#39;he&#39;,
+ &#39;her&#39;,
+ &#39;here&#39;,
+ &#39;hers&#39;,
+ &#39;herself&#39;,
+ &#39;him&#39;,
+ &#39;himself&#39;,
+ &#39;his&#39;,
+ &#39;how&#39;,
+ &#39;i&#39;,
+ &#39;if&#39;,
+ &#39;in&#39;,
+ &#39;into&#39;,
+ &#39;is&#39;,
+ &#39;isn&#39;,
+ &#39;it&#39;,
+ &#39;its&#39;,
+ &#39;itself&#39;,
+ &#39;just&#39;,
+ &#39;ll&#39;,
+ &#39;m&#39;,
+ &#39;ma&#39;,
+ &#39;me&#39;,
+ &#39;mightn&#39;,
+ &#39;more&#39;,
+ &#39;most&#39;,
+ &#39;mustn&#39;,
+ &#39;my&#39;,
+ &#39;myself&#39;,
+ &#39;needn&#39;,
+ &#39;no&#39;,
+ &#39;nor&#39;,
+ &#39;not&#39;,
+ &#39;now&#39;,
+ &#39;o&#39;,
+ &#39;of&#39;,
+ &#39;off&#39;,
+ &#39;on&#39;,
+ &#39;once&#39;,
+ &#39;only&#39;,
+ &#39;or&#39;,
+ &#39;other&#39;,
+ &#39;our&#39;,
+ &#39;ours&#39;,
+ &#39;ourselves&#39;,
+ &#39;out&#39;,
+ &#39;over&#39;,
+ &#39;own&#39;,
+ &#39;re&#39;,
+ &#39;s&#39;,
+ &#39;same&#39;,
+ &#39;shan&#39;,
+ &#39;she&#39;,
+ &#39;should&#39;,
+ &#39;shouldn&#39;,
+ &#39;so&#39;,
+ &#39;some&#39;,
+ &#39;such&#39;,
+ &#39;t&#39;,
+ &#39;than&#39;,
+ &#39;that&#39;,
+ &#39;the&#39;,
+ &#39;their&#39;,
+ &#39;theirs&#39;,
+ &#39;them&#39;,
+ &#39;themselves&#39;,
+ &#39;then&#39;,
+ &#39;there&#39;,
+ &#39;these&#39;,
+ &#39;they&#39;,
+ &#39;this&#39;,
+ &#39;those&#39;,
+ &#39;through&#39;,
+ &#39;to&#39;,
+ &#39;too&#39;,
+ &#39;under&#39;,
+ &#39;until&#39;,
+ &#39;up&#39;,
+ &#39;ve&#39;,
+ &#39;very&#39;,
+ &#39;was&#39;,
+ &#39;wasn&#39;,
+ &#39;we&#39;,
+ &#39;were&#39;,
+ &#39;weren&#39;,
+ &#39;what&#39;,
+ &#39;when&#39;,
+ &#39;where&#39;,
+ &#39;which&#39;,
+ &#39;while&#39;,
+ &#39;who&#39;,
+ &#39;whom&#39;,
+ &#39;why&#39;,
+ &#39;will&#39;,
+ &#39;with&#39;,
+ &#39;won&#39;,
+ &#39;wouldn&#39;,
+ &#39;y&#39;,
+ &#39;you&#39;,
+ &#39;your&#39;,
+ &#39;yours&#39;,
+ &#39;yourself&#39;,
+ &#39;yourselves&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<p>Here are simple rules to define a function in Python.</p>
+<p>Function blocks begin with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> followed by the function name and parentheses ( ( ) ).</p>
+<p>Any input parameters or arguments should be placed within these parentheses. You can also define parameters inside these parentheses.</p>
+<p>Function definitions consist of a def statement that indicates a <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> and a comma-separated list of named <code class="docutils literal notranslate"><span class="pre">&lt;formal</span> <span class="pre">parameters&gt;</span></code>, then a return statement, called the function body, that specifies the <code class="docutils literal notranslate"><span class="pre">&lt;return</span> <span class="pre">expression&gt;</span></code> of the function, which is an expression to be evaluated whenever the function is applied:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def &lt;name&gt;(&lt;formal parameters&gt;):</span>
+<span class="c1">#    return &lt;return expression&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">three</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">3</span>
+
+<span class="n">three</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second line must be indented — most programmers use four spaces to indent. The return expression is not evaluated right away; it is stored as part of the newly defined function and evaluated only when the function is eventually applied.</p>
+<p>I defined a function whose name is without_stopwords. I will explain how this works. However, it is okay for you not to understand the details of the code inside the function. All you have to know is what the function does and how to use it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">without_stopwords</span><span class="p">(</span><span class="n">a_speech</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; input(a_speech): string type of a speech</span>
+<span class="sd">        output : list of words in the speech without stop words</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; exstr = &quot;This is an example showing off stop word filter&quot;</span>
+<span class="sd">        &gt;&gt;&gt; without_stopwords(exstr)</span>
+<span class="sd">        ... [&#39;This&#39;, &#39;example&#39;, &#39;showing&#39;, &#39;stop&#39;, &#39;word&#39;, &#39;filter&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_speech</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">a_speech</span><span class="p">)</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">#this is for-loop and it makes program repeat the following lines of code.</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">a_speech</span><span class="p">:</span>
+        <span class="c1">#if is conditional statement that makes program execute the code when the condition is true.</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span>
+            <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exstr</span> <span class="o">=</span> <span class="s2">&quot;This is an example showing off stop word filter&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">without_stopwords</span><span class="p">(</span><span class="n">exstr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;This&#39;, &#39;example&#39;, &#39;showing&#39;, &#39;stop&#39;, &#39;word&#39;, &#39;filter&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_speech</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Campaign web site signs up 100 new members per minute, racks up 10,000 messages of support within 6 hours of announcement  Clinton candidacy hailed online as &quot;profoundly moving&quot;; &quot;top tier&quot;; &quot;exciting&quot;; &quot;remarkable&quot;; &quot;smart&quot;; and &quot;news of a generation&quot; Demonstrating the groundswell of enthusiasm generated by her historic candidacy, Senator Hillary Rodham Clinton\&#39;s announcement for President lit up the internet today, garnering rave reviews in the blogosphere, and thousands of supporters flocking to her web site each hour. Within just six hours of the announcement going live on her campaign web site, Senator Clinton\&#39;s candidacy attracted thousands of messages of support, and widespread accolades online. Overwhelming Response Within Hours of Going Live:  SIGN UPS = 100 per minute MESSAGES OF SUPPORT = 10,000 VIDEO WEBCAST SIGN-UPS = 7,700 BLOG CONTEST SUBMISSIONS = 2,200  Bloggers Give Clinton Announcement Rave Reviews: MYDD (Jerome Armstrong) - &quot;And as blogger savvy as John Edwards was in outreach, Clinton internet team had the emails of bloggers to notify them separate from the press (no such outreach from the Obama camp). The website has the clean, Kerry-2004 look about it. A smart &quot;write our first post&quot; call to action on the website. The announcement of &quot;an unprecedented series of video webcasts beginning Monday, January 22nd at 7pm EST for three nights&quot; creates a quick narrative of interaction and response around Bush\&#39;s SOTU address.&quot; DAILY KOS DIARY (nyceve) - &quot;I\&#39;m an open and honest person, and I\&#39;m profoundly moved by her announcement. What was unimaginable just a few decades ago, is now something we can almost touch.&quot; THE CARPETBAGGER REPORT - &quot;Clinton enters the race, without a doubt, at the top of the top tier. I\&#39;ve heard all the various concerns about her candidacy, but I don\&#39;t have any doubt that she has what it takes to win. Indeed, Clinton brings an enormous amount of talent, experience, and intelligence to the table.&quot; TAYLOR MARSH - &quot;Sitting in a living room setting, Senator Hillary Clinton made one simple statement that changed the landscape of the \&#39;08 presidential tournament to come. (To add, I got an email about this event this morning just after 6:00 a.m.) Because when the first woman to run for president, with an actual chance of winning, puts her name and reputation on the line, it becomes news of the day, week, even a generation.&quot; TALK LEFT - It is exciting to have a serious female candidate for President. OUTSIDE THE BELTWAY - After nearly eight years of speculation, Hillary Clinton has announced her candidacy for president.... she has done a remarkable job these past several years getting out of her husband\&#39;s shadow, positioning herself as more moderate than previously thought, and garnering bipartisan praise for collegiality and hard work in the Senate. DAILY KOS DIARY (Yellow Dog Blue) - &quot;How has she survived and thrived? Not by heavying up her armor. Not by engaging and overwhelming her opponents. Not even by appealing for public sympathy. Instead Hillary has just gone her business being a Senator, building personal relationships and support, getting and using power. And I really admire that.&quot; SEEING THE FOREST (Dave Johnson) - &quot;People say Hillary Clinton has &quot;baggage&quot; and is &quot;divisive.&quot; Actually she has been investigated more thoroughly than almost anyone in the country\&#39;s history and they found nothing at all. It isn\&#39;t Hillary who is divisive, it\&#39;s the people making all the accusations.&quot;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">without_stopwords</span><span class="p">(</span><span class="n">a_speech</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Campaign&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;signs&#39;,
+ &#39;100&#39;,
+ &#39;new&#39;,
+ &#39;members&#39;,
+ &#39;per&#39;,
+ &#39;minute&#39;,
+ &#39;,&#39;,
+ &#39;racks&#39;,
+ &#39;10,000&#39;,
+ &#39;messages&#39;,
+ &#39;support&#39;,
+ &#39;within&#39;,
+ &#39;6&#39;,
+ &#39;hours&#39;,
+ &#39;announcement&#39;,
+ &#39;Clinton&#39;,
+ &#39;candidacy&#39;,
+ &#39;hailed&#39;,
+ &#39;online&#39;,
+ &#39;``&#39;,
+ &#39;profoundly&#39;,
+ &#39;moving&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;;&#39;,
+ &#39;``&#39;,
+ &#39;top&#39;,
+ &#39;tier&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;;&#39;,
+ &#39;``&#39;,
+ &#39;exciting&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;;&#39;,
+ &#39;``&#39;,
+ &#39;remarkable&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;;&#39;,
+ &#39;``&#39;,
+ &#39;smart&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;;&#39;,
+ &#39;``&#39;,
+ &#39;news&#39;,
+ &#39;generation&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;Demonstrating&#39;,
+ &#39;groundswell&#39;,
+ &#39;enthusiasm&#39;,
+ &#39;generated&#39;,
+ &#39;historic&#39;,
+ &#39;candidacy&#39;,
+ &#39;,&#39;,
+ &#39;Senator&#39;,
+ &#39;Hillary&#39;,
+ &#39;Rodham&#39;,
+ &#39;Clinton&#39;,
+ &quot;&#39;s&quot;,
+ &#39;announcement&#39;,
+ &#39;President&#39;,
+ &#39;lit&#39;,
+ &#39;internet&#39;,
+ &#39;today&#39;,
+ &#39;,&#39;,
+ &#39;garnering&#39;,
+ &#39;rave&#39;,
+ &#39;reviews&#39;,
+ &#39;blogosphere&#39;,
+ &#39;,&#39;,
+ &#39;thousands&#39;,
+ &#39;supporters&#39;,
+ &#39;flocking&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;hour&#39;,
+ &#39;.&#39;,
+ &#39;Within&#39;,
+ &#39;six&#39;,
+ &#39;hours&#39;,
+ &#39;announcement&#39;,
+ &#39;going&#39;,
+ &#39;live&#39;,
+ &#39;campaign&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;,&#39;,
+ &#39;Senator&#39;,
+ &#39;Clinton&#39;,
+ &quot;&#39;s&quot;,
+ &#39;candidacy&#39;,
+ &#39;attracted&#39;,
+ &#39;thousands&#39;,
+ &#39;messages&#39;,
+ &#39;support&#39;,
+ &#39;,&#39;,
+ &#39;widespread&#39;,
+ &#39;accolades&#39;,
+ &#39;online&#39;,
+ &#39;.&#39;,
+ &#39;Overwhelming&#39;,
+ &#39;Response&#39;,
+ &#39;Within&#39;,
+ &#39;Hours&#39;,
+ &#39;Going&#39;,
+ &#39;Live&#39;,
+ &#39;:&#39;,
+ &#39;SIGN&#39;,
+ &#39;UPS&#39;,
+ &#39;=&#39;,
+ &#39;100&#39;,
+ &#39;per&#39;,
+ &#39;minute&#39;,
+ &#39;MESSAGES&#39;,
+ &#39;OF&#39;,
+ &#39;SUPPORT&#39;,
+ &#39;=&#39;,
+ &#39;10,000&#39;,
+ &#39;VIDEO&#39;,
+ &#39;WEBCAST&#39;,
+ &#39;SIGN-UPS&#39;,
+ &#39;=&#39;,
+ &#39;7,700&#39;,
+ &#39;BLOG&#39;,
+ &#39;CONTEST&#39;,
+ &#39;SUBMISSIONS&#39;,
+ &#39;=&#39;,
+ &#39;2,200&#39;,
+ &#39;Bloggers&#39;,
+ &#39;Give&#39;,
+ &#39;Clinton&#39;,
+ &#39;Announcement&#39;,
+ &#39;Rave&#39;,
+ &#39;Reviews&#39;,
+ &#39;:&#39;,
+ &#39;MYDD&#39;,
+ &#39;(&#39;,
+ &#39;Jerome&#39;,
+ &#39;Armstrong&#39;,
+ &#39;)&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;And&#39;,
+ &#39;blogger&#39;,
+ &#39;savvy&#39;,
+ &#39;John&#39;,
+ &#39;Edwards&#39;,
+ &#39;outreach&#39;,
+ &#39;,&#39;,
+ &#39;Clinton&#39;,
+ &#39;internet&#39;,
+ &#39;team&#39;,
+ &#39;emails&#39;,
+ &#39;bloggers&#39;,
+ &#39;notify&#39;,
+ &#39;separate&#39;,
+ &#39;press&#39;,
+ &#39;(&#39;,
+ &#39;outreach&#39;,
+ &#39;Obama&#39;,
+ &#39;camp&#39;,
+ &#39;)&#39;,
+ &#39;.&#39;,
+ &#39;The&#39;,
+ &#39;website&#39;,
+ &#39;clean&#39;,
+ &#39;,&#39;,
+ &#39;Kerry-2004&#39;,
+ &#39;look&#39;,
+ &#39;.&#39;,
+ &#39;A&#39;,
+ &#39;smart&#39;,
+ &#39;``&#39;,
+ &#39;write&#39;,
+ &#39;first&#39;,
+ &#39;post&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;call&#39;,
+ &#39;action&#39;,
+ &#39;website&#39;,
+ &#39;.&#39;,
+ &#39;The&#39;,
+ &#39;announcement&#39;,
+ &#39;``&#39;,
+ &#39;unprecedented&#39;,
+ &#39;series&#39;,
+ &#39;video&#39;,
+ &#39;webcasts&#39;,
+ &#39;beginning&#39;,
+ &#39;Monday&#39;,
+ &#39;,&#39;,
+ &#39;January&#39;,
+ &#39;22nd&#39;,
+ &#39;7pm&#39;,
+ &#39;EST&#39;,
+ &#39;three&#39;,
+ &#39;nights&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;creates&#39;,
+ &#39;quick&#39;,
+ &#39;narrative&#39;,
+ &#39;interaction&#39;,
+ &#39;response&#39;,
+ &#39;around&#39;,
+ &#39;Bush&#39;,
+ &quot;&#39;s&quot;,
+ &#39;SOTU&#39;,
+ &#39;address&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;DAILY&#39;,
+ &#39;KOS&#39;,
+ &#39;DIARY&#39;,
+ &#39;(&#39;,
+ &#39;nyceve&#39;,
+ &#39;)&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;I&#39;,
+ &quot;&#39;m&quot;,
+ &#39;open&#39;,
+ &#39;honest&#39;,
+ &#39;person&#39;,
+ &#39;,&#39;,
+ &#39;I&#39;,
+ &quot;&#39;m&quot;,
+ &#39;profoundly&#39;,
+ &#39;moved&#39;,
+ &#39;announcement&#39;,
+ &#39;.&#39;,
+ &#39;What&#39;,
+ &#39;unimaginable&#39;,
+ &#39;decades&#39;,
+ &#39;ago&#39;,
+ &#39;,&#39;,
+ &#39;something&#39;,
+ &#39;almost&#39;,
+ &#39;touch&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;THE&#39;,
+ &#39;CARPETBAGGER&#39;,
+ &#39;REPORT&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;Clinton&#39;,
+ &#39;enters&#39;,
+ &#39;race&#39;,
+ &#39;,&#39;,
+ &#39;without&#39;,
+ &#39;doubt&#39;,
+ &#39;,&#39;,
+ &#39;top&#39;,
+ &#39;top&#39;,
+ &#39;tier&#39;,
+ &#39;.&#39;,
+ &#39;I&#39;,
+ &quot;&#39;ve&quot;,
+ &#39;heard&#39;,
+ &#39;various&#39;,
+ &#39;concerns&#39;,
+ &#39;candidacy&#39;,
+ &#39;,&#39;,
+ &#39;I&#39;,
+ &quot;n&#39;t&quot;,
+ &#39;doubt&#39;,
+ &#39;takes&#39;,
+ &#39;win&#39;,
+ &#39;.&#39;,
+ &#39;Indeed&#39;,
+ &#39;,&#39;,
+ &#39;Clinton&#39;,
+ &#39;brings&#39;,
+ &#39;enormous&#39;,
+ &#39;amount&#39;,
+ &#39;talent&#39;,
+ &#39;,&#39;,
+ &#39;experience&#39;,
+ &#39;,&#39;,
+ &#39;intelligence&#39;,
+ &#39;table&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;TAYLOR&#39;,
+ &#39;MARSH&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;Sitting&#39;,
+ &#39;living&#39;,
+ &#39;room&#39;,
+ &#39;setting&#39;,
+ &#39;,&#39;,
+ &#39;Senator&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;made&#39;,
+ &#39;one&#39;,
+ &#39;simple&#39;,
+ &#39;statement&#39;,
+ &#39;changed&#39;,
+ &#39;landscape&#39;,
+ &quot;&#39;08&quot;,
+ &#39;presidential&#39;,
+ &#39;tournament&#39;,
+ &#39;come&#39;,
+ &#39;.&#39;,
+ &#39;(&#39;,
+ &#39;To&#39;,
+ &#39;add&#39;,
+ &#39;,&#39;,
+ &#39;I&#39;,
+ &#39;got&#39;,
+ &#39;email&#39;,
+ &#39;event&#39;,
+ &#39;morning&#39;,
+ &#39;6:00&#39;,
+ &#39;a.m.&#39;,
+ &#39;)&#39;,
+ &#39;Because&#39;,
+ &#39;first&#39;,
+ &#39;woman&#39;,
+ &#39;run&#39;,
+ &#39;president&#39;,
+ &#39;,&#39;,
+ &#39;actual&#39;,
+ &#39;chance&#39;,
+ &#39;winning&#39;,
+ &#39;,&#39;,
+ &#39;puts&#39;,
+ &#39;name&#39;,
+ &#39;reputation&#39;,
+ &#39;line&#39;,
+ &#39;,&#39;,
+ &#39;becomes&#39;,
+ &#39;news&#39;,
+ &#39;day&#39;,
+ &#39;,&#39;,
+ &#39;week&#39;,
+ &#39;,&#39;,
+ &#39;even&#39;,
+ &#39;generation&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;TALK&#39;,
+ &#39;LEFT&#39;,
+ &#39;-&#39;,
+ &#39;It&#39;,
+ &#39;exciting&#39;,
+ &#39;serious&#39;,
+ &#39;female&#39;,
+ &#39;candidate&#39;,
+ &#39;President&#39;,
+ &#39;.&#39;,
+ &#39;OUTSIDE&#39;,
+ &#39;THE&#39;,
+ &#39;BELTWAY&#39;,
+ &#39;-&#39;,
+ &#39;After&#39;,
+ &#39;nearly&#39;,
+ &#39;eight&#39;,
+ &#39;years&#39;,
+ &#39;speculation&#39;,
+ &#39;,&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;announced&#39;,
+ &#39;candidacy&#39;,
+ &#39;president&#39;,
+ &#39;...&#39;,
+ &#39;.&#39;,
+ &#39;done&#39;,
+ &#39;remarkable&#39;,
+ &#39;job&#39;,
+ &#39;past&#39;,
+ &#39;several&#39;,
+ &#39;years&#39;,
+ &#39;getting&#39;,
+ &#39;husband&#39;,
+ &quot;&#39;s&quot;,
+ &#39;shadow&#39;,
+ &#39;,&#39;,
+ &#39;positioning&#39;,
+ &#39;moderate&#39;,
+ &#39;previously&#39;,
+ &#39;thought&#39;,
+ &#39;,&#39;,
+ &#39;garnering&#39;,
+ &#39;bipartisan&#39;,
+ &#39;praise&#39;,
+ &#39;collegiality&#39;,
+ &#39;hard&#39;,
+ &#39;work&#39;,
+ &#39;Senate&#39;,
+ &#39;.&#39;,
+ &#39;DAILY&#39;,
+ &#39;KOS&#39;,
+ &#39;DIARY&#39;,
+ &#39;(&#39;,
+ &#39;Yellow&#39;,
+ &#39;Dog&#39;,
+ &#39;Blue&#39;,
+ &#39;)&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;How&#39;,
+ &#39;survived&#39;,
+ &#39;thrived&#39;,
+ &#39;?&#39;,
+ &#39;Not&#39;,
+ &#39;heavying&#39;,
+ &#39;armor&#39;,
+ &#39;.&#39;,
+ &#39;Not&#39;,
+ &#39;engaging&#39;,
+ &#39;overwhelming&#39;,
+ &#39;opponents&#39;,
+ &#39;.&#39;,
+ &#39;Not&#39;,
+ &#39;even&#39;,
+ &#39;appealing&#39;,
+ &#39;public&#39;,
+ &#39;sympathy&#39;,
+ &#39;.&#39;,
+ &#39;Instead&#39;,
+ &#39;Hillary&#39;,
+ &#39;gone&#39;,
+ &#39;business&#39;,
+ &#39;Senator&#39;,
+ &#39;,&#39;,
+ &#39;building&#39;,
+ &#39;personal&#39;,
+ &#39;relationships&#39;,
+ &#39;support&#39;,
+ &#39;,&#39;,
+ &#39;getting&#39;,
+ &#39;using&#39;,
+ &#39;power&#39;,
+ &#39;.&#39;,
+ &#39;And&#39;,
+ &#39;I&#39;,
+ &#39;really&#39;,
+ &#39;admire&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;SEEING&#39;,
+ &#39;THE&#39;,
+ &#39;FOREST&#39;,
+ &#39;(&#39;,
+ &#39;Dave&#39;,
+ &#39;Johnson&#39;,
+ &#39;)&#39;,
+ &#39;-&#39;,
+ &#39;``&#39;,
+ &#39;People&#39;,
+ &#39;say&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;``&#39;,
+ &#39;baggage&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;``&#39;,
+ &#39;divisive&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;,
+ &#39;Actually&#39;,
+ &#39;investigated&#39;,
+ &#39;thoroughly&#39;,
+ &#39;almost&#39;,
+ &#39;anyone&#39;,
+ &#39;country&#39;,
+ &quot;&#39;s&quot;,
+ &#39;history&#39;,
+ &#39;found&#39;,
+ &#39;nothing&#39;,
+ &#39;.&#39;,
+ &#39;It&#39;,
+ &quot;n&#39;t&quot;,
+ &#39;Hillary&#39;,
+ &#39;divisive&#39;,
+ &#39;,&#39;,
+ &quot;&#39;s&quot;,
+ &#39;people&#39;,
+ &#39;making&#39;,
+ &#39;accusations&#39;,
+ &#39;.&#39;,
+ &quot;&#39;&#39;&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_words_c</span> <span class="o">=</span> <span class="n">without_stopwords</span><span class="p">(</span><span class="n">a_speech</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">list_of_words_c</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;,&#39;, 30),
+ (&#39;.&#39;, 24),
+ (&#39;``&#39;, 16),
+ (&quot;&#39;&#39;&quot;, 16),
+ (&#39;Clinton&#39;, 10),
+ (&#39;-&#39;, 8),
+ (&#39;Hillary&#39;, 6),
+ (&quot;&#39;s&quot;, 6),
+ (&#39;(&#39;, 6),
+ (&#39;)&#39;, 6),
+ (&#39;I&#39;, 6),
+ (&#39;announcement&#39;, 5),
+ (&#39;candidacy&#39;, 5),
+ (&#39;;&#39;, 5),
+ (&#39;Senator&#39;, 4),
+ (&#39;=&#39;, 4),
+ (&#39;web&#39;, 3),
+ (&#39;site&#39;, 3),
+ (&#39;support&#39;, 3),
+ (&#39;top&#39;, 3),
+ (&#39;THE&#39;, 3),
+ (&#39;Not&#39;, 3),
+ (&#39;100&#39;, 2),
+ (&#39;per&#39;, 2),
+ (&#39;minute&#39;, 2),
+ (&#39;10,000&#39;, 2),
+ (&#39;messages&#39;, 2),
+ (&#39;hours&#39;, 2),
+ (&#39;online&#39;, 2),
+ (&#39;profoundly&#39;, 2),
+ (&#39;tier&#39;, 2),
+ (&#39;exciting&#39;, 2),
+ (&#39;remarkable&#39;, 2),
+ (&#39;smart&#39;, 2),
+ (&#39;news&#39;, 2),
+ (&#39;generation&#39;, 2),
+ (&#39;President&#39;, 2),
+ (&#39;internet&#39;, 2),
+ (&#39;garnering&#39;, 2),
+ (&#39;thousands&#39;, 2),
+ (&#39;Within&#39;, 2),
+ (&#39;:&#39;, 2),
+ (&#39;And&#39;, 2),
+ (&#39;outreach&#39;, 2),
+ (&#39;The&#39;, 2),
+ (&#39;website&#39;, 2),
+ (&#39;first&#39;, 2),
+ (&#39;DAILY&#39;, 2),
+ (&#39;KOS&#39;, 2),
+ (&#39;DIARY&#39;, 2),
+ (&quot;&#39;m&quot;, 2),
+ (&#39;almost&#39;, 2),
+ (&#39;doubt&#39;, 2),
+ (&quot;n&#39;t&quot;, 2),
+ (&#39;president&#39;, 2),
+ (&#39;even&#39;, 2),
+ (&#39;It&#39;, 2),
+ (&#39;years&#39;, 2),
+ (&#39;getting&#39;, 2),
+ (&#39;divisive&#39;, 2),
+ (&#39;Campaign&#39;, 1),
+ (&#39;signs&#39;, 1),
+ (&#39;new&#39;, 1),
+ (&#39;members&#39;, 1),
+ (&#39;racks&#39;, 1),
+ (&#39;within&#39;, 1),
+ (&#39;6&#39;, 1),
+ (&#39;hailed&#39;, 1),
+ (&#39;moving&#39;, 1),
+ (&#39;Demonstrating&#39;, 1),
+ (&#39;groundswell&#39;, 1),
+ (&#39;enthusiasm&#39;, 1),
+ (&#39;generated&#39;, 1),
+ (&#39;historic&#39;, 1),
+ (&#39;Rodham&#39;, 1),
+ (&#39;lit&#39;, 1),
+ (&#39;today&#39;, 1),
+ (&#39;rave&#39;, 1),
+ (&#39;reviews&#39;, 1),
+ (&#39;blogosphere&#39;, 1),
+ (&#39;supporters&#39;, 1),
+ (&#39;flocking&#39;, 1),
+ (&#39;hour&#39;, 1),
+ (&#39;six&#39;, 1),
+ (&#39;going&#39;, 1),
+ (&#39;live&#39;, 1),
+ (&#39;campaign&#39;, 1),
+ (&#39;attracted&#39;, 1),
+ (&#39;widespread&#39;, 1),
+ (&#39;accolades&#39;, 1),
+ (&#39;Overwhelming&#39;, 1),
+ (&#39;Response&#39;, 1),
+ (&#39;Hours&#39;, 1),
+ (&#39;Going&#39;, 1),
+ (&#39;Live&#39;, 1),
+ (&#39;SIGN&#39;, 1),
+ (&#39;UPS&#39;, 1),
+ (&#39;MESSAGES&#39;, 1),
+ (&#39;OF&#39;, 1),
+ (&#39;SUPPORT&#39;, 1),
+ (&#39;VIDEO&#39;, 1),
+ (&#39;WEBCAST&#39;, 1),
+ (&#39;SIGN-UPS&#39;, 1),
+ (&#39;7,700&#39;, 1),
+ (&#39;BLOG&#39;, 1),
+ (&#39;CONTEST&#39;, 1),
+ (&#39;SUBMISSIONS&#39;, 1),
+ (&#39;2,200&#39;, 1),
+ (&#39;Bloggers&#39;, 1),
+ (&#39;Give&#39;, 1),
+ (&#39;Announcement&#39;, 1),
+ (&#39;Rave&#39;, 1),
+ (&#39;Reviews&#39;, 1),
+ (&#39;MYDD&#39;, 1),
+ (&#39;Jerome&#39;, 1),
+ (&#39;Armstrong&#39;, 1),
+ (&#39;blogger&#39;, 1),
+ (&#39;savvy&#39;, 1),
+ (&#39;John&#39;, 1),
+ (&#39;Edwards&#39;, 1),
+ (&#39;team&#39;, 1),
+ (&#39;emails&#39;, 1),
+ (&#39;bloggers&#39;, 1),
+ (&#39;notify&#39;, 1),
+ (&#39;separate&#39;, 1),
+ (&#39;press&#39;, 1),
+ (&#39;Obama&#39;, 1),
+ (&#39;camp&#39;, 1),
+ (&#39;clean&#39;, 1),
+ (&#39;Kerry-2004&#39;, 1),
+ (&#39;look&#39;, 1),
+ (&#39;A&#39;, 1),
+ (&#39;write&#39;, 1),
+ (&#39;post&#39;, 1),
+ (&#39;call&#39;, 1),
+ (&#39;action&#39;, 1),
+ (&#39;unprecedented&#39;, 1),
+ (&#39;series&#39;, 1),
+ (&#39;video&#39;, 1),
+ (&#39;webcasts&#39;, 1),
+ (&#39;beginning&#39;, 1),
+ (&#39;Monday&#39;, 1),
+ (&#39;January&#39;, 1),
+ (&#39;22nd&#39;, 1),
+ (&#39;7pm&#39;, 1),
+ (&#39;EST&#39;, 1),
+ (&#39;three&#39;, 1),
+ (&#39;nights&#39;, 1),
+ (&#39;creates&#39;, 1),
+ (&#39;quick&#39;, 1),
+ (&#39;narrative&#39;, 1),
+ (&#39;interaction&#39;, 1),
+ (&#39;response&#39;, 1),
+ (&#39;around&#39;, 1),
+ (&#39;Bush&#39;, 1),
+ (&#39;SOTU&#39;, 1),
+ (&#39;address&#39;, 1),
+ (&#39;nyceve&#39;, 1),
+ (&#39;open&#39;, 1),
+ (&#39;honest&#39;, 1),
+ (&#39;person&#39;, 1),
+ (&#39;moved&#39;, 1),
+ (&#39;What&#39;, 1),
+ (&#39;unimaginable&#39;, 1),
+ (&#39;decades&#39;, 1),
+ (&#39;ago&#39;, 1),
+ (&#39;something&#39;, 1),
+ (&#39;touch&#39;, 1),
+ (&#39;CARPETBAGGER&#39;, 1),
+ (&#39;REPORT&#39;, 1),
+ (&#39;enters&#39;, 1),
+ (&#39;race&#39;, 1),
+ (&#39;without&#39;, 1),
+ (&quot;&#39;ve&quot;, 1),
+ (&#39;heard&#39;, 1),
+ (&#39;various&#39;, 1),
+ (&#39;concerns&#39;, 1),
+ (&#39;takes&#39;, 1),
+ (&#39;win&#39;, 1),
+ (&#39;Indeed&#39;, 1),
+ (&#39;brings&#39;, 1),
+ (&#39;enormous&#39;, 1),
+ (&#39;amount&#39;, 1),
+ (&#39;talent&#39;, 1),
+ (&#39;experience&#39;, 1),
+ (&#39;intelligence&#39;, 1),
+ (&#39;table&#39;, 1),
+ (&#39;TAYLOR&#39;, 1),
+ (&#39;MARSH&#39;, 1),
+ (&#39;Sitting&#39;, 1),
+ (&#39;living&#39;, 1),
+ (&#39;room&#39;, 1),
+ (&#39;setting&#39;, 1),
+ (&#39;made&#39;, 1),
+ (&#39;one&#39;, 1),
+ (&#39;simple&#39;, 1),
+ (&#39;statement&#39;, 1),
+ (&#39;changed&#39;, 1),
+ (&#39;landscape&#39;, 1),
+ (&quot;&#39;08&quot;, 1),
+ (&#39;presidential&#39;, 1),
+ (&#39;tournament&#39;, 1),
+ (&#39;come&#39;, 1),
+ (&#39;To&#39;, 1),
+ (&#39;add&#39;, 1),
+ (&#39;got&#39;, 1),
+ (&#39;email&#39;, 1),
+ (&#39;event&#39;, 1),
+ (&#39;morning&#39;, 1),
+ (&#39;6:00&#39;, 1),
+ (&#39;a.m.&#39;, 1),
+ (&#39;Because&#39;, 1),
+ (&#39;woman&#39;, 1),
+ (&#39;run&#39;, 1),
+ (&#39;actual&#39;, 1),
+ (&#39;chance&#39;, 1),
+ (&#39;winning&#39;, 1),
+ (&#39;puts&#39;, 1),
+ (&#39;name&#39;, 1),
+ (&#39;reputation&#39;, 1),
+ (&#39;line&#39;, 1),
+ (&#39;becomes&#39;, 1),
+ (&#39;day&#39;, 1),
+ (&#39;week&#39;, 1),
+ (&#39;TALK&#39;, 1),
+ (&#39;LEFT&#39;, 1),
+ (&#39;serious&#39;, 1),
+ (&#39;female&#39;, 1),
+ (&#39;candidate&#39;, 1),
+ (&#39;OUTSIDE&#39;, 1),
+ (&#39;BELTWAY&#39;, 1),
+ (&#39;After&#39;, 1),
+ (&#39;nearly&#39;, 1),
+ (&#39;eight&#39;, 1),
+ (&#39;speculation&#39;, 1),
+ (&#39;announced&#39;, 1),
+ (&#39;...&#39;, 1),
+ (&#39;done&#39;, 1),
+ (&#39;job&#39;, 1),
+ (&#39;past&#39;, 1),
+ (&#39;several&#39;, 1),
+ (&#39;husband&#39;, 1),
+ (&#39;shadow&#39;, 1),
+ (&#39;positioning&#39;, 1),
+ (&#39;moderate&#39;, 1),
+ (&#39;previously&#39;, 1),
+ (&#39;thought&#39;, 1),
+ (&#39;bipartisan&#39;, 1),
+ (&#39;praise&#39;, 1),
+ (&#39;collegiality&#39;, 1),
+ (&#39;hard&#39;, 1),
+ (&#39;work&#39;, 1),
+ (&#39;Senate&#39;, 1),
+ (&#39;Yellow&#39;, 1),
+ (&#39;Dog&#39;, 1),
+ (&#39;Blue&#39;, 1),
+ (&#39;How&#39;, 1),
+ (&#39;survived&#39;, 1),
+ (&#39;thrived&#39;, 1),
+ (&#39;?&#39;, 1),
+ (&#39;heavying&#39;, 1),
+ (&#39;armor&#39;, 1),
+ (&#39;engaging&#39;, 1),
+ (&#39;overwhelming&#39;, 1),
+ (&#39;opponents&#39;, 1),
+ (&#39;appealing&#39;, 1),
+ (&#39;public&#39;, 1),
+ (&#39;sympathy&#39;, 1),
+ (&#39;Instead&#39;, 1),
+ (&#39;gone&#39;, 1),
+ (&#39;business&#39;, 1),
+ (&#39;building&#39;, 1),
+ (&#39;personal&#39;, 1),
+ (&#39;relationships&#39;, 1),
+ (&#39;using&#39;, 1),
+ (&#39;power&#39;, 1),
+ (&#39;really&#39;, 1),
+ (&#39;admire&#39;, 1),
+ (&#39;SEEING&#39;, 1),
+ (&#39;FOREST&#39;, 1),
+ (&#39;Dave&#39;, 1),
+ (&#39;Johnson&#39;, 1),
+ (&#39;People&#39;, 1),
+ (&#39;say&#39;, 1),
+ (&#39;baggage&#39;, 1),
+ (&#39;Actually&#39;, 1),
+ (&#39;investigated&#39;, 1),
+ (&#39;thoroughly&#39;, 1),
+ (&#39;anyone&#39;, 1),
+ (&#39;country&#39;, 1),
+ (&#39;history&#39;, 1),
+ (&#39;found&#39;, 1),
+ (&#39;nothing&#39;, 1),
+ (&#39;people&#39;, 1),
+ (&#39;making&#39;, 1),
+ (&#39;accusations&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function below is to filter special characters, such as commas, quotes, colons and so on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">without_words_set</span><span class="p">(</span><span class="n">a_speech</span><span class="p">,</span> <span class="n">a_set</span><span class="p">):</span>
+    <span class="n">a_speech</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">a_speech</span><span class="p">)</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">a_speech</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">a_set</span><span class="p">:</span>
+            <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stop_words_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filter_set</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;``&#39;</span><span class="p">,</span> <span class="s2">&quot;&#39;&#39;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_filter</span> <span class="o">=</span> <span class="n">stop_words_set</span> <span class="o">|</span> <span class="n">filter_set</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_filter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;&#39;&quot;,
+ &quot;&#39;&#39;&quot;,
+ &#39;(&#39;,
+ &#39;)&#39;,
+ &#39;*&#39;,
+ &#39;,&#39;,
+ &#39;-&#39;,
+ &#39;.&#39;,
+ &#39;1&#39;,
+ &#39;2&#39;,
+ &#39;:&#39;,
+ &#39;;&#39;,
+ &#39;=&#39;,
+ &#39;?&#39;,
+ &#39;``&#39;,
+ &#39;a&#39;,
+ &#39;about&#39;,
+ &#39;above&#39;,
+ &#39;after&#39;,
+ &#39;again&#39;,
+ &#39;against&#39;,
+ &#39;ain&#39;,
+ &#39;all&#39;,
+ &#39;am&#39;,
+ &#39;an&#39;,
+ &#39;and&#39;,
+ &#39;any&#39;,
+ &#39;are&#39;,
+ &#39;aren&#39;,
+ &#39;as&#39;,
+ &#39;at&#39;,
+ &#39;be&#39;,
+ &#39;because&#39;,
+ &#39;been&#39;,
+ &#39;before&#39;,
+ &#39;being&#39;,
+ &#39;below&#39;,
+ &#39;between&#39;,
+ &#39;both&#39;,
+ &#39;but&#39;,
+ &#39;by&#39;,
+ &#39;can&#39;,
+ &#39;couldn&#39;,
+ &#39;d&#39;,
+ &#39;did&#39;,
+ &#39;didn&#39;,
+ &#39;do&#39;,
+ &#39;does&#39;,
+ &#39;doesn&#39;,
+ &#39;doing&#39;,
+ &#39;don&#39;,
+ &#39;down&#39;,
+ &#39;during&#39;,
+ &#39;each&#39;,
+ &#39;few&#39;,
+ &#39;for&#39;,
+ &#39;from&#39;,
+ &#39;further&#39;,
+ &#39;had&#39;,
+ &#39;hadn&#39;,
+ &#39;has&#39;,
+ &#39;hasn&#39;,
+ &#39;have&#39;,
+ &#39;haven&#39;,
+ &#39;having&#39;,
+ &#39;he&#39;,
+ &#39;her&#39;,
+ &#39;here&#39;,
+ &#39;hers&#39;,
+ &#39;herself&#39;,
+ &#39;him&#39;,
+ &#39;himself&#39;,
+ &#39;his&#39;,
+ &#39;how&#39;,
+ &#39;i&#39;,
+ &#39;if&#39;,
+ &#39;in&#39;,
+ &#39;into&#39;,
+ &#39;is&#39;,
+ &#39;isn&#39;,
+ &#39;it&#39;,
+ &#39;its&#39;,
+ &#39;itself&#39;,
+ &#39;just&#39;,
+ &#39;ll&#39;,
+ &#39;m&#39;,
+ &#39;ma&#39;,
+ &#39;me&#39;,
+ &#39;mightn&#39;,
+ &#39;more&#39;,
+ &#39;most&#39;,
+ &#39;mustn&#39;,
+ &#39;my&#39;,
+ &#39;myself&#39;,
+ &#39;needn&#39;,
+ &#39;no&#39;,
+ &#39;nor&#39;,
+ &#39;not&#39;,
+ &#39;now&#39;,
+ &#39;o&#39;,
+ &#39;of&#39;,
+ &#39;off&#39;,
+ &#39;on&#39;,
+ &#39;once&#39;,
+ &#39;only&#39;,
+ &#39;or&#39;,
+ &#39;other&#39;,
+ &#39;our&#39;,
+ &#39;ours&#39;,
+ &#39;ourselves&#39;,
+ &#39;out&#39;,
+ &#39;over&#39;,
+ &#39;own&#39;,
+ &#39;re&#39;,
+ &#39;s&#39;,
+ &#39;same&#39;,
+ &#39;shan&#39;,
+ &#39;she&#39;,
+ &#39;should&#39;,
+ &#39;shouldn&#39;,
+ &#39;so&#39;,
+ &#39;some&#39;,
+ &#39;such&#39;,
+ &#39;t&#39;,
+ &#39;than&#39;,
+ &#39;that&#39;,
+ &#39;the&#39;,
+ &#39;their&#39;,
+ &#39;theirs&#39;,
+ &#39;them&#39;,
+ &#39;themselves&#39;,
+ &#39;then&#39;,
+ &#39;there&#39;,
+ &#39;these&#39;,
+ &#39;they&#39;,
+ &#39;this&#39;,
+ &#39;those&#39;,
+ &#39;through&#39;,
+ &#39;to&#39;,
+ &#39;too&#39;,
+ &#39;under&#39;,
+ &#39;until&#39;,
+ &#39;up&#39;,
+ &#39;ve&#39;,
+ &#39;very&#39;,
+ &#39;was&#39;,
+ &#39;wasn&#39;,
+ &#39;we&#39;,
+ &#39;were&#39;,
+ &#39;weren&#39;,
+ &#39;what&#39;,
+ &#39;when&#39;,
+ &#39;where&#39;,
+ &#39;which&#39;,
+ &#39;while&#39;,
+ &#39;who&#39;,
+ &#39;whom&#39;,
+ &#39;why&#39;,
+ &#39;will&#39;,
+ &#39;with&#39;,
+ &#39;won&#39;,
+ &#39;wouldn&#39;,
+ &#39;y&#39;,
+ &#39;you&#39;,
+ &#39;your&#39;,
+ &#39;yours&#39;,
+ &#39;yourself&#39;,
+ &#39;yourselves&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered</span> <span class="o">=</span> <span class="n">without_words_set</span><span class="p">(</span><span class="n">a_speech</span><span class="p">,</span> <span class="n">custom_filter</span><span class="p">)</span>
+<span class="n">filtered</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Campaign&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;signs&#39;,
+ &#39;100&#39;,
+ &#39;new&#39;,
+ &#39;members&#39;,
+ &#39;per&#39;,
+ &#39;minute&#39;,
+ &#39;racks&#39;,
+ &#39;10,000&#39;,
+ &#39;messages&#39;,
+ &#39;support&#39;,
+ &#39;within&#39;,
+ &#39;6&#39;,
+ &#39;hours&#39;,
+ &#39;announcement&#39;,
+ &#39;Clinton&#39;,
+ &#39;candidacy&#39;,
+ &#39;hailed&#39;,
+ &#39;online&#39;,
+ &#39;profoundly&#39;,
+ &#39;moving&#39;,
+ &#39;top&#39;,
+ &#39;tier&#39;,
+ &#39;exciting&#39;,
+ &#39;remarkable&#39;,
+ &#39;smart&#39;,
+ &#39;news&#39;,
+ &#39;generation&#39;,
+ &#39;Demonstrating&#39;,
+ &#39;groundswell&#39;,
+ &#39;enthusiasm&#39;,
+ &#39;generated&#39;,
+ &#39;historic&#39;,
+ &#39;candidacy&#39;,
+ &#39;Senator&#39;,
+ &#39;Hillary&#39;,
+ &#39;Rodham&#39;,
+ &#39;Clinton&#39;,
+ &quot;&#39;s&quot;,
+ &#39;announcement&#39;,
+ &#39;President&#39;,
+ &#39;lit&#39;,
+ &#39;internet&#39;,
+ &#39;today&#39;,
+ &#39;garnering&#39;,
+ &#39;rave&#39;,
+ &#39;reviews&#39;,
+ &#39;blogosphere&#39;,
+ &#39;thousands&#39;,
+ &#39;supporters&#39;,
+ &#39;flocking&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;hour&#39;,
+ &#39;Within&#39;,
+ &#39;six&#39;,
+ &#39;hours&#39;,
+ &#39;announcement&#39;,
+ &#39;going&#39;,
+ &#39;live&#39;,
+ &#39;campaign&#39;,
+ &#39;web&#39;,
+ &#39;site&#39;,
+ &#39;Senator&#39;,
+ &#39;Clinton&#39;,
+ &quot;&#39;s&quot;,
+ &#39;candidacy&#39;,
+ &#39;attracted&#39;,
+ &#39;thousands&#39;,
+ &#39;messages&#39;,
+ &#39;support&#39;,
+ &#39;widespread&#39;,
+ &#39;accolades&#39;,
+ &#39;online&#39;,
+ &#39;Overwhelming&#39;,
+ &#39;Response&#39;,
+ &#39;Within&#39;,
+ &#39;Hours&#39;,
+ &#39;Going&#39;,
+ &#39;Live&#39;,
+ &#39;SIGN&#39;,
+ &#39;UPS&#39;,
+ &#39;100&#39;,
+ &#39;per&#39;,
+ &#39;minute&#39;,
+ &#39;MESSAGES&#39;,
+ &#39;OF&#39;,
+ &#39;SUPPORT&#39;,
+ &#39;10,000&#39;,
+ &#39;VIDEO&#39;,
+ &#39;WEBCAST&#39;,
+ &#39;SIGN-UPS&#39;,
+ &#39;7,700&#39;,
+ &#39;BLOG&#39;,
+ &#39;CONTEST&#39;,
+ &#39;SUBMISSIONS&#39;,
+ &#39;2,200&#39;,
+ &#39;Bloggers&#39;,
+ &#39;Give&#39;,
+ &#39;Clinton&#39;,
+ &#39;Announcement&#39;,
+ &#39;Rave&#39;,
+ &#39;Reviews&#39;,
+ &#39;MYDD&#39;,
+ &#39;Jerome&#39;,
+ &#39;Armstrong&#39;,
+ &#39;And&#39;,
+ &#39;blogger&#39;,
+ &#39;savvy&#39;,
+ &#39;John&#39;,
+ &#39;Edwards&#39;,
+ &#39;outreach&#39;,
+ &#39;Clinton&#39;,
+ &#39;internet&#39;,
+ &#39;team&#39;,
+ &#39;emails&#39;,
+ &#39;bloggers&#39;,
+ &#39;notify&#39;,
+ &#39;separate&#39;,
+ &#39;press&#39;,
+ &#39;outreach&#39;,
+ &#39;Obama&#39;,
+ &#39;camp&#39;,
+ &#39;The&#39;,
+ &#39;website&#39;,
+ &#39;clean&#39;,
+ &#39;Kerry-2004&#39;,
+ &#39;look&#39;,
+ &#39;A&#39;,
+ &#39;smart&#39;,
+ &#39;write&#39;,
+ &#39;first&#39;,
+ &#39;post&#39;,
+ &#39;call&#39;,
+ &#39;action&#39;,
+ &#39;website&#39;,
+ &#39;The&#39;,
+ &#39;announcement&#39;,
+ &#39;unprecedented&#39;,
+ &#39;series&#39;,
+ &#39;video&#39;,
+ &#39;webcasts&#39;,
+ &#39;beginning&#39;,
+ &#39;Monday&#39;,
+ &#39;January&#39;,
+ &#39;22nd&#39;,
+ &#39;7pm&#39;,
+ &#39;EST&#39;,
+ &#39;three&#39;,
+ &#39;nights&#39;,
+ &#39;creates&#39;,
+ &#39;quick&#39;,
+ &#39;narrative&#39;,
+ &#39;interaction&#39;,
+ &#39;response&#39;,
+ &#39;around&#39;,
+ &#39;Bush&#39;,
+ &quot;&#39;s&quot;,
+ &#39;SOTU&#39;,
+ &#39;address&#39;,
+ &#39;DAILY&#39;,
+ &#39;KOS&#39;,
+ &#39;DIARY&#39;,
+ &#39;nyceve&#39;,
+ &#39;I&#39;,
+ &quot;&#39;m&quot;,
+ &#39;open&#39;,
+ &#39;honest&#39;,
+ &#39;person&#39;,
+ &#39;I&#39;,
+ &quot;&#39;m&quot;,
+ &#39;profoundly&#39;,
+ &#39;moved&#39;,
+ &#39;announcement&#39;,
+ &#39;What&#39;,
+ &#39;unimaginable&#39;,
+ &#39;decades&#39;,
+ &#39;ago&#39;,
+ &#39;something&#39;,
+ &#39;almost&#39;,
+ &#39;touch&#39;,
+ &#39;THE&#39;,
+ &#39;CARPETBAGGER&#39;,
+ &#39;REPORT&#39;,
+ &#39;Clinton&#39;,
+ &#39;enters&#39;,
+ &#39;race&#39;,
+ &#39;without&#39;,
+ &#39;doubt&#39;,
+ &#39;top&#39;,
+ &#39;top&#39;,
+ &#39;tier&#39;,
+ &#39;I&#39;,
+ &quot;&#39;ve&quot;,
+ &#39;heard&#39;,
+ &#39;various&#39;,
+ &#39;concerns&#39;,
+ &#39;candidacy&#39;,
+ &#39;I&#39;,
+ &quot;n&#39;t&quot;,
+ &#39;doubt&#39;,
+ &#39;takes&#39;,
+ &#39;win&#39;,
+ &#39;Indeed&#39;,
+ &#39;Clinton&#39;,
+ &#39;brings&#39;,
+ &#39;enormous&#39;,
+ &#39;amount&#39;,
+ &#39;talent&#39;,
+ &#39;experience&#39;,
+ &#39;intelligence&#39;,
+ &#39;table&#39;,
+ &#39;TAYLOR&#39;,
+ &#39;MARSH&#39;,
+ &#39;Sitting&#39;,
+ &#39;living&#39;,
+ &#39;room&#39;,
+ &#39;setting&#39;,
+ &#39;Senator&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;made&#39;,
+ &#39;one&#39;,
+ &#39;simple&#39;,
+ &#39;statement&#39;,
+ &#39;changed&#39;,
+ &#39;landscape&#39;,
+ &quot;&#39;08&quot;,
+ &#39;presidential&#39;,
+ &#39;tournament&#39;,
+ &#39;come&#39;,
+ &#39;To&#39;,
+ &#39;add&#39;,
+ &#39;I&#39;,
+ &#39;got&#39;,
+ &#39;email&#39;,
+ &#39;event&#39;,
+ &#39;morning&#39;,
+ &#39;6:00&#39;,
+ &#39;a.m.&#39;,
+ &#39;Because&#39;,
+ &#39;first&#39;,
+ &#39;woman&#39;,
+ &#39;run&#39;,
+ &#39;president&#39;,
+ &#39;actual&#39;,
+ &#39;chance&#39;,
+ &#39;winning&#39;,
+ &#39;puts&#39;,
+ &#39;name&#39;,
+ &#39;reputation&#39;,
+ &#39;line&#39;,
+ &#39;becomes&#39;,
+ &#39;news&#39;,
+ &#39;day&#39;,
+ &#39;week&#39;,
+ &#39;even&#39;,
+ &#39;generation&#39;,
+ &#39;TALK&#39;,
+ &#39;LEFT&#39;,
+ &#39;It&#39;,
+ &#39;exciting&#39;,
+ &#39;serious&#39;,
+ &#39;female&#39;,
+ &#39;candidate&#39;,
+ &#39;President&#39;,
+ &#39;OUTSIDE&#39;,
+ &#39;THE&#39;,
+ &#39;BELTWAY&#39;,
+ &#39;After&#39;,
+ &#39;nearly&#39;,
+ &#39;eight&#39;,
+ &#39;years&#39;,
+ &#39;speculation&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;announced&#39;,
+ &#39;candidacy&#39;,
+ &#39;president&#39;,
+ &#39;...&#39;,
+ &#39;done&#39;,
+ &#39;remarkable&#39;,
+ &#39;job&#39;,
+ &#39;past&#39;,
+ &#39;several&#39;,
+ &#39;years&#39;,
+ &#39;getting&#39;,
+ &#39;husband&#39;,
+ &quot;&#39;s&quot;,
+ &#39;shadow&#39;,
+ &#39;positioning&#39;,
+ &#39;moderate&#39;,
+ &#39;previously&#39;,
+ &#39;thought&#39;,
+ &#39;garnering&#39;,
+ &#39;bipartisan&#39;,
+ &#39;praise&#39;,
+ &#39;collegiality&#39;,
+ &#39;hard&#39;,
+ &#39;work&#39;,
+ &#39;Senate&#39;,
+ &#39;DAILY&#39;,
+ &#39;KOS&#39;,
+ &#39;DIARY&#39;,
+ &#39;Yellow&#39;,
+ &#39;Dog&#39;,
+ &#39;Blue&#39;,
+ &#39;How&#39;,
+ &#39;survived&#39;,
+ &#39;thrived&#39;,
+ &#39;Not&#39;,
+ &#39;heavying&#39;,
+ &#39;armor&#39;,
+ &#39;Not&#39;,
+ &#39;engaging&#39;,
+ &#39;overwhelming&#39;,
+ &#39;opponents&#39;,
+ &#39;Not&#39;,
+ &#39;even&#39;,
+ &#39;appealing&#39;,
+ &#39;public&#39;,
+ &#39;sympathy&#39;,
+ &#39;Instead&#39;,
+ &#39;Hillary&#39;,
+ &#39;gone&#39;,
+ &#39;business&#39;,
+ &#39;Senator&#39;,
+ &#39;building&#39;,
+ &#39;personal&#39;,
+ &#39;relationships&#39;,
+ &#39;support&#39;,
+ &#39;getting&#39;,
+ &#39;using&#39;,
+ &#39;power&#39;,
+ &#39;And&#39;,
+ &#39;I&#39;,
+ &#39;really&#39;,
+ &#39;admire&#39;,
+ &#39;SEEING&#39;,
+ &#39;THE&#39;,
+ &#39;FOREST&#39;,
+ &#39;Dave&#39;,
+ &#39;Johnson&#39;,
+ &#39;People&#39;,
+ &#39;say&#39;,
+ &#39;Hillary&#39;,
+ &#39;Clinton&#39;,
+ &#39;baggage&#39;,
+ &#39;divisive&#39;,
+ &#39;Actually&#39;,
+ &#39;investigated&#39;,
+ &#39;thoroughly&#39;,
+ &#39;almost&#39;,
+ &#39;anyone&#39;,
+ &#39;country&#39;,
+ &quot;&#39;s&quot;,
+ &#39;history&#39;,
+ &#39;found&#39;,
+ &#39;nothing&#39;,
+ &#39;It&#39;,
+ &quot;n&#39;t&quot;,
+ &#39;Hillary&#39;,
+ &#39;divisive&#39;,
+ &quot;&#39;s&quot;,
+ &#39;people&#39;,
+ &#39;making&#39;,
+ &#39;accusations&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">filtered</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Clinton&#39;, 10),
+ (&#39;Hillary&#39;, 6),
+ (&quot;&#39;s&quot;, 6),
+ (&#39;I&#39;, 6),
+ (&#39;announcement&#39;, 5),
+ (&#39;candidacy&#39;, 5),
+ (&#39;Senator&#39;, 4),
+ (&#39;web&#39;, 3),
+ (&#39;site&#39;, 3),
+ (&#39;support&#39;, 3),
+ (&#39;top&#39;, 3),
+ (&#39;THE&#39;, 3),
+ (&#39;Not&#39;, 3),
+ (&#39;100&#39;, 2),
+ (&#39;per&#39;, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="counts-words-2">
+<h2>Counts words 2<a class="headerlink" href="#counts-words-2" title="Link to this heading">#</a></h2>
+<p>Build your own dictionary you want to count and run it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">words_to_dictionary</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Making a dictionary with given words. </span>
+<span class="sd">    Set key as each word and set value to initail counting 0&quot;&quot;&quot;</span>
+    <span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">dic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Clinton&quot;</span><span class="p">,</span> <span class="s2">&quot;Hillary&quot;</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;her&quot;</span><span class="p">]</span>
+<span class="n">my_dictionary</span> <span class="o">=</span> <span class="n">words_to_dictionary</span><span class="p">(</span><span class="n">my_words</span><span class="p">)</span>
+<span class="n">my_dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Clinton&#39;: 0, &#39;Hillary&#39;: 0, &#39;action&#39;: 0, &#39;her&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_words</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">speech</span><span class="p">):</span>
+    <span class="n">speech_words</span> <span class="o">=</span> <span class="n">speech</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">speech_words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dictionary</span>
+<span class="n">count_words</span><span class="p">(</span><span class="n">my_dictionary</span><span class="p">,</span> <span class="n">a_speech</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Clinton&#39;: 7, &#39;Hillary&#39;: 6, &#39;action&#39;: 1, &#39;her&#39;: 11}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="assignment-code-your-dictionary-into-python">
+<h3>Assignment: Code your dictionary into Python<a class="headerlink" href="#assignment-code-your-dictionary-into-python" title="Link to this heading">#</a></h3>
+<p>First, make a list of the words you found corresponding to each foundation. Assign them to the variable names below by filling in the lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make 6 lists. </span>
+<span class="c1"># Tip: each word needs to go in quotation marks and each string must be separated by commas</span>
+<span class="n">care_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">authority_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">loyalty_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sanctity_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fairness_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">liberty_words</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, make your dictionary by creating a new dictionary with the foundations as keys and your lists as the values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, run the next cell to write your dictionary to a file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to write dictionary to a file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span> 
+<span class="c1"># convert dictionary to a JSON-formatted string</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../mft_data/my_dict.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">my_dict</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<section id="homework">
+<h3>Homework!<a class="headerlink" href="#homework" title="Link to this heading">#</a></h3>
+<p>Complete this short assignment by Monday. We recommend starting early, and coming to office hours for help. <a class="reference external" href="https://tinyurl.com/rhetorichomework">https://tinyurl.com/rhetorichomework</a></p>
+</section>
+<section id="office-hours">
+<h3>Office Hours<a class="headerlink" href="#office-hours" title="Link to this heading">#</a></h3>
+<p>Come to the Center for Connected Learning on the first floor of Moffitt Library (opposite side of elevators) today from 4:30-6:00 pm to answer any questions relating to this notebook or the homework.</p>
+</section>
+<section id="next-week">
+<h3>Next Week<a class="headerlink" href="#next-week" title="Link to this heading">#</a></h3>
+<section id="module-02-moral-foundations-analysis">
+<h4>Module 02: Moral Foundations Analysis<a class="headerlink" href="#module-02-moral-foundations-analysis" title="Link to this heading">#</a></h4>
+</section>
+<section id="module-03-the-rhetoric-of-data">
+<h4>Module 03: The Rhetoric of Data<a class="headerlink" href="#module-03-the-rhetoric-of-data" title="Link to this heading">#</a></h4>
+<p>Module Developers: Alec Kan, Shalini Kunapuli, and William McEachen</p>
+<p>Earlier version of this notebook developed by: Seungwoo Sean Son, Keeley Takimoto, Sujude Dalieh</p>
+<p>Data Science Modules: <a class="reference external" href="http://data.berkeley.edu/education/modules">http://data.berkeley.edu/education/modules</a></p>
+<p>Some materials are from <a class="reference external" href="http://composingprograms.com">http://composingprograms.com</a> and <a class="reference external" href="https://developers.google.com/edu/python">https://developers.google.com/edu/python</a></p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/xrhetor-r1a/01-intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-data-science-in-rhetoric">01 - Intro to Data Science in Rhetoric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-amy-tick">Professor Amy Tick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered"><strong>Topics Covered</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-intro">Data Science Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-processing">Text processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-need-to-know">What you need to know</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-datascience">What is Datascience?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-is-an-interdisciplinary-field-that-seeks-to-extract-knowledge-or-insights-from-various-forms-of-data">Data science is an interdisciplinary field that seeks to extract knowledge or insights from various forms of data.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-notebook">The Jupyter Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#names-identifiers">Names (Identifiers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#call-expressions">Call Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-operator">Attribute Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-python-dictionary">Dict (Python dictionary)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors">Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-library-functions">Importing Library Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-source">Data Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-dataframe-in-pandas">Using DataFrame in pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-string-and-split">Using String and split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-words-2">Counts words 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-code-your-dictionary-into-python">Assignment: Code your dictionary into Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next Week</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-02-moral-foundations-analysis">Module 02: Moral Foundations Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-03-the-rhetoric-of-data">Module 03: The Rhetoric of Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

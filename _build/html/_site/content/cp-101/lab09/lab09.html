@@ -1,0 +1,1538 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to geopandas &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_site/content/cp-101/lab09/lab09';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../content/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../content/intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/_site/content/cp-101/lab09/lab09.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to geopandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-data">Examining the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-maps">Basic maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-maps">Choropleth maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-shapefile">Creating a new shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-multiple-geodataframes">Combining multiple <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>s</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-geospatial-data-types-in-geopandas">More geospatial data types in <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examining the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-map">Creating the map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-geopandas">
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code><a class="headerlink" href="#introduction-to-geopandas" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>Today we are going to learn how to use python and Jupyter notebooks to learn the basics of working with geospatial data in <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>. <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> is built on top of the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package you saw in the previous lab. Many of the methods you will see in this lab are shared between the two packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN THIS CELL FIRST or the notebook won&#39;t work</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># These help the maps display nicely in the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># This line tells iPython to not display warnings.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, let’s load our data and see what kind of data we are working with.  The <code class="docutils literal notranslate"><span class="pre">read_file</span></code> method requires that we pass the <em>filepath</em> from our current directory (the location of this notebook) to the data. The <code class="docutils literal notranslate"><span class="pre">pwd()</span></code> function shows you the your current location in the file system. Another way you can say this is that it __p__rints your __w__orking __d__irectory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/chrispyles/GitHub/modules-textbook/content/cp-101/lab09&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get to the data, we would first enter the <code class="docutils literal notranslate"><span class="pre">shapefiles</span></code> folder from the working directory, then the <code class="docutils literal notranslate"><span class="pre">alameda</span></code> folder. The way we communicate this to the function is by passing <code class="docutils literal notranslate"><span class="pre">'shapefiles/alameda/'</span></code> as an argument. This folder contains demographic information organized by census tract in Alameda County.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;shapefiles/alameda/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at what our data looks like in Jupyter. We can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to show the first 5 rows of our data. Similarly, you can use the <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> method to show the last 5 rows of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AFFGEOID</th>
+      <th>ALAND</th>
+      <th>ALAND_1</th>
+      <th>AWATER</th>
+      <th>AWATER_1</th>
+      <th>COUNTYFP</th>
+      <th>COUNTYFP_1</th>
+      <th>FID_1</th>
+      <th>FUNCSTAT</th>
+      <th>GEOID</th>
+      <th>...</th>
+      <th>female</th>
+      <th>male</th>
+      <th>medianage</th>
+      <th>mergeid</th>
+      <th>pct_20to64</th>
+      <th>pct_over64</th>
+      <th>pct_pov</th>
+      <th>pct_und_20</th>
+      <th>total_pop</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1400000US06001400600</td>
+      <td>297856.0</td>
+      <td>297856.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>275.0</td>
+      <td>S</td>
+      <td>06001400600</td>
+      <td>...</td>
+      <td>1020.0</td>
+      <td>730.0</td>
+      <td>34.4</td>
+      <td>06001400600</td>
+      <td>78.2</td>
+      <td>9.8</td>
+      <td>8.3</td>
+      <td>12.0</td>
+      <td>1750.0</td>
+      <td>POLYGON ((-122.26807 37.844136, -122.26514 37....</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1400000US06001400900</td>
+      <td>420877.0</td>
+      <td>420877.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>297.0</td>
+      <td>S</td>
+      <td>06001400900</td>
+      <td>...</td>
+      <td>1106.0</td>
+      <td>925.0</td>
+      <td>38.9</td>
+      <td>06001400900</td>
+      <td>71.0</td>
+      <td>7.7</td>
+      <td>12.0</td>
+      <td>21.0</td>
+      <td>2031.0</td>
+      <td>POLYGON ((-122.285576 37.839778, -122.283186 3...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1400000US06001401400</td>
+      <td>758241.0</td>
+      <td>758241.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>239.0</td>
+      <td>S</td>
+      <td>06001401400</td>
+      <td>...</td>
+      <td>2170.0</td>
+      <td>2127.0</td>
+      <td>31.3</td>
+      <td>06001401400</td>
+      <td>64.7</td>
+      <td>8.2</td>
+      <td>41.7</td>
+      <td>27.1</td>
+      <td>4297.0</td>
+      <td>POLYGON ((-122.278611 37.826878, -122.268563 3...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1400000US06001403000</td>
+      <td>352394.0</td>
+      <td>352394.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>258.0</td>
+      <td>S</td>
+      <td>06001403000</td>
+      <td>...</td>
+      <td>1445.0</td>
+      <td>1026.0</td>
+      <td>58.3</td>
+      <td>06001403000</td>
+      <td>47.9</td>
+      <td>43.8</td>
+      <td>30.2</td>
+      <td>8.3</td>
+      <td>2471.0</td>
+      <td>POLYGON ((-122.274757 37.79883299999999, -122....</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1400000US06001405902</td>
+      <td>487280.0</td>
+      <td>487280.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>746.0</td>
+      <td>S</td>
+      <td>06001405902</td>
+      <td>...</td>
+      <td>1713.0</td>
+      <td>1808.0</td>
+      <td>31.5</td>
+      <td>06001405902</td>
+      <td>58.6</td>
+      <td>10.0</td>
+      <td>31.0</td>
+      <td>31.5</td>
+      <td>3521.0</td>
+      <td>POLYGON ((-122.247175 37.789913, -122.243512 3...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div></div></div>
+</div>
+<p>The first few columns of the table contain information relating to the itentity of each census tract, but we can’t interpret these without looking at the metadata for this dataset. If you scroll the table all the way to the right, you can see some columns with names that are more easily interpretable. However, because the table we are reading in has more columns than the page can accomodate, the display omits the middle columns to make the table narrower. To see a list of all of the columns in our <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>, we access use the <code class="docutils literal notranslate"><span class="pre">.column</span></code> attribute like so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;AFFGEOID&#39;, &#39;ALAND&#39;, &#39;ALAND_1&#39;, &#39;AWATER&#39;, &#39;AWATER_1&#39;, &#39;COUNTYFP&#39;,
+       &#39;COUNTYFP_1&#39;, &#39;FID_1&#39;, &#39;FUNCSTAT&#39;, &#39;GEOID&#39;, &#39;GEOID_1&#39;, &#39;Geography&#39;,
+       &#39;INTPTLAT&#39;, &#39;INTPTLON&#39;, &#39;Id&#39;, &#39;Id2&#39;, &#39;LSAD&#39;, &#39;MTFCC&#39;, &#39;NAME&#39;,
+       &#39;NAMELSAD&#39;, &#39;NAME_1&#39;, &#39;STATEFP&#39;, &#39;STATEFP_1&#39;, &#39;TRACTCE&#39;, &#39;TRACTCE_1&#39;,
+       &#39;female&#39;, &#39;male&#39;, &#39;medianage&#39;, &#39;mergeid&#39;, &#39;pct_20to64&#39;, &#39;pct_over64&#39;,
+       &#39;pct_pov&#39;, &#39;pct_und_20&#39;, &#39;total_pop&#39;, &#39;geometry&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="examining-the-data">
+<h2>Examining the data<a class="headerlink" href="#examining-the-data" title="Link to this heading">#</a></h2>
+<section id="accessing-the-data">
+<h3>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> methods allow us to view cells in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> based on their name or location. The <strong>i</strong> in <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> stands for the <strong>integer</strong> position of a cell, and accesses cells by location in index coordinates. The <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> method allows you to access cells by the index of the rows and the names of the columns. For both <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>, the first argument refers to the row, and the second argument refers to the column.</p>
+<p>Typically the row index will be the same as its integer position, but that is not always the case. Let’s set up a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to see this in action.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                         <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                         <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                         <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]},</span>
+                 <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.1</th>
+      <td>1</td>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>2</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>3</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we want to access the number 8 from <code class="docutils literal notranslate"><span class="pre">df</span></code>, we would need to tell <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> to look in <code class="docutils literal notranslate"><span class="pre">df</span></code> at row <code class="docutils literal notranslate"><span class="pre">1</span></code>, column <code class="docutils literal notranslate"><span class="pre">2</span></code> (remember that python starts counting from zero!).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>, we would need to tell the method that we want row index <code class="docutils literal notranslate"><span class="pre">1.2</span></code>, column name <code class="docutils literal notranslate"><span class="pre">'c'</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also specify a range of indices to both of these methods if you want to access multiple adjacent cells. For <code class="docutils literal notranslate"><span class="pre">iloc[]</span></code>, this range will always refer to integer coordinates of the cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code tells .iloc that we want rows 0 and 2, then all columns with index</span>
+<span class="c1"># greater than or equal to 1.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.1</th>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can also refer to a range named columns and rows using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code tells .loc that we want row 1.2, columns &#39;b&#39; through &#39;d&#39; inclusive.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.2</th>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="basic-maps">
+<h3>Basic maps<a class="headerlink" href="#basic-maps" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column contains a new data type called a polygon, which is how <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> is able to store geographic information. Let’s look at one of these polygons using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/aac2ae28f111f10b5c4d352fd8fe3563fd501a437935ba77774f41eb2e8d53a2.svg" src="../../../../_images/aac2ae28f111f10b5c4d352fd8fe3563fd501a437935ba77774f41eb2e8d53a2.svg" />
+</div>
+</div>
+<p>To view all of the polygons in the <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>, we can just use the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. The documentation for this function can be found <a class="reference external" href="http://geopandas.org/mapping.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124dea7f0&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/d0305388cdccc1478e784ba1a94af0b06f4d2edd527af748f7fd80d09116220c.png" src="../../../../_images/d0305388cdccc1478e784ba1a94af0b06f4d2edd527af748f7fd80d09116220c.png" />
+</div>
+</div>
+<p>You can improve the appearance of this graph by removing the axis labels surrounding the map and adding a title. You may also see a line that says something like <code class="docutils literal notranslate"><span class="pre">&lt;matplotlib.axes._subplots.AxesSubplot</span> <span class="pre">at</span> <span class="pre">0x1120b5710&gt;</span></code> above the map. You can prevent Jupyter from displaying this line by adding a <code class="docutils literal notranslate"><span class="pre">;</span></code> to the last line of code creating the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Adding the fontsize argument allows you to manipulate the font size.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Alameda County Census Tracts&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># This turns the plot axes off.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/6877ee256186f928c1c47925c37059aa969f74ff4cb3dfd434c3a4c02e60ea81.png" src="../../../../_images/6877ee256186f928c1c47925c37059aa969f74ff4cb3dfd434c3a4c02e60ea81.png" />
+</div>
+</div>
+</section>
+<section id="choropleth-maps">
+<h3>Choropleth maps<a class="headerlink" href="#choropleth-maps" title="Link to this heading">#</a></h3>
+<p>If we want to make this map more informative, we can incorporate some of the other columns from the data into the map. For example, the <code class="docutils literal notranslate"><span class="pre">'pct_pov'</span></code> column in the table contains the percentage of people living in poverty in each census tract.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="p">[</span><span class="s1">&#39;pct_pov&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       8.3
+1      12.0
+2      41.7
+3      30.2
+4      31.0
+5      20.3
+6      34.2
+7       2.8
+8      43.9
+9      24.7
+10      4.3
+11      8.5
+12     11.2
+13     28.6
+14     10.1
+15     16.1
+16      2.4
+17      3.4
+18      6.5
+19      2.7
+20      2.8
+21      3.7
+22      6.6
+23      1.8
+24     34.9
+25     25.3
+26     26.5
+27     10.3
+28     10.8
+29     11.4
+       ... 
+331     4.1
+332    42.6
+333    22.4
+334     3.7
+335     6.4
+336    11.3
+337    16.2
+338     1.6
+339     8.9
+340    14.5
+341     6.5
+342     1.6
+343     4.9
+344    34.4
+345    11.1
+346     4.5
+347     5.5
+348    17.7
+349     5.5
+350    31.8
+351    41.3
+352    27.0
+353     5.5
+354    37.2
+355    12.6
+356     4.2
+357    17.3
+358     8.1
+359     5.0
+360     2.6
+Name: pct_pov, Length: 361, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can pass the column name as an optional argument to the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to create a map with a color gradient based on the values in this column. Setting <code class="docutils literal notranslate"><span class="pre">legend</span></code> equal to <code class="docutils literal notranslate"><span class="pre">True</span></code> in the function call will also tell the method that we want our final plot to have a legend so that we can interpret the colors on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;pct_pov&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1">#Bounds supplies information on the maximum and minimum values of the x-axis and y-axis of our plot.</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">        minx   -122.268070</span>
+<span class="sd">        miny     37.837482</span>
+<span class="sd">        maxx   -122.261296</span>
+<span class="sd">        maxy     37.845027</span>
+<span class="sd">        Name: 0, dtype: float64 </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;minx&quot;</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;miny&quot;</span><span class="p">]</span>
+<span class="c1"># We use that information to place the text label for our legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;Percentage of People Living in Poverty&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Alameda County Poverty Rates by Census Tract&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/5f83c080609a82598f701c3bb32a5da0fbe462635e28eb71077e7ce33b9ed9d3.png" src="../../../../_images/5f83c080609a82598f701c3bb32a5da0fbe462635e28eb71077e7ce33b9ed9d3.png" />
+</div>
+</div>
+<p>If you want to change the color scheme of the map, you can choose the “color map” of the plot by adding in the optional <code class="docutils literal notranslate"><span class="pre">cmap</span></code> argument to <code class="docutils literal notranslate"><span class="pre">plot()</span></code>. You can choose from the variety of color maps available in the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package, which is what our plotting software is built off of. Above, we saw the default colormap, which is called viridis. If you want to view all the available colormaps, you can reference the documentation <a class="reference external" href="https://matplotlib.org/users/colormaps.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;pct_pov&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;minx&quot;</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;miny&quot;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;Percentage of People Living in Poverty&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Alameda County Poverty Rates by Census Tract&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/edc130182b9f6c8ad352609031570cce2a745027e1453c8464434441506e0657.png" src="../../../../_images/edc130182b9f6c8ad352609031570cce2a745027e1453c8464434441506e0657.png" />
+</div>
+</div>
+<p>Now it’s your turn! In the following cell, try creating your own choropleth map using a different column from <code class="docutils literal notranslate"><span class="pre">alameda</span></code>. If you want to see all of the columns in our data, you can scroll up to where we displayed all of the column names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What are some conclusions that you can draw from the map you created?</p>
+<p>YOUR ANSWER HERE</p>
+</section>
+<section id="creating-a-new-shapefile">
+<h3>Creating a new shapefile<a class="headerlink" href="#creating-a-new-shapefile" title="Link to this heading">#</a></h3>
+<p>Let’s isolate the census tracts belonging to Berkeley. Below are the identification numbers for Berkeley’s census tracts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">berkeley_census_tracts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4211</span><span class="p">,</span> <span class="mi">4212</span><span class="p">,</span> <span class="mi">4213</span><span class="p">,</span> <span class="mi">4214</span><span class="p">,</span> <span class="mi">4215</span><span class="p">,</span> <span class="mi">4216</span><span class="p">,</span> <span class="mi">4217</span><span class="p">,</span> <span class="mi">4218</span><span class="p">,</span> <span class="mi">4219</span><span class="p">,</span> <span class="mi">4220</span><span class="p">,</span> <span class="mi">4221</span><span class="p">,</span> <span class="mi">4222</span><span class="p">,</span> <span class="mi">4223</span><span class="p">,</span> <span class="mi">4224</span><span class="p">,</span> <span class="mi">4225</span><span class="p">,</span>
+                          <span class="mi">4226</span><span class="p">,</span> <span class="mi">4227</span><span class="p">,</span> <span class="mi">4228</span><span class="p">,</span> <span class="mi">4229</span><span class="p">,</span> <span class="mi">4230</span><span class="p">,</span> <span class="mi">4231</span><span class="p">,</span> <span class="mi">4232</span><span class="p">,</span> <span class="mi">4233</span><span class="p">,</span> <span class="mi">4234</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">4236</span><span class="p">,</span> <span class="mf">4236.01</span><span class="p">,</span> <span class="mf">4236.02</span><span class="p">,</span>
+                          <span class="mi">4237</span><span class="p">,</span> <span class="mi">4238</span><span class="p">,</span> <span class="mf">4239.01</span><span class="p">,</span> <span class="mf">4239.02</span><span class="p">,</span> <span class="mf">4240.01</span><span class="p">,</span> <span class="mf">4240.02</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data in our <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> are all strings, so we need to convert these numbers into strings before python can compare them to our data. We are going to use a technique called a list comprehension to do this. A list comprehension is basically a for loop condensed into a single line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">berkeley_census_tracts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">berkeley_census_tracts</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we were going to write this list comprehension as a for loop, we would have to create a new list to save our converted data into. It would look a little something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">berkeley_census_tracts_str</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">berkley_census_tracts</span><span class="p">:</span>
+    <span class="n">berkeley_census_tracts_str</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>List comprehensions are so much more efficient!</p>
+<p>Next, we are going to use a for loop to look at all of the rows in <code class="docutils literal notranslate"><span class="pre">alameda</span></code> and add the rows belonging to Berkeley census tracts to a new <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new GeoDataFrame</span>
+<span class="n">berkeley</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alameda</span><span class="p">)):</span>
+    <span class="c1"># If the NAME of a census tract is in our list of Berkeley census tracts, we want to</span>
+    <span class="c1"># add it to our berkeley GeoDataFrame.</span>
+    <span class="k">if</span> <span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;NAME&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">berkeley_census_tracts</span><span class="p">:</span>
+        <span class="n">berkeley</span> <span class="o">=</span> <span class="n">berkeley</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">berkeley</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AFFGEOID</th>
+      <th>ALAND</th>
+      <th>ALAND_1</th>
+      <th>AWATER</th>
+      <th>AWATER_1</th>
+      <th>COUNTYFP</th>
+      <th>COUNTYFP_1</th>
+      <th>FID_1</th>
+      <th>FUNCSTAT</th>
+      <th>GEOID</th>
+      <th>...</th>
+      <th>female</th>
+      <th>geometry</th>
+      <th>male</th>
+      <th>medianage</th>
+      <th>mergeid</th>
+      <th>pct_20to64</th>
+      <th>pct_over64</th>
+      <th>pct_pov</th>
+      <th>pct_und_20</th>
+      <th>total_pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>1400000US06001421400</td>
+      <td>474780.0</td>
+      <td>474780.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>686.0</td>
+      <td>S</td>
+      <td>06001421400</td>
+      <td>...</td>
+      <td>974.0</td>
+      <td>POLYGON ((-122.276027 37.88887, -122.272507 37...</td>
+      <td>747.0</td>
+      <td>51.3</td>
+      <td>06001421400</td>
+      <td>53.7</td>
+      <td>26.3</td>
+      <td>2.8</td>
+      <td>20.2</td>
+      <td>1721.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1400000US06001422900</td>
+      <td>544282.0</td>
+      <td>544282.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>157.0</td>
+      <td>S</td>
+      <td>06001422900</td>
+      <td>...</td>
+      <td>2260.0</td>
+      <td>POLYGON ((-122.273067 37.871512, -122.268403 3...</td>
+      <td>2177.0</td>
+      <td>23.1</td>
+      <td>06001422900</td>
+      <td>72.5</td>
+      <td>2.5</td>
+      <td>43.9</td>
+      <td>25.1</td>
+      <td>4437.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1400000US06001424001</td>
+      <td>507529.0</td>
+      <td>507529.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>131.0</td>
+      <td>S</td>
+      <td>06001424001</td>
+      <td>...</td>
+      <td>2045.0</td>
+      <td>POLYGON ((-122.279121 37.853287, -122.271161 3...</td>
+      <td>1954.0</td>
+      <td>30.4</td>
+      <td>06001424001</td>
+      <td>72.2</td>
+      <td>6.8</td>
+      <td>24.7</td>
+      <td>21.1</td>
+      <td>3999.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1400000US06001421500</td>
+      <td>1590680.0</td>
+      <td>1590680.0</td>
+      <td>3635.0</td>
+      <td>3635.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>314.0</td>
+      <td>S</td>
+      <td>06001421500</td>
+      <td>...</td>
+      <td>1984.0</td>
+      <td>POLYGON ((-122.267737 37.893131, -122.262683 3...</td>
+      <td>1809.0</td>
+      <td>49.9</td>
+      <td>06001421500</td>
+      <td>56.0</td>
+      <td>24.9</td>
+      <td>4.5</td>
+      <td>19.2</td>
+      <td>3793.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1400000US06001422100</td>
+      <td>551943.0</td>
+      <td>551943.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>001</td>
+      <td>001</td>
+      <td>488.0</td>
+      <td>S</td>
+      <td>06001422100</td>
+      <td>...</td>
+      <td>1183.0</td>
+      <td>POLYGON ((-122.300853 37.877571, -122.295353 3...</td>
+      <td>1101.0</td>
+      <td>39.7</td>
+      <td>06001422100</td>
+      <td>71.7</td>
+      <td>11.9</td>
+      <td>7.7</td>
+      <td>16.7</td>
+      <td>2284.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div></div></div>
+</div>
+<p>Next, we can save our new <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>. The following code saves <code class="docutils literal notranslate"><span class="pre">berkeley</span></code> as a file type called a “shapefile,” which happens to be the same file type as the data we read in earlier. <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> can also read and write many other geospatial file types, but we are just going to be using the same file type as before for now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">berkeley</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="s1">&#39;ESRI Shapefile&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;shapefiles/berkeley&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can make a map with our new data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">berkeley</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;medianage&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">berkeley</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;minx&quot;</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;miny&quot;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="mf">0.0625</span><span class="p">,</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">0.015</span><span class="p">,</span> <span class="s1">&#39;Median Age in Years&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Berkeley Median Age by Census Tract&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/36596f11153c341f3a17575e5ae082befe78196ffcf9004582f51cd1d168cc0b.png" src="../../../../_images/36596f11153c341f3a17575e5ae082befe78196ffcf9004582f51cd1d168cc0b.png" />
+</div>
+</div>
+<p>Can you tell which census tracts are around the UC Berkeley campus from this map? Explain.</p>
+<p>YOUR ANSWER HERE</p>
+</section>
+<section id="combining-multiple-geodataframes">
+<h3>Combining multiple <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>s<a class="headerlink" href="#combining-multiple-geodataframes" title="Link to this heading">#</a></h3>
+<p>When working with multiple sets of geospatial data, we may need to plot multiple <code class="docutils literal notranslate"><span class="pre">GeoDataFrames</span></code> together on the same map. There are a few different ways we can do this.</p>
+<p>If one of our <code class="docutils literal notranslate"><span class="pre">GeoDataFrames</span></code> covers a smaller area than the other, we can use the <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> with the larger area as a base on top of which we plot the smaller <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>. To do this, we use the optional <code class="docutils literal notranslate"><span class="pre">ax</span></code> argument when plotting the smaller <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> to tell the plotting sofware that we want to continue using a previously plotted map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also define explicitly the colors of the lines and open spaces on our map.</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">berkeley</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">base</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/654b9c3ea8861c5d7007bef90f2aef8f88f79478d5f72097c9c9fb445ea31142.png" src="../../../../_images/654b9c3ea8861c5d7007bef90f2aef8f88f79478d5f72097c9c9fb445ea31142.png" />
+</div>
+</div>
+<p>We may also have separate <code class="docutils literal notranslate"><span class="pre">GeoDataFrames</span></code> that do not overlap, and we may want to combine them into a single table. Let’s load in some more data so we can see this in action.</p>
+<p>First, we need to read in our data. Let’s use the <code class="docutils literal notranslate"><span class="pre">read_file</span></code> method from before to load in shapefiles in the <code class="docutils literal notranslate"><span class="pre">contra_costa</span></code> and <code class="docutils literal notranslate"><span class="pre">san_francisco</span></code> folders inside the <code class="docutils literal notranslate"><span class="pre">shapefiles</span></code> folder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contra_costa</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;shapefiles/contra_costa&#39;</span><span class="p">)</span>
+<span class="n">san_francisco</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;shapefiles/san_francisco&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that you have loaded the data in, let’s take a look at the columns it contains.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contra_costa</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;AFFGEOID&#39;, &#39;ALAND&#39;, &#39;ALAND_1&#39;, &#39;AWATER&#39;, &#39;AWATER_1&#39;, &#39;COUNTYFP&#39;,
+       &#39;COUNTYFP_1&#39;, &#39;FID_1&#39;, &#39;FUNCSTAT&#39;, &#39;GEOID&#39;, &#39;GEOID_1&#39;, &#39;Geography&#39;,
+       &#39;INTPTLAT&#39;, &#39;INTPTLON&#39;, &#39;Id&#39;, &#39;Id2&#39;, &#39;LSAD&#39;, &#39;MTFCC&#39;, &#39;NAME&#39;,
+       &#39;NAMELSAD&#39;, &#39;NAME_1&#39;, &#39;STATEFP&#39;, &#39;STATEFP_1&#39;, &#39;TRACTCE&#39;, &#39;TRACTCE_1&#39;,
+       &#39;female&#39;, &#39;male&#39;, &#39;medianage&#39;, &#39;mergeid&#39;, &#39;pct_20to64&#39;, &#39;pct_over64&#39;,
+       &#39;pct_pov&#39;, &#39;pct_und_20&#39;, &#39;total_pop&#39;, &#39;geometry&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">san_francisco</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;AFFGEOID&#39;, &#39;ALAND&#39;, &#39;ALAND_1&#39;, &#39;AWATER&#39;, &#39;AWATER_1&#39;, &#39;COUNTYFP&#39;,
+       &#39;COUNTYFP_1&#39;, &#39;FID_1&#39;, &#39;FUNCSTAT&#39;, &#39;GEOID&#39;, &#39;GEOID_1&#39;, &#39;Geography&#39;,
+       &#39;INTPTLAT&#39;, &#39;INTPTLON&#39;, &#39;Id&#39;, &#39;Id2&#39;, &#39;LSAD&#39;, &#39;MTFCC&#39;, &#39;NAME&#39;,
+       &#39;NAMELSAD&#39;, &#39;NAME_1&#39;, &#39;STATEFP&#39;, &#39;STATEFP_1&#39;, &#39;TRACTCE&#39;, &#39;TRACTCE_1&#39;,
+       &#39;female&#39;, &#39;male&#39;, &#39;medianage&#39;, &#39;mergeid&#39;, &#39;pct_20to64&#39;, &#39;pct_over64&#39;,
+       &#39;pct_pov&#39;, &#39;pct_und_20&#39;, &#39;total_pop&#39;, &#39;geometry&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">contra_costa</span></code> and <code class="docutils literal notranslate"><span class="pre">san_francisco</span></code> both have the same columns as <code class="docutils literal notranslate"><span class="pre">alameda</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method to combine them without introducing any missing values, or spaces in our data table that do not have any information. Different packages can often have different ways of dealing with missing values, such completely ignoring any rows containing missing values to interpreting missing values as some default value. Since we do not have any missing values here, we don’t have to worry about this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These three lines create a new column called &#39;county&#39; in each of the GeoDataFrames,</span>
+<span class="c1"># then assigns the name of the county to all rows within the GeoDataFrame.</span>
+<span class="n">alameda</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;alameda&#39;</span>
+<span class="n">contra_costa</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;contra costa&#39;</span>
+<span class="n">san_francisco</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;san francisco&#39;</span>
+
+<span class="c1"># This creates a new, empty GeoDataFrame, then appends of our GeoDataFrames to it.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alameda</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contra_costa</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">san_francisco</span><span class="p">)</span>
+
+<span class="c1"># This plots our new aggregated GeoDataFrame using the &#39;county&#39; column we created</span>
+<span class="c1"># above.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;county&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Set3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/439cc31c706a8bd39156223d040503c07dd4751925cac244e671a4a499955678.png" src="../../../../_images/439cc31c706a8bd39156223d040503c07dd4751925cac244e671a4a499955678.png" />
+</div>
+</div>
+<p>Note that the code for this map has essentially the same form as the choropleth maps we created earlier. Since the column we are using to distinguish the census transects from each other is text rather than continuous numerical values, the plotting software uses distinct colors rather than a smooth spectrum.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="more-geospatial-data-types-in-geopandas">
+<h1>More geospatial data types in <code class="docutils literal notranslate"><span class="pre">geopandas</span></code><a class="headerlink" href="#more-geospatial-data-types-in-geopandas" title="Link to this heading">#</a></h1>
+<p>So far, we have only been creating maps using polygons, but <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> has a few more data types we can work with. First, we need some new data to work with. In the <code class="docutils literal notranslate"><span class="pre">shapefiles</span></code> folder, we have folders named <code class="docutils literal notranslate"><span class="pre">bart_stations</span></code> and <code class="docutils literal notranslate"><span class="pre">bart_routes</span></code> containing geospatial data about the BART system. Load in the data as we did with <code class="docutils literal notranslate"><span class="pre">alameda</span></code> file from the beginning of the lab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bart_stations</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bart_routes</span> <span class="o">=</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>Examining the data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>To get an idea of what the data we are working with looks like, let’s call the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method on the data we have just read.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bart_stations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bart_routes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looking at the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> columns of our two GeoDataFrames, we can see that we have some new types of data. Where we had polygons before, our new data have points and linestrings. Points are are exactly what they sound like, 1-dimensional coordinates in space. Linestrings are line segments that do not necessarily have to be a straight line.</p>
+<p>Use the following cell to draw a linestring the same way we did the first time we looked at a polygon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-the-map">
+<h2>Creating the map<a class="headerlink" href="#creating-the-map" title="Link to this heading">#</a></h2>
+<p>In the next few cells, you will create a map that overlays the bart stations and routes over a map of all the counties. (Alameda, Contra Costa, and San Francisco)</p>
+<p>First, we need the base map of all the counties. We can use the aggregated <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> we created earlier in this notebook. Try setting the <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">edgecolor</span></code> arguments so the map looks more uniform.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, overlay the routes and stations and plot the graph by using this as the base for the map. The Jupyter notebook will not remember the map you drew in the previous cell even if you assigned it a name, so make sure to plot the base map again in the following cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bart_routes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">bart_stations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Congratulations! You’re done with this lab! If you are interested in learning more about what you can do with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, you can find the documentation for the package <a class="reference external" href="http://geopandas.org/reference.html">here</a>.</p>
+<hr class="docutils" />
+<section id="authors-monica-wilkinson-and-vera-wang">
+<h3>Authors: Monica Wilkinson and Vera Wang<a class="headerlink" href="#authors-monica-wilkinson-and-vera-wang" title="Link to this heading">#</a></h3>
+</section>
+<section id="references">
+<h3>References:<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://geopandas.org/mapping.html">http://geopandas.org/mapping.html</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/users/colormaps.html">https://matplotlib.org/users/colormaps.html</a></p></li>
+<li><p><a class="reference external" href="http://www.bayareacensus.ca.gov/small/small.htm">http://www.bayareacensus.ca.gov/small/small.htm</a></p></li>
+<li><p><a class="reference external" href="https://www.bart.gov/schedules/developers/geo">https://www.bart.gov/schedules/developers/geo</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_site/content/cp-101/lab09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-data">Examining the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-maps">Basic maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-maps">Choropleth maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-shapefile">Creating a new shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-multiple-geodataframes">Combining multiple <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>s</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-geospatial-data-types-in-geopandas">More geospatial data types in <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examining the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-map">Creating the map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authors-monica-wilkinson-and-vera-wang">Authors: Monica Wilkinson and Vera Wang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

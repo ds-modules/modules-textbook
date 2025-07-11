@@ -1,0 +1,1505 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Importing Data, Using Tables and Creating Graphs &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/psych-167ac/01-intro';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Correlation, regression, and prediction" href="02-correlation-regression.html" />
+    <link rel="prev" title="Introduction to the Psychology Modules" href="psych-167ac-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="psych-167ac-intro.html">Psychology</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/psych-167ac/01-intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Importing Data, Using Tables and Creating Graphs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-notebook">The Jupyter Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-cells">Executing cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing">Importing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tables">Using Tables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tables-essentials">Tables Essentials!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizations">Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-tables">Merging Tables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-rows">Adding rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-columns">Adding columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-on-columns">Joining on columns</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-ve-learned-a-lot-in-this-module-let-s-look-back-on-the-key-parts">You’ve learned a lot in this module! Let’s look back on the key parts.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-importing-data-using-tables-and-creating-graphs">
+<h1>Introduction to Importing Data, Using Tables and Creating Graphs<a class="headerlink" href="#introduction-to-importing-data-using-tables-and-creating-graphs" title="Link to this heading">#</a></h1>
+<section id="the-jupyter-notebook">
+<h2>The Jupyter Notebook<a class="headerlink" href="#the-jupyter-notebook" title="Link to this heading">#</a></h2>
+<p><em>If you run into errors, check the <a class="reference external" href="https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing">common errors</a> Google doc first.</em></p>
+<p>First of all, note that this page is divided into what are called “cells”. For example, the following cell is a “code cell” where you will write your code. You’ll see a <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> next to each cell for code, which is a counter for the cells you have run. You can navigate cells by clicking on them or by using the up and down arrows. Cells will be highlighted as you navigate them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is a code cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="executing-cells">
+<h3>Executing cells<a class="headerlink" href="#executing-cells" title="Link to this heading">#</a></h3>
+<p></p>
+<div class="alert alert-info">
+You can execute cells with <b><code>Ctrl-Enter</code></b> (which will run the cell and keep the same cell selected), or <b><code>Shift-Enter</code></b> (which will run the cell and then select the next cell).
+</div>
+<p>Try running the following cell and see what it prints out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now run this cell to <code class="docutils literal notranslate"><span class="pre">import</span></code> some code we’ll use today, nothing will <code class="docutils literal notranslate"><span class="pre">print</span></code> out, don’t worry!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datascience</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline 
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="importing">
+<h3>Importing<a class="headerlink" href="#importing" title="Link to this heading">#</a></h3>
+<p>In data analytics, there is almost always a file holding your data that already exists. There are thousands of databases online that contain information on topics from all domains. In general, to import data from a file, we write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;file_name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Most often, these file names end in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> to show the data format. <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format is popular for spreadsheets and can be imported/exported from programs such as Microsoft Excel, OpenOffice Calc, or Google spreadsheets.</p>
+<p>An example is shown below using <a class="reference external" href="http://www2.census.gov/programs-surveys/popest/datasets/2010-2015/national/asrh/nc-est2015-agesex-res.csv">U.S. Census data</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/chrispyles/GitHub/modules-textbook/content/psych
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;data/nc-est2015-agesex-res.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>CENSUS2010POP</th> <th>ESTIMATESBASE2010</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2011</th> <th>POPESTIMATE2012</th> <th>POPESTIMATE2013</th> <th>POPESTIMATE2014</th> <th>POPESTIMATE2015</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944153      </td> <td>3944160          </td> <td>3951330        </td> <td>3963087        </td> <td>3926540        </td> <td>3931141        </td> <td>3949775        </td> <td>3978038        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978070      </td> <td>3978090          </td> <td>3957888        </td> <td>3966551        </td> <td>3977939        </td> <td>3942872        </td> <td>3949776        </td> <td>3968564        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096929      </td> <td>4096939          </td> <td>4090862        </td> <td>3971565        </td> <td>3980095        </td> <td>3992720        </td> <td>3959664        </td> <td>3966583        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119040      </td> <td>4119051          </td> <td>4111920        </td> <td>4102470        </td> <td>3983157        </td> <td>3992734        </td> <td>4007079        </td> <td>3974061        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063170      </td> <td>4063186          </td> <td>4077551        </td> <td>4122294        </td> <td>4112849        </td> <td>3994449        </td> <td>4005716        </td> <td>4020035        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056858      </td> <td>4056872          </td> <td>4064653        </td> <td>4087709        </td> <td>4132242        </td> <td>4123626        </td> <td>4006900        </td> <td>4018158        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066381      </td> <td>4066412          </td> <td>4073013        </td> <td>4074993        </td> <td>4097605        </td> <td>4142916        </td> <td>4135930        </td> <td>4019207        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030579      </td> <td>4030594          </td> <td>4043046        </td> <td>4083225        </td> <td>4084913        </td> <td>4108349        </td> <td>4155326        </td> <td>4148360        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046486      </td> <td>4046497          </td> <td>4025604        </td> <td>4053203        </td> <td>4093177        </td> <td>4095711        </td> <td>4120903        </td> <td>4167887        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148353      </td> <td>4148369          </td> <td>4125415        </td> <td>4035710        </td> <td>4063152        </td> <td>4104072        </td> <td>4108349        </td> <td>4133564        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<p>That’s a lot of information. As you can see from the labels on top, this table shows Biological Sex (0=total, 1=male, 2=female), Age,  2010 Census Information, and predictions for U.S. population for the next five years.</p>
+</section>
+</section>
+<section id="using-tables">
+<h2>Using Tables<a class="headerlink" href="#using-tables" title="Link to this heading">#</a></h2>
+<p>We can make criteria to cut down tables. Accessing only the rows, columns, or values specfic to our purpose makes information easier understood. Analysis and conclusions can be made when data is more digestible.</p>
+<p>We need to access the census table above and name it for further use. We assign the table to a variable so that we can reference it later!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;data/nc-est2015-agesex-res.csv&quot;</span><span class="p">)</span>
+<span class="n">census_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>CENSUS2010POP</th> <th>ESTIMATESBASE2010</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2011</th> <th>POPESTIMATE2012</th> <th>POPESTIMATE2013</th> <th>POPESTIMATE2014</th> <th>POPESTIMATE2015</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944153      </td> <td>3944160          </td> <td>3951330        </td> <td>3963087        </td> <td>3926540        </td> <td>3931141        </td> <td>3949775        </td> <td>3978038        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978070      </td> <td>3978090          </td> <td>3957888        </td> <td>3966551        </td> <td>3977939        </td> <td>3942872        </td> <td>3949776        </td> <td>3968564        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096929      </td> <td>4096939          </td> <td>4090862        </td> <td>3971565        </td> <td>3980095        </td> <td>3992720        </td> <td>3959664        </td> <td>3966583        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119040      </td> <td>4119051          </td> <td>4111920        </td> <td>4102470        </td> <td>3983157        </td> <td>3992734        </td> <td>4007079        </td> <td>3974061        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063170      </td> <td>4063186          </td> <td>4077551        </td> <td>4122294        </td> <td>4112849        </td> <td>3994449        </td> <td>4005716        </td> <td>4020035        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056858      </td> <td>4056872          </td> <td>4064653        </td> <td>4087709        </td> <td>4132242        </td> <td>4123626        </td> <td>4006900        </td> <td>4018158        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066381      </td> <td>4066412          </td> <td>4073013        </td> <td>4074993        </td> <td>4097605        </td> <td>4142916        </td> <td>4135930        </td> <td>4019207        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030579      </td> <td>4030594          </td> <td>4043046        </td> <td>4083225        </td> <td>4084913        </td> <td>4108349        </td> <td>4155326        </td> <td>4148360        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046486      </td> <td>4046497          </td> <td>4025604        </td> <td>4053203        </td> <td>4093177        </td> <td>4095711        </td> <td>4120903        </td> <td>4167887        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148353      </td> <td>4148369          </td> <td>4125415        </td> <td>4035710        </td> <td>4063152        </td> <td>4104072        </td> <td>4108349        </td> <td>4133564        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<p>This notebook can calculate how large this table is with two functions: num_rows and num_columns. The general form for these functions are table.num_rows and table.num_columns.</p>
+<p>Let’s use these on the table above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_data</span><span class="o">.</span><span class="n">num_rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>306
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_data</span><span class="o">.</span><span class="n">num_columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s a 306 x 10 table! We can first start to cut down this table using only some columns. Let’s only include biological sex, age and the estimated base for 2010 census data.</p>
+<p>There are two methods to make a table with select columns included. We could either use the ‘select’ function or the ‘drop’ function.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">select</span></code> can create a new table with only the columns indicated in the parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop</span></code> can create a new table with columns NOT indicated in the parameters</p></li>
+</ul>
+<p>Here’s an example of two equal codes: (keep in mind that we assign each new table to a new variable, to make organization easier).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_census_data</span> <span class="o">=</span> <span class="n">census_data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;SEX&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;ESTIMATESBASE2010&quot;</span><span class="p">)</span>
+<span class="n">select_census_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drop_census_data</span> <span class="o">=</span> <span class="n">census_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;CENSUS2010POP&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2010&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2011&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2012&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2013&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2014&quot;</span><span class="p">,</span><span class="s2">&quot;POPESTIMATE2015&quot;</span><span class="p">)</span>
+<span class="n">drop_census_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<p>As you can see underneath the table, there are still 296 rows omitted! Our next step is to only include non-gendered data AKA data where SEX=0, neither male or female specific.</p>
+<p>To do this, we need to use a new function <code class="docutils literal notranslate"><span class="pre">where</span></code>. The general form of this function is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table_name</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span> <span class="n">predicate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To cut our table down to only include <code class="docutils literal notranslate"><span class="pre">sex=0</span></code>, we may use the predicate <code class="docutils literal notranslate"><span class="pre">are.equal_to()</span></code>. Note that we are assigning the new table to a new variable. We are referencing the table stored in an older variable (<code class="docutils literal notranslate"><span class="pre">select_census_data</span></code>), and modifying it. That modification is what is stored in the new variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_census_data</span> <span class="o">=</span> <span class="n">select_census_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;SEX&quot;</span><span class="p">,</span> <span class="n">are</span><span class="o">.</span><span class="n">equal_to</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">new_census_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978090          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096939          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119051          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063186          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056872          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066412          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030594          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046497          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148369          </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (92 rows omitted)</p></div></div>
+</div>
+<p>There are still 92 rows omitted! Let’s take every 10th entry to cut this table down a little more.</p>
+<p>To do this we need to use the <code class="docutils literal notranslate"><span class="pre">take</span></code> function. The <code class="docutils literal notranslate"><span class="pre">take</span></code> function creates a new table with rows from the original table whose indices(row number) are given. In Python, indices start at 0!</p>
+<p>Here’s taking every 10th entry. Inside of the take parentheses is a Python list of numbers from 0 to 90, increasing by 10s. This indicates exactly which rows we want to keep (every 10th row).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_10_year</span> <span class="o">=</span> <span class="n">new_census_data</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">90</span><span class="p">])</span>
+<span class="n">census_10_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>10  </td> <td>4172559          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>20  </td> <td>4519556          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>30  </td> <td>4285877          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>40  </td> <td>4383450          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>50  </td> <td>4660457          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>60  </td> <td>3621214          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>70  </td> <td>2043178          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>80  </td> <td>1308608          </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>90  </td> <td>435695           </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Now that sex is all the same, we can drop that column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_census_table</span> <span class="o">=</span> <span class="n">census_10_year</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;SEX&quot;</span><span class="p">)</span>
+<span class="n">final_census_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>AGE</th> <th>ESTIMATESBASE2010</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>3944160          </td>
+        </tr>
+        <tr>
+            <td>10  </td> <td>4172559          </td>
+        </tr>
+        <tr>
+            <td>20  </td> <td>4519556          </td>
+        </tr>
+        <tr>
+            <td>30  </td> <td>4285877          </td>
+        </tr>
+        <tr>
+            <td>40  </td> <td>4383450          </td>
+        </tr>
+        <tr>
+            <td>50  </td> <td>4660457          </td>
+        </tr>
+        <tr>
+            <td>60  </td> <td>3621214          </td>
+        </tr>
+        <tr>
+            <td>70  </td> <td>2043178          </td>
+        </tr>
+        <tr>
+            <td>80  </td> <td>1308608          </td>
+        </tr>
+        <tr>
+            <td>90  </td> <td>435695           </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<hr class="docutils" />
+<section id="tables-essentials">
+<h3>Tables Essentials!<a class="headerlink" href="#tables-essentials" title="Link to this heading">#</a></h3>
+<p>For your reference, here’s a table of useful <code class="docutils literal notranslate"><span class="pre">Table</span></code> functions:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Table</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Table()</span></code></p></td>
+<td><p>Create an empty table, usually to extend with data</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Table.read_table</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Table.read_table(&quot;my_data.csv&quot;)</span></code></p></td>
+<td><p>Create a table from a data file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">with_columns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl</span> <span class="pre">=</span> <span class="pre">Table().with_columns(&quot;N&quot;,</span> <span class="pre">np.arange(5),</span> <span class="pre">&quot;2*N&quot;,</span> <span class="pre">np.arange(0,</span> <span class="pre">10,</span> <span class="pre">2))</span></code></p></td>
+<td><p>Create a copy of a table with more columns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">column</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.column(&quot;N&quot;)</span></code></p></td>
+<td><p>Create an array containing the elements of a column</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sort</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.sort(&quot;N&quot;)</span></code></p></td>
+<td><p>Create a copy of a table sorted by the values in a column</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">where</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;N&quot;,</span> <span class="pre">are.above(2))</span></code></p></td>
+<td><p>Create a copy of a table with only the rows that match some <em>predicate</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_rows</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.num_rows</span></code></p></td>
+<td><p>Compute the number of rows in a table</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">num_columns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.num_columns</span></code></p></td>
+<td><p>Compute the number of columns in a table</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">select</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.select(&quot;N&quot;)</span></code></p></td>
+<td><p>Create a copy of a table with only some of the columns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">drop</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.drop(&quot;2*N&quot;)</span></code></p></td>
+<td><p>Create a copy of a table without some of the columns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">take</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.take(np.arange(0,</span> <span class="pre">6,</span> <span class="pre">2))</span></code></p></td>
+<td><p>Create a copy of the table with only the rows whose indices are in the given array</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">join</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl1.join(&quot;shared_column_name&quot;,</span> <span class="pre">tbl2)</span></code></p></td>
+<td><p>Join together two tables with a common column name</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">are.equal_to()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;SEX&quot;,</span> <span class="pre">are.equal_to(0))</span></code></p></td>
+<td><p>find values equal to that indicated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">are.not_equal_to()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;SEX&quot;,</span> <span class="pre">are.not_equal_to(0))</span></code></p></td>
+<td><p>find values not including the one indicated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">are.above()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;AGE&quot;,</span> <span class="pre">are.above(30))</span></code></p></td>
+<td><p>find values greater to that indicated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">are.below()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;AGE&quot;,</span> <span class="pre">are.below(40))</span></code></p></td>
+<td><p>find values less than that indicated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">are.between()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tbl.where(&quot;SEX&quot;,</span> <span class="pre">are.between(18,</span> <span class="pre">60))</span></code></p></td>
+<td><p>find values between the two indicated</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="visualizations">
+<h2>Visualizations<a class="headerlink" href="#visualizations" title="Link to this heading">#</a></h2>
+<p>Now that we have a manageable table we can start making visualizations! Due to the numerical nature of the census table above, let’s first try a scatter plot.</p>
+<p>To create a scatter plot, we need to use the <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> function. The general form is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s2">&quot;column for x axis&quot;</span><span class="p">,</span> <span class="s2">&quot;column for y axis&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An example is shown below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_census_table</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;ESTIMATESBASE2010&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6955044878de918bddb2a5dd456e95935c4ba562fc7880c1a6da016c240eb90a.png" src="../../_images/6955044878de918bddb2a5dd456e95935c4ba562fc7880c1a6da016c240eb90a.png" />
+</div>
+</div>
+<p>With this data, we can also make a line plot. To do this, we need to use the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function. This works a lot like <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> where the general form is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;x column&quot;</span><span class="p">,</span> <span class="s2">&quot;y column&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_census_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;ESTIMATESBASE2010&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c6bcd92c5ce69bb46ec4129d850aa0b16c14134dc05da920e78f0aaad4b9f593.png" src="../../_images/c6bcd92c5ce69bb46ec4129d850aa0b16c14134dc05da920e78f0aaad4b9f593.png" />
+</div>
+</div>
+<p>Though a bar may be better. Bar graphs follow the same formula as scatter plots and line graphs above, with the general form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s2">&quot;x axis&quot;</span><span class="p">,</span> <span class="s2">&quot;y axis&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_census_table</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;ESTIMATESBASE2010&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d70c7c6a39a4e57d38716630b8cb052e264b2ab73fef86d5a0ea2addcf075f16.png" src="../../_images/d70c7c6a39a4e57d38716630b8cb052e264b2ab73fef86d5a0ea2addcf075f16.png" />
+</div>
+</div>
+<p>You can also use the functino <code class="docutils literal notranslate"><span class="pre">barh()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">bar()</span></code> in order to flip the bar graph horizontally. Sometimes, this makes for a cleaner visualization.</p>
+</section>
+<hr class="docutils" />
+<section id="merging-tables">
+<h2>Merging Tables<a class="headerlink" href="#merging-tables" title="Link to this heading">#</a></h2>
+<p>We are going to cover one more topic briefly that you will need to use in your project. We are going to look into how to merge two tables that have common information. This technique will be very valuable when the time comes for you to do your own analysis with your own data sets.</p>
+<p>We are going to read in a table with information about psychologists. We will call this new table <code class="docutils literal notranslate"><span class="pre">psych1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych1</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;example-data/psych1.csv&quot;</span><span class="p">)</span>
+<span class="n">psych1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<section id="adding-rows">
+<h3>Adding rows<a class="headerlink" href="#adding-rows" title="Link to this heading">#</a></h3>
+<p>You may have another <code class="docutils literal notranslate"><span class="pre">table</span></code> that has the exact same columns and you just want to add the rows to what you already have. Let’s read in another short <code class="docutils literal notranslate"><span class="pre">table</span></code> with a couple more psychologists:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych2</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;example-data/psych2.csv&quot;</span><span class="p">)</span>
+<span class="n">psych2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Great! We see that this second table has the same columns as the first one. Merging these two tables would allow us to consolidate our information. We are going to use the “append” method to append the second table onto the first!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych_merged</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">psych1</span><span class="p">)</span>  <span class="c1"># copying over the new_psych table to a new variable for the merged table</span>
+<span class="n">psych_merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psych2</span><span class="p">)</span>
+<span class="n">psych_merged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>As you can see, we have succesfully merged these two tables together! Now, let us try merging an additional column onto the original <code class="docutils literal notranslate"><span class="pre">new_psych</span></code> table.</p>
+</section>
+<section id="adding-columns">
+<h3>Adding columns<a class="headerlink" href="#adding-columns" title="Link to this heading">#</a></h3>
+<p>Let’s pretend that we suddenly have access to the favorite foods of each psychologist. Wow! We definitely want to include that information in our table. This means that we need to merge in a new column to the initial table. Let us print the table first, and then we’ll get the other column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych_merged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Now we are going to create to read in our new information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych_foods</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;example-data/favorite_food.csv&#39;</span><span class="p">)</span>
+<span class="n">psych_foods</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Favorite Food</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Pizza        </td>
+        </tr>
+        <tr>
+            <td>Snickers     </td>
+        </tr>
+        <tr>
+            <td>Grapes       </td>
+        </tr>
+        <tr>
+            <td>Escargot     </td>
+        </tr>
+        <tr>
+            <td>Ice Cream    </td>
+        </tr>
+        <tr>
+            <td>Apples       </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Luckily, we are going to assume that each row is in the right order in the column. We are going to use a similar process as before to merge this column! The method we now use is <code class="docutils literal notranslate"><span class="pre">append_column</span></code>. Otherwise, the format stays the same!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych_merged_with_food</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">psych_merged</span><span class="p">)</span>  <span class="c1"># copying over the new_psych table to a new variable </span>
+<span class="n">psych_merged_with_food</span><span class="o">.</span><span class="n">append_column</span><span class="p">(</span><span class="s2">&quot;Favorite Food&quot;</span><span class="p">,</span> <span class="n">psych_foods</span><span class="p">[</span><span class="s1">&#39;Favorite Food&#39;</span><span class="p">])</span>
+<span class="n">psych_merged_with_food</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th> <th>Favorite Food</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Freud       </td> <td>1856      </td> <td>Pizza        </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td> <td>Snickers     </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td> <td>Grapes       </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td> <td>Escargot     </td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td> <td>Ice Cream    </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>190       </td> <td>Apples       </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>As you can see, we’ve successfully merged a column to our table too!</p>
+</section>
+<section id="joining-on-columns">
+<h3>Joining on columns<a class="headerlink" href="#joining-on-columns" title="Link to this heading">#</a></h3>
+<p>Suppose now that you have more information on the these psycologists (another column), but the rows aren’t in the right order so you can’t just <code class="docutils literal notranslate"><span class="pre">append_column</span></code>. Luckily, you have their names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psych_birthplaces</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;example-data/birthplaces.csv&quot;</span><span class="p">)</span>
+<span class="n">psych_birthplaces</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/datascience/tables.py:132: FutureWarning: read_table is deprecated, use read_csv instead.
+  df = pandas.read_table(filepath_or_buffer, *args, **vargs)
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Maslow      </td> <td>New York      </td>
+        </tr>
+        <tr>
+            <td>Erikson     </td> <td>Germany       </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>Pennsylvania  </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Freud       </td> <td>Czech Republic</td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>Switzerland   </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Awesome! We love more data, but how can I merge this back into our existing information? We can’t just add a column because the order is different.</p>
+<p><em><strong>Solution</strong></em>: We can use the <code class="docutils literal notranslate"><span class="pre">join</span></code> method and tell it which column the two tables have in common, and it will match the data to the correct row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_table</span> <span class="o">=</span> <span class="n">psych_merged_with_food</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;Psychologist&quot;</span><span class="p">,</span> <span class="n">psych_birthplaces</span><span class="p">)</span>
+<span class="n">final_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Psychologist</th> <th>Birth Year</th> <th>Favorite Food</th> <th>Birth Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Erikson     </td> <td>190       </td> <td>Apples       </td> <td>Germany       </td>
+        </tr>
+        <tr>
+            <td>Freud       </td> <td>1856      </td> <td>Pizza        </td> <td>Czech Republic</td>
+        </tr>
+        <tr>
+            <td>Jung        </td> <td>1875      </td> <td>Ice Cream    </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Maslow      </td> <td>1908      </td> <td>Escargot     </td> <td>New York      </td>
+        </tr>
+        <tr>
+            <td>Piaget      </td> <td>1896      </td> <td>Grapes       </td> <td>Switzerland   </td>
+        </tr>
+        <tr>
+            <td>Skinner     </td> <td>1904      </td> <td>Snickers     </td> <td>Pennsylvania  </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>That’s super cool!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>SUMMARY<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<section id="you-ve-learned-a-lot-in-this-module-let-s-look-back-on-the-key-parts">
+<h3>You’ve learned a lot in this module! Let’s look back on the key parts.<a class="headerlink" href="#you-ve-learned-a-lot-in-this-module-let-s-look-back-on-the-key-parts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>To import data from a .csv/.txt file, we write <code class="docutils literal notranslate"><span class="pre">Table.read_table(&quot;file_name&quot;)</span></code>.</p></li>
+<li><p>To create our own table, we write <code class="docutils literal notranslate"><span class="pre">Table(</span> <span class="pre">).with_columns(&quot;Column</span> <span class="pre">Name&quot;,</span> <span class="pre">array_name,</span> <span class="pre">.</span> <span class="pre">.</span> <span class="pre">.)</span></code> .</p></li>
+<li><p>To count number of rows, we use <code class="docutils literal notranslate"><span class="pre">table_name.num_rows</span></code>.</p></li>
+<li><p>To count number of columns, we use <code class="docutils literal notranslate"><span class="pre">table_name.num_columns</span></code>.</p></li>
+<li><p>To create a new table with only the columns indicated in the parameters, we use <code class="docutils literal notranslate"><span class="pre">table_name.select(&quot;COLUMN</span> <span class="pre">NAME&quot;,</span> <span class="pre">...)</span></code>.</p></li>
+<li><p>To create a new table without the columns indicated in the parameters, we use <code class="docutils literal notranslate"><span class="pre">table_name.drop(&quot;COLUMN</span> <span class="pre">NAME&quot;,</span> <span class="pre">...)</span></code>.</p></li>
+<li><p>To create a table with only certain values, we can use <code class="docutils literal notranslate"><span class="pre">table_name.where(column_name,</span> <span class="pre">predicate)</span></code>.</p></li>
+<li><p>To create a new table with indicated rows from the original table, we use <code class="docutils literal notranslate"><span class="pre">table_name.take([index</span> <span class="pre">1,</span> <span class="pre">index</span> <span class="pre">2,</span> <span class="pre">.</span> <span class="pre">.</span> <span class="pre">.</span> <span class="pre">])</span></code>. Remember in Python indices start at 0!</p></li>
+<li><p>To create a scatter plot, we use <code class="docutils literal notranslate"><span class="pre">table.scatter(column</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">axis,</span> <span class="pre">column</span> <span class="pre">for</span> <span class="pre">y</span> <span class="pre">axis)</span></code>.</p></li>
+<li><p>To create a line plot, we use <code class="docutils literal notranslate"><span class="pre">table.plot(x</span> <span class="pre">column,</span> <span class="pre">y</span> <span class="pre">column)</span></code>.</p></li>
+<li><p>To make a bar graphs, we can use either <code class="docutils literal notranslate"><span class="pre">table.bar(x</span> <span class="pre">column,</span> <span class="pre">y</span> <span class="pre">column)</span></code> or <code class="docutils literal notranslate"><span class="pre">table.barh(x</span> <span class="pre">column,</span> <span class="pre">y</span> <span class="pre">column)</span></code>.</p></li>
+<li><p>To make a histogram, we use <code class="docutils literal notranslate"><span class="pre">table.hist(x</span> <span class="pre">axis,</span> <span class="pre">bins(optional),</span> <span class="pre">unit(optional))</span></code>.</p></li>
+<li><p>To merge tables, we use either <code class="docutils literal notranslate"><span class="pre">append</span></code> or <code class="docutils literal notranslate"><span class="pre">append_column</span></code>.</p></li>
+<li><p>To merge two tables with a common column name we use the <code class="docutils literal notranslate"><span class="pre">join</span></code> method.</p></li>
+</ul>
+<hr class="docutils" />
+<p>With just some simple code, we were able to do an incredible amount of data analysis! Play around with the examples until you feel comfortable with the content of this notebook. We will be using notebooks to analyze your own data sets in the future! Please ask if you have questions!</p>
+<p>If you need help, please consult the <a class="reference external" href="https://data.berkeley.edu/education/data-science-community">Data Peers</a>!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/psych-167ac"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="psych-167ac-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to the Psychology Modules</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-correlation-regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Correlation, regression, and prediction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-notebook">The Jupyter Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-cells">Executing cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing">Importing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tables">Using Tables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tables-essentials">Tables Essentials!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizations">Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-tables">Merging Tables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-rows">Adding rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-columns">Adding columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-on-columns">Joining on columns</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-ve-learned-a-lot-in-this-module-let-s-look-back-on-the-key-parts">You’ve learned a lot in this module! Let’s look back on the key parts.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

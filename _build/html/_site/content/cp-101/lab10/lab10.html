@@ -1,0 +1,1043 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Working with and visualizing large datasets &#8212; UC Berkeley Data Science Modules</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_site/content/cp-101/lab10/lab10';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../content/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UC Berkeley Data Science Modules</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../content/intro.html">
+                    UC Berkeley Data Science Modules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Social Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/legalst-190/legalst-190-intro.html">Legal Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/1-18.html">Intro to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/legalst-190/ps1/SF_Crime_PSET1.html">SF Crime PSET 1</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Sciences</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/psych-167ac/psych-167ac-intro.html">Psychology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/01-intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/02-correlation-regression.html">Correlation &amp; Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/psych-167ac/03-my-project.html">Using your own data</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arts and Humanities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/xenglish-r1a/xenglish-r1a-intro.html">English</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/xenglish-r1a/01-Chinatowns.html">ENGLISH R1A: Chinatown and the Culture of Exclusion</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Professional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/cp-101/cp-101-intro.html">City Planning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab07/lab07.html">Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab08/lab08.html">Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab09/lab09.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/cp-101/lab10/lab10.html">Lab 10</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/_site/content/cp-101/lab10/lab10.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with and visualizing large datasets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-number-of-tweets-over-time">Plotting the number of tweets over time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-to-datetime">Converting to DateTime</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-tweets-by-date">Grouping tweets by date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-matplotlib-to-plot-a-line-plot-number-of-tweets-vs-date">Using Matplotlib to plot a line plot: Number of tweets vs. date</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-tweets-by-tract-barplots">Number of tweets by tract - Barplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-tweets-by-census-tract">Grouping tweets by census tract</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-tweet-counts-in-descending-order">Sorting tweet counts in descending order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-census-tract-numbers-to-strings">Convert census tract numbers to strings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-on-to-geopandas-visualizing-number-of-tweets-per-census-tract-spatially">Moving on to GeoPandas: Visualizing number of tweets per census tract spatially</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-dataframes">Merging dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-form">Feedback form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#author-rebekah-tang">Author: Rebekah Tang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libraries that this notebook will use:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+<span class="c1"># Helps the maps display nicely in the notebook:</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="c1"># Tells the notebook not to display warnings:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-and-visualizing-large-datasets">
+<h1>Working with and visualizing large datasets<a class="headerlink" href="#working-with-and-visualizing-large-datasets" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Dealing with missing values</p></li>
+<li><p>Filtering and selecting for certain rows and columns with <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> and <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code></p></li>
+<li><p>Grouping data by specific attributes with <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code></p></li>
+<li><p>Working with temporal and categorial data and plotting lineplots and barplots</p></li>
+<li><p>Reviewing list comprehensions</p></li>
+<li><p>Merging two dataframes with <code class="docutils literal notranslate"><span class="pre">.merge()</span></code></p></li>
+<li><p>Plotting chloropleth maps with GeoPandas</p></li>
+</ul>
+<section id="data-cleaning">
+<h2>Data cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<p>Today we’re going to extend our Pandas and Geopandas knowledge to manipulate and visualize an existing large dataset. This dataset is a random sample of tweets collected over time (2012 to 2015) in Alameda County. The most relevant columns are the tweet ID, user ID, latitude, longitude, date, and census tract number.</p>
+<p>First, we need to clean the data. This data is relatively clean, but some columns have missing values, which may be problematic when you’re trying to visualize, analyze, or model the data. There are many ways to deal with missing values, but today we’re going to go over one: simply getting rid of them.</p>
+<p>Now, let’s read in the data (from a .csv file) into Pandas. We’ll call the variable for the dataframe <code class="docutils literal notranslate"><span class="pre">tweets</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tweets.csv&quot;</span><span class="p">)</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look of how many rows we have before deleting the rows with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">)</span> <span class="c1">##185793</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also look at what the column names of the dataset are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we clean, let’s view the rows with missing values first. The code below is how we can do so. Let’s break it down.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tweets.isnull().any(axis=1)</span></code> is a conditional statement that is a True or False value denoting if the corresponding row has a missing value.
+<code class="docutils literal notranslate"><span class="pre">tweets[tweets.isnull().any(axis=1)]</span></code> selects the rows for where the above conditional is True.</p>
+<p>Note: axis = 0 would select the columns.</p>
+<p>Run the code below to display the first five rows that have missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="c1"># Display rows with missing values in any column.</span>
+<span class="n">tweets</span><span class="p">[</span><span class="n">tweets</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There should be a total of 26 rows with missing values in the dataset. Run the next cell with the len() function to confirm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="n">tweets</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s actually delete the rows, using the function</p>
+<p><code class="docutils literal notranslate"><span class="pre">dataframename.dropna(axis=0,</span> <span class="pre">how='any')</span></code></p>
+<p>which drops any row where there is a missing value in any column. Use <code class="docutils literal notranslate"><span class="pre">dropna(...)</span></code> on the dataframe <code class="docutils literal notranslate"><span class="pre">tweets</span></code>. Use <code class="docutils literal notranslate"><span class="pre">len()</span></code> to count how many rows are remaining. You should see that the row count has dropped by 81.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="o">...</span>
+<span class="nb">len</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following cell to display the rows with missing values. There should be none.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="p">[</span><span class="n">tweets</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following cell to reset the indices and get rid of extraneous columns. We will explain how this works in a later section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">tweets</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">tweets</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;u_id&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;tract&#39;</span><span class="p">,</span> <span class="s1">&#39;home_tract&#39;</span><span class="p">]]</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-the-number-of-tweets-over-time">
+<h2>Plotting the number of tweets over time<a class="headerlink" href="#plotting-the-number-of-tweets-over-time" title="Link to this heading">#</a></h2>
+<section id="converting-to-datetime">
+<h3>Converting to DateTime<a class="headerlink" href="#converting-to-datetime" title="Link to this heading">#</a></h3>
+<p>Notice that we have temporal data in the <code class="docutils literal notranslate"><span class="pre">tweets</span></code> dataset. We can use the temporal information to plot the number of tweets over time. However, right now the temporal information is so fine grain, right down towards the second, that we probably won’t be able to see any patterns. So for this exercise, <em>we only want the date information</em>.</p>
+<p>Now let’s take a step backwards first.
+In our dataframe, the temporal information is stored as <strong>strings</strong>, but for Python to understand these strings as temporal information, we’ll need to convert them to <strong>Python DateTime</strong> objects. From then we can get the dates only.</p>
+<p>When we run the following code, we can see that the individual dates are currently stored as strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To convert them into DateTime objects, we simply need to use the</p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.to_datetime(&lt;the</span> <span class="pre">list,</span> <span class="pre">array,</span> <span class="pre">or</span> <span class="pre">series</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">convert&gt;)</span></code></p>
+<p>function, which outputs the converted values. In the following cell, set the date column equal to the converted values you get with <code class="docutils literal notranslate"><span class="pre">pd._to_datetime(...)</span></code>. When you run <code class="docutils literal notranslate"><span class="pre">print()</span></code> lines, you should see that the type of the dates has now changed into “Timestamp”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in ...</span>
+<span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we want to get the date from a Timestamp, which is the first part of the output above. To do this, we will use a list comprehension.</p>
+<p>To remind you, here’s the structure of a list comprehension. Let’s say you have a list called <code class="docutils literal notranslate"><span class="pre">nums</span></code> with values <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> and want to add 1 to each of the values. The variable n will take on every value in the list called nums, and then we add 1 to every value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##If we wanted to do the above with a for loop, it would look like this:</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">new_nums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="n">add_1</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">new_nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_1</span><span class="p">)</span>
+    
+<span class="n">new_nums</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A list comprehension runs faster than a for loop because we do everything in a single line, whereas in a for loop, we have to go through more than one line.</p>
+<p>Now do the exercise below.</p>
+<p>To only get the date from a Timestamp, you just need to use the function</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;the</span> <span class="pre">timestamp&gt;.date()</span></code>.</p>
+<p>To convert all the values in our column, we can use a list comprehension. Set the date column equal to the output of your list comprehension.</p>
+<p>When you run the <code class="docutils literal notranslate"><span class="pre">print()</span></code> lines, you can see that type of the dates has now changed to “datetime.date”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in ...</span>
+<span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tweets</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="grouping-tweets-by-date">
+<h3>Grouping tweets by date<a class="headerlink" href="#grouping-tweets-by-date" title="Link to this heading">#</a></h3>
+<p>Now we want to aggregate by date. Specifically, we want to get the count of tweets per date. We can use the function</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;the</span> <span class="pre">dataframe&gt;.groupby(by=&lt;column</span> <span class="pre">name</span> <span class="pre">to</span> <span class="pre">group</span> <span class="pre">by&gt;).&lt;an</span> <span class="pre">aggregating</span> <span class="pre">function,</span> <span class="pre">e.g.</span> <span class="pre">count(),</span> <span class="pre">max(),</span> <span class="pre">mean()&gt;</span></code>,</p>
+<p>which outputs a grouped dataframe, to do so. Which aggregating function should we use? Set a variable called <code class="docutils literal notranslate"><span class="pre">tweets_by_date</span></code> equal to the grouped dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in ...</span>
+<span class="n">tweets_by_date</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_date</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below, we are going to perform some dataframe operations that will prepare our data for visualization. Pay attention, as you will need to do something similar later on.</p>
+<p>Notice how the date column is now bolded. Pandas now views the date column as an index, which is like an address. However, we want it to be a normal column again if we want to access it with attributes like <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code>. We use <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> to reset the index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="n">tweets_by_date</span> <span class="o">=</span> <span class="n">tweets_by_date</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">tweets_by_date</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have a lot of columns that we don’t need. Remember <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>? We’ll use <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> to select only the first two columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="n">tweets_by_date</span> <span class="o">=</span> <span class="n">tweets_by_date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">tweets_by_date</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second column has a weird name. <code class="docutils literal notranslate"><span class="pre">tweets_by_date.columns</span></code> gets the column names of the dataframe. We can set them equal to a list with the new column names to rename them. Let’s run the cell below to rename the id column to number of tweets</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this</span>
+<span class="n">tweets_by_date</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;number of tweets&#39;</span><span class="p">]</span>
+<span class="n">tweets_by_date</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-matplotlib-to-plot-a-line-plot-number-of-tweets-vs-date">
+<h3>Using Matplotlib to plot a line plot: Number of tweets vs. date<a class="headerlink" href="#using-matplotlib-to-plot-a-line-plot-number-of-tweets-vs-date" title="Link to this heading">#</a></h3>
+<p>Time to plot! Use</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.plot(&lt;list,</span> <span class="pre">array,</span> <span class="pre">or</span> <span class="pre">series</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">x</span> <span class="pre">values&gt;,</span> <span class="pre">&lt;the</span> <span class="pre">y</span> <span class="pre">values&gt;)</span></code></p>
+<p>to plot the number of tweets vs. time. We’ve labeled the axes and title. Study the code, as you will need to do it yourself later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ... with your plotting code</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="o">...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;number of tweets&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of Tweets over Time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="number-of-tweets-by-tract-barplots">
+<h2>Number of tweets by tract - Barplots<a class="headerlink" href="#number-of-tweets-by-tract-barplots" title="Link to this heading">#</a></h2>
+<section id="grouping-tweets-by-census-tract">
+<h3>Grouping tweets by census tract<a class="headerlink" href="#grouping-tweets-by-census-tract" title="Link to this heading">#</a></h3>
+<p>Remember how we grouped tweets by date? Do the same, but this time, group instead by <code class="docutils literal notranslate"><span class="pre">tract</span></code> and aggregate with count(). Set the output equal to a variable called <code class="docutils literal notranslate"><span class="pre">tweets_by_tract</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas now sees the tract as an index, but we don’t want that. Set the indices back to normal using <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code>, referencing the previous section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We only want the tract number and counts. Use <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> to select only the first two columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we want to rename this <code class="docutils literal notranslate"><span class="pre">id</span></code> column to <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">tweets</span></code>. Can you recall from the previous section how to do that?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sorting-tweet-counts-in-descending-order">
+<h3>Sorting tweet counts in descending order<a class="headerlink" href="#sorting-tweet-counts-in-descending-order" title="Link to this heading">#</a></h3>
+<p>There are 360 tracts, which is too much to plot on one bar plot. Let’s graph the top 10 tracts with the most tweets.</p>
+<p>First, let’s set <code class="docutils literal notranslate"><span class="pre">tweets_by_tract</span></code> to a sorted version of itself. Use the function:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;the</span> <span class="pre">dataframe&gt;.sort_values(by=&lt;column</span> <span class="pre">name&gt;,</span> <span class="pre">ascending=False)</span></code></p>
+<p>which outputs a sorted dataframe, to do so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: ascending = False makes it so that we sort the number of tweets in descending order. ascending = True will sort them in ascending order.</p>
+</section>
+<section id="convert-census-tract-numbers-to-strings">
+<h3>Convert census tract numbers to strings<a class="headerlink" href="#convert-census-tract-numbers-to-strings" title="Link to this heading">#</a></h3>
+<p>Currently, the census tracts are stored as integers. If you tried to plot with these, the barplot would not display correctly. Additionally, census tracts are not numerical data, but categorical data. So, instead we want to store each census tract as a <strong>string</strong>. We can use a list comprehension to do so!</p>
+<p>Create a new column in <code class="docutils literal notranslate"><span class="pre">tweets_by_tract</span></code> named <code class="docutils literal notranslate"><span class="pre">GEOID</span></code> with these census tract strings.</p>
+<p><em>Important Hint:</em>
+Make sure that the strings are of a specific format.
+The tract numbers are currently of the <strong>float</strong> type, which means they have decimal points (e.g. 10.0). We want them to be <strong>integers</strong> (e.g. 10) before we convert them into strings.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">int()</span></code> to convert a float first to an integer. Then use <code class="docutils literal notranslate"><span class="pre">str()</span></code> to convert the integer into a string! To do both at once, use <code class="docutils literal notranslate"><span class="pre">str(int(...))</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span><span class="p">[</span><span class="s1">&#39;GEOID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we want to plot the top 10 tracts with the highest counts. Use <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>to select the top 10 GEOID’s and the top 10 tweet counts. Remember: columns have indices starting at 0! Which index are the GEOID and number of tweets columns in? After this, use</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.bar(&lt;the</span> <span class="pre">list,</span> <span class="pre">array,</span> <span class="pre">or</span> <span class="pre">series</span> <span class="pre">of</span> <span class="pre">x</span> <span class="pre">values&gt;,</span> <span class="pre">&lt;the</span> <span class="pre">y</span> <span class="pre">values&gt;)</span></code></p>
+<p>to plot a bar plot (note: if we want a horizontal bar plot, simply add an ‘h’ after bar. But for this, we will get vertical bars instead). Make sure to add a labels to the x and y axes, as well as the title. Refer to the previous section for how to do so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">top_10_tracts</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">top_10_tweetcounts</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="moving-on-to-geopandas-visualizing-number-of-tweets-per-census-tract-spatially">
+<h2>Moving on to GeoPandas: Visualizing number of tweets per census tract spatially<a class="headerlink" href="#moving-on-to-geopandas-visualizing-number-of-tweets-per-census-tract-spatially" title="Link to this heading">#</a></h2>
+<p>The bar plot is fascinating, but we’re not any more enlightened than before, because most people don’t memorize census tract numbers. A better way would be to analyze the data spatially, which means using GeoPandas!</p>
+<p>Read in the alameda data from the previous lab. This contains the Shapely geometry polygons that we’ll need to map our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;alameda_shapefiles&#39;</span><span class="p">)</span>
+<span class="n">alameda</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s recall what the column names are for this dataset. Run the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We don’t need all of these columns. Use <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> to select only the columns named:
+GEOID, female, male, medianage, total_pop, and geometry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alameda</span> <span class="o">=</span> <span class="n">alameda</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;GEOID&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;medianage&#39;</span><span class="p">,</span> <span class="s1">&#39;total_pop&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span>
+<span class="n">alameda</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="merging-dataframes">
+<h3>Merging dataframes<a class="headerlink" href="#merging-dataframes" title="Link to this heading">#</a></h3>
+<p>Notice how the <code class="docutils literal notranslate"><span class="pre">alameda</span></code> dataset contains a variety of values by GEOID. Conveniently, so does our <code class="docutils literal notranslate"><span class="pre">tweets_per_tract</span></code> dataset! If we simply add the tweet counts to the alameda dataset, we would be able to plot a chloropleth map on the number of tweets per census tract.</p>
+<p>To do so, we’re going to perform an operation called a <strong>merge</strong> or <strong>join</strong>. We’re going to perform the join on the <code class="docutils literal notranslate"><span class="pre">GEOID</span></code> column, so that the tweet count data corresponds correctly to the right census tract.</p>
+<p>First, we need to fix a slight problem. The <code class="docutils literal notranslate"><span class="pre">alameda</span> <span class="pre">GEOID</span></code> column values have a 0 before, while the <code class="docutils literal notranslate"><span class="pre">tweets_by_tract</span> <span class="pre">GEOID</span></code> column values don’t. This is easy, we can just concatenate a ‘0’ in front of each census tract number in <code class="docutils literal notranslate"><span class="pre">tweets_by_tract</span></code> using a list comprehension.</p>
+<p>Below is a quick review on how string concatenation works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pineapple&quot;</span> <span class="o">+</span> <span class="s2">&quot;pen&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, fill in the cell below with a list comprehension that append a ‘0’ in f ront of each GEOID.</p>
+<p>Hint: recall the str(int()) trick from before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ...</span>
+<span class="n">tweets_by_tract</span><span class="p">[</span><span class="s1">&#39;GEOID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">tweets_by_tract</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time to merge! Use the function</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">dataframe&gt;.merge(&lt;another</span> <span class="pre">dataframe&gt;,</span> <span class="pre">on=&lt;column</span> <span class="pre">name</span> <span class="pre">to</span> <span class="pre">merge</span> <span class="pre">on&gt;)</span></code></p>
+<p>and set the output equal to variable called <code class="docutils literal notranslate"><span class="pre">combined</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">combined</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are other types of merging techniques in python. By default, if we do not specify what type of merge we do, python will treat is as a <code class="docutils literal notranslate"><span class="pre">left</span></code> join, which means if will keep all the unique values for the table on the left of the .merge method. To learn more about other types of joins, see the link below:</p>
+<p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html</a></p>
+<p>Recall the chloropleths we created in the last lab. Now create a chloropleth map of the number of tweets per census tract.</p>
+<p>Reference:
+<code class="docutils literal notranslate"><span class="pre">&lt;the</span> <span class="pre">geodataframe&gt;.plot(column=&lt;column</span> <span class="pre">name&gt;,</span> <span class="pre">legend=True,</span> <span class="pre">figsize=[18,</span> <span class="pre">10])</span></code></p>
+<p>Remember to add a title and remove the axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fill in the ... with your code and replace the next line with combined.plot(...)</span>
+
+<span class="c1">##replace this line with combined.plot(...)</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">maxx</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">maxy</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">text_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;va&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;fontsize&#39;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">}</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">maxx</span> <span class="o">+</span> <span class="p">(</span><span class="n">maxx</span><span class="o">-</span><span class="n">minx</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span> <span class="o">-</span> <span class="n">miny</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">miny</span><span class="p">,</span> <span class="s1">&#39;Percentage of Tweet Counts by Census Tract&#39;</span><span class="p">,</span> <span class="n">text_properties</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="o">..</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks so much better than the bar plot! But what if some census tracts only have a lot of tweets because they have a larger population size? Instead, we should plot number of tweets per capita.</p>
+<p>Make a new column in <code class="docutils literal notranslate"><span class="pre">combined</span></code> called <code class="docutils literal notranslate"><span class="pre">avg</span> <span class="pre">tweets</span> <span class="pre">per</span> <span class="pre">capita</span></code>. Set it equal to <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">tweets</span></code> divided by <code class="docutils literal notranslate"><span class="pre">total_pop</span></code>. Then plot the new chloropleth map. Remember to add the title and remove the axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ... with your code</span>
+<span class="n">combined</span><span class="p">[</span><span class="s2">&quot;avg tweets per capita&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1">##Let&#39;s see what the table looks now with the new column:</span>
+<span class="n">combined</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1">##scroll to the right if needed to see all the columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##fill in the ... with your code to plot</span>
+<span class="n">combined</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">maxx</span> <span class="o">+</span> <span class="p">(</span><span class="n">maxx</span><span class="o">-</span><span class="n">minx</span><span class="p">)</span><span class="o">/</span><span class="mf">4.5</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span> <span class="o">-</span> <span class="n">miny</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">miny</span><span class="p">,</span> <span class="s1">&#39;Percentage of Tweet Counts by Census Tract&#39;</span><span class="p">,</span> <span class="n">text_properties</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are by no means the only visualizations you can create with the <code class="docutils literal notranslate"><span class="pre">combined</span></code> dataset. In the cell below, create your own visualization!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your own visualization here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="feedback-form">
+<h2>Feedback form<a class="headerlink" href="#feedback-form" title="Link to this heading">#</a></h2>
+<p>Thank you for exploring data science with us! We hope you have enjoyed the past four labs that the division of data science has created for you. It would be wonderful if you could leave us feedback here so that we can improve for the course in the future:</p>
+<p><a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSe54U3E64kYFWwQHSUpAvWYMuJOdKzbHDZjPa3nMUlHSSs0PQ/viewform">https://docs.google.com/forms/d/e/1FAIpQLSe54U3E64kYFWwQHSUpAvWYMuJOdKzbHDZjPa3nMUlHSSs0PQ/viewform</a></p>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<p>If you’re interested in exploring more about data science, Berkeley’s <a class="reference external" href="https://www.inferentialthinking.com/chapters/intro.html">Data 8</a> and <a class="reference external" href="https://www.textbook.ds100.org/">Data 100</a> textbooks are very well-written with interactive links to follow along.</p>
+<p>There are also websites like <a class="reference external" href="https://www.datacamp.com/courses">DataCamp</a> and <a class="reference external" href="https://www.dataquest.io/course/python-for-data-science-fundamentals/">DataQuest</a> that offer online interactive courses in R, Python, and SQL, many of them for free.</p>
+<p>If you’re stuck trying to work on a project, <a class="reference external" href="https://data.berkeley.edu/education/data-peer-consulting">Data Peer Consulting</a> at the Division of Data Sciences could be helpful to you.</p>
+<p>If you’re looking for more specialized help, the <a class="reference external" href="https://dlab.berkeley.edu/">D-lab</a> which focuses on data science applications to the social sciences specifically, holds <a class="reference external" href="https://dlab.berkeley.edu/training">workshops</a> and <a class="reference external" href="https://dlab.berkeley.edu/consulting">consulting</a>, many on geospatial data.</p>
+<hr class="docutils" />
+<section id="author-rebekah-tang">
+<h3>Author: Rebekah Tang<a class="headerlink" href="#author-rebekah-tang" title="Link to this heading">#</a></h3>
+</section>
+<section id="references">
+<h3>References:<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>GeoPandas Mapping Documentation: <a class="reference external" href="http://geopandas.org/mapping.html">http://geopandas.org/mapping.html</a></p></li>
+<li><p>Pandas Documentation: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/frame.html">https://pandas.pydata.org/pandas-docs/stable/reference/frame.html</a></p></li>
+<li><p>Matplotlib Documentation: <a class="reference external" href="https://matplotlib.org/api/pyplot_summary.html">https://matplotlib.org/api/pyplot_summary.html</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_site/content/cp-101/lab10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-number-of-tweets-over-time">Plotting the number of tweets over time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-to-datetime">Converting to DateTime</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-tweets-by-date">Grouping tweets by date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-matplotlib-to-plot-a-line-plot-number-of-tweets-vs-date">Using Matplotlib to plot a line plot: Number of tweets vs. date</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-tweets-by-tract-barplots">Number of tweets by tract - Barplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-tweets-by-census-tract">Grouping tweets by census tract</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-tweet-counts-in-descending-order">Sorting tweet counts in descending order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-census-tract-numbers-to-strings">Convert census tract numbers to strings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-on-to-geopandas-visualizing-number-of-tweets-per-census-tract-spatially">Moving on to GeoPandas: Visualizing number of tweets per census tract spatially</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-dataframes">Merging dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-form">Feedback form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#author-rebekah-tang">Author: Rebekah Tang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Nakagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

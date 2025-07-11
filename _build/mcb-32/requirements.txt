@@ -1,5 +1,0 @@
-datascience
-numpy
-matplotlib
-sklearn
-qgrid

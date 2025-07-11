@@ -1,76 +1,75 @@
-root: build
-entries:
-- file: README
-- file: _build/intro
-  entries:
-  - file: _build/cp-101/cp-101-intro
-    entries:
-    - file: _build/cp-101/lab07/lab07
-    - file: _build/cp-101/lab08/lab08
-    - file: _build/cp-101/lab09/lab09
-    - file: _build/cp-101/lab10/lab10
-  - file: _build/cuneiform/cuneiform-intro
-    entries:
-    - file: _build/cuneiform/nb-pt1-intro-text-analysis
-  - file: _build/econ/convergence-to-balanced-growth-path
-    entries:
-    - file: _build/econ/econ-intro
-    - file: _build/econ/problem-sets
-    - file: _build/econ/sp18-topics-assignments
-    - file: _build/econ/ps1/PS1
-    - file: _build/econ/ps3/flex_price
-    - file: _build/econ/ps5/macroeconomic-policy
-  - file: _build/english/01-Chinatowns
-    entries:
-    - file: _build/english/english-intro
-  - file: _build/features/features
-    entries:
-    - file: _build/features/markdown
-    - file: _build/features/notebooks
-  - file: _build/introduction/ds-intro
-    entries:
-    - file: _build/introduction/intro-module-final
-  - file: _build/legal_studies/1-18
-    entries:
-    - file: _build/legal_studies/intro-legal-studies
-    - file: _build/legal_studies/ps1/SF_Crime_PSET1
-  - file: _build/legalst-190/1-18
-    entries:
-    - file: _build/legalst-190/legalst-190-intro
-    - file: _build/legalst-190/ps1/SF_Crime_PSET1
-  - file: _build/psych/01-intro
-    entries:
-    - file: _build/psych/02-correlation-regression
-    - file: _build/psych/03-my-project
-    - file: _build/psych/psych-intro
-  - file: _build/psych-167ac/01-intro
-    entries:
-    - file: _build/psych-167ac/02-correlation-regression
-    - file: _build/psych-167ac/03-my-project
-    - file: _build/psych-167ac/psych-167ac-intro
-  - file: _build/rhetoric/rhetoric-intro
-    entries:
-    - file: _build/rhetoric/01-intro/01-intro
-    - file: _build/rhetoric/02-Moral-Foundations-Analysis/02-Moral-Foundations-Analysis
-  - file: _build/xenglish-r1a/01-Chinatowns
-    entries:
-    - file: _build/xenglish-r1a/xenglish-r1a-intro
-- file: content/intro
-  entries:
-  - file: content/LICENSE
-  - file: content/cp-101/cp-101-intro
-  - file: content/cuneif-102a/cuneif-102a-intro
-    entries:
-    - file: content/cuneif-102a/README
-  - file: content/features/features
-    entries:
-    - file: content/features/markdown
-  - file: content/introduction/ds-intro
-  - file: content/legalst-190/legalst-190-intro
-  - file: content/psych-167ac/psych-167ac-intro
-  - file: content/sociology/soc-intro
-  - file: content/xenglish-r1a/xenglish-r1a-intro
-  - file: content/xrhetor-r1a/README
-    entries:
-    - file: content/xrhetor-r1a/xrhetor-r1a-intro
+format: jb-book
+root: content/intro.md # <--- IMPORTANT: Ensure this matches your actual intro file path
 
+defaults:
+  numbered: false
+
+# Define "Parts" of your book using the 'parts' key
+parts:
+  - caption: Introduction # This will be the header in the sidebar
+    chapters:
+      - file: content/introduction/ds-intro.ipynb # Use 'file:' for source paths
+        title: Data Science in Python and Jupyter
+        sections:
+          - file: content/introduction/intro-module-final.ipynb # Use 'file:'
+            title: Intro to Python and Jupyter
+
+  - caption: Social Sciences # Another header for a new part
+    chapters:
+      - file: content/legalst-190/legalst-190-intro.md # Use 'file:'
+        title: Legal Studies
+        sections:
+          - file: content/legalst-190/1-18.ipynb # Use 'file:'
+            title: Intro to Python
+          - file: content/legalst-190/ps1/SF_Crime_PSET1.ipynb # Use 'file:'
+            title: Problem Set 1
+
+  - caption: Physical Sciences
+    chapters:
+      - file: content/mcb-32/mcb-32-intro.md # Use 'file:'
+        title: Human Physiology
+        sections:
+          - file: content/mcb-32/lab02/lab02.ipynb # Use 'file:'
+            title: Lab 2
+          - file: content/mcb-32/lab04/lab04.ipynb # Use 'file:'
+            title: Lab 4
+          - file: content/mcb-32/lab05/lab05.ipynb # Use 'file:'
+            title: Lab 5
+          - file: content/mcb-32/lab06/lab06.ipynb # Use 'file:'
+            title: Lab 6
+          - file: content/mcb-32/lab08/lab08.ipynb # Use 'file:'
+            title: Lab 8
+          - file: content/mcb-32/lab09/lab09.ipynb # Use 'file:'
+            title: Lab 9
+
+      - file: content/psych-167ac/psych-167ac-intro.md # Use 'file:'
+        title: Psychology
+        sections:
+          - file: content/psych-167ac/01-intro.ipynb # Use 'file:'
+            title: Introduction
+          - file: content/psych-167ac/02-correlation-regression.ipynb # Use 'file:'
+            title: Correlation & Regression
+          - file: content/psych-167ac/03-my-project.ipynb # Use 'file:'
+            title: My Project
+
+  - caption: Arts and Humanities
+    chapters:
+      - file: content/xenglish-r1a/xenglish-r1a-intro.md # Use 'file:'
+        title: English
+        sections:
+          - file: content/xenglish-r1a/01-Chinatowns.ipynb # Use 'file:'
+            title: Chinatowns
+
+  - caption: Professional
+    chapters:
+      - file: content/cp-101/cp-101-intro.md # Use 'file:'
+        title: City Planning
+        sections:
+          - file: content/cp-101/lab07/lab07.ipynb # Use 'file:'
+            title: Lab 7
+          - file: content/cp-101/lab08/lab08.ipynb # Use 'file:'
+            title: Lab 8
+          - file: content/cp-101/lab09/lab09.ipynb # Use 'file:'
+            title: Lab 9
+          - file: content/cp-101/lab10/lab10.ipynb # Use 'file:'
+            title: Lab 10
