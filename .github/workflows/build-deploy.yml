@@ -28,9 +28,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+          cache: 'pip'
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip 
+          pip install -r requirements.txt
 
       - name: Build page intermediate HTML files
         run: jupyter-book build .
@@ -69,7 +72,7 @@ jobs:
         run: bundle install
   
       - name: Build the website
-        run: bundle exec jekyll build --baseurl /0/html/
+        run: bundle exec jekyll build --baseurl /modules-textbook/
   
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

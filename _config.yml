@@ -21,8 +21,8 @@ author: Alex Nakagawa
 email: alex.nakagawa@berkeley.edu
 description: >-
   This book is a compilation of a couple modules created at UC Berkeley.
-
-baseurl: /modules-textbook # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+html:
+  baseurl: /modules-textbook # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
 url: http://ds-modules.github.io # the base hostname & protocol for your site, e.g. http://example.com
 
 
