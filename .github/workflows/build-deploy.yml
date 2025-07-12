@@ -31,6 +31,17 @@ jobs:
       - name: Build Jupyter Book
         run: jupyter-book build .
 
+      - name: Check for symlinks and hard links in _build/html (debugging)
+        run: |
+          echo "Listing symlinks in _build/html:"
+          find _build/html -type l -ls || echo "No symlinks found."
+
+          echo "Listing files with more than 1 hard link in _build/html:"
+          find _build/html -type f -links +1 -ls || echo "No files with multiple hard links found."
+
+          echo "Checking total size of _build/html:"
+          du -sh _build/html || true 
+
       - name: Upload built HTML files (Jupyter-Book output)
         uses: actions/upload-artifact@v4
         with:
