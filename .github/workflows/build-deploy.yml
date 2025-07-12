@@ -31,16 +31,12 @@ jobs:
       - name: Build Jupyter Book
         run: jupyter-book build .
 
-      - name: Check for symlinks and hard links in _build/html (debugging)
+      - name: Prepare artifact for deployment (dereference links)
         run: |
-          echo "Listing symlinks in _build/html:"
-          find _build/html -type l -ls || echo "No symlinks found."
-
-          echo "Listing files with more than 1 hard link in _build/html:"
-          find _build/html -type f -links +1 -ls || echo "No files with multiple hard links found."
-
-          echo "Checking total size of _build/html:"
-          du -sh _build/html || true 
+          mkdir _build/html_flattened # Create a new directory
+          # Copy contents of _build/html to _build/html_flattened, dereferencing links
+          # -r: recursive, -L: dereference symlinks
+          cp -rL _build/html/* _build/html_flattened/
 
       - name: Upload built HTML files (Jupyter-Book output)
         uses: actions/upload-artifact@v4
