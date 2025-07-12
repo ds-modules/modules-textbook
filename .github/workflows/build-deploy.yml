@@ -73,6 +73,10 @@ jobs:
   
       - name: Build the website
         run: bundle exec jekyll build --baseurl /modules-textbook/
+
+      - name: List _site contents (debugging)
+        run: |
+          ls -R _site/
   
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
