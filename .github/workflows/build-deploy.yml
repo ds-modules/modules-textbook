@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages # This artifact is used by the doc job
-          path: _build/html
+          path: _build/html_flattened
           retention-days: 1
 
   deploy:
