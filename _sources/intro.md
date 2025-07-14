@@ -12,17 +12,15 @@ In the Fall of 2018, the [UC Berkeley Division of Data Sciences and Information]
 
 ## Data Science Education Programs (DSEP)
 
-The [DSEP team](https://data.berkeley.edu/data-science-education-programs) at UC Berkeley is an autonomous working arm of the Division of Data Sciences and Information. The team is made up of a variety of professors, graduate and undergraduate students motivated to improve the way data science is being taught across all college and K-12 education systems. Our mission is to democratize data science pedagogy by integrating statistical analysis lectures and curriculum materials into the social sciences.
+The DSEP team at UC Berkeley is an autonomous working arm of the Division of Data Sciences and Information. The team is made up of a variety of professors, graduate and undergraduate students motivated to improve the way data science is being taught across all college and K-12 education systems. Our mission is to democratize data science pedagogy by integrating statistical analysis lectures and curriculum materials into the social sciences.
 
 ## Acknowledgements
 
 This compilation of modules into the textbook format was curated by [Alex Nakagawa][alex], [Shalini Kunapuli][shalini], and [Christopher Pyles][chris]. Contributors to certain chapters are recognized on each page of this textbook.
 
-## Jupyter Books
+## Jupyter Book
 
-This website was created using [Jupyter Books](https://jupyter.org/jupyter-book/intro.html). Jupyter Books lets you build an online book using a collection of Jupyter Notebooks and Markdown files. Its output is similar to the excellent [Bookdown](https://bookdown.org/yihui/bookdown/) tool, and adds extra functionality for people running a Jupyter stack.
-
-For an example of a book built with Jupyter Books, see the [textbook for Data 100](https://www.textbook.ds100.org/) at UC Berkeley.
+This website was created using Jupyter Book. Jupyter Book lets you build an online book using a collection of Jupyter Notebooks and Markdown files. Its output is similar to the excellent [Bookdown](https://bookdown.org/yihui/bookdown/) tool, and adds extra functionality for people running a Jupyter stack.
 
 Here are a few features of Jupyter Books
 
