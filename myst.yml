@@ -1,0 +1,74 @@
+version: 1
+project:
+  title: UC Berkeley Data Science Modules
+  # authors:
+  #   - name: Alex Nakagawa
+  settings:
+    output_matplotlib_strings: "remove"
+  github: https://github.com/ds-modules/modules-textbook
+  site:
+    template: book-theme
+    title: UC Berkeley Data Science Modules
+    domains:
+      - ds-modules.github.io/modules-textbook/
+    options:
+      favivon: content/images/favicon.introduction
+  toc:
+    - file: intro.md
+    - title: External Links
+      children:
+        - url: https://github.com/ds-modules/
+          title: DSEP Modules Repository
+        - url: https://curriculum-guide.datahub.berkeley.edu/
+          title: Data Science Curriculum Guide
+    - title: Introduction
+      children:
+        - file: content/introduction/ds-intro.ipynb
+          title: Data Science in Python and Jupyter
+          children:
+            - file: content/introduction/intro-module-final.ipynb
+              title: Intro to Python and Jupyter
+    - title: Social Sciences
+      children:
+        - file: content/legalst-190/legalst-190-intro.md
+          title: Legal Studies
+          children:
+            - file: content/legalst-190/1-18.ipynb
+              title: Intro to Python
+            - file: content/legalst-190/ps1/SF_Crime_PSET1.ipynb
+              title: Problem Set 1
+    - title: Physical Sciences
+      children:
+        - file: content/psych-167ac/psych-167ac-intro.md
+          title: Psychology
+          children:
+            - file: content/psych-167ac/01-intro.ipynb
+              title: Introduction
+            - file: content/psych-167ac/02-correlation-regression.ipynb
+              title: Correlation & Regression
+            - file: content/psych-167ac/03-my-project.ipynb
+              title: My Project
+    - title: Arts and Humanities
+      children:
+        - file: content/xenglish-r1a/xenglish-r1a-intro.md
+          title: English
+          children:
+            - file: content/xenglish-r1a/01-Chinatowns.ipynb
+              title: Chinatowns
+    - title: Professional
+      children:
+        - file: content/cp-101/cp-101-intro.md
+          title: City Planning
+          children:
+            - file: content/cp-101/lab07/lab07.ipynb
+              title: Lab 7
+            - file: content/cp-101/lab08/lab08.ipynb
+              title: Lab 8
+            - file: content/cp-101/lab09/lab09.ipynb
+              title: Lab 9
+            - file: content/cp-101/lab10/lab10.ipynb
+              title: Lab 10
+site:
+  options:
+    folders: true
+  template: book-theme

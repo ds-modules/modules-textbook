@@ -2,7 +2,7 @@
 
 Authors: Alex Nakagawa, Chris Pyles
 
-* Developed using [Jupyter Book](https://jupyter.org/jupyter-book/intro.html). Anything that you can't find in this README can be referenced in the docs.
+* Developed using Jupyter Book. 
 
 ## License
 
