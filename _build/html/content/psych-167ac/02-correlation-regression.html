@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/psych-167ac/02-correlation-regression';</script>
+    <link rel="canonical" href="/modules-textbook/content/psych-167ac/02-correlation-regression.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Using your own data" href="03-my-project.html" />
@@ -144,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="../intro.html">
+<a class="navbar-brand logo" href="../../intro.html">
   
   
   
@@ -170,12 +171,16 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../../intro.html">
                     UC Berkeley Data Science Modules
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/ds-modules/">DSEP Modules Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://curriculum-guide.datahub.berkeley.edu/">Data Science Curriculum Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/ds-intro.html">Data Science in Python and Jupyter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/intro-module-final.html">Intro to Python and Jupyter</a></li>
@@ -391,7 +396,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="correlation-regression-and-prediction">
 <h1>Correlation, regression, and prediction<a class="headerlink" href="#correlation-regression-and-prediction" title="Link to this heading">#</a></h1>
-<p><em>If you run into errors, check the <a class="reference external" href="https://docs.google.com/document/d/1-LUvfYYI5UtjYiZerCGIBNgzkaJHNxl4530tgh37uYs/edit?usp=sharing">common errors</a> Google doc first.</em></p>
+<p><em>If you run into errors, check the <a class="reference external" href="https://docs.google.com/document/d/1ynSmMB6-jTfph658VyU-ChYRKsL2NdhGOzyOnLpDgC8/edit?usp=sharing">common errors</a> Google doc first.</em></p>
 <p>One of the most important and interesting aspects of data science is making predictions about the future. How can we learn about temperatures a few decades from now by analyzing historical data about climate change and pollution? Based on a person’s social media profile, what conclusions can we draw about their interests? How can we use a patient’s medical history to judge how well he or she will respond to a treatment?</p>
 <p>Run the cell below to import the code we’ll use in this notebook.
 Don’t worry about getting an output, simply run the cell.</p>
@@ -864,18 +869,6 @@ Warnings:
 </div>
 <p>A quick scan above shows an extremeley low R-squared and a high p-value, both of which imply that our model does not fit the data very well at all.</p>
 <p>That’s it! By working through this module, you’ve learned how to <strong>visually analyze your data</strong>, <strong>establish a correlation</strong> by calculating the <strong>correlation coefficient</strong>, <strong>set up a regression (with a covariate)</strong>, and <strong>find the regression line</strong>!</p>
-<!-- 
-
----
-
-***We would also appreciate if you filled out this feedback form regarding the notebook:
-https://goo.gl/forms/ADY9TJU3TGKlllyT2***
-
-***Your input allows us to continue improving our educational notebooks!***
-
--->
-<hr class="docutils" />
-<p>If you need help, please consult the <a class="reference external" href="https://data.berkeley.edu/education/data-science-community">Data Peers</a>!</p>
 </section>
 </section>
 </section>

@@ -4,18 +4,18 @@ root: intro.md
 defaults:
   numbered: false
 
-- title: DSEP Modules Repository
-  url: https://github.com/ds-modules/
-  external: true
-  not_numbered: true
-
-- title: Data Science Curriculum Guide
-  url: https://curriculum-guide.datahub.berkeley.edu/
-  external: true
-  not_numbered: true
-
-# Define "Parts" of your book using the 'parts' key
 parts:
+  - chapters:
+      - title: DSEP Modules Repository
+        url: https://github.com/ds-modules/
+        external: true
+        not_numbered: true
+
+      - title: Data Science Curriculum Guide
+        url: https://curriculum-guide.datahub.berkeley.edu/
+        external: true
+        not_numbered: true
+
   - caption: Introduction # This will be the header in the sidebar
     chapters:
       - file: content/introduction/ds-intro.ipynb # Use 'file:' for source paths

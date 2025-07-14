@@ -1,6 +1,5 @@
 # UC Berkeley Data Science Modules
 
-<img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left">
 
 ## Data Science for the Social Sciences
 
