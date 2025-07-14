@@ -3,58 +3,33 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master 
-  pull_request:
-    branches:
       - master
   workflow_dispatch:
 
-
 jobs:
-  build_book:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
-          cache: 'pip'
+          python-version: '3.9' 
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip 
           pip install -r requirements.txt
 
       - name: Build Jupyter Book
-        run: jupyter-book build .
-
-      - name: Prepare artifact for deployment (dereference links)
         run: |
-          mkdir _build/html_flattened # Create a new directory
-          # Copy contents of _build/html to _build/html_flattened, dereferencing links
-          # -r: recursive, -L: dereference symlinks
-          cp -rL _build/html/* _build/html_flattened/
+          jupyter-book build .
 
-      - name: Upload built HTML files (Jupyter-Book output)
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages # This artifact is used by the doc job
-          path: _build/html_flattened
-          retention-days: 1
-
-  deploy:
-    needs: build_book 
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write      
-      id-token: write   
-    environment:
-      name: github-pages 
-      url: ${{ steps.deployment.outputs.page_url }} 
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/html
