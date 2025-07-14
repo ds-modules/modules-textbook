@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build Jupyter Book, Put in gh-pages Branch
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-put:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
         run: |
           jupyter-book build .
 
-      - name: Deploy to GitHub Pages
+      - name: Place in gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
