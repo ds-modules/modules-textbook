@@ -6,6 +6,4 @@ Authors: Alex Nakagawa, Chris Pyles
 
 ## License
 
-All content in this book (ie, any files and content in the `content/` folder)
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0) license.
+The contents of this book are licensed for free consumption under the following license: [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)

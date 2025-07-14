@@ -1,7 +1,5 @@
 # UC Berkeley Data Science Modules
 
-<img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left">
-
 ## Data Science for the Social Sciences
 
 It is no secret in industry that data has impacted every facet of human life. In the modern age, researchers are now adopting new techniques to leverage data science and statistics to their unique disciplines. At the Data Science Education Program (DSEP) at UC Berkeley, we believe in providing opportunities to students to be exposed to this paradigm shift.
