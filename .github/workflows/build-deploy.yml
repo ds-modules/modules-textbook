@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          jupyter book start
+          jupyter book build .
 
       - name: Place in gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
