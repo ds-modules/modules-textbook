@@ -1,5 +1,5 @@
 format: jb-book
-root: content/intro.md # <--- IMPORTANT: Ensure this matches your actual intro file path
+root: intro.md 
 
 defaults:
   numbered: false
@@ -11,65 +11,65 @@ parts:
       - file: content/introduction/ds-intro.ipynb # Use 'file:' for source paths
         title: Data Science in Python and Jupyter
         sections:
-          - file: content/introduction/intro-module-final.ipynb # Use 'file:'
+          - file: content/introduction/intro-module-final.ipynb 
             title: Intro to Python and Jupyter
 
-  - caption: Social Sciences # Another header for a new part
+  - caption: Social Sciences 
     chapters:
-      - file: content/legalst-190/legalst-190-intro.md # Use 'file:'
+      - file: content/legalst-190/legalst-190-intro.md 
         title: Legal Studies
         sections:
-          - file: content/legalst-190/1-18.ipynb # Use 'file:'
+          - file: content/legalst-190/1-18.ipynb 
             title: Intro to Python
-          - file: content/legalst-190/ps1/SF_Crime_PSET1.ipynb # Use 'file:'
+          - file: content/legalst-190/ps1/SF_Crime_PSET1.ipynb 
             title: Problem Set 1
 
   - caption: Physical Sciences
     chapters:
-      - file: content/mcb-32/mcb-32-intro.md # Use 'file:'
+      - file: content/mcb-32/mcb-32-intro.md 
         title: Human Physiology
         sections:
-          - file: content/mcb-32/lab02/lab02.ipynb # Use 'file:'
+          - file: content/mcb-32/lab02/lab02.ipynb
             title: Lab 2
-          - file: content/mcb-32/lab04/lab04.ipynb # Use 'file:'
+          - file: content/mcb-32/lab04/lab04.ipynb 
             title: Lab 4
-          - file: content/mcb-32/lab05/lab05.ipynb # Use 'file:'
+          - file: content/mcb-32/lab05/lab05.ipynb 
             title: Lab 5
-          - file: content/mcb-32/lab06/lab06.ipynb # Use 'file:'
+          - file: content/mcb-32/lab06/lab06.ipynb 
             title: Lab 6
-          - file: content/mcb-32/lab08/lab08.ipynb # Use 'file:'
+          - file: content/mcb-32/lab08/lab08.ipynb 
             title: Lab 8
-          - file: content/mcb-32/lab09/lab09.ipynb # Use 'file:'
+          - file: content/mcb-32/lab09/lab09.ipynb 
             title: Lab 9
 
-      - file: content/psych-167ac/psych-167ac-intro.md # Use 'file:'
+      - file: content/psych-167ac/psych-167ac-intro.md 
         title: Psychology
         sections:
-          - file: content/psych-167ac/01-intro.ipynb # Use 'file:'
+          - file: content/psych-167ac/01-intro.ipynb
             title: Introduction
-          - file: content/psych-167ac/02-correlation-regression.ipynb # Use 'file:'
+          - file: content/psych-167ac/02-correlation-regression.ipynb 
             title: Correlation & Regression
-          - file: content/psych-167ac/03-my-project.ipynb # Use 'file:'
+          - file: content/psych-167ac/03-my-project.ipynb
             title: My Project
 
   - caption: Arts and Humanities
     chapters:
-      - file: content/xenglish-r1a/xenglish-r1a-intro.md # Use 'file:'
+      - file: content/xenglish-r1a/xenglish-r1a-intro.md 
         title: English
         sections:
-          - file: content/xenglish-r1a/01-Chinatowns.ipynb # Use 'file:'
+          - file: content/xenglish-r1a/01-Chinatowns.ipynb 
             title: Chinatowns
 
   - caption: Professional
     chapters:
-      - file: content/cp-101/cp-101-intro.md # Use 'file:'
+      - file: content/cp-101/cp-101-intro.md 
         title: City Planning
         sections:
-          - file: content/cp-101/lab07/lab07.ipynb # Use 'file:'
+          - file: content/cp-101/lab07/lab07.ipynb 
             title: Lab 7
-          - file: content/cp-101/lab08/lab08.ipynb # Use 'file:'
+          - file: content/cp-101/lab08/lab08.ipynb 
             title: Lab 8
-          - file: content/cp-101/lab09/lab09.ipynb # Use 'file:'
+          - file: content/cp-101/lab09/lab09.ipynb 
             title: Lab 9
-          - file: content/cp-101/lab10/lab10.ipynb # Use 'file:'
+          - file: content/cp-101/lab10/lab10.ipynb
             title: Lab 10
