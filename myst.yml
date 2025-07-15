@@ -6,13 +6,6 @@ project:
   settings:
     output_matplotlib_strings: "remove"
   github: https://github.com/ds-modules/modules-textbook
-  site:
-    template: book-theme
-    title: UC Berkeley Data Science Modules
-    domains:
-      - ds-modules.github.io/modules-textbook/
-    options:
-      favivon: content/images/favicon.introduction
   toc:
     - file: intro.md
     - title: External Links
@@ -71,4 +64,7 @@ project:
 site:
   options:
     folders: true
+    favivon: content/images/favicon.ico
   template: book-theme
+  domains:
+    - ds-modules.github.io
