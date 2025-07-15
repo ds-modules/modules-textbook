@@ -6,9 +6,12 @@ project:
   settings:
     output_matplotlib_strings: "remove"
   github: https://github.com/ds-modules/modules-textbook
+  jupyter:
+    lite: true
+  license: CC-BY-NC-ND-4.0
   toc:
     - file: intro.md
-    - title: External Links
+    - title: Important External Links
       children:
         - url: https://github.com/ds-modules/
           title: DSEP Modules Repository
@@ -16,7 +19,7 @@ project:
           title: Data Science Curriculum Guide
     - title: Introduction
       children:
-        - file: content/introduction/ds-intro.ipynb
+        - file: content/introduction/ds-intro.md
           title: Data Science in Python and Jupyter
           children:
             - file: content/introduction/intro-module-final.ipynb
@@ -65,6 +68,7 @@ site:
   options:
     folders: true
     favivon: content/images/favicon.ico
+    show_navbar_depth: 2
   template: book-theme
   domains:
     - ds-modules.github.io
