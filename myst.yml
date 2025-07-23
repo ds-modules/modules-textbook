@@ -7,7 +7,8 @@ project:
     output_matplotlib_strings: "remove"
   github: https://github.com/ds-modules/modules-textbook
   jupyter:
-    lite: true
+    binder:
+      repo: https://github.com/binder-examples/requirements
   license: CC-BY-NC-ND-4.0
   toc:
     - file: intro.md
